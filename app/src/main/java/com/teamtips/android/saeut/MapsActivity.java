@@ -1,17 +1,11 @@
 package com.teamtips.android.saeut;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import net.daum.mf.map.api.MapView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MapsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
