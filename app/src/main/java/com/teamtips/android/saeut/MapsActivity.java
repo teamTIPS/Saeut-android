@@ -1,9 +1,16 @@
 package com.teamtips.android.saeut;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import net.daum.mf.map.api.MapView;
+
+import java.security.MessageDigest;
 
 public class MapsActivity extends AppCompatActivity {
     @Override
@@ -11,9 +18,25 @@ public class MapsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        getAppKeyHash();
+
         MapView mapView = new MapView(this);
 
         ViewGroup mapViewContainer = findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+    }
+
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            Log.e("name not found", e.toString());
+        }
     }
 }
