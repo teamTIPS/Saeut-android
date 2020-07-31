@@ -1,10 +1,10 @@
 package com.teamtips.android.saeut.ui.map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.teamtips.android.saeut.R;
 
+import net.daum.mf.map.api.MapView;
+
 public class MapFragment extends Fragment {
 
     private MapViewModel mapViewModel;
@@ -22,14 +24,18 @@ public class MapFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         mapViewModel =
                 ViewModelProviders.of(this).get(MapViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_map);
+        View root = inflater.inflate(R.layout.fragment_map, container, false);;
+//        final TextView textView = root.findViewById(R.id.text_map);
         mapViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+//                textView.setText(s);
             }
         });
+        Intent intent = new Intent(getContext(), MapsActivity.class);
+        startActivity(intent);
         return root;
     }
+
+
 }
