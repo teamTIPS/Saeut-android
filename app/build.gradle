@@ -43,5 +43,6 @@ dependencies {
     // 카카오톡
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.30.0'
 
-    implementation files('libs/libDaumMapAndroid.jar')
+    // ViewPager import
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
