@@ -19,20 +19,23 @@ import net.daum.mf.map.api.MapView;
 import java.security.MessageDigest;
 
 public class MapsActivity extends Fragment {
+
+    static ViewGroup mapViewContainer = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MapView mapView = new MapView(this);
+        MapView mapView = new MapView(getContext());
 
-        ViewGroup mapViewContainer = findViewById(R.id.map_view);
+        mapViewContainer = mapViewContainer.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.activity_maps, container, false);
 
         return view;
     }

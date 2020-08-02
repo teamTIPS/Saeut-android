@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             Log.e("name not found", e.toString());
         }
     }
