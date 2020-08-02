@@ -28,10 +28,11 @@
 
     <TextView
         android:id="@+id/tv_type3"
-        android:layout_width="wrap_content"
+        android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:text="돌봄제공자"
+        android:text="안녕하세요~ 준비된 돌봄제공자 김세웃입니다 ^^~"
         android:textSize="18sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="534dp" />
 
@@ -39,8 +40,9 @@
         android:id="@+id/tv_type4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="돌봄제공자"
+        android:text="120점"
         android:textSize="18sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="481dp" />
 
@@ -58,7 +60,9 @@
         android:id="@+id/tv_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="먼 나라에서 온 이웃"
         android:textSize="18sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="126dp"
         tools:layout_editor_absoluteY="429dp" />
 
@@ -69,7 +73,8 @@
         android:text="돌봄제공자"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="376dp" />
+        tools:layout_editor_absoluteY="376dp"
+        tools:ignore="MissingConstraints"/>
 
     <TextView
         android:id="@+id/type"
@@ -109,7 +114,8 @@
         android:text="서울시 강남구 도곡동 타워펠리스 101동 1301호"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="304dp" />
+        tools:layout_editor_absoluteY="304dp"
+        tools:ignore="MissingConstraints"/>
 
     <TextView
         android:id="@+id/phone"
@@ -129,7 +135,8 @@
         android:text="2000.01.01"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="251dp" />
+        tools:layout_editor_absoluteY="251dp"
+        tools:ignore="MissingConstraints"/>
 
     <TextView
         android:id="@+id/birth"
@@ -193,7 +200,7 @@
         tools:layout_editor_absoluteY="137dp" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
@@ -206,9 +213,10 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name"
+        android:text="김세웃"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="291dp"
-        tools:layout_editor_absoluteY="84dp" />
+        tools:layout_editor_absoluteY="84dp"
+        tools:ignore="MissingConstraints"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
