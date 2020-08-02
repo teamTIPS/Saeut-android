@@ -38,10 +38,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'com.github.tlaabs:TimetableView:1.0.3-fx1'
+
     // 카카오 로그인
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.0'
     // 카카오톡
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.30.0'
 
-    implementation files('libs/libDaumMapAndroid.jar')
+    // ViewPager import
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

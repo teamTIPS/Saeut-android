@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
+import com.teamtips.android.saeut.login.LoginActivity;
+
 public class IntroActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         }

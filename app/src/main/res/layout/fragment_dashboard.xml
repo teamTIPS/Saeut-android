@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:paddingBottom="?attr/actionBarSize">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text_dashboard"
+        <Button
+            android:id="@+id/btn_supply"
+            android:layout_width="197dp"
+            android:layout_height="wrap_content"
+            android:text="보호자 게시판" />
+
+        <Button
+            android:id="@+id/btn_demand"
             android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:gravity="center"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:background="#ff0000"
-            android:gravity="center"
-            android:text="#ff0000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:background="#00ff00"
-            android:gravity="center"
-            android:text="#00ff00" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:background="#0000ff"
-            android:gravity="center"
-            android:text="#0000ff" />
-
+            android:layout_height="match_parent"
+            android:text="주변 돌보미" />
     </LinearLayout>
 
-</ScrollView>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView style="?android:textAppearanceMedium"
+            android:padding="16dp"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test1" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="글쓰기" />
+
+
+</LinearLayout>
