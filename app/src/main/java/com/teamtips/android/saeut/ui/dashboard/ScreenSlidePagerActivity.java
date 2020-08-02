@@ -1,4 +1,5 @@
 package com.teamtips.android.saeut.ui.dashboard;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewpager_demand);
+        setContentView(R.layout.activity_screen_slide);
 
         // Instantiate a ViewPager2 and a PagerAdapter.
         viewPager = findViewById(R.id.pager);
