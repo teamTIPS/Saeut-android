@@ -32,8 +32,9 @@ public class DashboardFragment extends Fragment {
     private PagerAdapter pagerAdapter;
 
     int i=0;
-    private FragmentDemand fragment1;
-    private FragmentSupply fragment2;
+    private static FragmentDemand fragment1;
+    private static FragmentSupply fragment2;
+    private static TabLayout tabLayout;
 
     public DashboardFragment() { }
 
@@ -50,13 +51,6 @@ public class DashboardFragment extends Fragment {
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
 
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = view.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         fragment1 = new FragmentDemand();
         fragment2 = new FragmentSupply();
@@ -64,6 +58,9 @@ public class DashboardFragment extends Fragment {
         viewPager = (ViewPager)view.findViewById(R.id.view_pager);
         viewPager.setAdapter(new PagerAdapter(getChildFragmentManager()));
         viewPager.setCurrentItem(0);
+
+        tabLayout = view.findViewById(R.id.tabs_dashboard);
+        tabLayout.setupWithViewPager(viewPager);
         return view;
     }
 
@@ -117,9 +114,19 @@ public class DashboardFragment extends Fragment {
                 return fragment2;
             }
         }
+
         public int getCount(){
             return 2;
         }
 
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if(position == 0) {
+                return "돌봄 요청 리스트";
+            } else {
+                return "돌봄 신청 리스트";
+
+            }
+        }
     }
 }
