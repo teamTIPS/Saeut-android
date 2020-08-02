@@ -37,7 +37,7 @@ public class GlobalApplication extends Application {
         instance = null;
     }
 
-    public class KakaoSDKAdapter extends KakaoAdapter {
+    public static class KakaoSDKAdapter extends KakaoAdapter {
 
         @Override
         public ISessionConfig getSessionConfig() {

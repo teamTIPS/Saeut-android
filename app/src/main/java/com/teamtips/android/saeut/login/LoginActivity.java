@@ -13,6 +13,7 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 session.open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 

@@ -29,7 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".login.LoginActivity">
 
+        </activity>
         <activity android:name=".ui.map.MapsActivity"></activity>
 
         <meta-data
