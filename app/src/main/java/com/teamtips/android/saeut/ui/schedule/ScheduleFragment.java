@@ -1,6 +1,7 @@
 package com.teamtips.android.saeut.ui.schedule;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +13,27 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.github.tlaabs.timetableview.TimetableView;
 import com.teamtips.android.saeut.R;
 
 public class ScheduleFragment extends Fragment {
-
-    private ScheduleViewModel scheduleViewModel;
-
+    private final static String Tag = "ScheduleFragment";
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        scheduleViewModel =
-                ViewModelProviders.of(this).get(ScheduleViewModel.class);
+        Log.e(Tag,"onCreateView");
+
+        final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
-        final TextView textView = root.findViewById(R.id.text_schedule);
-        scheduleViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        scheduleViewModel.getTT().observe(getViewLifecycleOwner(), new Observer<TimetableView>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(TimetableView timetableView) {
+//                scheduleViewModel.testaddTT(timetableView);
+                Log.e(Tag,"onChanged");
             }
         });
+
+
         return root;
     }
 }

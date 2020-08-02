@@ -113,7 +113,6 @@ public class RequestHttpURLConnection_POST {
 
         inputStream.close();
         return result;
-
     }
 
 }

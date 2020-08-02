@@ -24,14 +24,12 @@ import org.w3c.dom.Text;
 
 public class ProfileFragment extends Fragment {
 
-    private ProfileViewModel profileViewModel;
+    private ProfileViewModel profileViewModel = new ProfileViewModel();
     TextView tv1;
     TextView tv2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        profileViewModel =
-                ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         final TextView textView = root.findViewById(R.id.text_profile);
         profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

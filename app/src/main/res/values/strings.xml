@@ -6,4 +6,15 @@
     <string name="title_chat">채팅</string>
     <string name="title_profile">마이세웃</string>
     <string name="title_schedule">시간표</string>
+    <string-array name="my_header_title">
+        <item />
+        <item>월요일</item>
+        <item>화요일</item>
+        <item>수요일</item>
+        <item>목요일</item>
+        <item>금요일</item>
+        <item>토요일</item>
+        <item>일요일</item>
+    </string-array>
 </resources>
+
