@@ -12,14 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.teamtips.android.saeut.R;
 
-public class DashboardFragment extends Fragment {
+public class FragmentSupply extends Fragment {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     public static final String ARG_OBJECT = "object";
@@ -58,29 +57,5 @@ public class DashboardFragment extends Fragment {
                 (tab,position)->tab.setText("OBJECT "+(position+1))
         ).attach();
         Log.d("demoCollectionAdapter", "demoCollectionAdapter");
-    }
-}
-
-class DemoCollectionAdapter extends FragmentStateAdapter {
-    public DemoCollectionAdapter(Fragment fragment) {
-        super(fragment);
-    }
-
-    @NonNull
-    @Override
-    public Fragment createFragment(int position) {
-        // Return a NEW fragment instance in createFragment(int)
-        Fragment fragment = new DashboardFragment();
-        Log.d("DashboardFragment", "DashboardFragment");
-        Bundle args = new Bundle();
-        // Our object is just an integer :-P
-        args.putInt(DashboardFragment.ARG_OBJECT, position + 1);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public int getItemCount() {
-        return 100;
     }
 }
