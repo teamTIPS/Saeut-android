@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,25 +17,30 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_dashboard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:tabMode="scrollable" >
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabIndicatorGravity="bottom"
+        app:tabMode="fixed">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_item1"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_width="match_parent"/>
+            android:text="돌봄 요청 리스트" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_item2"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_width="match_parent"/>
+            android:text="돌봄 제공 리스트" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:ignore="MissingClass" />
 
     <Button
         android:id="@+id/btn_write"

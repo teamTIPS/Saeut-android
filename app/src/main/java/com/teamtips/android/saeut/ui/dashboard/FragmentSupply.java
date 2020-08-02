@@ -23,7 +23,6 @@ public class FragmentSupply extends Fragment {
     // representing an object in the collection.
     public static final String ARG_OBJECT = "object";
 
-    public static DemoCollectionAdapter demoCollectionAdapter;
     public static ViewPager2 viewPager;
     private DashboardViewModel dashboardViewModel;
 
@@ -44,18 +43,5 @@ public class FragmentSupply extends Fragment {
             }
         });
         return root;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        demoCollectionAdapter = new DemoCollectionAdapter(this);
-        viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(demoCollectionAdapter);
-
-        TabLayout tabLayout = view.findViewById(R.id.tabs_dashboard);
-        new TabLayoutMediator(tabLayout, viewPager,
-                (tab,position)->tab.setText("OBJECT "+(position+1))
-        ).attach();
-        Log.d("demoCollectionAdapter", "demoCollectionAdapter");
     }
 }
