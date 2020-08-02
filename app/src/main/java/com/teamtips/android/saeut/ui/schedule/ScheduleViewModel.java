@@ -1,14 +1,14 @@
-package com.teamtips.android.saeut.ui.map;
+package com.teamtips.android.saeut.ui.schedule;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MapViewModel extends ViewModel {
+public class ScheduleViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public MapViewModel() {
+    public ScheduleViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is map fragment");
     }
