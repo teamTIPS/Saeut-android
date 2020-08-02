@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".login.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_seaut"
         android:label="@string/app_name"
@@ -17,6 +18,13 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".IntroActivity"
             android:theme="@style/IntroTheme">
+<<<<<<< HEAD
+=======
+
+        </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".login.LoginActivity">
+>>>>>>> e39c39523ff3dbeab49a6ee93d0651242d1d30e5
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,9 +37,16 @@
 
         <activity android:name=".ui.map.MapsActivity"></activity>
 
+
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
+<<<<<<< HEAD
             android:value="8525854d741143b261b0dd8d304630dc" />
+=======
+            android:value="a9b7a5329fb5eaa29e3d6cd72214a548" />
+        <!--        admin 키-->
+>>>>>>> e39c39523ff3dbeab49a6ee93d0651242d1d30e5
     </application>
 
 </manifest>
