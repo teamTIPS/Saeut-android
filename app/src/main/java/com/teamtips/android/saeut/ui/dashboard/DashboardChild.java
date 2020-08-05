@@ -1,7 +1,6 @@
 package com.teamtips.android.saeut.ui.dashboard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.teamtips.android.saeut.R;
 
-public class FragmentSupply extends Fragment {
+public class DashboardChild extends Fragment {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     public static final String ARG_OBJECT = "object";
     public static ViewPager2 viewPager;
     private DashboardViewModel dashboardViewModel;
+
+    int position; // taglayout 구별하기 위한 일종의 flag라고 이해함
+
+    public DashboardChild(int position) {
+        this.position = position;
+    }
 
     @Nullable
     @Override
@@ -32,15 +35,17 @@ public class FragmentSupply extends Fragment {
         dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
 
-        View root = inflater.inflate(R.layout.fragment_supply, container, false);
+        View root = inflater.inflate(R.layout.fragment_dashboard_child, container, false);
 
-        final TextView textView = root.findViewById(R.id.tv_supply);
+        final TextView textView = root.findViewById(R.id.tv_demand);
+
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s + "2");
+                textView.setText(s + position);
             }
         });
+
         return root;
     }
 }

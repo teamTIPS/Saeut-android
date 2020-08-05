@@ -22,8 +22,6 @@ public class DashboardFragment extends Fragment {
     private PagerAdapter pagerAdapter;
 
     int i=0;
-    private static FragmentDemand fragment1;
-    private static FragmentSupply fragment2;
     private static TabLayout tabLayout;
 
     public DashboardFragment() { }
@@ -42,8 +40,6 @@ public class DashboardFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        fragment1 = new FragmentDemand();
-        fragment2 = new FragmentSupply();
 
         viewPager = (ViewPager)view.findViewById(R.id.view_pager);
         viewPager.setAdapter(new PagerAdapter(getChildFragmentManager()));
@@ -97,12 +93,7 @@ public class DashboardFragment extends Fragment {
         }
 
         public Fragment getItem(int position){
-            if(position == 0)
-            {
-                return fragment1;
-            }else {
-                return fragment2;
-            }
+            return new DashboardChild(position) ;
         }
 
         public int getCount(){
