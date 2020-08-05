@@ -16,8 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".IntroActivity"
+        <activity
+            android:name=".login.ui.login.LoginActivity"/>
+        <activity
+            android:name=".IntroActivity"
             android:theme="@style/IntroTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".ui.map.MapsActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".login.KakaoLoginActivity" />
+<!--        <activity android:name=".ui.map.MapsActivity" />-->
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".login.LoginActivity">
+    tools:context=".login.KakaoLoginActivity">
+
+    <Button
+        android:id="@+id/btn_general_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="세웃 로그인" />
+
+    <Button
+        android:id="@+id/btn_general_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="세웃 로그아웃" />
 
     <Button
         android:id="@+id/btn_custom_login"

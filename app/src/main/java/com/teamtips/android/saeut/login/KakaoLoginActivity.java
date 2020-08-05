@@ -15,26 +15,42 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.login.ui.login.LoginActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class KakaoLoginActivity extends AppCompatActivity {
 
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logintest);
+        setContentView(R.layout.activity_kakaologintest);
 
+        Button btn_general_login = findViewById(R.id.btn_general_login);
+        Button btn_general_logout = findViewById(R.id.btn_general_logout);
         Button btn_custom_login = findViewById(R.id.btn_custom_login);
         Button btn_custom_login_out = findViewById(R.id.btn_custom_login_out);
 
         session = Session.getCurrentSession();
         session.addCallback(sessionCallback);
+        btn_general_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
+
+        btn_general_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
 
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                session.open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
+                session.open(AuthType.KAKAO_LOGIN_ALL, KakaoLoginActivity.this);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
@@ -46,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         .requestLogout(new LogoutResponseCallback() {
                             @Override
                             public void onCompleteLogout() {
-                                Toast.makeText(LoginActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(KakaoLoginActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
