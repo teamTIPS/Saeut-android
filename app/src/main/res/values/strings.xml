@@ -16,5 +16,5 @@
         <item>토</item>
         <item>일</item>
     </string-array>
+    <string name="write">글쓰기</string>
 </resources>
-
