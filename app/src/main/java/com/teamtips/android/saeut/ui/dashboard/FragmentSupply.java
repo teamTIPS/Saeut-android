@@ -22,7 +22,6 @@ public class FragmentSupply extends Fragment {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     public static final String ARG_OBJECT = "object";
-
     public static ViewPager2 viewPager;
     private DashboardViewModel dashboardViewModel;
 
