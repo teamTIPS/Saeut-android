@@ -27,7 +27,6 @@ public class ScheduleFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         Log.e(Tag,"onCreateView");
 
-
         final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
         final TimetableView timetable = root.findViewById(R.id.timetable);
@@ -53,7 +52,5 @@ public class ScheduleFragment extends Fragment {
         });
 
         return root;
-
-
     }
 }

@@ -42,30 +42,3 @@ public class ScheduleViewModel extends ViewModel {
         sdMLD.setValue(schedules);
     }
 }
-//public class ScheduleViewModel extends ViewModel {
-//
-//    public MutableLiveData<TimetableView> ttMLD;
-//    Schedule schedule = new Schedule();
-//
-//    public ScheduleViewModel() {
-//        ttMLD = new MutableLiveData<>();
-//        ttMLD.setValue;
-//    }
-//
-//    public LiveData<TimetableView> getTT() {
-//        return ttMLD;
-//    }
-//
-//    public void testaddTT(MutableLiveData<TimetableView> TT){
-//        ArrayList<Schedule> schedules = new ArrayList<>();
-//        Schedule schedule = new Schedule();
-//        schedule.setClassTitle("Data Structure"); // sets subject
-//        schedule.setClassPlace("IT-601"); // sets place
-//        schedule.setProfessorName("Won Kim"); // sets professor
-//        schedule.setStartTime(new Time(10,0)); // sets the beginning of class time (hour,minute)
-//        schedule.setEndTime(new Time(13,30)); // sets the end of class time (hour,minute)
-//        schedules.add(schedule);
-////.. add one or more schedules
-//        TT.getValue().add(schedules);
-//    }
-//}
