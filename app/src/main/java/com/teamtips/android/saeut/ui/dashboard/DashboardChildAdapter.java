@@ -1,6 +1,7 @@
 package com.teamtips.android.saeut.ui.dashboard;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.ui.dashboard.model.Post;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DashboardChildAdapter extends BaseAdapter {
 
@@ -53,7 +60,11 @@ public class DashboardChildAdapter extends BaseAdapter {
         final int position = pos;
         ViewHolder holder;
 
+
+        Log.d("DashboardChildAdapter", "ssiiibbballlll");
         if(view == null) {
+            view = layoutInflater.inflate(layout, viewGroup, false);
+
             holder = new ViewHolder();
             holder.title = (TextView) view.findViewById(R.id.tv_title);
             holder.date = (TextView) view.findViewById(R.id.tv_date);
@@ -67,8 +78,9 @@ public class DashboardChildAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         holder.title.setText(postArrayList.get(position).getTitle());
-        holder.date.setText(postArrayList.get(position).getPost_date().toString());
+        holder.date.setText(dateFormat.format(postArrayList.get(position).getPost_date()));
         holder.location.setText(postArrayList.get(position).getAddress1());
 
         // 나머지는 추후 다시 정의해야 함.

@@ -22,6 +22,14 @@ public class Post {
     // Constructor
     public Post() { }
 
+    public Post(int post_id, int account_id, String title, Date post_date, String address1) {
+        this.post_id = post_id;
+        this.account_id = account_id;
+        this.title = title;
+        this.post_date = post_date;
+        this.address1 = address1;
+    }
+
     public Post(int post_id, int account_id, String title, Date post_date, String contents, Date start_date, Date due_date, Date birth, String address1, String address2) {
         this.post_id = post_id;
         this.account_id = account_id;
