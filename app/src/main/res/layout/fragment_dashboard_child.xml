@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/tv_demand"
+        android:id="@+id/tv_child"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fragment_demand"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lv_demand"
+        android:id="@+id/lv_child"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

@@ -4,8 +4,10 @@ import java.util.Date; //import java.util.sql일수도
 /*
  * Post Domain Class
  * */
+
 public class Post {
 
+    // Variable
     private int post_id; //sequence
     private int account_id; // (FK) account 클래스의 id
     private String title; //게시물 제목
@@ -17,6 +19,23 @@ public class Post {
     private String address1; // 돌봄이 필요한 대상의 주소1
     private String address2; // 돌봄이 필요한 대상의 주소2
 
+    // Constructor
+    public Post() { }
+
+    public Post(int post_id, int account_id, String title, Date post_date, String contents, Date start_date, Date due_date, Date birth, String address1, String address2) {
+        this.post_id = post_id;
+        this.account_id = account_id;
+        this.title = title;
+        this.post_date = post_date;
+        this.contents = contents;
+        this.start_date = start_date;
+        this.due_date = due_date;
+        this.birth = birth;
+        this.address1 = address1;
+        this.address2 = address2;
+    }
+
+    // Setter & Getter
     public int getPost_id() {
         return post_id;
     }
