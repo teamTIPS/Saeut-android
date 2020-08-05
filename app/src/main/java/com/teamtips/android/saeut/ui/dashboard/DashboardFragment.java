@@ -21,7 +21,7 @@ public class DashboardFragment extends Fragment {
     private DashboardViewModel dashboardViewModel;
     private PagerAdapter pagerAdapter;
 
-    int i=0;
+    int i = 0;
     private static TabLayout tabLayout;
 
     public DashboardFragment() { }
