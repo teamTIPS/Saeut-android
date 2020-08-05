@@ -17,4 +17,16 @@
         <item>일</item>
     </string-array>
     <string name="write">글쓰기</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Messages Preferences -->
+    <string name="CaringType_title">희망 돌봄 대상을 선택하세요.</string>
+    <string name="Available_title">해당 시간대에 활용 가능한 것을 선택하세요.</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

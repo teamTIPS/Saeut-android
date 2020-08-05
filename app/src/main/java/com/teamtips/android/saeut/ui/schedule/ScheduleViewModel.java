@@ -28,14 +28,15 @@ public class ScheduleViewModel extends ViewModel {
         return sdMLD;
     }
 
-    public void addSchedule(){
-        ArrayList<Schedule> schedules = sdMLD.getValue();//new ArrayList<Schedule>();
+    public void addSchedule(String caretype, String available, Time starttime, Time endtime){
+        //classtitle: 희망 돌봄타입(Ex. 노인, 아이들, 장애인)
+        //classplace: 가능 능력(Ex. 운전가능, 놀이가능 등...)
+        ArrayList<Schedule> schedules = sdMLD.getValue();
         Schedule schedule = new Schedule();
-        schedule.setClassTitle("Data Structure"); // sets subject
-        schedule.setClassPlace("IT-601"); // sets place
-        schedule.setProfessorName("Won Kim"); // sets professor
-        schedule.setStartTime(new Time(10,0)); // sets the beginning of class time (hour,minute)
-        schedule.setEndTime(new Time(13,30)); // sets the end of class time (hour,minute)
+        schedule.setClassTitle(caretype); // sets subject
+        schedule.setClassPlace(available); // sets place
+        schedule.setStartTime(starttime); // sets the beginning of class time (hour,minute)
+        schedule.setEndTime(endtime); // sets the end of class time (hour,minute)
         if (schedules != null) {
             schedules.add(schedule);
         }
