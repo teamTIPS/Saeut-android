@@ -1,5 +1,9 @@
 package com.teamtips.android.saeut.ui.schedule;
 
+import android.content.Intent;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,26 +17,29 @@ import java.util.ArrayList;
 
 public class ScheduleViewModel extends ViewModel {
 
-    private MutableLiveData<TimetableView> ttMLD;
+    public MutableLiveData<ArrayList<Schedule>> sdMLD;
 
-    public ScheduleViewModel() {
-        ttMLD = new MutableLiveData<>();
+    public ScheduleViewModel(){
+        sdMLD = new MutableLiveData<>();
+        sdMLD.setValue(new ArrayList<Schedule>());
     }
 
-    public LiveData<TimetableView> getTT() {
-        return ttMLD;
+    public LiveData<ArrayList<Schedule>> getSD(){
+        return sdMLD;
     }
 
-    public void testaddTT(TimetableView TT){
-        ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+    public void addSchedule(String caretype, String available, Time starttime, Time endtime){
+        //classtitle: 희망 돌봄타입(Ex. 노인, 아이들, 장애인)
+        //classplace: 가능 능력(Ex. 운전가능, 놀이가능 등...)
+        ArrayList<Schedule> schedules = sdMLD.getValue();
         Schedule schedule = new Schedule();
-        schedule.setClassTitle("Data Structure"); // sets subject
-        schedule.setClassPlace("IT-601"); // sets place
-        schedule.setProfessorName("Won Kim"); // sets professor
-        schedule.setStartTime(new Time(10,0)); // sets the beginning of class time (hour,minute)
-        schedule.setEndTime(new Time(13,30)); // sets the end of class time (hour,minute)
-        schedules.add(schedule);
-//.. add one or more schedules
-        TT.add(schedules);
+        schedule.setClassTitle(caretype); // sets subject
+        schedule.setClassPlace(available); // sets place
+        schedule.setStartTime(starttime); // sets the beginning of class time (hour,minute)
+        schedule.setEndTime(endtime); // sets the end of class time (hour,minute)
+        if (schedules != null) {
+            schedules.add(schedule);
+        }
+        sdMLD.setValue(schedules);
     }
 }

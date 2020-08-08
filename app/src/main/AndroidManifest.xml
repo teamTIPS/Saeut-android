@@ -16,24 +16,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".IntroActivity"
+        <activity
+            android:name=".ui.schedule.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
+            android:name=".IntroActivity"
             android:theme="@style/IntroTheme">
-        </activity>
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".login.LoginActivity">
 
-        </activity>
-        <activity android:name=".ui.map.MapsActivity"></activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".ui.map.MapsActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

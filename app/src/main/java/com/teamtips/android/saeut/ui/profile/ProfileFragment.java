@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -36,8 +38,8 @@ public class ProfileFragment extends Fragment {
              //   textView.setText(s);
             }
         });
-        tv1 = root.findViewById(R.id.textView1);
-        tv2 = root.findViewById(R.id.textView2);
+//        tv1 = root.findViewById(R.id.textView1);
+//        tv2 = root.findViewById(R.id.textView2);
         NetworkTask networkTask = new NetworkTask("http://49.50.173.180:8080/saeut/account/test",null);
         networkTask.execute();
 
