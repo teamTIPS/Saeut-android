@@ -1,5 +1,6 @@
 package com.teamtips.android.saeut.ui.schedule;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,29 +18,50 @@ import androidx.lifecycle.ViewModelProviders;
 import com.github.tlaabs.timetableview.Schedule;
 import com.github.tlaabs.timetableview.Time;
 import com.github.tlaabs.timetableview.TimetableView;
-import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
 
 import java.util.ArrayList;
 
 public class ScheduleFragment extends Fragment {
     private final static String Tag = "ScheduleFragment";
+
+    private Context context;
+    public static final int REQUEST_ADD = 1;
+    public static final int REQUEST_EDIT = 2;
+
+    private Button addBtn;
+    private Button clearBtn;
+
+    public static TimetableView timetable;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Log.e(Tag,"onCreateView");
 
+
         final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
-        final TimetableView timetable = root.findViewById(R.id.timetable);
 
+        timetable = root.findViewById(R.id.timetable);
         Button bt_add = root.findViewById(R.id.add_btn);
-        Button bt_load = root.findViewById(R.id.load_btn);
+        Button bt_clear = root.findViewById(R.id.clear_btn);
+        timetable.setOnStickerSelectEventListener(new TimetableView.OnStickerSelectedListener() {
+            @Override
+            public void OnStickerSelected(int idx, ArrayList<Schedule> schedules) {
+                Intent i = new Intent(context, EditActivity.class);
+                i.putExtra("mode",REQUEST_EDIT);
+                i.putExtra("idx", idx);
+                i.putExtra("schedules", schedules);
+                getActivity().startActivityForResult(i,REQUEST_EDIT);
+            }
+        });
+
 
         scheduleViewModel.getSD().observe(getViewLifecycleOwner(), new Observer<ArrayList<Schedule>>() {
             @Override
             public void onChanged(ArrayList<Schedule> schedules) {
                 timetable.add(schedules);
-                //schedules를 timetable에 띄움
+                //schedules를 timetable에 반영함
                 Log.e(Tag,"onChanged");
             }
         });
@@ -48,19 +69,58 @@ public class ScheduleFragment extends Fragment {
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scheduleViewModel.addSchedule("노인 돌봄 희망", "운전 가능", new Time(10,30), new Time(17,30));
+//                scheduleViewModel.addSchedule("노인 돌봄 희망", "운전 가능", new Time(10,30), new Time(17,30));
                 //임의의 스케쥴을 뷰모델에 저장함
-//                Log.e(Tag,"onClick");
+//                switch (view.getId()){
+//                    case R.id.add_btn:
+                        Intent i = new Intent(getContext(),EditActivity.class);
+                        i.putExtra("mode",REQUEST_ADD);
+                        startActivityForResult(i,REQUEST_ADD);
+//                        break;
+//                    case R.id.clear_btn:
+//                        break;
+                }
             }
-        });
-
-        bt_load.setOnClickListener(new View.OnClickListener() {
+        );
+        bt_clear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-            }
+            public void onClick(View v) {
+            timetable.removeAll();
+
+           }
         });
 
         return root;
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.e(Tag,"onActivityResult");
+
+        super.onActivityResult(requestCode, resultCode, data);
+        TimetableView timetable = ScheduleFragment.timetable;
+        switch (requestCode) {
+            case REQUEST_ADD:
+                if (resultCode == EditActivity.RESULT_OK_ADD) {
+                    ArrayList<Schedule> item = (ArrayList<Schedule>) data.getSerializableExtra("schedules");
+                    Log.e(Tag,"item:"+item.toString());
+                    timetable.add(item);
+                }
+                break;
+            case REQUEST_EDIT:
+                /** Edit -> Submit */
+                if (resultCode == EditActivity.RESULT_OK_EDIT) {
+                    int idx = data.getIntExtra("idx", -1);
+                    ArrayList<Schedule> item = (ArrayList<Schedule>) data.getSerializableExtra("schedules");
+                    timetable.edit(idx, item);
+                }
+                /** Edit -> Delete */
+                else if (resultCode == EditActivity.RESULT_OK_DELETE) {
+                    int idx = data.getIntExtra("idx", -1);
+                    timetable.remove(idx);
+                }
+                break;
+        }
     }
 }

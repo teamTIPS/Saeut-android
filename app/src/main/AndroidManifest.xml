@@ -17,9 +17,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.schedule.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
-        <activity
             android:name=".IntroActivity"
             android:theme="@style/IntroTheme">
             <intent-filter>
@@ -28,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".ui.map.MapsActivity" />
+        <activity android:name=".ui.schedule.EditActivity"/>
+<!--        <activity android:name=".ui.map.MapsActivity" />-->
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
