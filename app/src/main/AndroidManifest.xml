@@ -26,13 +26,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".ui.schedule.EditActivity"/>
+<!--        <activity android:name=".ui.map.MapsActivity" />-->
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.schedule.SettingsActivity" />
         <activity android:name=".login.ui.login.LoginActivity" />
         <activity android:name=".login.KakaoLoginActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="8525854d741143b261b0dd8d304630dc" />
+            android:value="a9b7a5329fb5eaa29e3d6cd72214a548" />
     </application>
 
 </manifest>

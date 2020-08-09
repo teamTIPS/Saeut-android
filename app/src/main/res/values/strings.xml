@@ -19,6 +19,7 @@
     <string name="write">글쓰기</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
+    <!-- Messages Preferences -->
     <string name="CaringType_title">희망 돌봄 대상을 선택하세요.</string>
     <string name="caringType_defaultvalue">모두</string>
     <string name="Available_title">해당 시간대에 활용 가능한 것을 선택하세요.</string>

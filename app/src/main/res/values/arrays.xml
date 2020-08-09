@@ -28,4 +28,12 @@
         <item>자격증</item>
         <item>모두</item>
     </string-array>
+
+    <string-array name="days">
+        <item >Mon</item>
+        <item >Tue</item>
+        <item >Wed</item>
+        <item >Thu</item>
+        <item >Fri</item>
+    </string-array>
 </resources>
