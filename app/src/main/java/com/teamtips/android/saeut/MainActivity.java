@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+//                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (Exception e) {
             Log.e("name not found", e.toString());
