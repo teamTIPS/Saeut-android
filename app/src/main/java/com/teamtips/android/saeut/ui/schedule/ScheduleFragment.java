@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class ScheduleFragment extends Fragment {
     private final static String Tag = "ScheduleFragment";
 
-    private Context context;
     public static final int REQUEST_ADD = 1;
     public static final int REQUEST_EDIT = 2;
 
@@ -48,7 +47,7 @@ public class ScheduleFragment extends Fragment {
         timetable.setOnStickerSelectEventListener(new TimetableView.OnStickerSelectedListener() {
             @Override
             public void OnStickerSelected(int idx, ArrayList<Schedule> schedules) {
-                Intent i = new Intent(context, EditActivity.class);
+                Intent i = new Intent(getContext(), EditActivity.class);
                 i.putExtra("mode",REQUEST_EDIT);
                 i.putExtra("idx", idx);
                 i.putExtra("schedules", schedules);
@@ -111,12 +110,15 @@ public class ScheduleFragment extends Fragment {
             case REQUEST_EDIT:
                 /** Edit -> Submit */
                 if (resultCode == EditActivity.RESULT_OK_EDIT) {
+                    Log.e(Tag,"Edit");
+
                     int idx = data.getIntExtra("idx", -1);
                     ArrayList<Schedule> item = (ArrayList<Schedule>) data.getSerializableExtra("schedules");
                     timetable.edit(idx, item);
                 }
                 /** Edit -> Delete */
                 else if (resultCode == EditActivity.RESULT_OK_DELETE) {
+                    Log.e(Tag,"delete");
                     int idx = data.getIntExtra("idx", -1);
                     timetable.remove(idx);
                 }

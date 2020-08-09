@@ -30,7 +30,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     public static final int RESULT_OK_EDIT = 2;
     public static final int RESULT_OK_DELETE = 3;
     private static final String Tag = "EditActivity";
-    private Context context;
 
     private Button deleteBtn;
     private Button submitBtn;
@@ -40,6 +39,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     private Spinner daySpinner;
     private TextView startTv;
     private TextView endTv;
+
+    Context context = this;
+
 
     //request mode
     private int mode;
@@ -51,6 +53,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
         init();
     }
 
@@ -79,6 +82,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         mode = i.getIntExtra("mode", REQUEST_ADD);
 
         if(mode == REQUEST_EDIT){
+            Log.e(Tag,"REQUEST_EDIT");
+
             loadScheduleData();
             deleteBtn.setVisibility(View.VISIBLE);
         }
@@ -137,8 +142,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.submit_btn:
                 if(mode == REQUEST_ADD){
-                    Log.e(Tag,"REQUSET_ADD");
-
                     inputDataProcessing();
                     Intent i = new Intent();
                     ArrayList<Schedule> schedules = new ArrayList<>();
@@ -149,14 +152,14 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
                 }
                 else if(mode == REQUEST_EDIT){
-                    Log.e(Tag,"REQUSET_EDIT");
-
                     inputDataProcessing();
                     Intent i = new Intent();
                     ArrayList<Schedule> schedules = new ArrayList<>();
                     schedules.add(schedule);
                     i.putExtra("idx",editIdx);
+                    Log.e(Tag,"idx");
                     i.putExtra("schedules",schedules);
+                    Log.e(Tag,"schedules");
                     setResult(RESULT_OK_EDIT,i);
                     finish();
                 }
