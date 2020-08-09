@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.google.android.material.tabs.TabLayout
+    android:id="@+id/tabs"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="?attr/actionBarSize"
-    android:paddingBottom="?attr/actionBarSize">
+    android:layout_height="wrap_content"
+    android:background="?colorPrimary"
+    app:tabIndicatorColor="?colorAccent"
+    app:tabMode="fixed"
+    app:tabSelectedTextColor="@android:color/white"
+    app:tabTextColor="#ddd" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabIndicatorGravity="bottom"
-        app:tabMode="fixed">
-
-    </com.google.android.material.tabs.TabLayout>
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingBottom="?attr/actionBarSize">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingClass" />
+        android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/btn_write"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/write" />
+        android:layout_gravity="bottom|right"
+        android:onClick="onFabClicked"
+        app:fabSize="normal"
+        app:layout_anchor="@id/navigation"
+        app:layout_anchorGravity="top|end"
+        app:layout_behavior="com.teamtips.android.saeut.BottomNavigationFABBehavior"
+        app:srcCompat="@drawable/ic_pencil"
+        app:useCompatPadding="true" />
+
+  </FrameLayout>
+
 
 </LinearLayout>

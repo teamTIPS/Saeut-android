@@ -3,18 +3,14 @@
     <string name="title_home">홈</string>
     <string name="title_map">지도</string>
     <string name="title_dashboard">게시판</string>
-    <string name="title_chat">채팅</string>
-    <string name="title_profile">마이세웃</string>
     <string name="title_schedule">시간표</string>
-    <string-array name="my_header_title">
-        <item />
-        <item>월</item>
-        <item>화</item>
-        <item>수</item>
-        <item>목</item>
-        <item>금</item>
-        <item>토</item>
-        <item>일</item>
-    </string-array>
-    <string name="write">글쓰기</string>
+    <string name="title_profile">마이세웃</string>
+    <string name="show">Show</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search">Search</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="delete">Delete</string>
 </resources>
