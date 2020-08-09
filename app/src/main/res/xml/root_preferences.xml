@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="돌봄 일정 설정">
+
+        <ListPreference
+            app:entries="@array/caringType_entries"
+            app:entryValues="@array/caringType_values"
+            app:key="CaringTypeKey"
+            app:title="@string/CaringType_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="모두"
+            app:entries="@array/caringavailable_entries"
+            app:entryValues="@array/caringavailable_values"
+            app:key="caringavailableKey"
+            app:title="@string/Available_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

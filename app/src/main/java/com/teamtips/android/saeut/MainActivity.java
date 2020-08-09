@@ -4,7 +4,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.teamtips.android.saeut.dashboard.CreateDemand;
+import com.teamtips.android.saeut.func.dashboard.CreateDemand;
 
 import java.security.MessageDigest;
 
@@ -60,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(listener);
         bindNavigationDrawer();
         initTitle();
-        getAppKeyHash();
+//        getAppKeyHash(); 해시키 알아내는 함수는 당분간 필요없음
+
     }
 
     private void initTitle() {
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+//                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (Exception e) {
             Log.e("name not found", e.toString());

@@ -1,0 +1,39 @@
+<resources>
+    <!-- CaringType Preference -->
+    <string-array name="caringType_entries">
+        <item>노인</item>
+        <item>아이</item>
+        <item>장애인</item>
+        <item>모두</item>
+    </string-array>
+
+    <string-array name="caringType_values">
+        <item>노인</item>
+        <item>아이</item>
+        <item>장애인</item>
+        <item>모두</item>
+    </string-array>
+
+    <!-- CaringAvailable Preference -->
+    <string-array name="caringavailable_entries">
+        <item>운전</item>
+        <item>영어</item>
+        <item>자격증</item>
+        <item>모두</item>
+    </string-array>
+
+    <string-array name="caringavailable_values">
+        <item>운전</item>
+        <item>영어</item>
+        <item>자격증</item>
+        <item>모두</item>
+    </string-array>
+
+    <string-array name="days">
+        <item >Mon</item>
+        <item >Tue</item>
+        <item >Wed</item>
+        <item >Thu</item>
+        <item >Fri</item>
+    </string-array>
+</resources>
