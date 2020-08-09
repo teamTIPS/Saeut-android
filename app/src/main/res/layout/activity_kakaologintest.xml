@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".login.KakaoLoginActivity">
+    tools:context=".func.login.KakaoLoginActivity">
 
     <Button
         android:id="@+id/btn_general_login"

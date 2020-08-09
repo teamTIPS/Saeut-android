@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.teamtips.android.saeut.dashboard.DashboardFragment;
+import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
+import com.teamtips.android.saeut.func.home.HomeFragment;
+import com.teamtips.android.saeut.func.map.MapFragment;
+import com.teamtips.android.saeut.func.profile.ProfileFragment;
+import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
 
 class AppFragmentPageAdapter extends FragmentPagerAdapter {
 
