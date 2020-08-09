@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
-import com.teamtips.android.saeut.login.LoginActivity;
+import com.teamtips.android.saeut.login.KakaoLoginActivity;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), KakaoLoginActivity.class);
                 startActivity(intent);
             }
         }

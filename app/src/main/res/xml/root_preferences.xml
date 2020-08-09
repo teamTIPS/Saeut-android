@@ -1,17 +1,18 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="돌봄 일정 설정">
 
-        <CheckBoxPreference
-            app:defaultValue="caringType"
+        <ListPreference
+            app:defaultValue="@string/"
             app:entries="@array/caringType_entries"
             app:entryValues="@array/caringType_values"
             app:key="CaringTypeKey"
             app:title="@string/CaringType_title"
             app:useSimpleSummaryProvider="true" />
 
-        <CheckBoxPreference
-            app:defaultValue="caringAvailable"
+        <ListPreference
+            app:defaultValue="모두"
             app:entries="@array/caringavailable_entries"
             app:entryValues="@array/caringavailable_values"
             app:key="caringavailableKey"
@@ -19,20 +20,5 @@
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
-
-<!--    <PreferenceCategory app:title="시간대 설정">-->
-
-<!--        <SwitchPreferenceCompat-->
-<!--            app:key=-->
-<!--            app:title="@string/sync_title" />-->
-
-<!--        <SwitchPreferenceCompat-->
-<!--            app:dependency="sync"-->
-<!--            app:key="attachment"-->
-<!--            app:summaryOff="@string/attachment_summary_off"-->
-<!--            app:summaryOn="@string/attachment_summary_on"-->
-<!--            app:title="@string/attachment_title" />-->
-
-<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>

@@ -14,7 +14,6 @@
         <item>모두</item>
     </string-array>
 
-
     <!-- CaringAvailable Preference -->
     <string-array name="caringavailable_entries">
         <item>운전</item>
