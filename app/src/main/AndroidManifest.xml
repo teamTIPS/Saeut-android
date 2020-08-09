@@ -26,11 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".login.LoginActivity" />
         <activity android:name=".ui.schedule.EditActivity"/>
 <!--        <activity android:name=".ui.map.MapsActivity" />-->
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ui.schedule.SettingsActivity" />
         <activity android:name=".login.ui.login.LoginActivity" />
         <activity android:name=".login.KakaoLoginActivity" />
 

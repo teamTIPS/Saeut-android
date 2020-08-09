@@ -25,7 +25,7 @@ public class ScheduleViewModel extends ViewModel {
 
     public ScheduleViewModel(){
         sdMLD = new MutableLiveData<>();
-        sdMLD.setValue(new ArrayList<Schedule>());
+        sdMLD.setValue(new ArrayList<>());
     }
 
     public LiveData<ArrayList<Schedule>> getSD(){

@@ -4,7 +4,6 @@
     <PreferenceCategory app:title="돌봄 일정 설정">
 
         <ListPreference
-            app:defaultValue="@string/"
             app:entries="@array/caringType_entries"
             app:entryValues="@array/caringType_values"
             app:key="CaringTypeKey"

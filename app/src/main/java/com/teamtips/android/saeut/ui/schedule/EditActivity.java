@@ -82,7 +82,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         mode = i.getIntExtra("mode", REQUEST_ADD);
 
         if(mode == REQUEST_EDIT){
-            Log.e(Tag,"REQUEST_EDIT");
 
             loadScheduleData();
             deleteBtn.setVisibility(View.VISIBLE);
@@ -140,6 +139,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //submit bt 눌렀을 때
             case R.id.submit_btn:
                 if(mode == REQUEST_ADD){
                     inputDataProcessing();
@@ -157,15 +157,16 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                     ArrayList<Schedule> schedules = new ArrayList<>();
                     schedules.add(schedule);
                     i.putExtra("idx",editIdx);
-                    Log.e(Tag,"idx");
+                    Log.e(Tag,"REQUEST_EDIT in onClick");
                     i.putExtra("schedules",schedules);
-                    Log.e(Tag,"schedules");
+//                    Log.e(Tag,"schedules");
                     setResult(RESULT_OK_EDIT,i);
                     finish();
                 }
                 else
                     Log.e(Tag,"else");
                 break;
+            //delete bt 눌렸을 때
             case R.id.delete_btn:
                 Intent i = new Intent();
                 i.putExtra("idx",editIdx);
