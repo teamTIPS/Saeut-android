@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#00EEDA</color>
     <color name="colorPrimaryDark">#009EB3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#3F51B5</color>
+    <color name="colorStatusBar">#1D5852</color>
     <color name="colorMain">#03DAC5</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="ic_launcher_background">#48DCCD</color>
 </resources>

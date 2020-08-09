@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:showIn="navigation_view">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_login"
+        android:icon="@drawable/ic_login"
+        android:title="로그인" />
+    <item
+      android:id="@+id/nav_tool"
+      android:icon="@drawable/ic_location"
+      android:title="지역변경" />
+    <item
+      android:id="@+id/nav_gallery"
+      android:icon="@drawable/ic_neighbor_manage"
+      android:title="이웃관리" />
+    <item
+        android:id="@+id/nav_profile_manage"
+        android:icon="@drawable/ic_profile_manage"
+        android:title="계정관리" />
+  </group>
+
+  <item android:title="Communicate">
+    <menu>
+      <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_help"
+        android:title="도움말" />
+      <item
+        android:id="@+id/nav_send"
+        android:icon="@drawable/ic_setting"
+        android:title="설정" />
+    </menu>
+  </item>
+
+</menu>

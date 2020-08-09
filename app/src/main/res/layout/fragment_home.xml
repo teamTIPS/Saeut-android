@@ -1,47 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingBottom="?attr/actionBarSize">
+
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="?attr/actionBarSize">
+    android:text="home page" />
+</androidx.core.widget.NestedScrollView>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:background="#ff0000"
-                android:gravity="center"
-                android:text="#ff0000" />
-
-            <TextView
-                android:id="@+id/text_home"
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:gravity="center"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:background="#00ff00"
-                android:gravity="center"
-                android:text="#00ff00" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:background="#0000ff"
-                android:gravity="center"
-                android:text="#0000ff" />
-
-        </LinearLayout>
-
-    </ScrollView>
-</LinearLayout>
