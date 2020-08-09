@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut;
+package com.teamtips.android.saeut.map;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -16,10 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.kakao.util.helper.log.Logger;
+import com.teamtips.android.saeut.R;
+
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapReverseGeoCoder;
 import net.daum.mf.map.api.MapView;
+
+import timber.log.Timber;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -51,7 +57,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     mapView.setCurrentLocationEventListener(this);
 
     if (!checkLocationServicesStatus()) {
-      //showDialogForLocationServiceSetting();
+      showDialogForLocationServiceSetting();
     } else {
       checkRunTimePermission();
     }
@@ -80,7 +86,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
   @Override
   public void onDestroy() {
     super.onDestroy();
-    mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
+    mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
     mapView.setShowCurrentLocationMarker(false);
   }
 
@@ -162,8 +168,10 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
       // 3.  위치 값을 가져올 수 있음
       mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
+      mapView.setShowCurrentLocationMarker(true);
 
-
+      System.out.println("Mapfragment");
+      
     } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
 
       // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
