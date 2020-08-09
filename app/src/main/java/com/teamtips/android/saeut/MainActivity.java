@@ -1,6 +1,11 @@
 package com.teamtips.android.saeut;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,10 +17,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.teamtips.android.saeut.AppFragmentPageAdapter;
-import com.teamtips.android.saeut.BottomNavItemSelectedListener;
-import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.SideNavItemSelectedListener;
+import com.teamtips.android.saeut.dashboard.CreateDemand;
+
+import java.security.MessageDigest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(listener);
         bindNavigationDrawer();
         initTitle();
+        getAppKeyHash();
     }
 
     private void initTitle() {
@@ -81,5 +86,18 @@ public class MainActivity extends AppCompatActivity {
     public void onFabClicked(View view) {
         Intent intent = new Intent(MainActivity.this, CreateDemand.class);
         startActivity(intent);
+    }
+
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (Exception e) {
+            Log.e("name not found", e.toString());
+        }
     }
 }

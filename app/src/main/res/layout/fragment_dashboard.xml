@@ -39,6 +39,4 @@
         app:useCompatPadding="true" />
 
   </FrameLayout>
-
-
 </LinearLayout>
