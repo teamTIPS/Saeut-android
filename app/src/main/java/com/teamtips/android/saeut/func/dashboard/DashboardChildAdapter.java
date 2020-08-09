@@ -14,6 +14,7 @@ import com.teamtips.android.saeut.func.dashboard.model.Post;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DashboardChildAdapter extends BaseAdapter {
 
@@ -79,6 +80,12 @@ public class DashboardChildAdapter extends BaseAdapter {
         // 나머지는 추후 다시 정의해야 함.
 
         return view;
+    }
+
+    // 새로운 게시글을 추가하는 메서드
+    public void addItem(int post_id, String account_id, String title, Date post_date, String address1){
+        Post post = new Post(post_id, account_id, title, post_date, address1);
+        postArrayList.add(post);
     }
 
     static class ViewHolder {

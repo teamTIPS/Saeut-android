@@ -1,6 +1,8 @@
 package com.teamtips.android.saeut.func.dashboard;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +20,12 @@ import androidx.lifecycle.ViewModelProviders;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.TimberLogger;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.network.RequestHttpURLConnection;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -75,19 +83,14 @@ public class DashboardChildFragment extends Fragment {
 
     postArrayList = new ArrayList<Post>();
 
-    Calendar cal = Calendar.getInstance();
-    Date nowDate = cal.getTime();
-
-    postArrayList.add(new Post(1234, 1234, "title1", nowDate, "서울시 서대문구 북가좌동"));
-    postArrayList.add(new Post(1434, 1214, "title2", nowDate, "서울시 서대문구 북가좌동"));
-    postArrayList.add(new Post(1334, 1224, "title3", nowDate, "서울시 서대문구 북가좌동"));
-    postArrayList.add(new Post(1534, 1254, "title4", nowDate, "서울시 서대문구 북가좌동"));
-    postArrayList.add(new Post(1734, 1264, "title5", nowDate, "서울시 서대문구 북가좌동"));
-
     dashboardChildAdapter = new DashboardChildAdapter(root.getContext(), R.layout.adapter_dashboard, postArrayList);
     listView = root.findViewById(R.id.lv_child);
 
     listView.setAdapter(dashboardChildAdapter);
+
+    String url = "http://49.50.173.180:8080/saeut/post";
+    NetworkTask networkTask = new NetworkTask(url,null);
+    networkTask.execute();
 
     dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
       @Override
@@ -125,4 +128,50 @@ public class DashboardChildFragment extends Fragment {
 //    tvDashBoard.append("\n");
 //    tvDashBoard.append(name);
   }
+
+  public class NetworkTask extends AsyncTask<Void, Void, String> {
+
+    private String url;
+    private ContentValues values;
+
+
+    public NetworkTask(String url, ContentValues values) {
+
+      this.url = url;
+      this.values = values;
+    }
+
+    @Override
+    protected String doInBackground(Void... params) {
+
+      String result; // 요청 결과를 저장할 변수.
+      RequestHttpURLConnection requestHttpURLConnection = new RequestHttpURLConnection();
+      result = requestHttpURLConnection.request(url, values); // 해당 URL로 부터 결과물을 얻어온다.
+
+      return result;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+      super.onPostExecute(s);
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+      try {
+        JSONArray jsonArray = new JSONArray(s);
+        for(int i=0;i<jsonArray.length();i++){
+          JSONObject json = jsonArray.getJSONObject(i);
+          int post_id = json.getInt("post_id");
+          String account_id = json.getString("account_id");
+          String title = json.getString("title");
+          Date post_date = sdf.parse("2020-01-01");
+          String address1 = json.getString("address1");
+          dashboardChildAdapter.addItem(post_id, account_id, title, post_date, address1);
+          dashboardChildAdapter.notifyDataSetChanged();
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+  } //NetworkTask
 }
