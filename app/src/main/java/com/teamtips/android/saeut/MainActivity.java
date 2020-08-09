@@ -12,10 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.teamtips.android.saeut.AppFragmentPageAdapter;
-import com.teamtips.android.saeut.BottomNavItemSelectedListener;
-import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.SideNavItemSelectedListener;
+import com.teamtips.android.saeut.dashboard.CreateDemand;
 
 public class MainActivity extends AppCompatActivity {
 

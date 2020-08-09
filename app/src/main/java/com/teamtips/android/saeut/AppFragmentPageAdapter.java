@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.teamtips.android.saeut.dashboard.DashboardFragment;
+
 class AppFragmentPageAdapter extends FragmentPagerAdapter {
 
   public AppFragmentPageAdapter(FragmentManager fm) {
