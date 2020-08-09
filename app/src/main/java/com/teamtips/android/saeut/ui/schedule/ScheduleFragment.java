@@ -67,13 +67,7 @@ public class ScheduleFragment extends Fragment {
 //                        break;
             }
         );
-        bt_clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            timetable.removeAll();
-
-           }
-        });
+        bt_clear.setOnClickListener(v -> timetable.removeAll());
         return root;
     }
 
