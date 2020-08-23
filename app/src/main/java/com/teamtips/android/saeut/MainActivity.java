@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
-        SideNavItemSelectedListener listener = new SideNavItemSelectedListener(drawer, navigation);
+        SideNavItemSelectedListener listener = new SideNavItemSelectedListener(drawer, navigation, getApplicationContext());
         navigationView.setNavigationItemSelectedListener(listener);
     }
 

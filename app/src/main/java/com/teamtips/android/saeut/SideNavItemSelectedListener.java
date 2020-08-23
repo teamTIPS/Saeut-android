@@ -1,5 +1,7 @@
 package com.teamtips.android.saeut;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -9,16 +11,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginActivity;
 
 public class SideNavItemSelectedListener
     implements NavigationView.OnNavigationItemSelectedListener {
 
   private final DrawerLayout drawer;
   private final BottomNavigationView navigation;
+  private final Context context;
 
-  public SideNavItemSelectedListener(DrawerLayout drawer, BottomNavigationView navigation) {
+  public SideNavItemSelectedListener(DrawerLayout drawer, BottomNavigationView navigation, Context context) {
     this.drawer = drawer;
     this.navigation = navigation;
+    this.context = context;
   }
 
   @Override
@@ -33,6 +38,8 @@ public class SideNavItemSelectedListener
       showGallerySnackBar();
     } else if (id == R.id.nav_send) {
       showSendSnackBar();
+    } else if (id == R.id.nav_login) {
+      showLoginPage();
     }
     drawer.closeDrawer(GravityCompat.START);
     return true;
@@ -52,5 +59,10 @@ public class SideNavItemSelectedListener
 
   private void showShareSnackBar() {
     Snackbar.make(navigation, "Share", Snackbar.LENGTH_SHORT).show();
+  }
+
+  private void showLoginPage() {
+    Intent intent = new Intent(context, LoginActivity.class);
+    context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
   }
 }
