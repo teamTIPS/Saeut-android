@@ -37,5 +37,11 @@
         android:layout_height="wrap_content"
         android:text="카카오 로그아웃" />
 
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원가입" />
+
 
 </LinearLayout>

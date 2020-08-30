@@ -15,6 +15,7 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.JoinActivity;
 import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginActivity;
 
 public class KakaoLoginActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class KakaoLoginActivity extends AppCompatActivity {
         Button btn_general_logout = findViewById(R.id.btn_general_logout);
         Button btn_custom_login = findViewById(R.id.btn_custom_login);
         Button btn_custom_login_out = findViewById(R.id.btn_custom_login_out);
+        Button btn_join = findViewById(R.id.btn_join);
 
         session = Session.getCurrentSession();
         session.addCallback(sessionCallback);
@@ -65,6 +67,12 @@ public class KakaoLoginActivity extends AppCompatActivity {
                                 Toast.makeText(KakaoLoginActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         });
+            }
+        });
+        btn_join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), JoinActivity.class));
             }
         });
     }
