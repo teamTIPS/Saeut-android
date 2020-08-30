@@ -6,17 +6,6 @@
     android:orientation="vertical">
 
 
-  <TextView
-      android:id="@+id/tv_child"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Fragment_demand"
-      android:textSize="25sp"
-      app:layout_constraintBottom_toTopOf="@+id/viewPager"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
   <ListView
       android:id="@+id/lv_child"
       android:layout_width="match_parent"
