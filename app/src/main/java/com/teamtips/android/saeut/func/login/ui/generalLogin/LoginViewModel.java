@@ -125,8 +125,6 @@ public class LoginViewModel extends ViewModel {
             } else {
                 loginResult.setValue(new LoginResult(R.string.login_failed));
             }
-
-
         }
 
     } //NetworkTask_POST
