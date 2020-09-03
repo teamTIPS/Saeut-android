@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:paddingBottom="?attr/actionBarSize">
-
-  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="home page" />
-</androidx.core.widget.NestedScrollView>
+    android:paddingBottom="?attr/actionBarSize">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+      <androidx.viewpager.widget.ViewPager
+          android:layout_width="match_parent"
+          android:layout_height="200dip" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dip"
+          android:background="#59D559"
+          android:gravity="left"
+          android:text="공지사항" />
+
+      <ListView
+          android:id="@+id/listInfo"
+          android:layout_width="match_parent"
+          android:layout_height="200dp" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dip"
+          android:background="#3158BC"
+          android:gravity="left"
+          android:text="세웃행사" />
+
+      <ListView
+          android:id="@+id/listView"
+          android:layout_width="match_parent"
+          android:layout_height="200dp" />
+    </LinearLayout>
+
+  </ScrollView>
+</LinearLayout>
 

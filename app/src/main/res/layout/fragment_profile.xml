@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:paddingBottom="?attr/actionBarSize">
-
-  <TextView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Profile" />
-</androidx.core.widget.NestedScrollView>
+    android:paddingBottom="?attr/actionBarSize">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="200dip"
+          android:background="#2798AC"
+          android:gravity="center"
+          android:text="viewpager" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dip"
+          android:background="#59D559"
+          android:gravity="left"
+          android:text="자기소개" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="200dip"
+          android:background="#00ff00"
+          android:gravity="center"
+          android:text="#00ff00" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dip"
+          android:background="#3158BC"
+          android:gravity="left"
+          android:text="요청사항" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="200dip"
+          android:background="#0000ff"
+          android:gravity="center"
+          android:text="#0000ff" />
+
+    </LinearLayout>
+
+  </ScrollView>
+</LinearLayout>
