@@ -89,7 +89,7 @@ public class DashboardChildFragment extends Fragment {
       url = "http://49.50.173.180:8080/saeut/post/" + account_id;
     } else  {
       // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
-      url = "http://49.50.173.180:8080/saeut/post";
+      url = "http://49.50.173.180:8080/saeut/post/" + account_id;
     }
 
     PostNetworkTask postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
