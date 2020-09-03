@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.teamtips.android.saeut.func.dashboard.CreateDemand;
+import com.teamtips.android.saeut.func.dashboard.CreatePostActivity;
 
 import java.security.MessageDigest;
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onFabClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, CreateDemand.class);
+        Intent intent = new Intent(MainActivity.this, CreatePostActivity.class);
         startActivity(intent);
     }
 
