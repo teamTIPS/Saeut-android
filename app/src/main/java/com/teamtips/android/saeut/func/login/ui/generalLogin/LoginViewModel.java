@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Patterns;
@@ -121,10 +122,20 @@ public class LoginViewModel extends ViewModel {
             super.onPostExecute(s);
             // 로그인 API의 결과로 성공시 "true", 실패시 "false"가 반환됨
             // 결과값은 s에 저장
+
+            //로그인 성공
             if (s.equals("true")) {
                 LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
                 loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
-            } else {
+                LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
+
+                loggedInUser.setAccessToken();
+                loggedInUser.setAccessexpireDateTime();
+                SaveSharedPreference.setRT(this, );
+                SaveSharedPreference.setRTtime(this, );
+            }
+            //로그인 실패
+            else {
                 loginResult.setValue(new LoginResult(R.string.login_failed));
             }
         }

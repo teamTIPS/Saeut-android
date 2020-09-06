@@ -6,15 +6,17 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Map;
 
 import okhttp3.*;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference.getRT;
 
 public class OkhttpInterceptor implements Interceptor{
 
@@ -32,7 +34,7 @@ public class OkhttpInterceptor implements Interceptor{
     OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(this::intercept);
     OkHttpClient client = builder.build();
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("getUrl()") //서버 url 배치
+            .baseUrl("http://49.50.173.180:8080/saeut")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build();
@@ -55,14 +57,21 @@ public class OkhttpInterceptor implements Interceptor{
             if (expireDate.getTime() <= System.currentTimeMillis()) {
                 // 클라이언트의 at 초기화
                 loggedinUser.setAccessToken(null);
-                // refreshToken 토큰 갱신 api 호출
-                Map<String, String> body = api.refreshToken(loggedinUser.getRefreshToken()).execute().body();
+                // At 갱신 api 호출
+                String RT = getRT(ctx);
+                JsonObject body = api.updateAt(loggedinUser.getAccount_id(), RT).execute().body();
 
-                // 클라이언트의 토큰 갱신 수행하여 tokenStr 변수에 삽입
+                // 토큰 갱신 완료, 다시 request 보내기
                 if (body != null) {
+                    String At = body.get("AT").toString();
+                    Date ATexpiredTime = SaveSharedPreference.StringtoDate(body.get("ATexpiredTime").toString());
 
+                    loggedinUser.setAccessToken(At);
+                    loggedinUser.setAccessexpireDateTime(ATexpiredTime);
 
-                    newRequest = chain.request().newBuilder().addHeader("Authorization", tokenStr).build();
+                    SaveSharedPreference.updateRTtime(ctx, loggedinUser.getAccessexpireDateTime());
+
+                    newRequest = chain.request().newBuilder().addHeader("Authorization", loggedinUser.getAccessToken()).build();
                     return chain.proceed(newRequest);
                 }
             }
@@ -70,8 +79,6 @@ public class OkhttpInterceptor implements Interceptor{
         //토큰이 없는 경우(첫 로그인)
         else {
             newRequest = chain.request();
-
-
         }
         return chain.proceed(newRequest);
     }
