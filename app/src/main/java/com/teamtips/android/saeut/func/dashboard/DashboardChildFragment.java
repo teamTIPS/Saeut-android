@@ -23,6 +23,7 @@ import com.teamtips.android.saeut.TimberLogger;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DashboardChildFragment extends Fragment {
@@ -119,7 +120,8 @@ public class DashboardChildFragment extends Fragment {
         Post post = new Post();
 
         Intent intent = new Intent(getActivity(), DetailPostActivity.class);
-        intent.putExtra("post", (Parcelable) post);
+        intent.putExtra("post", (Serializable) post);
+        startActivity(intent);
       }
     });
 
