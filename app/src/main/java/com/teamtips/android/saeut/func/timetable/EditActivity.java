@@ -40,7 +40,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
     Context context = this;
 
-
     //request mode
     private int mode;
 

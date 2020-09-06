@@ -63,6 +63,11 @@ dependencies {
     // 카카오톡
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.30.0'
 
+    //okhttp 사용
+    implementation 'com.squareup.okhttp3:okhttp:3.12.5'
+    implementation "com.squareup.retrofit2:retrofit:2.6.2"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.2"
+
     // ViewPager import
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.viewpager:viewpager:1.0.0"
