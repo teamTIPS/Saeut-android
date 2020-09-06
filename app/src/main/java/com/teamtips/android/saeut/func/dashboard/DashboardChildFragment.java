@@ -1,6 +1,8 @@
 package com.teamtips.android.saeut.func.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +33,8 @@ public class DashboardChildFragment extends Fragment {
   private DashboardChildAdapter dashboardChildAdapter;
   private ListView listView;
   private ArrayList<Post> postArrayList;
+  private PostNetworkTask postNetworkTask;
+
   int position; // taglayout 구별하기 위한 일종의 flag라고 이해함
 
   public DashboardChildFragment(int position) {
@@ -92,7 +96,7 @@ public class DashboardChildFragment extends Fragment {
       url = "http://49.50.173.180:8080/saeut/post/" + account_id;
     }
 
-    PostNetworkTask postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
+    postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
     postNetworkTask.execute();
 
     // view 클릭 시 이벤트 처리
@@ -102,6 +106,20 @@ public class DashboardChildFragment extends Fragment {
         // 상세 페이지 뜨도록 정의해야 함.
         // 이 때 로그인 여부 체크
         // 기타 등등 ...
+
+        // fragment position에 따른 url 구현
+        String account_id = "test";
+        String url = "http://49.50.173.180:8080/saeut/post/" + account_id;
+
+        // 근데 이걸 똑같은 클래스로 넘겨도 되나? 흐음 안될거같은데
+        postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
+        postNetworkTask.execute();
+
+        // 수정되어야 함. 서버에서 Post 객체 전달받아야 하기 때문에
+        Post post = new Post();
+
+        Intent intent = new Intent(getActivity(), DetailPostActivity.class);
+        intent.putExtra("post", (Parcelable) post);
       }
     });
 

@@ -19,9 +19,15 @@ public class Post {
     private Date birth; // 돌봄이 필요한 대상의 생년월일 -> 모바일 캘린더
     private String address1; // 돌봄이 필요한 대상의 주소1
     private String address2; // 돌봄이 필요한 대상의 주소2
+    private int status; // 현재 돌봄 진행상태
 
     // Constructor
     public Post() { }
+
+    public Post(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 
     public Post(int post_id, String account_id, String title, Date post_date, String address1) {
         this.post_id = post_id;
@@ -104,5 +110,11 @@ public class Post {
     }
     public void setAddress2(String address2) {
         this.address2 = address2;
+    }
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
