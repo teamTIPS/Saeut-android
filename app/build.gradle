@@ -71,4 +71,6 @@ dependencies {
     // ViewPager import
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.viewpager:viewpager:1.0.0"
+    //jwt
+    implementation 'com.auth0:java-jwt:3.10.3'
 }

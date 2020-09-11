@@ -3,9 +3,11 @@ package com.teamtips.android.saeut.func.login.ui.generalLogin;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import com.auth0.jwt.JWT;
 import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
@@ -19,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference.getRT;
 
 public class OkhttpInterceptor implements Interceptor{
+    private static final String TAG = "OkhttpInterceptor";
 
     Context ctx;
     SharedPreferences mPrefs;
@@ -48,6 +51,7 @@ public class OkhttpInterceptor implements Interceptor{
         Request newRequest;
 
         // 토큰이 있는 경우
+//                if (jwt != null ) {
         if (token != null && !token.equals("")) {
             // Authorization 헤더에 토큰 추가
             newRequest = chain.request().newBuilder().addHeader("Authorization", token).build();
@@ -60,15 +64,17 @@ public class OkhttpInterceptor implements Interceptor{
                 // At 갱신 api 호출
                 String RT = getRT(ctx);
                 JsonObject body = api.updateAt(loggedinUser.getAccount_id(), RT).execute().body();
+                Log.e(TAG, "at 갱신 중");
 
                 // 토큰 갱신 완료, 다시 request 보내기
                 if (body != null) {
+                    Log.e(TAG, "at 갱신 완료");
                     String At = body.get("AT").toString();
-                    Date ATexpiredTime = SaveSharedPreference.StringtoDate(body.get("ATexpiredTime").toString());
-
                     loggedinUser.setAccessToken(At);
-                    loggedinUser.setAccessexpireDateTime(ATexpiredTime);
 
+                    //Sliding Session - at 갱신시 rt 유효기간 연장
+                    //Date ATexpiredTime = SaveSharedPreference.StringtoDate(body.get("ATexpiredTime").toString());
+                    Date ATexpiredTime = loggedinUser.getAccessexpireDateTime();
                     SaveSharedPreference.updateRTtime(ctx, loggedinUser.getAccessexpireDateTime());
 
                     newRequest = chain.request().newBuilder().addHeader("Authorization", loggedinUser.getAccessToken()).build();

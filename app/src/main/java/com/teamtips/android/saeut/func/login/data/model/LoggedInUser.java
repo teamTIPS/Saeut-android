@@ -1,12 +1,16 @@
 package com.teamtips.android.saeut.func.login.data.model;
 
+import android.util.Log;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import okhttp3.Response;
-
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
@@ -45,14 +49,17 @@ public class LoggedInUser {
 
     public void setAccessToken(String s) {
         this.accesstoken = s;
+        try{
+            DecodedJWT jwt = JWT.decode(s);
+            AccessexpireDateTime = jwt.getExpiresAt();
+        } catch (JWTDecodeException e){
+            Log.e("setAccessexpireDateTime", "JWTDecodeException");
+        }
     }
     public String getAccessToken() {
         return accesstoken;
     }
 
-    public void setAccessexpireDateTime(Date accessexpireDateTime) {
-        AccessexpireDateTime = accessexpireDateTime;
-    }
     public Date getAccessexpireDateTime() {
         return AccessexpireDateTime;
     }

@@ -129,10 +129,10 @@ public class LoginViewModel extends ViewModel {
                 loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
                 LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
 
-                loggedInUser.setAccessToken();
+/*                loggedInUser.setAccessToken();
                 loggedInUser.setAccessexpireDateTime();
                 SaveSharedPreference.setRT(this, );
-                SaveSharedPreference.setRTtime(this, );
+                SaveSharedPreference.setRTtime(this, );*/
             }
             //로그인 실패
             else {
