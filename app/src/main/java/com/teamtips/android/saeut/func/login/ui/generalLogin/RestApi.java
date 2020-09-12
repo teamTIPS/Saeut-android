@@ -18,4 +18,10 @@ public interface RestApi {
     @GET("/auth/token")
     Call<JsonObject> updateAt(@Field("account_id") String Account_id, @Field("RefreshToken") String RefreshToken);
     //return AccessToken (as json)
+
+    //rt 갱신
+    @FormUrlEncoded
+    @GET("/auth/token")
+    Call<JsonObject> updateRt();
+    //return RefreshToken (as json)
 }

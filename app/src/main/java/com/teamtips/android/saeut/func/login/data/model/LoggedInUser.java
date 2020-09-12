@@ -23,6 +23,7 @@ public class LoggedInUser {
     private String accesstoken;
     private Date AccessexpireDateTime;
 
+    /////////
     //싱글톤 패턴으로 구현
     private static class userHolder {
         public static final LoggedInUser Instance = new LoggedInUser();

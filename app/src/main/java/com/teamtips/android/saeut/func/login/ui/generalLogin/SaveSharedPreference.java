@@ -49,19 +49,6 @@ public class SaveSharedPreference {
         editor.commit();
     }
 
-    public static void updateRTtime(Context ctx, Date time){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(time);
-        calendar.add(Calendar.DATE, 14);
-        Date updatedRTtime = calendar.getTime();
-        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
-        String rt = getRT(ctx);
-        DecodedJWT jwt = JWT.decode(rt);
-        jwt.
-        editor.putString("RefreshTokenDate", DateToString(updatedRTtime));
-        editor.commit();
-    }
-
     // 저장된 정보 가져오기
     public static String getRT(Context ctx) {
         return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
