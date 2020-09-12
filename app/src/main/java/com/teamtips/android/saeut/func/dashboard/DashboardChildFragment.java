@@ -3,6 +3,7 @@ package com.teamtips.android.saeut.func.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,16 +22,22 @@ import androidx.lifecycle.ViewModelProviders;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.TimberLogger;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import retrofit2.Retrofit;
+
 public class DashboardChildFragment extends Fragment {
 
   private static final String ARGUMENT_POSITION = "argument_position";
   private static final String ARGUMENT_NAME = "argument_name";
+  public static final String TAG = "DashboardChildFragment";
 
+  private Retrofit retrofit;
+  private PostNetworkService postNetworkService;
   private DashboardChildAdapter dashboardChildAdapter;
   private ListView listView;
   private ArrayList<Post> postArrayList;
@@ -57,6 +64,9 @@ public class DashboardChildFragment extends Fragment {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     getLifecycle().addObserver(new TimberLogger(this));
+
+    retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.base_url)).build();
+    postNetworkService = retrofit.create(PostNetworkService.class);
   }
 
   @Override
@@ -97,6 +107,7 @@ public class DashboardChildFragment extends Fragment {
       url = "http://49.50.173.180:8080/saeut/post/" + account_id;
     }
 
+
     postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
     postNetworkTask.execute();
 
@@ -107,7 +118,7 @@ public class DashboardChildFragment extends Fragment {
         // 상세 페이지 뜨도록 정의해야 함.
         // 이 때 로그인 여부 체크
         // 기타 등등 ...
-
+        Log.e(TAG, "onItemClick");
         // fragment position에 따른 url 구현
         String account_id = "test";
         String url = "http://49.50.173.180:8080/saeut/post/" + account_id;
