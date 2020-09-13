@@ -27,6 +27,8 @@ public class JoinViewModel extends ViewModel {
     private final static String Tag = "JoinViewModel";
 //    public MutableLiveData<Post> postMutableLiveDate = new MutableLiveData<>();
 
+    private MutableLiveData<Joinin> joininMutableLiveData = new MutableLiveData<>();
+
     public void Join(Joinin joinin){
         String url = "http://49.50.173.180:8080/saeut/account/add";
         JSONObject join_json = new JSONObject();
@@ -45,21 +47,6 @@ public class JoinViewModel extends ViewModel {
 
         NetworkTask_JOIN networkTask_JOIN = new NetworkTask_JOIN(url, join_json.toString());
         networkTask_JOIN.execute();
-    }
-
-    private boolean isIdValid(Joinin joinin) {
-        if (joinin.getId() == null) {
-            return false;
-        }
-        if (joinin.getId().contains("@")) {
-            return Patterns.EMAIL_ADDRESS.matcher(joinin.getId()).matches();
-        } else {
-            return !joinin.getId().trim().isEmpty();
-        }
-    }
-
-    private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 7;
     }
 
     public static class NetworkTask_JOIN extends AsyncTask<Void, Void, String> {
