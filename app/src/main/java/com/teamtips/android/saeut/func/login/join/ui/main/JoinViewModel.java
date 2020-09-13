@@ -35,9 +35,7 @@ public class JoinViewModel extends ViewModel {
             join_json.accumulate("account_id", joinin.getId());
             join_json.accumulate("password", joinin.getPassword());
             join_json.accumulate("name", joinin.getName());
-            join_json.accumulate("email", joinin.getEmail());
-            join_json.accumulate("phone", joinin.getPhonenum()); //제대로했나요?
-
+            join_json.accumulate("phone", joinin.getPhonenum());
             Log.e(Tag,joinin.getId()+", "+joinin.getName());
         } catch (JSONException e) {
             e.printStackTrace();

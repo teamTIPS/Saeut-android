@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.teamtips.android.saeut.R;
-
+/*
 public class JoinFragment extends Fragment {
 
     private JoinViewModel mViewModel;
@@ -61,3 +61,4 @@ public class JoinFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(JoinViewModel.class);
     }
 }
+*/

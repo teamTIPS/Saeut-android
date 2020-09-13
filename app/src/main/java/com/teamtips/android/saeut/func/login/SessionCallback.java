@@ -19,6 +19,7 @@ public class SessionCallback implements ISessionCallback {
     @Override
     public void onSessionOpened() {
         requestMe();
+        Log.e(TAG,"onSessionOpened");
     }
 
     // 로그인에 실패한 상태
@@ -81,11 +82,10 @@ public class SessionCallback implements ISessionCallback {
                             } else {
                                 // 프로필 획득 불가
                                 Log.e(TAG,"profile 2");
-
                             }
                         }
                     }
                 });
-
+        Log.e(TAG,"카카오 로그인 성공");
     }
 }

@@ -61,25 +61,25 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/id_text"
+                android:id="@+id/email_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:layout_marginTop="10dp"
-                android:text="아이디"
+                android:text="이메일"
                 android:textSize="15dp" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/email_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
+                android:hint="이메일을 입력해 주세요."
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true" />
 
             <TextView
-                android:id="@+id/pw_text"
+                android:id="@+id/password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -88,10 +88,10 @@
                 android:textSize="15dp" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
+                android:hint="비밀번호를 입력해 주세요."
                 android:imeActionId="6"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionUnspecified"
@@ -100,7 +100,7 @@
                 android:singleLine="true" />
 
             <TextView
-                android:id="@+id/pw_confirm_text"
+                android:id="@+id/password_confirm_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -112,7 +112,7 @@
                 android:id="@+id/password_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
+                android:hint="비밀번호를 한번 더 입력해 주세요."
                 android:imeActionId="6"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionUnspecified"
@@ -148,7 +148,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/id_text"
+                android:id="@+id/name_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -157,16 +157,16 @@
                 android:textSize="15dp" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/name_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
+                android:hint="이름을 입력해 주세요."
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true" />
 
             <TextView
-                android:id="@+id/pw_text"
+                android:id="@+id/phone_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -175,10 +175,10 @@
                 android:textSize="15dp" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/phone_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
+                android:hint="전화번호를 입력해 주세요."
                 android:imeActionId="6"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionUnspecified"
@@ -187,26 +187,25 @@
                 android:singleLine="true" />
 
             <TextView
-                android:id="@+id/pw_confirm_text"
+                android:id="@+id/nickname_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:layout_marginTop="10dp"
-                android:text="이메일"
+                android:text="닉네임"
                 android:textSize="15dp" />
 
             <EditText
-                android:id="@+id/password_confirm"
+                android:id="@+id/nickname_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
+                android:hint="세웃에서 사용할 닉네임을 입력해 주세요."
                 android:imeActionId="6"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true" />
-
 
             <Button
                 android:id="@+id/email_sign_up_button"
@@ -226,6 +225,5 @@
                 android:text="회원가입시 세웃의 서비스 이용약관과 개인정보 처리방침에 동의하게 됩니다." />
 
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

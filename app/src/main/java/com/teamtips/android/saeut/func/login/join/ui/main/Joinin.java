@@ -1,44 +1,45 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
+import java.util.Date;
+
 public class Joinin {
 
-    //필수정보
-    private String name;
+    //UserEssential
     private String id;
     private String password;
-    private String email;
+    private String name;
     private String phonenum;
-
-    //선택정보
     private String nickname;
+
+    //UserAdditional
+    private Date birth;
+    private String zipcode;
     private String address1;
     private String address2;
     private String picpath;
-    private String self_introduction;
+    private String description;
 
     //constructor
-
     Joinin() {}
 
-    Joinin(String name, String id, String password, String email, String phonenum) {
-        this.name = name;
+    Joinin(String name, String id, String password, String phonenum, String nickname) {
         this.id = id;
         this.password = password;
-        this.email = email;
+        this.name = name;
         this.phonenum = phonenum;
+        this.nickname = nickname;
     }
 
-    Joinin(String name, String id, String password, String email, String phonenum, String nickname, String address1, String address2, String picpath, String self_introduction) {
-        this.name = name;
+    Joinin(String name, String id, String password, String phonenum, String nickname, String address1, String address2, String picpath, String description) {
         this.id = id;
         this.password = password;
-        this.email = email;
+        this.name = name;
         this.phonenum = phonenum;
         this.nickname = nickname;
         this.address1 = address1;
         this.address2 = address2;
         this.picpath = picpath;
-        this.self_introduction = self_introduction;
+        this.description = description;
     }
 
     public String getName() {
@@ -63,14 +64,6 @@ public class Joinin {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhonenum() {
@@ -113,11 +106,27 @@ public class Joinin {
         this.picpath = picpath;
     }
 
-    public String getSelf_introduction() {
-        return self_introduction;
+    public Date getBirth() {
+        return birth;
     }
 
-    public void setSelf_introduction(String self_introduction) {
-        this.self_introduction = self_introduction;
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
