@@ -13,8 +13,7 @@ public class LoginDataSource {
 
         try {
             // TODO: handle loggedInUser authentication
-            LoggedInUser loggedInUser =
-                    new LoggedInUser("gkdssaf", "temp");
+            LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
             return new Result.Success<>(loggedInUser);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));

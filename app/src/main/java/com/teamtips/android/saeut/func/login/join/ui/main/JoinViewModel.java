@@ -32,7 +32,7 @@ public class JoinViewModel extends ViewModel {
         JSONObject join_json = new JSONObject();
 
         try {
-            join_json.accumulate("id", joinin.getId());
+            join_json.accumulate("account_id", joinin.getId());
             join_json.accumulate("password", joinin.getPassword());
             join_json.accumulate("name", joinin.getName());
             join_json.accumulate("email", joinin.getEmail());
