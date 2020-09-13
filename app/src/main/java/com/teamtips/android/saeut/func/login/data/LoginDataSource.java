@@ -13,9 +13,8 @@ public class LoginDataSource {
 
         try {
             // TODO: handle loggedInUser authentication
-            LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
-            loggedInUser.setAccount_id("임시테스트");
-            loggedInUser.setNickname("임시닉네임");
+            LoggedInUser loggedInUser =
+                    new LoggedInUser("gkdssaf", "temp");
             return new Result.Success<>(loggedInUser);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));
