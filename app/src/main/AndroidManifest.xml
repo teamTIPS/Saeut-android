@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".func.login.join.JoinActivity"/>
 
-        <activity android:name=".func.dashboard.CreateDemand" /> <!-- android:theme="@style/AppTheme"> -->
+        <activity android:name=".func.dashboard.CreatePostActivity" /> <!-- android:theme="@style/AppTheme"> -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

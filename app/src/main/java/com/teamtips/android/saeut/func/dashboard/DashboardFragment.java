@@ -24,10 +24,6 @@ public class DashboardFragment extends Fragment {
 
   public static final String ARG_OBJECT = "object";
   public static ViewPager viewPager;
-  private DashboardViewModel dashboardViewModel;
-  private PagerAdapter pagerAdapter;
-
-  int i = 0;
   private static TabLayout tabLayout;
 
   public static DashboardFragment newInstance(String name) {
@@ -42,14 +38,16 @@ public class DashboardFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel.class);
 
     View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-    viewPager = (ViewPager)view.findViewById(R.id.view_pager);
-    viewPager.setAdapter(new PagerAdapter(getChildFragmentManager()));
+    viewPager = view.findViewById(R.id.view_pager);
+    FragmentPageAdapter adapter =
+            new FragmentPageAdapter(
+                    getChildFragmentManager(), requireArguments().getString(ARG_NAME));
+    viewPager.setAdapter(adapter);
     viewPager.setCurrentItem(0);
+    viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
 
     tabLayout = view.findViewById(R.id.tabs);
     tabLayout.setupWithViewPager(viewPager);
@@ -59,14 +57,6 @@ public class DashboardFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    ViewPager viewPager = view.findViewById(R.id.view_pager);
-    GooglePlusFragmentPageAdapter adapter =
-        new GooglePlusFragmentPageAdapter(
-            getChildFragmentManager(), requireArguments().getString(ARG_NAME));
-    viewPager.setAdapter(adapter);
-    viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
-    TabLayout tabLayout = view.findViewById(R.id.tabs);
-    tabLayout.setupWithViewPager(viewPager);
   }
 
   @Override
@@ -81,11 +71,12 @@ public class DashboardFragment extends Fragment {
     inflater.inflate(R.menu.send, menu);
   }
 
-  private static class GooglePlusFragmentPageAdapter extends FragmentPagerAdapter {
+  // PageAdapter 설정
+  private static class FragmentPageAdapter extends FragmentPagerAdapter {
 
     private final String name;
 
-    public GooglePlusFragmentPageAdapter(FragmentManager fm, String name) {
+    public FragmentPageAdapter(FragmentManager fm, String name) {
       super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
       this.name = name;
     }
@@ -98,37 +89,19 @@ public class DashboardFragment extends Fragment {
 
     @Override
     public int getCount() {
-      return 2;
+      return 3;
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-      return "Dashboard " + position;
-    }
-  }
 
-  private class PagerAdapter extends FragmentPagerAdapter {
-    public PagerAdapter(FragmentManager fm){
-      super(fm);
-      getItem(0);
-    }
-
-    public Fragment getItem(int position){
-      return new DashboardChildFragment(position) ;
-    }
-
-    public int getCount(){
-      return 2;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
       if(position == 0) {
-        return "돌봄 요청 리스트";
-      } else {
-        return "돌봄 신청 리스트";
-
+        return "전체 리스트";
+      } else if(position == 1) {
+        return "내가 작성한 게시물";
+      } else  {
+        return "내가 신청한 게시물";
       }
     }
   }

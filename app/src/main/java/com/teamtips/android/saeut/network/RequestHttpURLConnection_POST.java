@@ -20,6 +20,9 @@ import javax.net.ssl.X509TrustManager;
 
 
 public class RequestHttpURLConnection_POST {
+
+    private int responseCode;
+
     private void trustAllHosts() {
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
@@ -75,7 +78,8 @@ public class RequestHttpURLConnection_POST {
             writer.write(json);
             writer.flush();
             writer.close();
-            int responsecode = urlConn.getResponseCode();
+
+            responseCode = urlConn.getResponseCode();
             // receive response as inputStream
             try {
                 is = urlConn.getInputStream();
@@ -113,6 +117,10 @@ public class RequestHttpURLConnection_POST {
 
         inputStream.close();
         return result;
+    }
+
+    public int getResponseCode(){
+        return this.responseCode;
     }
 
 }
