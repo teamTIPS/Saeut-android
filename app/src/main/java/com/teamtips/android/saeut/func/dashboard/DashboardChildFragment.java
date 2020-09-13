@@ -65,8 +65,8 @@ public class DashboardChildFragment extends Fragment {
     setHasOptionsMenu(true);
     getLifecycle().addObserver(new TimberLogger(this));
 
-    retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.base_url)).build();
-    postNetworkService = retrofit.create(PostNetworkService.class);
+//    retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.base_url)).build();
+//    postNetworkService = retrofit.create(PostNetworkService.class);
   }
 
   @Override
