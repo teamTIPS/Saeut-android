@@ -74,4 +74,6 @@ dependencies {
 
     //JWT Decoder
     implementation 'com.auth0.android:jwtdecode:2.0.0'
+    //jwt
+    implementation 'com.auth0:java-jwt:3.10.3'
 }

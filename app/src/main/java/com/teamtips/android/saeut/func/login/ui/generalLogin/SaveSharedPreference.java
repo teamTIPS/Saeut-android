@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.text.ParseException;
@@ -47,31 +49,16 @@ public class SaveSharedPreference {
         editor.commit();
     }
 
-    public static void setRTtime(Context ctx, Date date) {
-        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
-        editor.putString("RefreshTokenDate", DateToString(date));
-        editor.commit();
-    }
-
-    public static void updateRTtime(Context ctx, Date time){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(time);
-        calendar.add(Calendar.DATE, 14);
-        Date updatedRTtime = calendar.getTime();
-        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
-        editor.putString("RefreshTokenDate", DateToString(updatedRTtime));
-        editor.commit();
-    }
-
     // 저장된 정보 가져오기
     public static String getRT(Context ctx) {
         return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
     }
 
     public static Date getRTtime(Context ctx){
-        return StringtoDate(getSharedPreferences(ctx).getString("RefreshTokenDate",""));
+        String rt = getRT(ctx);
+        DecodedJWT jwt = JWT.decode(rt);
+        return jwt.getExpiresAt();
     }
-
 
     public static String DateToString(Date date) {
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");

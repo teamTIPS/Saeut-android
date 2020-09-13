@@ -11,6 +11,7 @@ import android.util.Log;
 import android.util.Patterns;
 
 import com.auth0.android.jwt.JWT;
+import com.teamtips.android.saeut.GlobalApplication;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
 import com.teamtips.android.saeut.func.login.data.LoginRepository;
@@ -135,20 +136,17 @@ public class LoginViewModel extends ViewModel {
                     JSONObject jwt_json = result_json.getJSONObject("jwt");
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
-                    // JWT Decode 라이브러리 활용 -> 만료시간 추출
-                    JWT jwt_access = new JWT(accessToken);
-                    JWT jwt_refresh = new JWT(refreshToken);
-                    Date expire_access = jwt_access.getExpiresAt();
-                    Date expire_refresh = jwt_refresh.getExpiresAt();
-                    LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
 
+                    //서버에서 유저정보 데이터 받아오기
+                    //account_id, nickname, name, phone, pic, type, rank, score, description, location
+
+                    LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
                     loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
                     LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
 
                     loggedInUser.setAccessToken(accessToken);
-                    loggedInUser.setAccessexpireDateTime(expire_access);
-                    SaveSharedPreference.setRT(this, refreshToken);
-                    SaveSharedPreference.setRTtime(this, expire_refresh);
+                    SaveSharedPreference.setRT(GlobalApplication.getGlobalApplicationContext(), refreshToken);
+                    Log.e(Tag,"로그인 성공");
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
