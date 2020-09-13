@@ -17,9 +17,6 @@ public class Post implements Serializable {
     private String contents; // 게시글 내용
     private Date start_date; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
     private Date due_date; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
-    private Date birth; // 돌봄이 필요한 대상의 생년월일 -> 모바일 캘린더
-    private String address1; // 돌봄이 필요한 대상의 주소1
-    private String address2; // 돌봄이 필요한 대상의 주소2
     private int status; // 현재 돌봄 진행상태
 
     // Constructor
@@ -30,26 +27,16 @@ public class Post implements Serializable {
         this.contents = contents;
     }
 
-    public Post(int post_id, String account_id, String title, Date post_date, String address1) {
+    public Post(int post_id, String account_id, String title, Date post_date, Date due_date) {
         this.post_id = post_id;
         this.account_id = account_id;
         this.title = title;
         this.post_date = post_date;
-        this.address1 = address1;
+        this.due_date = due_date;
+        this.status = 0;            // status init 0
     }
 
-    public Post(int post_id, String account_id, String title, Date post_date, String contents, Date start_date, Date due_date, Date birth, String address1, String address2) {
-        this.post_id = post_id;
-        this.account_id = account_id;
-        this.title = title;
-        this.post_date = post_date;
-        this.contents = contents;
-        this.start_date = start_date;
-        this.due_date = due_date;
-        this.birth = birth;
-        this.address1 = address1;
-        this.address2 = address2;
-    }
+
 
     // Setter & Getter
     public int getPost_id() {
@@ -88,34 +75,24 @@ public class Post implements Serializable {
     public void setStart_date(Date start_date) {
         this.start_date = start_date;
     }
-    public Date getDue_date() {
-        return due_date;
-    }
+    public Date getDue_date() { return due_date; }
     public void setDue_date(Date due_date) {
         this.due_date = due_date;
-    }
-    public Date getBirth() {
-        return birth;
-    }
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
-    public String getAddress1() {
-        return address1;
-    }
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-    public String getAddress2() {
-        return address2;
-    }
-    public void setAddress2(String address2) {
-        this.address2 = address2;
     }
     public int getStatus() {
         return status;
     }
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getStatusForText(int status) {
+        if(status == 0) {
+            return "모집 중";
+        } else if(status == 1) {
+            return "모집 마감";
+        } else {
+            return "완료";
+        }
     }
 }

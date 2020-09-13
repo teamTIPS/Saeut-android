@@ -50,11 +50,11 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
                 JSONObject json = jsonArray.getJSONObject(i);
                 Log.e("PostNetworkTask", json.toString());
                 int post_id = json.getInt("post_id");
-                String account_id = json.getString("account_id");
+                String id = json.getString("account_id");
                 String title = json.getString("title");
-                Date post_date = sdf.parse("2020-01-01");
-                String address1 = json.getString("address1");
-                dashboardChildAdapter.addItem(post_id, account_id, title, post_date, address1);
+                Date start_date = sdf.parse("2020-01-01");
+                Date due_date = sdf.parse("2020-01-01");
+                dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date);
                 dashboardChildAdapter.notifyDataSetChanged();
             }
 

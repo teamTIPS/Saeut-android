@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -54,18 +57,17 @@ public class DashboardChildAdapter extends BaseAdapter {
         final int position = pos;
         ViewHolder holder;
 
+        Log.d("DashboardChildAdapter", "dashboardChildAdapter 지롱");
 
-        Log.d("DashboardChildAdapter", "ssiiibbballlll");
         if(view == null) {
             view = layoutInflater.inflate(layout, viewGroup, false);
 
             holder = new ViewHolder();
             holder.title = (TextView) view.findViewById(R.id.tv_title);
             holder.date = (TextView) view.findViewById(R.id.tv_date);
-            holder.location = (TextView) view.findViewById(R.id.tv_location);
-            holder.like = (TextView) view.findViewById(R.id.tv_like);
-            holder.comment = (TextView) view.findViewById(R.id.tv_comment);
             holder.color = (ImageView) view.findViewById(R.id.iv_color);
+            holder.applyCount = (TextView) view.findViewById(R.id.tv_apply);
+            holder.status = (Button) view.findViewById(R.id.btn_status);
 
             view.setTag(holder);    // ViewHolder 삽입
         } else {
@@ -74,28 +76,30 @@ public class DashboardChildAdapter extends BaseAdapter {
 
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         holder.title.setText(postArrayList.get(position).getTitle());
-        holder.date.setText(dateFormat.format(postArrayList.get(position).getPost_date()));
-        holder.location.setText(postArrayList.get(position).getAddress1());
+
+        // Date 연결
+        String date = dateFormat.format(postArrayList.get(position).getStart_date())
+                + "~" + dateFormat.format(postArrayList.get(position).getDue_date());
+        holder.date.setText(date);
+
+        int status = postArrayList.get(position).getStatus();
+        holder.status.setText(postArrayList.get(position).getStatusForText(status));
 
         // 나머지는 추후 다시 정의해야 함.
-
         return view;
     }
 
     // 새로운 게시글을 추가하는 메서드
-    public void addItem(int post_id, String account_id, String title, Date post_date, String address1){
-        Post post = new Post(post_id, account_id, title, post_date, address1);
+    public void addItem(int post_id, String id, String title, Date start_date, Date due_date){
+        Post post = new Post(post_id, id, title, start_date, due_date);
         postArrayList.add(post);
     }
 
     static class ViewHolder {
         TextView title;
         TextView date;
-        TextView location;
-        TextView like;
-        TextView comment;
+        TextView applyCount;
+        Button status;
         ImageView color;
-        ImageView like_img;     // 고정값이므로 추후에 값 설정해야 함.
-        ImageView comment_img;  // 고정값이므로 추후에 값 설정해야 함.
     }
 }

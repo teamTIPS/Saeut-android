@@ -1,9 +1,15 @@
 package com.teamtips.android.saeut.func.dashboard.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 // Post, Demand(Account), Number of Apply User Data Class
-public class AllPostData {
+public class AllPostData implements Serializable {
+    private int post_id;
     private Post post;
-    private Demand demand;
+//    private UserEssential userEssential;
+//    private UserAdditional userAdditional;
+    private ArrayList<Apply> applyArrayList;
     private int applyCount;
 
     public Post getPost() {
@@ -12,14 +18,6 @@ public class AllPostData {
 
     public void setPost(Post post) {
         this.post = post;
-    }
-
-    public Demand getDemand() {
-        return demand;
-    }
-
-    public void setDemand(Demand demand) {
-        this.demand = demand;
     }
 
     public int getApplyCount() {
