@@ -15,6 +15,8 @@ import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 public class CreatePostActivity extends AppCompatActivity {
 
     private Button btn_add_submit;
+    private Button btn_add_cancel;
+
     private EditText et_account_id; // (FK) account 클래스의 id
     private EditText et_title; //게시물 제목
     private EditText et_post_date; //게시글 추가한 날짜
@@ -32,6 +34,8 @@ public class CreatePostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post_create);
 
         btn_add_submit = findViewById(R.id.btn_add_submit);
+        btn_add_cancel = findViewById(R.id.btn_add_cancel);
+
         et_title = findViewById(R.id.et_title);
         et_contents = findViewById(R.id.et_contents);
 
@@ -50,6 +54,13 @@ public class CreatePostActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "게시글 등록 실패 !!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btn_add_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     };

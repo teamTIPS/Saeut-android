@@ -2,6 +2,7 @@ package com.teamtips.android.saeut.func.dashboard.service;
 
 import android.content.ContentValues;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.teamtips.android.saeut.func.dashboard.DashboardChildAdapter;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection;
@@ -47,6 +48,7 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
             JSONArray jsonArray = new JSONArray(s);
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject json = jsonArray.getJSONObject(i);
+                Log.e("PostNetworkTask", json.toString());
                 int post_id = json.getInt("post_id");
                 String account_id = json.getString("account_id");
                 String title = json.getString("title");

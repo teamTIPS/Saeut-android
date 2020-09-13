@@ -1,12 +1,13 @@
 package com.teamtips.android.saeut.func.dashboard.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
  * Post Domain Class
  * */
 
-public class Post {
+public class Post implements Serializable {
 
     // Variable
     private int post_id; //sequence
