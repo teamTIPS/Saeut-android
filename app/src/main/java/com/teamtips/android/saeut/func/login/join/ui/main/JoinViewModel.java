@@ -27,15 +27,15 @@ public class JoinViewModel extends ViewModel {
     private MutableLiveData<Joinin> joininMutableLiveData = new MutableLiveData<>();
 
     public void Join(Joinin joinin){
-        String url = "";//url 채워주세요 천재서버님~!
+        String url = "http://49.50.173.180:8080/saeut";
         JSONObject join_json = new JSONObject();
 
         try {
-            join_json.accumulate("id", joinin.getId());
+            join_json.accumulate("account_id", joinin.getId());
             join_json.accumulate("password", joinin.getPassword());
             join_json.accumulate("name", joinin.getName());
             join_json.accumulate("email", joinin.getEmail());
-            join_json.accumulate("phonenum", joinin.getPhonenum()); //제대로했나요?
+            join_json.accumulate("phonenum", joinin.getPhonenum());
 
             Log.e(Tag,joinin.getId()+", "+joinin.getName());
         } catch (JSONException e) {

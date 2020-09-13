@@ -62,7 +62,7 @@ public class OkhttpInterceptor implements Interceptor{
                 loggedinUser.setAccessToken(null);
                 // At 갱신 api 호출
                 String RT = getRT(ctx);
-                JsonObject body = api.updateAt(loggedinUser.getAccount_id(), RT).execute().body();
+                JsonObject body = api.updateAt(RT).execute().body();
                 Log.e(Tag, "at 갱신 중");
 
                 // 토큰 갱신 완료, 다시 request 보내기
