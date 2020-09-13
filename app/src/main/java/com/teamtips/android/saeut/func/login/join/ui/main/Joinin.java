@@ -18,6 +18,7 @@ public class Joinin {
     private String address2;
     private String picpath;
     private String description;
+    private int type;
 
     //constructor
     Joinin() {}

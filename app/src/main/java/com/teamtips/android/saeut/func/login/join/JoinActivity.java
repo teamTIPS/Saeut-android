@@ -1,25 +1,29 @@
 package com.teamtips.android.saeut.func.login.join;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.join.ui.main.JoinFragment;
 
-public class JoinActivity extends AppCompatActivity {
+public class JoinActivity extends FragmentActivity {
+
+    JoinFragment joinFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.container, JoinFragment.newInstance())
-//                    .commitNow();
-//        }
+
+        joinFragment = new JoinFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.container_join, joinFragment);
+        transaction.commit();
     }
 
 //    TextWatcher afterTextChangedListener = new TextWatcher() {
