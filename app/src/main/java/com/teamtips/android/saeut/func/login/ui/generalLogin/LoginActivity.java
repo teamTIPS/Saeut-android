@@ -31,7 +31,6 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.KakaoLoginActivity;
 import com.teamtips.android.saeut.func.login.SessionCallback;
 import com.teamtips.android.saeut.func.login.data.Result;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
