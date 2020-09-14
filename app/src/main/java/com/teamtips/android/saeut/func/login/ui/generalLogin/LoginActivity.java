@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -33,12 +34,15 @@ import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.KakaoLoginActivity;
 import com.teamtips.android.saeut.func.login.SessionCallback;
 import com.teamtips.android.saeut.func.login.data.Result;
+import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
 
 import java.util.concurrent.Callable;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    private static final String Tag = "LoginActivity";
     private LoginViewModel loginViewModel;
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
@@ -88,18 +92,29 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
                 if (loginResult == null) {
+                    Log.e(Tag,"loginResult == null");
                     return;
                 }
 //                loadingProgressBar.setVisibility(View.GONE);
+
+                //로그인 실패
                 if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
+                    showpopup();
+                    emailEditText.setText("");
+                    passwordEditText.setText("");
+                    Log.e(Tag,"로그인 실패");
+                    //로그인 결과 초기화
+                    loginResult.setOrigin();
                 }
+
+                //로그인 성공
                 if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
+                    updateUiWithUser();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    setResult(Activity.RESULT_OK);
+                    finish();
                 }
-                setResult(Activity.RESULT_OK);
                 //Complete and destroy login activity once successful
-                finish();
             }
         });
 
@@ -140,15 +155,6 @@ public class LoginActivity extends AppCompatActivity {
 //                loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
-                //login 성공
-                if(SaveSharedPreference.getRT(getApplicationContext())!=null){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                }
-                else{
-                    emailEditText.setText("");
-                    passwordEditText.setText("");
-                    showpopup();
-                }
             }
         });
 
@@ -182,14 +188,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getnickname();
+    private void updateUiWithUser() {
+        LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
+        String welcome = getString(R.string.welcome) + loggedInUser.getnickname();
         // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        Log.e(Tag,welcome);
     }
 
     private void showpopup() {
@@ -202,7 +205,6 @@ public class LoginActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
         AlertDialog dialog = builder.create();
         dialog.show();
     }

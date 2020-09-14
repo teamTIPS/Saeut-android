@@ -28,4 +28,7 @@ class LoginResult {
     Integer getError() {
         return error;
     }
+    void setOrigin() {
+        this.error = null;
+    }
 }
