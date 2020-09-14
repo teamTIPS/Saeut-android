@@ -48,9 +48,8 @@ public class LoginViewModel extends ViewModel {
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
 
-        String url = "http://49.50.173.180:8080/saeut/signon/signon";
+        String url = "http://49.50.173.180:8080/saeut/signon/authenticate";
         JSONObject user_json = new JSONObject();
-        result = loginRepository.login(username, password);
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
         try {
             user_json.accumulate("id", username);
@@ -140,6 +139,8 @@ public class LoginViewModel extends ViewModel {
                     //서버에서 유저정보 데이터 받아오기
                     //account_id, nickname, name, phone, pic, type, rank, score, description, location
 
+                    //date.getnickname 아직 null값
+                    result = loginRepository.login("임시유저네임", "임시비밀번호");
                     LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
                     loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
                     LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
@@ -153,7 +154,7 @@ public class LoginViewModel extends ViewModel {
             }
             //로그인 실패
             else {
-                loginResult.setValue(new LoginResult(R.string.login_failed));
+                loginResult.setValue(new LoginResult(1));
             }
         }
 

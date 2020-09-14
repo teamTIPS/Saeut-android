@@ -5,6 +5,9 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -29,7 +32,10 @@ import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.KakaoLoginActivity;
 import com.teamtips.android.saeut.func.login.SessionCallback;
+import com.teamtips.android.saeut.func.login.data.Result;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
+
+import java.util.concurrent.Callable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,8 +43,16 @@ public class LoginActivity extends AppCompatActivity {
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
 
+//    Callable<LoginResult> loginResultCallable = new Callable<LoginResult>() {
+//        @Override
+//        public LoginResult call() throws Exception {
+//
+//        }
+//    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        SaveSharedPreference.clearUser(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_total);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
@@ -108,17 +122,17 @@ public class LoginActivity extends AppCompatActivity {
         };
         emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(emailEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
+//        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                    loginViewModel.login(emailEditText.getText().toString(),
+//                            passwordEditText.getText().toString());
+//                }
+//                return false;
+//            }
+//        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +140,15 @@ public class LoginActivity extends AppCompatActivity {
 //                loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                //login 성공
+                if(SaveSharedPreference.getRT(getApplicationContext())!=null){
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
+                else{
+                    emailEditText.setText("");
+                    passwordEditText.setText("");
+                    showpopup();
+                }
             }
         });
 
@@ -133,7 +156,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 session.open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
@@ -168,6 +190,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showpopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("안내")
+                .setMessage("로그인에 실패했어요. 아이디와 비밀번호를 다시 확인해 주세요.")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

@@ -36,7 +36,7 @@ public class SaveSharedPreference {
     }
 
     // 로그아웃
-    public static void clearUserName(Context ctx) {
+    public static void clearUser(Context ctx) {
         SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
         editor.clear();
         editor.commit();

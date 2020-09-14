@@ -16,12 +16,25 @@ import okhttp3.Response;
  */
 public class LoggedInUser {
 
-    //어플에서 임의로 부여하는 시퀀스
-    private String account_id;
-    //유저에게 보여줄 본인 별명(별명으로 하는 것이 나아보임)
-    private String nickname;
+    //jwt
     private String accesstoken;
     private Date AccessexpireDateTime;
+
+    //UserEssential
+    private String account_id;
+    private String password;
+    private String name;
+    private String phonenum;
+    private String nickname;
+
+    //UserAdditional
+    private Date birth;
+    private String zipcode;
+    private String address1;
+    private String address2;
+    private String picpath;
+    private String description;
+    private int type;
 
     /////////
     //싱글톤 패턴으로 구현

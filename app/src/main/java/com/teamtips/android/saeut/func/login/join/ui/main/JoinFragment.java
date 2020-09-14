@@ -96,7 +96,6 @@ public class JoinFragment extends Fragment {
         });
 
         //닉네임 중복확인 api 사용, 버튼 만들어주세요
-
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
                 Joinin joinin = new Joinin(
