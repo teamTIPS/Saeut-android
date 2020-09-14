@@ -1,10 +1,12 @@
 package com.teamtips.android.saeut.func.dashboard;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,19 +14,24 @@ import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class DashboardChildAdapter extends BaseAdapter {
 
+    public static final String TAG = "DashboardChildAdapter";
+
     private Context context;                    // inflater 객체 생성 시 필요함
     private int layout;                         // AdapterView 항목에 대한 layout
     private ArrayList<Post> postArrayList;      // 원본 데이터 리스트
     private LayoutInflater layoutInflater;      // inflater 객체
+    private PostNetworkTask postNetworkTask;
 
     public DashboardChildAdapter() { }
 
@@ -57,7 +64,7 @@ public class DashboardChildAdapter extends BaseAdapter {
         final int position = pos;
         ViewHolder holder;
 
-        Log.d("DashboardChildAdapter", "dashboardChildAdapter 지롱");
+        Log.d(TAG, "dashboardChildAdapter 지롱");
 
         if(view == null) {
             view = layoutInflater.inflate(layout, viewGroup, false);
@@ -84,6 +91,23 @@ public class DashboardChildAdapter extends BaseAdapter {
 
         int status = postArrayList.get(position).getStatus();
         holder.status.setText(postArrayList.get(position).getStatusForText(status));
+
+        // view 클릭 시 이벤트 처리
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 상세 페이지 뜨도록 정의해야 함.
+                // 이 때 로그인 여부 체크
+                // 기타 등등 ...
+
+                Log.e(TAG, "onItemClick");
+                Post post = postArrayList.get(pos);
+                Log.e(TAG, post.toString());
+                Intent intent = new Intent(context, DetailPostActivity.class);
+                intent.putExtra("post", (Serializable) post);
+                context.startActivity(intent);
+            }
+        });
 
         // 나머지는 추후 다시 정의해야 함.
         return view;

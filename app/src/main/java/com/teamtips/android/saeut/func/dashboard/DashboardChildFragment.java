@@ -37,8 +37,6 @@ public class DashboardChildFragment extends Fragment {
   private static final String ARGUMENT_NAME = "argument_name";
   public static final String TAG = "DashboardChildFragment";
 
-  private Retrofit retrofit;
-  private PostNetworkService postNetworkService;
   private DashboardChildAdapter dashboardChildAdapter;
   private ListView listView;
   private ArrayList<Post> postArrayList;
@@ -65,9 +63,6 @@ public class DashboardChildFragment extends Fragment {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     getLifecycle().addObserver(new TimberLogger(this));
-
-//    retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.base_url)).build();
-//    postNetworkService = retrofit.create(PostNetworkService.class);
   }
 
   @Override
@@ -88,15 +83,6 @@ public class DashboardChildFragment extends Fragment {
     View root = inflater.inflate(R.layout.fragment_dashboard_child, container, false);
 
     postArrayList = new ArrayList<Post>();
-
-//    postNetworkService = new PostNetworkService();
-//    postNetworkService.setRetrofitInit();
-//
-//    try {
-//      postArrayList = postNetworkService.callPostList();
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
 
     dashboardChildAdapter = new DashboardChildAdapter(root.getContext(), R.layout.adapter_dashboard, postArrayList);
     listView = root.findViewById(R.id.lv_child);
@@ -120,32 +106,6 @@ public class DashboardChildFragment extends Fragment {
 
     postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
     postNetworkTask.execute();
-
-
-    // view 클릭 시 이벤트 처리
-    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // 상세 페이지 뜨도록 정의해야 함.
-        // 이 때 로그인 여부 체크
-        // 기타 등등 ...
-        Log.e(TAG, "onItemClick");
-        // fragment position에 따른 url 구현
-        String account_id = "test";
-        String url = "http://49.50.173.180:8080/saeut/post/" + account_id;
-
-        // 근데 이걸 똑같은 클래스로 넘겨도 되나? 흐음 안될거같은데
-        postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
-        postNetworkTask.execute();
-
-        // 수정되어야 함. 서버에서 Post 객체 전달받아야 하기 때문에
-        Post post = new Post();
-
-        Intent intent = new Intent(getActivity(), DetailPostActivity.class);
-        intent.putExtra("post", (Serializable) post);
-        startActivity(intent);
-      }
-    });
 
     return root;
   }

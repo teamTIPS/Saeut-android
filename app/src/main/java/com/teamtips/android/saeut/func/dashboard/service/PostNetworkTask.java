@@ -49,14 +49,18 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         try {
             JSONArray jsonArray = new JSONArray(s);
-            for(int i=0;i<jsonArray.length();i++){
+            for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject json = jsonArray.getJSONObject(i);
-                Log.e("PostNetworkTask", json.toString());
+
                 int post_id = json.getInt("post_id");
                 String id = json.getString("id");
                 String title = json.getString("title");
-                Date start_date = sdf.parse("start_date");
-                Date due_date = sdf.parse("start_date");
+                Date start_date = sdf.parse("2020-01-02");
+                Date due_date = sdf.parse("2020-01-10");
+
+//                Date start_date = sdf.parse(json.getString("start_date"));
+//                Date due_date = sdf.parse(json.getString("due_date"));
+
                 dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date);
                 dashboardChildAdapter.notifyDataSetChanged();
             }
