@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.func.dashboard.DashboardChildAdapter;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection;
 
@@ -43,17 +46,17 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         try {
             JSONArray jsonArray = new JSONArray(s);
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject json = jsonArray.getJSONObject(i);
                 Log.e("PostNetworkTask", json.toString());
                 int post_id = json.getInt("post_id");
-                String id = json.getString("account_id");
+                String id = json.getString("id");
                 String title = json.getString("title");
-                Date start_date = sdf.parse("2020-01-01");
-                Date due_date = sdf.parse("2020-01-01");
+                Date start_date = sdf.parse("start_date");
+                Date due_date = sdf.parse("start_date");
                 dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date);
                 dashboardChildAdapter.notifyDataSetChanged();
             }
