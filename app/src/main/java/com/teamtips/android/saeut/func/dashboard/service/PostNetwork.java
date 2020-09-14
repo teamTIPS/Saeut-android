@@ -1,5 +1,7 @@
 package com.teamtips.android.saeut.func.dashboard.service;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public interface PostNetwork {
 
     // 전체 게시물 불러오기
     @GET("post")
-    Call<ArrayList<Post>> postList();
+    Call<ResponseBody > postList();
 
     // findPostById
     @GET("post/{id}")

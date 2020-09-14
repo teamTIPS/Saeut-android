@@ -78,7 +78,7 @@ public class DashboardChildAdapter extends BaseAdapter {
         holder.title.setText(postArrayList.get(position).getTitle());
 
         // Date 연결
-        String date = dateFormat.format(postArrayList.get(position).getStart_date())
+         String date = dateFormat.format(postArrayList.get(position).getStart_date())
                 + "~" + dateFormat.format(postArrayList.get(position).getDue_date());
         holder.date.setText(date);
 

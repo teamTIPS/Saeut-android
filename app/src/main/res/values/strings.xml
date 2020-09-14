@@ -51,5 +51,5 @@
     <string name="title_activity_settings_activitytest">SettingsActivitytest</string>
 
     <!-- Dashboard Strings -->
-    <string name="base_url">http://49.50.173.180:8080/saeut/</string>
+    <string name="base_url">https://49.50.173.180:8080/saeut/</string>
 </resources>

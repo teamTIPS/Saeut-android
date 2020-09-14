@@ -11,7 +11,7 @@ public class Post implements Serializable {
 
     // Variable
     private int post_id; //sequence
-    private String account_id; // (FK) account 클래스의 id
+    private String id; // (FK) account 클래스의 id
     private String title; //게시물 제목
     private Date post_date; //게시글 추가한 날짜
     private String contents; // 게시글 내용
@@ -27,16 +27,14 @@ public class Post implements Serializable {
         this.contents = contents;
     }
 
-    public Post(int post_id, String account_id, String title, Date post_date, Date due_date) {
+    public Post(int post_id, String id, String title, Date start_date, Date due_date) {
         this.post_id = post_id;
-        this.account_id = account_id;
+        this.id = id;
         this.title = title;
-        this.post_date = post_date;
+        this.start_date = start_date;
         this.due_date = due_date;
         this.status = 0;            // status init 0
     }
-
-
 
     // Setter & Getter
     public int getPost_id() {
@@ -45,11 +43,11 @@ public class Post implements Serializable {
     public void setPost_id(int post_id) {
         this.post_id = post_id;
     }
-    public String getAccount_id() {
-        return account_id;
+    public String getId() {
+        return id;
     }
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
+    public void setId(String id) {
+        this.id = id;
     }
     public String getTitle() {
         return title;

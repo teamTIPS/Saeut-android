@@ -25,6 +25,7 @@ import com.teamtips.android.saeut.func.dashboard.model.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -88,6 +89,15 @@ public class DashboardChildFragment extends Fragment {
 
     postArrayList = new ArrayList<Post>();
 
+//    postNetworkService = new PostNetworkService();
+//    postNetworkService.setRetrofitInit();
+//
+//    try {
+//      postArrayList = postNetworkService.callPostList();
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+
     dashboardChildAdapter = new DashboardChildAdapter(root.getContext(), R.layout.adapter_dashboard, postArrayList);
     listView = root.findViewById(R.id.lv_child);
 
@@ -110,6 +120,7 @@ public class DashboardChildFragment extends Fragment {
 
     postNetworkTask = new PostNetworkTask(url,null, dashboardChildAdapter);
     postNetworkTask.execute();
+
 
     // view 클릭 시 이벤트 처리
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
