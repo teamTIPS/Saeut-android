@@ -1,6 +1,5 @@
 package com.teamtips.android.saeut.func.login;
 
-import android.content.Intent;
 import android.util.Log;
 
 import com.kakao.auth.ISessionCallback;
@@ -12,10 +11,6 @@ import com.kakao.usermgmt.response.model.Profile;
 import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
-import com.teamtips.android.saeut.GlobalApplication;
-import com.teamtips.android.saeut.MainActivity;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class SessionCallback implements ISessionCallback {
     private final static String TAG = "KAKAO_API";

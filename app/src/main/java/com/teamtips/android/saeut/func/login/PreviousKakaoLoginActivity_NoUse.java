@@ -18,11 +18,12 @@ import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
 import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginActivity;
 
+/*
 public class KakaoLoginActivity extends AppCompatActivity {
-    /*
+
     !!!사용이 끝난 더미 액티비티입니다!!!
     !!!코드모음 액티비티!!!
-     */
+
 
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
@@ -98,3 +99,4 @@ public class KakaoLoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 }
+*/

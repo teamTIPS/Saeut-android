@@ -1,7 +1,5 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
-import android.content.SharedPreferences;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,19 +16,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.join.ui.main.JoinViewModel;
 
-import org.w3c.dom.Text;
-
-public class JoinFragment extends Fragment {
+public class JoinFragment_essential extends Fragment {
 
     private JoinViewModel mViewModel = new JoinViewModel();
-    private final static String Tag = "JoinFragment";
+    private final static String Tag = "JoinFragment_essential";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        View root = inflater.inflate(R.layout.fragment_sign_up_essential, container, false);
 
         //email == account_id
         EditText email_edit = root.findViewById(R.id.email_edit);
