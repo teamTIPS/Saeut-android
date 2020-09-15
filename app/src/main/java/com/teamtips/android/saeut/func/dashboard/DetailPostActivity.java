@@ -1,7 +1,6 @@
 package com.teamtips.android.saeut.func.dashboard;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 
+import java.text.DateFormat;
+
 public class DetailPostActivity extends AppCompatActivity {
 
     private TextView tv_title;
@@ -22,6 +23,8 @@ public class DetailPostActivity extends AppCompatActivity {
     private RadioGroup rg_tag;
     private TextView tv_startDate;
     private TextView tv_dueDate;
+    private TextView tv_applyCount;
+    private TextView tv_address;
     private TextView tv_contents;
     private Button btn_detail_submit;
     private Button btn_detail_cancel;
@@ -33,8 +36,12 @@ public class DetailPostActivity extends AppCompatActivity {
 
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_contents = (TextView) findViewById(R.id.tv_contents);
-        tv_id = (TextView) findViewById(R.id.tv_accountId);
+        tv_id = (TextView) findViewById(R.id.tv_id);
         rg_tag = (RadioGroup) findViewById(R.id.rb_tag);
+        tv_startDate = (TextView) findViewById(R.id.tv_startDate);
+        tv_dueDate = (TextView) findViewById(R.id.tv_dueDate);
+        tv_applyCount = (TextView) findViewById(R.id.tv_applyCount);
+        tv_address = (TextView) findViewById(R.id.tv_address);
 
         btn_detail_submit = (Button) findViewById(R.id.btn_detail_submit);
         btn_detail_cancel = (Button)findViewById(R.id.btn_detail_cancel);
@@ -43,6 +50,24 @@ public class DetailPostActivity extends AppCompatActivity {
         Post post = (Post) getIntent().getSerializableExtra("post");
         tv_title.setText(post.getTitle());
         tv_contents.setText(post.getContents());
+        tv_id.setText(post.getId());
+
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        tv_startDate.setText(dateFormat.format(post.getStart_date()));
+        tv_dueDate.setText(dateFormat.format(post.getDue_date()));
+
+        // 추후 Apply 테이블과 연결해야 함.
+        tv_applyCount.setText("0");
+        // 추후 Additional 테이블과 연결해야 함.
+        tv_address.setText("서울시 서대문구 북가좌동");
+
+        // tag radio button checking
+        rg_tag.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            }
+        });
 
         // OnClickListener
         btn_detail_submit.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +86,7 @@ public class DetailPostActivity extends AppCompatActivity {
         });
     }
 
+    // 돌보미 신청 페이지로 연결되는 다이얼로그 함수
     public void applyDialogShow() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();

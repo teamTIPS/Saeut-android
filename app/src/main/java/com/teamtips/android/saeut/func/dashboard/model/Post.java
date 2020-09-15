@@ -28,7 +28,7 @@ public class Post implements Serializable {
         this.contents = contents;
     }
 
-    public Post(int post_id, String id, String title, Date start_date, Date due_date, int type) {
+    public Post(int post_id, String id, String title, Date post_date, String contents, Date start_date, Date due_date, int type) {
         this.post_id = post_id;
         this.id = id;
         this.title = title;
@@ -36,6 +36,8 @@ public class Post implements Serializable {
         this.due_date = due_date;
         this.type = type;
         this.status = 0;            // status init 0
+        this.post_date = post_date;
+        this.contents = contents;// status init 0
     }
 
     // Setter & Getter
@@ -96,5 +98,20 @@ public class Post implements Serializable {
         } else {
             return "완료";
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "post_id=" + post_id +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", post_date=" + post_date +
+                ", contents='" + contents + '\'' +
+                ", start_date=" + start_date +
+                ", due_date=" + due_date +
+                ", status=" + status +
+                ", type=" + type +
+                '}';
     }
 }

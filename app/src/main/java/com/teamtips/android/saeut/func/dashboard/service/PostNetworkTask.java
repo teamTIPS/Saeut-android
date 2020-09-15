@@ -47,11 +47,13 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
                 int post_id = json.getInt("post_id");
                 String id = json.getString("id");
                 String title = json.getString("title");
+                Date post_date = sdf.parse(json.getString("post_date"));
+                String contents = json.getString("contents");
                 Date start_date = sdf.parse(json.getString("start_date"));
                 Date due_date = sdf.parse(json.getString("due_date"));
                 int type = Integer.parseInt(json.getString("type"));
 
-                dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date, type);
+                dashboardChildAdapter.addItem(post_id, id, title, post_date, contents, start_date, due_date, type);
                 dashboardChildAdapter.notifyDataSetChanged();
             }
 
