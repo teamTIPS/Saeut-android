@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
@@ -26,6 +27,7 @@ public class JoinFragment_essential extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sign_up_essential, container, false);
+
 
         //email == account_id
         EditText email_edit = root.findViewById(R.id.email_edit);
