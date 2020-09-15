@@ -17,7 +17,8 @@ public class Post implements Serializable {
     private String contents; // 게시글 내용
     private Date start_date; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
     private Date due_date; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
-    private int status; // 현재 돌봄 진행상태
+    private int status; // 현재 돌봄 진행상태 (모집 중(0)/모집 마감(1)/완료(2))
+    private int type; // 장애인(0) & 아동(1) & 노인(2)
 
     // Constructor
     public Post() { }
@@ -27,12 +28,13 @@ public class Post implements Serializable {
         this.contents = contents;
     }
 
-    public Post(int post_id, String id, String title, Date start_date, Date due_date) {
+    public Post(int post_id, String id, String title, Date start_date, Date due_date, int type) {
         this.post_id = post_id;
         this.id = id;
         this.title = title;
         this.start_date = start_date;
         this.due_date = due_date;
+        this.type = type;
         this.status = 0;            // status init 0
     }
 
@@ -83,6 +85,8 @@ public class Post implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+    public int getType() { return type; }
+    public void setType(int type) { this.type = type; }
 
     public String getStatusForText(int status) {
         if(status == 0) {

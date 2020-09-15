@@ -114,8 +114,8 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     // 새로운 게시글을 추가하는 메서드
-    public void addItem(int post_id, String id, String title, Date start_date, Date due_date){
-        Post post = new Post(post_id, id, title, start_date, due_date);
+    public void addItem(int post_id, String id, String title, Date start_date, Date due_date, int type){
+        Post post = new Post(post_id, id, title, start_date, due_date, type);
         postArrayList.add(post);
     }
 

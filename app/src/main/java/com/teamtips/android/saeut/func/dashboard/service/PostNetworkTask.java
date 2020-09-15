@@ -2,24 +2,16 @@ package com.teamtips.android.saeut.func.dashboard.service;
 
 import android.content.ContentValues;
 import android.os.AsyncTask;
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.func.dashboard.DashboardChildAdapter;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
  * Android - Server 연결 하는 Controller Class
  * */
-
 public class PostNetworkTask extends AsyncTask<Void, Void, String> {
 
     private String url;
@@ -55,13 +47,11 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
                 int post_id = json.getInt("post_id");
                 String id = json.getString("id");
                 String title = json.getString("title");
-                Date start_date = sdf.parse("2020-01-02");
-                Date due_date = sdf.parse("2020-01-10");
+                Date start_date = sdf.parse(json.getString("start_date"));
+                Date due_date = sdf.parse(json.getString("due_date"));
+                int type = Integer.parseInt(json.getString("type"));
 
-//                Date start_date = sdf.parse(json.getString("start_date"));
-//                Date due_date = sdf.parse(json.getString("due_date"));
-
-                dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date);
+                dashboardChildAdapter.addItem(post_id, id, title, start_date, due_date, type);
                 dashboardChildAdapter.notifyDataSetChanged();
             }
 
