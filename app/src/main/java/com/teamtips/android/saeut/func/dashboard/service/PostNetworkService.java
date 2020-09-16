@@ -2,20 +2,19 @@ package com.teamtips.android.saeut.func.dashboard.service;
 
 import android.util.Log;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.dashboard.model.AllPostData;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URI;
-import java.util.ArrayList;
+import java.security.cert.CertificateException;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.ResponseBody;
-import okio.Timeout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,63 +26,77 @@ public class PostNetworkService {
     private static String TAG = "PostNetworkService";
     private static String BASE_URL = "https://49.50.173.180:8080/saeut/";
 
-    private Retrofit mRetrofit;
-    private static PostNetwork postNetwork;
+
     private Gson mGson;
-    private Call<ResponseBody> mCallPostList;
-//    private Call<ResponseBody> mCallPostById;
-//    private Call<ResponseBody> mCallPutPost;
+    private Call<Post> mCallAddPost;
+    private final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(getUnsafeOkHttpClient().build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    private PostNetwork postNetwork = retrofit.create(PostNetwork.class);
 //    private Call<ResponseBody> mCallModPost;
 //    private Call<ResponseBody> mCallDeletePost;
 
-    public void setRetrofitInit() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        OkHttpClient client = builder.build();
-
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
-
-        // Interface 불러오기
-        postNetwork = mRetrofit.create(PostNetwork.class);
-    }
-
-    // Get All List of Post
-    public ArrayList<Post> callPostList() throws IOException {
-        ArrayList<Post> postArrayList = new ArrayList<Post>();
-        mCallPostList = postNetwork.postList();
-        mCallPostList.enqueue(new Callback<ResponseBody>() {
+    // Add Post
+    public void addPost(Post post) {
+        // Bring session id that Sign on this app
+        mCallAddPost = postNetwork.addPost(post);
+        mCallAddPost.enqueue(new Callback<Post>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<Post> call, Response<Post> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        ResponseBody responseBody = call.execute().body();
-                        Log.d(TAG, responseBody.toString());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Log.d(TAG, "성공  : " + call.isExecuted());
                 } else {
-                    Log.d(TAG, response.body().toString());
+                    Log.d(TAG, "음...?  : " + call.isExecuted());
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
+            public void onFailure(Call<Post> call, Throwable t) {
+                Log.d(TAG, "여기여기 : " + t.getMessage());
             }
         });
-        return postArrayList;
+    }
+    // 안전하지 않음으로 HTTPS를 통과합니다.
+    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
+        try {
+            final TrustManager[] trustAllCerts = new TrustManager[] {
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                            return new java.security.cert.X509Certificate[]{};
+                        }
+                    }
+            };
+
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
+            return builder;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-
-    // Get Post By Id
-    private void getPostById() {
-        // Bring session id that Sign on this app
-        String account_id = "";
-
-//        mCallPostById = postNetwork.getPostById(account_id);
-//        mCallPostById.enqueue(mPostCallBack);
-    }
 }

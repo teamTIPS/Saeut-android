@@ -23,9 +23,15 @@ public class Post implements Serializable {
     // Constructor
     public Post() { }
 
-    public Post(String title, String contents) {
+    public Post(String title, String contents, String id, int type, Date start_date, Date due_date) {
+        this();
         this.title = title;
         this.contents = contents;
+        this.id = id;
+        this.type = type;
+        this.start_date = start_date;
+        this.due_date = due_date;
+        this.status = 0;
     }
 
     public Post(int post_id, String id, String title, Date post_date, String contents, Date start_date, Date due_date, int type) {
