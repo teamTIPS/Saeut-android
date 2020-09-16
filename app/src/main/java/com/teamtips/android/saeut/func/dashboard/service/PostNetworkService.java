@@ -26,9 +26,7 @@ public class PostNetworkService {
     private static String TAG = "PostNetworkService";
     private static String BASE_URL = "https://49.50.173.180:8080/saeut/";
 
-
-    private Gson mGson;
-    private Call<Post> mCallAddPost;
+    private Call<String> mCallAddPost;
     private final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(getUnsafeOkHttpClient().build())
@@ -36,16 +34,14 @@ public class PostNetworkService {
             .build();
 
     private PostNetwork postNetwork = retrofit.create(PostNetwork.class);
-//    private Call<ResponseBody> mCallModPost;
-//    private Call<ResponseBody> mCallDeletePost;
 
     // Add Post
     public void addPost(Post post) {
         // Bring session id that Sign on this app
         mCallAddPost = postNetwork.addPost(post);
-        mCallAddPost.enqueue(new Callback<Post>() {
+        mCallAddPost.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "성공  : " + call.isExecuted());
                 } else {
@@ -54,7 +50,7 @@ public class PostNetworkService {
             }
 
             @Override
-            public void onFailure(Call<Post> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "여기여기 : " + t.getMessage());
             }
         });

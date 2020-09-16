@@ -9,7 +9,7 @@ public interface PostNetwork {
 
     // 게시물 추가
     @POST("post/add")
-    Call<Post> addPost(@Body Post post);
+    Call<String> addPost(@Body Post post);
 
     // 게시물 수정
     @PUT("post/mod")

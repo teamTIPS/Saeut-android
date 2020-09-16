@@ -50,7 +50,6 @@ public class CreatePostActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH) + 1;
         int date = cal.get(Calendar.DATE);
 
-
         // CalendarView 구현
         btn_startDate.setOnClickListener(new View.OnClickListener() {
             @Override
