@@ -118,6 +118,13 @@
             android:layout_marginStart="50dp"
             android:inputType="date" />
 
+        <Button
+            android:id="@+id/btn_editStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="날짜 선택" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -142,6 +149,13 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="date" />
+
+        <Button
+            android:id="@+id/btn_editDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="날짜 선택" />
 
     </LinearLayout>
 

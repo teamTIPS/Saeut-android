@@ -14,11 +14,11 @@ import android.widget.Toast;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.sql.Date;
 
 public class CreatePostActivity extends AppCompatActivity {
 
@@ -36,8 +36,6 @@ public class CreatePostActivity extends AppCompatActivity {
     private static EditText et_startDate; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
     private static EditText et_dueDate; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
 
-    private RadioGroup rg_tag;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +49,6 @@ public class CreatePostActivity extends AppCompatActivity {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH) + 1;
         int date = cal.get(Calendar.DATE);
-
 
         // CalendarView 구현
         btn_startDate.setOnClickListener(new View.OnClickListener() {
@@ -93,9 +90,15 @@ public class CreatePostActivity extends AppCompatActivity {
                 // 데이터 전송
                 Post post = new Post(
                         et_title.getText().toString(),
-                        et_contents.getText().toString()
+                        et_contents.getText().toString(),
+                        "test",
+                        getCheckedType(),
+                        Date.valueOf(et_startDate.getText().toString()),
+                        Date.valueOf(et_dueDate.getText().toString())
                 );
 
+                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
+                sendPostNetworkService(post);
 //                boolean result = sendPostNetworkService(post);
 //                if(result) {
 //                    Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
@@ -103,6 +106,7 @@ public class CreatePostActivity extends AppCompatActivity {
 //                } else {
 //                    Toast.makeText(getApplicationContext(), "게시글 등록 실패 !!", Toast.LENGTH_SHORT).show();
 //                }
+                finish();
             }
         });
 
@@ -114,10 +118,9 @@ public class CreatePostActivity extends AppCompatActivity {
         });
     };
 
-    private boolean sendPostNetworkService(Post post) {
-        String url = "http://49.50.173.180:8080/saeut/post/add";
-        // 여길 더 구현해야 할듯.
-        return false;
+    private void sendPostNetworkService(Post post) {
+        PostNetworkService postNetworkService = new PostNetworkService();
+        postNetworkService.addPost(post);
     }
 
     private void AllFindViewCreate() {
@@ -135,5 +138,17 @@ public class CreatePostActivity extends AppCompatActivity {
 
         btn_dueDate = findViewById(R.id.btn_dueDate);
         btn_startDate = findViewById(R.id.btn_startDate);
+    }
+
+    private int getCheckedType() {
+        // 근데 이거 만약에 사용자가 값을 선택하지 않았을땐 어카지? 흐음,,,
+        // 일단 2로 들어가기야 하겠지만 별도의 처리가 필요할듯.
+        if(rb_disable.isChecked()) {
+            return 0;
+        } else if(rb_children.isChecked()) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }

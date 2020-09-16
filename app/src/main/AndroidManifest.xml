@@ -3,6 +3,7 @@
     package="com.teamtips.android.saeut">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -25,6 +26,7 @@
         </activity>
 
         <activity android:name=".func.dashboard.DetailPostActivity" />
+        <activity android:name=".func.dashboard.EditPostActivity" />
         <activity android:name=".func.timetable.EditActivity" />
 
         <activity android:name=".func.login.ui.generalLogin.LoginActivity" >
