@@ -26,7 +26,7 @@ class AppFragmentPageAdapter extends FragmentPagerAdapter {
       case 1:
         return MapFragment.newInstance();
       case 2:
-        return DashboardFragment.newInstance("Tony");
+        return DashboardFragment.newInstance("Dashboard Test");
       case 3:
         return ScheduleFragment.newInstance();
       case 4:

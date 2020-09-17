@@ -1,7 +1,10 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
@@ -16,7 +19,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+
+import retrofit2.http.Body;
 
 public class JoinFragment_essential extends Fragment {
 
@@ -38,6 +50,7 @@ public class JoinFragment_essential extends Fragment {
         EditText phone_edit = root.findViewById(R.id.phone_edit);
         EditText nickname_edit = root.findViewById(R.id.nickname_edit);
         Button email_sign_up_button = root.findViewById(R.id.email_sign_up_button);
+        Button btn_check_id = root.findViewById(R.id.btn_check_id);
 
         email_edit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -92,6 +105,23 @@ public class JoinFragment_essential extends Fragment {
             }
         });
 
+        btn_check_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JSONObject checkID_json = new JSONObject();
+                Log.e(Tag,"btn_check_id.setOnClickListener");
+
+                try{
+                    checkID_json.accumulate("id", email_edit.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String url = "http://49.50.173.180:8080/saeut/signon/checkid";
+                NetworkTask_CheckID networkTask_checkID = new NetworkTask_CheckID(url, checkID_json.toString());
+                networkTask_checkID.execute();
+            }
+        });
+
         //닉네임 중복확인 api 사용, 버튼 만들어주세요
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
@@ -127,5 +157,64 @@ public class JoinFragment_essential extends Fragment {
         } else {
             return !email.trim().isEmpty();
         }
+    }
+    public static class NetworkTask_CheckID extends AsyncTask<Void, Void, Boolean> {
+
+        private String url;
+        private String json;
+        private int responseCode;
+
+        public NetworkTask_CheckID(String url, String json) {
+            this.url = url;
+            this.json = json;
+        }
+
+
+        //result - true: 사용가능 / false: 중복
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            boolean result;
+            RequestHttpURLConnection_POST requestHttpURLConnection = new RequestHttpURLConnection_POST();
+            String temp = requestHttpURLConnection.request(url, json);
+            result = temp.contains("true");
+            Log.e(Tag,"requestHttpURLConnection: "+temp);
+
+            responseCode = requestHttpURLConnection.getResponseCode(); // HTTP 통신 결과의 ResponseCode를 할당
+            Log.e(Tag,"result:"+result);
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            Log.e(Tag,"onPostExecute");
+            if(aBoolean){
+                Log.e(Tag,"아이디 사용 가능입니다.");
+            }
+            else{
+                Log.e(Tag,"아이디 중복입니다.");
+            }
+
+        }
+
+//        @Override
+//        protected void onPostExecute(boolean s) {
+//            super.onPostExecute(s);
+//
+//            if(s){
+//                try {
+//                    JSONObject result_json = new JSONObject(s);
+//                    boolean result = result_json.getBoolean("result");
+//                    Log.e(Tag,"result:"+ result);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            else{
+//                Log.e(Tag,"TextUtils.isEmpty(s)");
+//            }
+//            Log.e(Tag,s);
+//        }
     }
 }

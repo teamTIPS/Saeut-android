@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,6 +22,8 @@ import java.util.Calendar;
 import java.sql.Date;
 
 public class CreatePostActivity extends AppCompatActivity {
+
+    private static final String Tag = "CreatePostActivity";
 
     private static Button btn_add_submit;
     private static Button btn_add_cancel;
@@ -47,6 +50,7 @@ public class CreatePostActivity extends AppCompatActivity {
         // 현재 날짜 구하기
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
+        //+ 1 하신 이유가?
         int month = cal.get(Calendar.MONTH) + 1;
         int date = cal.get(Calendar.DATE);
 
@@ -87,6 +91,7 @@ public class CreatePostActivity extends AppCompatActivity {
         btn_add_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e(Tag,"btn_add_submit onClick");
                 // 데이터 전송
                 Post post = new Post(
                         et_title.getText().toString(),

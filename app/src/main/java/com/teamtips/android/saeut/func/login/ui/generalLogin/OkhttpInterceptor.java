@@ -1,7 +1,6 @@
 package com.teamtips.android.saeut.func.login.ui.generalLogin;
 
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -9,13 +8,15 @@ import android.util.Log;
 import androidx.preference.PreferenceManager;
 
 import com.google.gson.JsonObject;
-import com.teamtips.android.saeut.GlobalApplication;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.io.IOException;
 import java.util.Date;
 
-import okhttp3.*;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

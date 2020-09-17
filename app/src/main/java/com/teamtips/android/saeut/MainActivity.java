@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         bindNavigationDrawer();
         initTitle();
 //        getAppKeyHash(); 해시키 알아내는 함수는 당분간 필요없음
-
     }
 
     private void initTitle() {

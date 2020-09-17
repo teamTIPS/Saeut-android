@@ -1,43 +1,29 @@
 package com.teamtips.android.saeut.func.login.ui.generalLogin;
 
 import android.app.Activity;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.SessionCallback;
-import com.teamtips.android.saeut.func.login.data.Result;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
-
-import java.util.concurrent.Callable;
 
 public class LoginActivity extends AppCompatActivity {
 

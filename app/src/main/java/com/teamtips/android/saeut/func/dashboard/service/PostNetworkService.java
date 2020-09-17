@@ -1,11 +1,10 @@
 package com.teamtips.android.saeut.func.dashboard.service;
 
 import android.util.Log;
-import com.google.gson.Gson;
+
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 
 import java.security.cert.CertificateException;
-import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;

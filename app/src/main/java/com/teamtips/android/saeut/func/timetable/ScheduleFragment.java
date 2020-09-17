@@ -46,8 +46,6 @@ public class ScheduleFragment extends Fragment {
         Button bt_add = root.findViewById(R.id.add_btn);
         Button bt_clear = root.findViewById(R.id.clear_btn);
 
-
-
         timetable.setOnStickerSelectEventListener((idx, schedules) -> {
             Log.e(Tag,"hi");
             Intent i = new Intent(getContext(), EditActivity.class);
@@ -69,8 +67,6 @@ public class ScheduleFragment extends Fragment {
             startActivityForResult(i,REQUEST_ADD);
             }
         );
-
-
 
         bt_clear.setOnClickListener(v -> timetable.removeAll());
         return root;

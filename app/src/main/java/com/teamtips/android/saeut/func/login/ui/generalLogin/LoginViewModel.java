@@ -135,6 +135,7 @@ public class LoginViewModel extends ViewModel {
                     JSONObject jwt_json = result_json.getJSONObject("jwt");
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
+                    Log.e(Tag,refreshToken);
 
                     //서버에서 유저정보 데이터 받아오기
                     //account_id, nickname, name, phone, pic, type, rank, score, description, location
