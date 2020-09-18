@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -43,10 +42,8 @@ public class DashboardFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        viewPager = view.findViewById(R.id.view_pager);
-        FragmentPageAdapter adapter =
-                new FragmentPageAdapter(
-                        getChildFragmentManager(), requireArguments().getString(ARG_NAME));
+        viewPager = view.findViewById(R.id.container_dashboard);
+        FragmentPageAdapter adapter = new FragmentPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
@@ -76,17 +73,15 @@ public class DashboardFragment extends Fragment {
     // PageAdapter 설정
     private static class FragmentPageAdapter extends FragmentPagerAdapter {
 
-        private final String name;
 
-        public FragmentPageAdapter(FragmentManager fm, String name) {
+        public FragmentPageAdapter(FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-            this.name = name;
         }
 
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return DashboardChildFragment.newInstance(position, name);
+            return DashboardChildFragment.newInstance(position);
         }
 
         @Override

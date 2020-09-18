@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -40,8 +41,12 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     MapView mapView;
     MapPoint nowMapPoint;
 
-    public static MapFragment newInstance() {
-        return new MapFragment();
+    private static class MapFragmentHolder {
+        public static final MapFragment mapFragment = new MapFragment();
+    }
+
+    public static MapFragment getInstance(){
+        return MapFragmentHolder.mapFragment;
     }
 
     @Override

@@ -16,35 +16,33 @@ import timber.log.Timber;
 
 public class HomeFragment extends Fragment {
 
-  private static final String ARG_ID = "arg_id";
+    private static final String Tag = "HomeFragment";
 
-  public static HomeFragment newInstance(int id) {
-    Bundle bundle = new Bundle();
-    bundle.putInt(ARG_ID, id);
-    HomeFragment homeFragment = new HomeFragment();
-    homeFragment.setArguments(bundle);
-    return homeFragment;
-  }
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
 
-  @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    getLifecycle().addObserver(new TimberLogger(this));
-  }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getLifecycle().addObserver(new TimberLogger(this));
+    }
 
-  @Nullable
-  @Override
-  public View onCreateView(
-      @NonNull LayoutInflater inflater,
-      @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_home, container, false);
-  }
+    @Nullable
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_home, container, false);
+    }
 
-  @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
-    int id = requireArguments().getInt(ARG_ID);
-    Timber.d("param as id:%s", id);
-  }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    private static class HomeFragmentHolder {
+
+    }
 }

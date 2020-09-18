@@ -4,41 +4,49 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
+import com.teamtips.android.saeut.func.home.HomeFragment;
+import com.teamtips.android.saeut.func.map.MapFragment;
+import com.teamtips.android.saeut.func.profile.ProfileFragment;
+import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
 
 public class BottomNavItemSelectedListener
-    implements BottomNavigationView.OnNavigationItemSelectedListener {
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-  private final Toolbar toolbar;
-  private final ViewPager viewPager;
+    private final Toolbar toolbar;
+    private final FragmentManager fragmentManager;
 
-  public BottomNavItemSelectedListener(ViewPager viewPager, Toolbar toolbar) {
-    this.toolbar = toolbar;
-    this.viewPager = viewPager;
-  }
-
-  @Override
-  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-    toolbar.setTitle(item.getTitle());
-    int itemId = item.getItemId();
-    if (itemId == R.id.navigation_home) {
-      viewPager.setCurrentItem(0);
-      return true;
-    } else if (itemId == R.id.navigation_map) {
-      viewPager.setCurrentItem(1);
-      return true;
-    } else if (itemId == R.id.navigation_dashboard) {
-      viewPager.setCurrentItem(2);
-      return true;
-    } else if (itemId == R.id.navigation_schedule) {
-      viewPager.setCurrentItem(3);
-      return true;
-    } else if (itemId == R.id.navigation_profile) {
-      viewPager.setCurrentItem(4);
-      return true;
+    public BottomNavItemSelectedListener(FragmentManager fragmentManager, Toolbar toolbar) {
+        this.toolbar = toolbar;
+        this.fragmentManager = fragmentManager;
     }
-    return false;
-  }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        toolbar.setTitle(item.getTitle());
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        int itemId = item.getItemId();
+        switch(itemId){
+            case R.id.navigation_home:
+                transaction.replace(R.id.container_main, new HomeFragment()).commit();
+                return true;
+            case R.id.navigation_map:
+                transaction.replace(R.id.container_main, MapFragment.getInstance()).commit();
+                return true;
+            case R.id.navigation_dashboard:
+                transaction.replace(R.id.container_main, new DashboardFragment()).commit();
+                return true;
+            case R.id.navigation_schedule:
+                transaction.replace(R.id.container_main, new ScheduleFragment()).commit();
+                return true;
+            case R.id.navigation_profile:
+                transaction.replace(R.id.container_main, new ProfileFragment()).commit();
+                return true;
+        }
+        return true;
+    }
 }
