@@ -83,17 +83,14 @@ public class DashboardChildFragment extends Fragment {
         }
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-        View root = inflater.inflate(R.layout.fragment_dashboard_child, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         postArrayList = new ArrayList<Post>();
 
-        dashboardChildAdapter = new DashboardChildAdapter(root.getContext(), R.layout.adapter_dashboard, postArrayList);
-        listView = root.findViewById(R.id.lv_child);
+        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList);
+        listView = view.findViewById(R.id.lv_child);
 
         listView.setAdapter(dashboardChildAdapter);
 
@@ -114,8 +111,14 @@ public class DashboardChildFragment extends Fragment {
             // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
             url = "http://49.50.173.180:8080/saeut/post/" + account_id;
         }
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_dashboard_child, container, false);
         return root;
     }
 
