@@ -12,15 +12,23 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.teamtips.android.saeut.func.dashboard.CreatePostActivity;
+import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
+import com.teamtips.android.saeut.func.home.HomeFragment;
+import com.teamtips.android.saeut.func.map.MapFragment;
+import com.teamtips.android.saeut.func.profile.ProfileFragment;
+import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
 
 import java.security.MessageDigest;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     private BottomNavigationView navigation;
     private Toolbar toolbar;
@@ -48,18 +56,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        AppFragmentPageAdapter adapter = new AppFragmentPageAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         navigation = findViewById(R.id.navigation);
-        BottomNavItemSelectedListener listener = new BottomNavItemSelectedListener(viewPager, toolbar);
+        BottomNavItemSelectedListener listener = new BottomNavItemSelectedListener(fragmentManager, toolbar);
         navigation.setOnNavigationItemSelectedListener(listener);
         bindNavigationDrawer();
-        initTitle();
-//        getAppKeyHash(); 해시키 알아내는 함수는 당분간 필요없음
     }
 
     private void initTitle() {

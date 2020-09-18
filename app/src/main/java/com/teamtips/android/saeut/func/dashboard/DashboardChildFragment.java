@@ -56,11 +56,10 @@ public class DashboardChildFragment extends Fragment {
         this.position = position;
     }
 
-    public static DashboardChildFragment newInstance(int position, String name) {
+    public static DashboardChildFragment newInstance(int position) {
 
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_POSITION, position);
-        args.putString(ARGUMENT_NAME, name);
         DashboardChildFragment fragment = new DashboardChildFragment(position);
         fragment.setArguments(args);
         return fragment;
