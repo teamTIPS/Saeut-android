@@ -24,6 +24,7 @@ import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
 import com.teamtips.android.saeut.func.home.HomeFragment;
 import com.teamtips.android.saeut.func.map.MapFragment;
 import com.teamtips.android.saeut.func.profile.ProfileFragment;
+import com.teamtips.android.saeut.func.splash.SplashActivity;
 import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
 
 import java.security.MessageDigest;
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(this, SplashActivity.class);
+        startActivity(intent);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

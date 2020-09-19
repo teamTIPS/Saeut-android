@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 
@@ -32,12 +34,18 @@ public class DetailPostActivity extends AppCompatActivity {
     private static TextView tv_address;
     private static TextView tv_contents;
     private static Button btn_detail_submit;
-    private static Button btn_detail_cancel;
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // Detail Post findViewById
         AllFindViewDetail();
@@ -52,13 +60,6 @@ public class DetailPostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 돌봄 신청 페이지 뜨게끔 수정하기.
                 applyDialogShow();
-            }
-        });
-
-        btn_detail_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }
@@ -83,13 +84,6 @@ public class DetailPostActivity extends AppCompatActivity {
             }
         });
 
-        btn_apply_cancel.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "신청 취소 !!",Toast.LENGTH_LONG).show();
-                dialog.dismiss();
-            }
-        });
-
         dialog.show();
 
     }
@@ -109,7 +103,6 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_address = (TextView) findViewById(R.id.tv_address);
 
         btn_detail_submit = (Button) findViewById(R.id.btn_detail_submit);
-        btn_detail_cancel = (Button)findViewById(R.id.btn_detail_cancel);
     }
 
     private void AllStoreData(Post post) {
