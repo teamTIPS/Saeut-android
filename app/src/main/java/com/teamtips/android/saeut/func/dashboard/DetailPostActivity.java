@@ -117,9 +117,8 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_contents.setText(post.getContents());
         tv_id.setText(post.getId());
 
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        tv_startDate.setText(dateFormat.format(post.getStart_date()));
-        tv_dueDate.setText(dateFormat.format(post.getDue_date()));
+        tv_startDate.setText(post.getStart_date());
+        tv_dueDate.setText(post.getDue_date());
 
         // 추후 Apply 테이블과 연결해야 함.
         tv_applyCount.setText("0");

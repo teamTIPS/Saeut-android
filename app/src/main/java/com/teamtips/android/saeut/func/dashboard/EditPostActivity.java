@@ -59,8 +59,8 @@ public class EditPostActivity extends AppCompatActivity {
                         et_contents.getText().toString(),
                         "test",
                         getCheckedType(),
-                        Date.valueOf(et_startDate.getText().toString()),
-                        Date.valueOf(et_dueDate.getText().toString())
+                        et_startDate.getText().toString(),
+                        et_dueDate.getText().toString()
                 );
 
                 Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();

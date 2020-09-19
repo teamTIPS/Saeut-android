@@ -10,20 +10,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
-import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
-import java.util.Calendar;
 import java.sql.Date;
+import java.util.Calendar;
 
 public class CreatePostActivity extends AppCompatActivity {
 
-    private static final String Tag = "CreatePostActivity";
+    private static final String TAG = "CreatePostActivity";
 
     private static Button btn_add_submit;
     private static Button btn_add_cancel;
@@ -91,18 +89,19 @@ public class CreatePostActivity extends AppCompatActivity {
         btn_add_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(Tag,"btn_add_submit onClick");
+                Log.e(TAG,"btn_add_submit onClick");
                 // 데이터 전송
                 Post post = new Post(
                         et_title.getText().toString(),
                         et_contents.getText().toString(),
                         "test",
                         getCheckedType(),
-                        Date.valueOf(et_startDate.getText().toString()),
-                        Date.valueOf(et_dueDate.getText().toString())
+                        et_startDate.getText().toString(),
+                        et_dueDate.getText().toString()
                 );
+                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_LONG).show();
+                Log.d(TAG, post.toString());
 
-                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
                 sendPostNetworkService(post);
 //                boolean result = sendPostNetworkService(post);
 //                if(result) {
@@ -156,4 +155,6 @@ public class CreatePostActivity extends AppCompatActivity {
             return 2;
         }
     }
+
+
 }

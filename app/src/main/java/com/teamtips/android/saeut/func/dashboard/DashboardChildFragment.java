@@ -43,6 +43,8 @@ public class DashboardChildFragment extends Fragment {
     private ListView listView;
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
+    private static String url;
+    private int position;        // taglayout 구별하기 위한 일종의 flag라고 이해함
 
     // 현재 로그인한 유저정보 불러오기
     // public static LoggedInUser getLoggedInUser(){
@@ -50,14 +52,11 @@ public class DashboardChildFragment extends Fragment {
     // }
     private LoggedInUser loggedInUser;
 
-    int position; // taglayout 구별하기 위한 일종의 flag라고 이해함
-
     public DashboardChildFragment(int position) {
         this.position = position;
     }
 
     public static DashboardChildFragment newInstance(int position) {
-
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_POSITION, position);
         DashboardChildFragment fragment = new DashboardChildFragment(position);
@@ -74,7 +73,7 @@ public class DashboardChildFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        int position = requireArguments().getInt(ARGUMENT_POSITION, -1);
+        position = requireArguments().getInt(ARGUMENT_POSITION, -1);
 
         // 삭제 구현...? -> 내가 작성한 게시물에서만 작동되도록 하는게 좋을듯
         if (position == 1) {
@@ -85,31 +84,8 @@ public class DashboardChildFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        postArrayList = new ArrayList<Post>();
-
-        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList);
-        listView = view.findViewById(R.id.lv_child);
-
-        listView.setAdapter(dashboardChildAdapter);
-
-        // fragment position에 따른 url 구현
-        String url;
-
-        // 추후 현재 로그인 유저 정보 받아서 수정할 것.
-        String account_id = "test3";
-        if (position == 0) {
-            // 전체 리스트를 불러오는 URL
-            url = "http://49.50.173.180:8080/saeut/post";
-            getListByURL(url);
-        } else if (position == 1) {
-            // 내가 작성한 게시물만 불러오는 URL -> 추후 수정 필요
-            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
-            getListByURL(url);
-        } else {
-            // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
-            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
-        }
+        setAdapter(view);
+        getListByPosition(position);
     }
 
     @Nullable
@@ -121,8 +97,36 @@ public class DashboardChildFragment extends Fragment {
         return root;
     }
 
-    private void getListByURL(String url) {
+    private void setAdapter(View view) {
+        postArrayList = new ArrayList<Post>();
+        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList);
+        listView = view.findViewById(R.id.lv_child);
+        listView.setAdapter(dashboardChildAdapter);
+    }
+    private void getListByPosition(int position) {
+        // fragment position에 따른 url 구현
+        // 추후 현재 로그인 유저 정보 받아서 수정할 것.
+        String account_id = "test3";
+        if (position == 0) {
+            // 전체 리스트를 불러오는 URL
+            url = "http://49.50.173.180:8080/saeut/post";
+        } else if (position == 1) {
+            // 내가 작성한 게시물만 불러오는 URL -> 추후 수정 필요
+            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
+        } else {
+            // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
+            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
+        }
         postNetworkTask = new PostNetworkTask(url, null, dashboardChildAdapter);
         postNetworkTask.execute();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 만약 추가된 데이터가 있다면,
+        setAdapter(getView());
+        dashboardChildAdapter.notifyDataSetChanged();
+        getListByPosition(position);
     }
 }
