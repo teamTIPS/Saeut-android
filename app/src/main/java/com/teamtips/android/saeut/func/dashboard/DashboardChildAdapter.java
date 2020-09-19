@@ -81,12 +81,11 @@ public class DashboardChildAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         holder.title.setText(postArrayList.get(position).getTitle());
 
         // Date 연결
-         String date = dateFormat.format(postArrayList.get(position).getStart_date())
-                + "~" + dateFormat.format(postArrayList.get(position).getDue_date());
+         String date = postArrayList.get(position).getStart_date()
+                + "~" + postArrayList.get(position).getDue_date();
         holder.date.setText(date);
 
         int status = postArrayList.get(position).getStatus();
@@ -114,7 +113,7 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     // 새로운 게시글을 추가하는 메서드
-    public void addItem(int post_id, String id, String title, Date post_date, String contents, Date start_date, Date due_date, int type){
+    public void addItem(int post_id, String id, String title, String post_date, String contents, String start_date, String due_date, int type){
         Post post = new Post(post_id, id, title, post_date, contents, start_date, due_date, type);
         postArrayList.add(post);
     }

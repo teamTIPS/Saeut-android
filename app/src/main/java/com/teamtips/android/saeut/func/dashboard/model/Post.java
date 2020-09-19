@@ -10,20 +10,20 @@ import java.util.Date;
 public class Post implements Serializable {
 
     // Variable
-    private int post_id; //sequence
+    private int post_id; // sequence
     private String id; // (FK) account 클래스의 id
     private String title; //게시물 제목
-    private Date post_date; //게시글 추가한 날짜
+    private String post_date; //게시글 추가한 날짜
     private String contents; // 게시글 내용
-    private Date start_date; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
-    private Date due_date; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
+    private String start_date; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
+    private String due_date; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
     private int status; // 현재 돌봄 진행상태 (모집 중(0)/모집 마감(1)/완료(2))
     private int type; // 장애인(0) & 아동(1) & 노인(2)
 
     // Constructor
     public Post() { }
 
-    public Post(String title, String contents, String id, int type, Date start_date, Date due_date) {
+    public Post(String title, String contents, String id, int type, String start_date, String due_date) {
         this();
         this.title = title;
         this.contents = contents;
@@ -32,9 +32,11 @@ public class Post implements Serializable {
         this.start_date = start_date;
         this.due_date = due_date;
         this.status = 0;
+        this.post_id = 0;
+        this.post_date = null;
     }
 
-    public Post(int post_id, String id, String title, Date post_date, String contents, Date start_date, Date due_date, int type) {
+    public Post(int post_id, String id, String title, String post_date, String contents, String start_date, String due_date, int type) {
         this.post_id = post_id;
         this.id = id;
         this.title = title;
@@ -65,27 +67,8 @@ public class Post implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    public Date getPost_date() {
-        return post_date;
-    }
-    public void setPost_date(Date post_date) {
-        this.post_date = post_date;
-    }
     public String getContents() {
         return contents;
-    }
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
-    public Date getStart_date() {
-        return start_date;
-    }
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
-    }
-    public Date getDue_date() { return due_date; }
-    public void setDue_date(Date due_date) {
-        this.due_date = due_date;
     }
     public int getStatus() {
         return status;
@@ -95,6 +78,34 @@ public class Post implements Serializable {
     }
     public int getType() { return type; }
     public void setType(int type) { this.type = type; }
+
+    public String getPost_date() {
+        return post_date;
+    }
+
+    public void setPost_date(String post_date) {
+        this.post_date = post_date;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+
+    public String getDue_date() {
+        return due_date;
+    }
+
+    public void setDue_date(String due_date) {
+        this.due_date = due_date;
+    }
 
     public String getStatusForText(int status) {
         if(status == 0) {
