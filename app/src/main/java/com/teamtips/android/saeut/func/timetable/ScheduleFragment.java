@@ -79,12 +79,12 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.delete, menu);
-        inflater.inflate(R.menu.message, menu);
+        inflater.inflate(R.menu.plus, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_message) {
+        if (item.getItemId() == R.id.menu_plus) {
             Intent i = new Intent(getContext(),EditActivity.class);
             i.putExtra("mode",REQUEST_ADD);
             startActivityForResult(i,REQUEST_ADD);

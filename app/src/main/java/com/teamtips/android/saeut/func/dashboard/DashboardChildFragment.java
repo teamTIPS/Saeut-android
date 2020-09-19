@@ -57,16 +57,6 @@ public class DashboardChildFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        position = requireArguments().getInt(ARGUMENT_POSITION, -1);
-
-        // 삭제 구현...? -> 내가 작성한 게시물에서만 작동되도록 하는게 좋을듯
-        if (position == 1) {
-            inflater.inflate(R.menu.delete, menu);
-        }
-    }
-
-    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setAdapter(view);

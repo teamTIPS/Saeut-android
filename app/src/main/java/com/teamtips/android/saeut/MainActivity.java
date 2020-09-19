@@ -35,25 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_search) {
-            showSearch();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void showSearch() {
-        Snackbar.make(navigation, "Go to Search", Snackbar.LENGTH_LONG).show();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
