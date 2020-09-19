@@ -28,7 +28,7 @@ import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
 
 import java.security.MessageDigest;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private Toolbar toolbar;
@@ -58,13 +58,16 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.container_main, new HomeFragment()).commit();
 
         navigation = findViewById(R.id.navigation);
         BottomNavItemSelectedListener listener = new BottomNavItemSelectedListener(fragmentManager, toolbar);
         navigation.setOnNavigationItemSelectedListener(listener);
         bindNavigationDrawer();
+        initTitle();
     }
 
     private void initTitle() {
