@@ -1,37 +1,23 @@
 package com.teamtips.android.saeut.func.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
-import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-
-import retrofit2.Retrofit;
 
 public class DashboardChildFragment extends Fragment {
 
@@ -69,7 +55,6 @@ public class DashboardChildFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        getLifecycle().addObserver(new TimberLogger(this));
     }
 
     @Override

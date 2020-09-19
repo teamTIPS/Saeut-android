@@ -5,9 +5,31 @@
     tools:context="com.teamtips.android.saeut.func.map.MapFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:id="@+id/search_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="주소를 검색해주세요."
+            android:layout_below="@+id/search_btn"/>
+        <Button
+            android:id="@+id/goto_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_address"
+            android:text="현위치로 이동합니다"/>
+    </RelativeLayout>
+
 
 </FrameLayout>

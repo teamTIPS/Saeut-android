@@ -16,7 +16,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
 
 
 public class DashboardFragment extends Fragment {
@@ -62,7 +61,6 @@ public class DashboardFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        getLifecycle().addObserver(new TimberLogger(this));
     }
 
     @Override

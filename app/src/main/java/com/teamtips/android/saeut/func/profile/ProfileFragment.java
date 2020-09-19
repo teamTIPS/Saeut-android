@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
 
 public class ProfileFragment extends Fragment {
 
@@ -33,7 +32,6 @@ public class ProfileFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
-    getLifecycle().addObserver(new TimberLogger(this));
   }
 
   @Override

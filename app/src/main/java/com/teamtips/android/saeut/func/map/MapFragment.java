@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +21,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -39,7 +40,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION};
     MapView mapView;
-    MapPoint nowMapPoint;
 
     private static class MapFragmentHolder {
         public static final MapFragment mapFragment = new MapFragment();
@@ -55,6 +55,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_maps, container, false);
 
+
         //지도
         mapView = new MapView(getContext());
         ViewGroup mapViewContainer = v.findViewById(R.id.map_view);
@@ -69,7 +70,15 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
             checkRunTimePermission();
         }
 
-        // 중심점 변경 - 현위치
+        //검색버튼
+        Button search_btn = v.findViewById(R.id.search_btn);
+        //현위치로 이동 버튼
+        Button goto_btn = v.findViewById(R.id.goto_btn);
+
+        EditText search_address = v.findViewById(R.id.search_address);
+
+        // 중심점 변경 - 현위치 >> 사용자가 등록한 위치로 자동 이동
+        //현재는 임의의 위치로 이동 중
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.54892296550104, 126.99089033876304), true);
 
         // 줌 레벨 변경
@@ -85,9 +94,22 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
         mapView.addPOIItem(marker);
 
+        //현위치 확인하고 지도 중심으로 마커찍고 이동, 좌표값 넘겨주고 주소 받아오기
+        goto_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mapView.setMapCenterPoint(marker.getMapPoint(), true);
+            }
+        });
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String search_edit = search_address.getText().toString();
+                Log.e(Tag,"search_edit:"+search_edit);
+            }
+        });
         return v;
     }
-
 
     @Override
     public void onDestroy() {
@@ -167,10 +189,10 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED) {
 
             // 3.  위치 값을 가져올 수 있음
-            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+            mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeadingWithoutMapMoving);
             mapView.setShowCurrentLocationMarker(true);
 
-            System.out.println("Mapfragment");
+            Log.e(Tag,"checkRunTimePermission");
 
         } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
 

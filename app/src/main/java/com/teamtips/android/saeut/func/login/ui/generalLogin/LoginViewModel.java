@@ -46,10 +46,10 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
 
-        String url = "http://49.50.173.180:8080/saeut/signon/authenticate";
+        String url = "http://49.50.173.180:8080/saeut/signon";
         JSONObject user_json = new JSONObject();
+
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
         try {
             user_json.accumulate("id", username);
@@ -61,15 +61,19 @@ public class LoginViewModel extends ViewModel {
         // 로그인 API url과 로그인 정보가 저장된 데이터로 POST 방식 NetworkTask_POST 호출
         NetworkTask_POST networkTask_POST = new NetworkTask_POST(url, user_json.toString());
         networkTask_POST.execute();
-        /*
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+    }
 
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
-        } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }*/
+    public void login(String rt) {
+        String url = "http://49.50.173.180:8080/saeut/signon/refreshToken";
+        JSONObject user_json = new JSONObject();
+        try {
+            user_json.accumulate("refreshToken", rt);
+            Log.e(Tag,"rt: "+rt);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        NetworkTask_POST networkTask_post = new NetworkTask_POST(url, user_json.toString());
+        networkTask_post.execute();
     }
 
     public void loginDataChanged(String username, String password) {
@@ -158,6 +162,5 @@ public class LoginViewModel extends ViewModel {
                 loginResult.setValue(new LoginResult(1));
             }
         }
-
-    } //NetworkTask_POST
+    }
 }

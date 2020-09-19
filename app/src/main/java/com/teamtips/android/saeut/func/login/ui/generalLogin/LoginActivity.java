@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.gson.JsonObject;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.teamtips.android.saeut.MainActivity;
@@ -24,6 +25,14 @@ import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.SessionCallback;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
+
+import org.json.JSONException;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,20 +42,21 @@ public class LoginActivity extends AppCompatActivity {
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
 
-//    Callable<LoginResult> loginResultCallable = new Callable<LoginResult>() {
-//        @Override
-//        public LoginResult call() throws Exception {
-//
-//        }
-//    };
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        SaveSharedPreference.clearUser(this);
+//        SaveSharedPreference.clearUser(this);
+
         super.onCreate(savedInstanceState);
+        String Rt = SaveSharedPreference.getRT(this);
+
         setContentView(R.layout.activity_login_total);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
+
+        if(Rt != null && !Rt.equals("")){
+            //Rt로 로그인하기
+            loginViewModel.login(Rt);
+        }
 
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);
@@ -194,5 +204,4 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 }

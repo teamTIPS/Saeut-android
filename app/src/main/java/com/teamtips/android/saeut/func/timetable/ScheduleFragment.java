@@ -18,9 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.github.tlaabs.timetableview.Schedule;
 import com.github.tlaabs.timetableview.TimetableView;
-import com.google.android.material.snackbar.Snackbar;
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
 
 import java.util.ArrayList;
 
@@ -76,7 +74,6 @@ public class ScheduleFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        getLifecycle().addObserver(new TimberLogger(this));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.teamtips.android.saeut.func.login.ui.generalLogin;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
@@ -14,10 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-//아이디 및 비밀번호 자동완성, AuthActivity와 함께 나중에 완성하기
 public class SaveSharedPreference {
     static final String PREF_USER_NAME = "username";
     static final String PREF_LOGINUSER = "loginuser";
+    private static final String Tag = "SaveSharedPreference";
 
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -51,7 +52,8 @@ public class SaveSharedPreference {
 
     // 저장된 정보 가져오기
     public static String getRT(Context ctx) {
-        return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
+        Log.e(Tag,"GetRT:"+getSharedPreferences(ctx).getString("RefreshToken", ""));
+        return getSharedPreferences(ctx).getString("RefreshToken", "");
     }
 
     public static Date getRTtime(Context ctx){
