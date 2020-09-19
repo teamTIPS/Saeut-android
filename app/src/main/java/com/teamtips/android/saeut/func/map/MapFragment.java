@@ -60,7 +60,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         ViewGroup mapViewContainer = v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
 
-        mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeading);
         mapView.setCurrentLocationEventListener(this);
         Log.e(Tag,mapView.getCurrentLocationTrackingMode().toString());
 
