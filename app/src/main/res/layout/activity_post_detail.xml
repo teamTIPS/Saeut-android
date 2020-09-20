@@ -1,272 +1,303 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/layout_title"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="돌봄 요청합니다."
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="4dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:layout_alignParentTop="true"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="돌봄요청정보"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/detail_submit"
+        android:layout_below="@+id/app_bar"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="제목"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="63dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_rect"
+                    android:gravity="center"
+                    android:text="아동"
+                    android:textSize="20sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="작성자" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="작성자" />
 
-        <TextView
-            android:id="@+id/tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:lines="8"
-            android:maxLines="10"
-            android:minLines="6"
-            android:scrollbars="vertical"
-            android:text="태그"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="122dp" />
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/rg_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="44dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.843"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="113dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rb_children"
-                android:layout_width="74dp"
-                android:layout_height="match_parent"
+                <TextView
+                    android:id="@+id/tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:maxLines="10"
+                    android:minLines="6"
+                    android:scrollbars="vertical"
+                    android:text="태그"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="28dp"
+                    tools:layout_editor_absoluteY="122dp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="44dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.843"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="113dp">
+
+                    <RadioButton
+                        android:id="@+id/rb_children"
+                        android:layout_width="74dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="아동" />
+
+                    <RadioButton
+                        android:id="@+id/rb_disable"
+                        android:layout_width="85dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="장애인" />
+
+                    <RadioButton
+                        android:id="@+id/rb_old"
+                        android:layout_width="73dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="노인" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시작 날짜"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="27dp"
+                    tools:layout_editor_absoluteY="175dp" />
+
+                <TextView
+                    android:id="@+id/tv_startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dueDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="종료 날짜"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="27dp"
+                    tools:layout_editor_absoluteY="175dp" />
+
+                <TextView
+                    android:id="@+id/tv_dueDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주소"
+                    android:textSize="18sp"
+                    tools:layout_editor_absoluteX="28dp"
+                    tools:layout_editor_absoluteY="63dp" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:hint="00시 00동"
+                    android:inputType="textPersonName"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="54dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="아동" />
+                android:text="돌봄요청자의 상세주소는 매칭이 완료되면 확인하실 수 있습니다."
+                android:textSize="12sp"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="63dp" />
 
-            <RadioButton
-                android:id="@+id/rb_disable"
-                android:layout_width="85dp"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/contents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="요청사항"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="27dp"
+                tools:layout_editor_absoluteY="225dp" />
+
+            <TextView
+                android:id="@+id/tv_contents"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
                 android:gravity="center"
-                android:text="장애인" />
-
-            <RadioButton
-                android:id="@+id/rb_old"
-                android:layout_width="73dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="노인" />
-
-        </RadioGroup>
-    </LinearLayout>
+                android:text="TextView" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/detail_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true">
 
-        <TextView
-            android:id="@+id/startDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시작 날짜"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="175dp" />
-
-        <TextView
-            android:id="@+id/tv_startDate"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
+            android:layout_gravity="center">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재신청자 "/>
+                <TextView
+                    android:id="@+id/tv_applyCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="명" />
 
-        <TextView
-            android:id="@+id/dueDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="종료 날짜"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="175dp" />
-
-        <TextView
-            android:id="@+id/tv_dueDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주소"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="63dp" />
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:hint="00시 00동"
-            android:inputType="textPersonName"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="54dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/text_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="돌봄요청자의 상세주소는 매칭이 완료되면 확인하실 수 있습니다."
-        android:textSize="12sp"
-        android:gravity="center"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="63dp" />
-
-    <TextView
-        android:id="@+id/contents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="요청사항"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="225dp" />
-
-    <TextView
-        android:id="@+id/tv_contents"
-        android:layout_width="match_parent"
-        android:layout_height="99dp"
-        android:gravity="center"
-        android:text="TextView" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/applyCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="현재 신청자 수"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="63dp" />
-
-        <TextView
-            android:id="@+id/tv_applyCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:inputType="textPersonName"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="54dp" />
-
-        <TextView
-            android:id="@+id/count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="명" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+            </LinearLayout>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_detail_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="신청" />
-
-        <Button
-            android:id="@+id/btn_detail_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="취소" />
+            android:layout_weight="1.5"
+            android:background="@color/colorPrimary"
+            android:text="신청하기" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

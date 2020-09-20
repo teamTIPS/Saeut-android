@@ -29,6 +29,9 @@
         <activity android:name=".func.dashboard.EditPostActivity" />
         <activity android:name=".func.timetable.EditActivity" />
 
+        <activity android:name=".func.splash.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
         <activity android:name=".func.login.ui.generalLogin.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

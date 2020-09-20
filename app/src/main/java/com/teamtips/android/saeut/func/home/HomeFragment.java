@@ -10,9 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
-
-import timber.log.Timber;
 
 public class HomeFragment extends Fragment {
 
@@ -25,7 +22,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLifecycle().addObserver(new TimberLogger(this));
     }
 
     @Nullable

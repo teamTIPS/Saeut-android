@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.TimberLogger;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
@@ -55,17 +54,6 @@ public class DashboardChildFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        getLifecycle().addObserver(new TimberLogger(this));
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        position = requireArguments().getInt(ARGUMENT_POSITION, -1);
-
-        // 삭제 구현...? -> 내가 작성한 게시물에서만 작동되도록 하는게 좋을듯
-        if (position == 1) {
-            inflater.inflate(R.menu.delete, menu);
-        }
     }
 
     @Override

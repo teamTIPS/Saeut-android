@@ -38,7 +38,7 @@ public class SideNavItemSelectedListener
       showGallerySnackBar();
     } else if (id == R.id.nav_send) {
       showSendSnackBar();
-    } else if (id == R.id.nav_login) {
+    } else if (id == R.id.nav_logout) {
       showLoginPage();
     }
     drawer.closeDrawer(GravityCompat.START);
