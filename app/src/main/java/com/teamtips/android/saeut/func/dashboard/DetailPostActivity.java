@@ -84,6 +84,13 @@ public class DetailPostActivity extends AppCompatActivity {
             }
         });
 
+        btn_apply_cancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "신청 취소 !!",Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
 
     }
