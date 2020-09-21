@@ -180,7 +180,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     }
 
     void checkRunTimePermission() {
-
         //런타임 퍼미션 처리
         // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
         int hasFineLocationPermission = ContextCompat.checkSelfPermission(this.getContext(),
@@ -194,8 +193,8 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
             Log.e(Tag,"checkRunTimePermission");
 
-        } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
-
+        } else {
+            //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
             // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0])) {
 
