@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
@@ -19,6 +20,7 @@ import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -33,14 +35,16 @@ public class DashboardChildAdapter extends BaseAdapter {
     private ArrayList<Post> postArrayList;      // 원본 데이터 리스트
     private LayoutInflater layoutInflater;      // inflater 객체
     private static PostNetworkService postNetworkService = new PostNetworkService();
+    private int tab_position;
 
     public DashboardChildAdapter() { }
 
-    public DashboardChildAdapter(Context context, int layout, ArrayList<Post> postArrayList) {
+    public DashboardChildAdapter(Context context, int layout, ArrayList<Post> postArrayList, int tab_position) {
         this.context = context;
         this.layout = layout;
         this.postArrayList = postArrayList;
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.tab_position = tab_position;
     }
 
     @Override
@@ -77,6 +81,7 @@ public class DashboardChildAdapter extends BaseAdapter {
             holder.color = (ImageView) view.findViewById(R.id.iv_color);
             holder.applyCount = (TextView) view.findViewById(R.id.tv_apply);
             holder.status = (Button) view.findViewById(R.id.btn_status);
+            holder.detail_private_layout = (LinearLayout) view.findViewById(R.id.detail_private_layout);
 
             view.setTag(holder);    // ViewHolder 삽입
         } else {
@@ -106,7 +111,12 @@ public class DashboardChildAdapter extends BaseAdapter {
         }
 
         int post_id = postArrayList.get(position).getPost_id();
-        holder.applyCount.setText(String.valueOf(postNetworkService.getApplyCount(post_id)));
+
+        if(tab_position == 1) {
+            holder.detail_private_layout.setVisibility(View.VISIBLE);
+        } else {
+            holder.detail_private_layout.setVisibility(View.GONE);
+        }
 
         // view 클릭 시 이벤트 처리
         view.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +146,7 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        LinearLayout detail_private_layout;
         TextView tagTitle;
         TextView title;
         TextView date;

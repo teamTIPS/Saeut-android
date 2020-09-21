@@ -73,7 +73,7 @@ public class DashboardChildFragment extends Fragment {
 
     private void setAdapter(View view) {
         postArrayList = new ArrayList<Post>();
-        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList);
+        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, position);
         listView = view.findViewById(R.id.lv_child);
         listView.setAdapter(dashboardChildAdapter);
     }
