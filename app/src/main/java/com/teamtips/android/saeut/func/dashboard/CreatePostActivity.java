@@ -48,8 +48,7 @@ public class CreatePostActivity extends AppCompatActivity {
         // 현재 날짜 구하기
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        //+ 1 하신 이유가?
-        int month = cal.get(Calendar.MONTH) + 1;
+        int month = cal.get(Calendar.MONTH);
         int date = cal.get(Calendar.DATE);
 
         // CalendarView 구현
@@ -59,7 +58,7 @@ public class CreatePostActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreatePostActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String chooseDate = year + "-" + month + "-" + dayOfMonth;
+                        String chooseDate = year + "-" + (month + 1) + "-" + dayOfMonth;
                         et_startDate.setText(chooseDate);
                     }
                 },year, month, date);
@@ -75,7 +74,7 @@ public class CreatePostActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreatePostActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String chooseDate = year + "-" + month + "-" + dayOfMonth;
+                        String chooseDate = year + "-" + (month + 1) + "-" + dayOfMonth;
                         et_dueDate.setText(chooseDate);
                     }
                 },year, month, date);
