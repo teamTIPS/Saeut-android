@@ -2,11 +2,12 @@ package com.teamtips.android.saeut.func.dashboard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,17 +16,15 @@ import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
-import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
+// 삭제가 되긴 하는데 리스트 업데이트 문제가 있어서 CursorAdapter로 변경 예정
 public class DashboardChildAdapter extends BaseAdapter {
 
     public static final String TAG = "DashboardChildAdapter";
@@ -73,50 +72,13 @@ public class DashboardChildAdapter extends BaseAdapter {
 
         if(view == null) {
             view = layoutInflater.inflate(layout, viewGroup, false);
-
-            holder = new ViewHolder();
-            holder.tagTitle = (TextView) view.findViewById(R.id.tv_tagTitle);
-            holder.title = (TextView) view.findViewById(R.id.tv_title);
-            holder.date = (TextView) view.findViewById(R.id.tv_date);
-            holder.color = (ImageView) view.findViewById(R.id.iv_color);
-            holder.applyCount = (TextView) view.findViewById(R.id.tv_apply);
-            holder.status = (Button) view.findViewById(R.id.btn_status);
-            holder.detail_private_layout = (LinearLayout) view.findViewById(R.id.detail_private_layout);
-
+            holder = AllFindViewAdapter(view, tab_position);
             view.setTag(holder);    // ViewHolder 삽입
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.title.setText(postArrayList.get(position).getTitle());
-
-        // Date 연결
-         String date = postArrayList.get(position).getStart_date()
-                + "~" + postArrayList.get(position).getDue_date();
-        holder.date.setText(date);
-
-        int status = postArrayList.get(position).getStatus();
-        holder.status.setText(postArrayList.get(position).getStatusForText(status));
-
-        int type = postArrayList.get(position).getType();
-        if(type == 0) {
-            holder.tagTitle.setText("장애인");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_handicap));
-        } else if(type == 1) {
-            holder.tagTitle.setText("아동");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_kid));
-        } else {
-            holder.tagTitle.setText("노인");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_elder));
-        }
-
-        int post_id = postArrayList.get(position).getPost_id();
-
-        if(tab_position == 1) {
-            holder.detail_private_layout.setVisibility(View.VISIBLE);
-        } else {
-            holder.detail_private_layout.setVisibility(View.GONE);
-        }
+        setDataInHolder(holder, position); // holder에 data 넣기
 
         // view 클릭 시 이벤트 처리
         view.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +97,24 @@ public class DashboardChildAdapter extends BaseAdapter {
             }
         });
 
+        // Private Layout OnClickListener
+        holder.private_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditPostActivity.class);
+                intent.putExtra("post", postArrayList.get(position));
+                context.startActivity(intent);
+            }
+        });
+
+        holder.private_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postNetworkService.deletePost(postArrayList.get(position).getPost_id(), context);
+                notifyDataSetChanged();
+            }
+        });
+
         // 나머지는 추후 다시 정의해야 함.
         return view;
     }
@@ -146,12 +126,65 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        LinearLayout detail_private_layout;
         TextView tagTitle;
         TextView title;
         TextView date;
         TextView applyCount;
         Button status;
         ImageView color;
+
+        //Private Layout
+        LinearLayout private_layout;
+        Button private_update;
+        Button private_delete;
+    }
+
+    private ViewHolder AllFindViewAdapter(View view, int tab_position) {
+        ViewHolder holder = new ViewHolder();
+
+        holder.tagTitle = (TextView) view.findViewById(R.id.tv_tagTitle);
+        holder.title = (TextView) view.findViewById(R.id.tv_title);
+        holder.date = (TextView) view.findViewById(R.id.tv_date);
+        holder.color = (ImageView) view.findViewById(R.id.iv_color);
+        holder.applyCount = (TextView) view.findViewById(R.id.tv_apply);
+        holder.status = (Button) view.findViewById(R.id.btn_status);
+
+        // Private Layout
+        holder.private_layout = (LinearLayout) view.findViewById(R.id.private_layout);
+        holder.private_update = (Button) view.findViewById(R.id.btn_private_update);
+        holder.private_delete = (Button) view.findViewById(R.id.btn_private_delete);
+
+        return holder;
+    }
+
+    private void setDataInHolder(ViewHolder holder, int position) {
+        holder.title.setText(
+                postArrayList.get(position).getTitle());
+
+        // Date 연결
+        String date = postArrayList.get(position).getStart_date()
+                + "~" + postArrayList.get(position).getDue_date();
+        holder.date.setText(date);
+
+        int status = postArrayList.get(position).getStatus();
+        holder.status.setText(postArrayList.get(position).getStatusForText(status));
+
+        int type = postArrayList.get(position).getType();
+        if(type == 0) {
+            holder.tagTitle.setText("장애인");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_handicap));
+        } else if(type == 1) {
+            holder.tagTitle.setText("아동");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_kid));
+        } else {
+            holder.tagTitle.setText("노인");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_elder));
+        }
+
+        if(tab_position == 1) {
+            holder.private_layout.setVisibility(View.VISIBLE);
+        } else {
+            holder.private_layout.setVisibility(View.GONE);
+        }
     }
 }

@@ -103,7 +103,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/detail_private_layout"
+        android:id="@+id/private_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -112,7 +112,7 @@
         android:visibility="visible">
 
         <Button
-            android:id="@+id/btn_detail_update"
+            android:id="@+id/btn_private_update"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1.0"
@@ -120,7 +120,7 @@
             android:text="수정하기" />
 
         <Button
-            android:id="@+id/btn_detail_delete"
+            android:id="@+id/btn_private_delete"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1.0"
