@@ -47,16 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 //        SaveSharedPreference.clearUser(this);
 
         super.onCreate(savedInstanceState);
-        String Rt = SaveSharedPreference.getRT(this);
-
         setContentView(R.layout.activity_login_total);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-
-        if(Rt != null && !Rt.equals("")){
-            //Rt로 로그인하기
-            loginViewModel.login(Rt);
-        }
 
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);

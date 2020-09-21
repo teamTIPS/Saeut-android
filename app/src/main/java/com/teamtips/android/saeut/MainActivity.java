@@ -5,27 +5,18 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.teamtips.android.saeut.func.dashboard.CreatePostActivity;
-import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
 import com.teamtips.android.saeut.func.home.HomeFragment;
-import com.teamtips.android.saeut.func.map.MapFragment;
-import com.teamtips.android.saeut.func.profile.ProfileFragment;
-import com.teamtips.android.saeut.func.splash.SplashActivity;
-import com.teamtips.android.saeut.func.timetable.ScheduleFragment;
+import com.teamtips.android.saeut.func.login.ui.generalLogin.SplashActivity;
 
 import java.security.MessageDigest;
 
@@ -39,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, SplashActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, SplashActivity.class);
+//        startActivity(intent);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

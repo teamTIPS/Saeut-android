@@ -5,12 +5,9 @@ import android.util.Log;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference;
 
-import java.util.Calendar;
 import java.util.Date;
 
-import okhttp3.Response;
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
@@ -21,20 +18,28 @@ public class LoggedInUser {
     private Date AccessexpireDateTime;
 
     //UserEssential
-    private String account_id;
+    private String id;
     private String password;
     private String name;
     private String phonenum;
-    private String nickname;
+    private Date birth;
+    private int gender;
+    //마케팅 정보 수신 동의 여부
+    private boolean perm1;
 
     //UserAdditional
-    private Date birth;
-    private String zipcode;
+    private String nickname;
+    private String pic;
+
+    //enum class 필요할 듯
+    private int rank;
+    private String score;
+    private String description;
     private String address1;
     private String address2;
-    private String picpath;
-    private String description;
-    private int type;
+    private String zipcode;
+    private String add_latitude;
+    private String add_longitude;
 
     /////////
     //싱글톤 패턴으로 구현
@@ -47,11 +52,11 @@ public class LoggedInUser {
     }
     /////////
 
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
+    public void setId(String id) {
+        this.id = id;
     }
-    public String getAccount_id() {
-        return account_id;
+    public String getId() {
+        return id;
     }
 
     public void setNickname(String nickname) {

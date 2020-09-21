@@ -21,14 +21,15 @@
             android:id="@+id/search_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="주소를 검색해주세요."
+            android:hint="주소를 검색해주세요."
+            android:background="@color/colorWhite"
             android:layout_below="@+id/search_btn"/>
         <Button
             android:id="@+id/goto_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/search_address"
-            android:text="현위치로 이동합니다"/>
+            android:text="지정된 좌표로 이동합니다."/>
     </RelativeLayout>
 
 
