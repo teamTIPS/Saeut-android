@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 
 import org.w3c.dom.Text;
@@ -31,7 +32,7 @@ public class DashboardChildAdapter extends BaseAdapter {
     private int layout;                         // AdapterView 항목에 대한 layout
     private ArrayList<Post> postArrayList;      // 원본 데이터 리스트
     private LayoutInflater layoutInflater;      // inflater 객체
-    private PostNetworkTask postNetworkTask;
+    private static PostNetworkService postNetworkService = new PostNetworkService();
 
     public DashboardChildAdapter() { }
 
@@ -100,6 +101,9 @@ public class DashboardChildAdapter extends BaseAdapter {
         } else {
             holder.tagTitle.setText("노인");
         }
+
+        int post_id = postArrayList.get(position).getPost_id();
+        holder.applyCount.setText(String.valueOf(postNetworkService.getApplyCount(post_id)));
 
         // view 클릭 시 이벤트 처리
         view.setOnClickListener(new View.OnClickListener() {
