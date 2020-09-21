@@ -55,14 +55,13 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_maps, container, false);
 
-
         //지도
         mapView = new MapView(getContext());
         ViewGroup mapViewContainer = v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
 
         mapView.setCurrentLocationEventListener(this);
-        Log.e(Tag,mapView.getCurrentLocationTrackingMode().toString());
+        Log.e(Tag,"firstMapView CurrentLocationTrackingMode: "+mapView.getCurrentLocationTrackingMode().toString());
 
         if (!checkLocationServicesStatus()) {
             showDialogForLocationServiceSetting();
