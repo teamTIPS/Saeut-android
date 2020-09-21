@@ -95,10 +95,13 @@ public class DashboardChildAdapter extends BaseAdapter {
         int type = postArrayList.get(position).getType();
         if(type == 0) {
             holder.tagTitle.setText("장애인");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_handicap));
         } else if(type == 1) {
             holder.tagTitle.setText("아동");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_kid));
         } else {
             holder.tagTitle.setText("노인");
+            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_elder));
         }
 
         // view 클릭 시 이벤트 처리
