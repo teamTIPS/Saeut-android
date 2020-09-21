@@ -98,17 +98,15 @@ public class CreatePostActivity extends AppCompatActivity {
                         et_startDate.getText().toString(),
                         et_dueDate.getText().toString()
                 );
-                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_LONG).show();
-                Log.d(TAG, post.toString());
 
-                sendPostNetworkService(post);
-//                boolean result = sendPostNetworkService(post);
-//                if(result) {
-//                    Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "게시글 등록 실패 !!", Toast.LENGTH_SHORT).show();
-//                }
+                Log.d(TAG, post.toString());
+                try {
+                    sendPostNetworkService(post);
+                    Toast.makeText(getApplicationContext(), "돌봄 게시글이 등록되었습니다 !!", Toast.LENGTH_SHORT).show();
+                } catch(Exception e) {
+                    Toast.makeText(getApplicationContext(), "게시글 등록 실패 !! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                }
+
                 finish();
             }
         });

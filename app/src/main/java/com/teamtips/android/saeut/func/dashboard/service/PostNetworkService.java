@@ -37,7 +37,6 @@ public class PostNetworkService {
     public void addPost(Post post) {
         Gson gson = new Gson();
         String obj2 = gson.toJson(post);
-        Log.d(TAG, "찐 : " + obj2.toString());
         // Bring session id that Sign on this app
         mCallAddPost = postNetwork.addPost(post);
         mCallAddPost.enqueue(new Callback<String>() {
@@ -45,13 +44,9 @@ public class PostNetworkService {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "성공  : " + call.request().body());
-                    Log.d(TAG, "성공  : " + response.message());
                 } else {
                     Log.d(TAG, "실패  : " + response.code());
                     Log.d(TAG, "실패  : " + post.toString());
-                    Log.d(TAG, "실패  : " + response.body());
-                    Log.d(TAG, "실패  : " + response.errorBody());
-                    Log.d(TAG, "실패  : " + response.toString());
                 }
             }
 

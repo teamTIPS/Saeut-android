@@ -70,6 +70,7 @@ public class DashboardChildAdapter extends BaseAdapter {
             view = layoutInflater.inflate(layout, viewGroup, false);
 
             holder = new ViewHolder();
+            holder.tagTitle = (TextView) view.findViewById(R.id.tv_tagTitle);
             holder.title = (TextView) view.findViewById(R.id.tv_title);
             holder.date = (TextView) view.findViewById(R.id.tv_date);
             holder.color = (ImageView) view.findViewById(R.id.iv_color);
@@ -90,6 +91,15 @@ public class DashboardChildAdapter extends BaseAdapter {
 
         int status = postArrayList.get(position).getStatus();
         holder.status.setText(postArrayList.get(position).getStatusForText(status));
+
+        int type = postArrayList.get(position).getType();
+        if(type == 0) {
+            holder.tagTitle.setText("장애인");
+        } else if(type == 1) {
+            holder.tagTitle.setText("아동");
+        } else {
+            holder.tagTitle.setText("노인");
+        }
 
         // view 클릭 시 이벤트 처리
         view.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +129,7 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        TextView tagTitle;
         TextView title;
         TextView date;
         TextView applyCount;

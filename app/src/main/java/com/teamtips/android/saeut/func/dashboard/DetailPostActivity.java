@@ -28,6 +28,7 @@ public class DetailPostActivity extends AppCompatActivity {
     private static RadioButton rb_children;
     private static RadioButton rb_disable;
 
+    private static TextView tv_tagTitle;
     private static TextView tv_startDate;
     private static TextView tv_dueDate;
     private static TextView tv_applyCount;
@@ -96,6 +97,7 @@ public class DetailPostActivity extends AppCompatActivity {
     }
 
     private void AllFindViewDetail() {
+        tv_tagTitle = (TextView)findViewById(R.id.tv_tagTitle);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_contents = (TextView) findViewById(R.id.tv_contents);
         tv_id = (TextView) findViewById(R.id.tv_id);
@@ -129,10 +131,13 @@ public class DetailPostActivity extends AppCompatActivity {
         int type = post.getType();
         if(type == 0) {
             rb_disable.setChecked(true);
+            tv_tagTitle.setText("장애인");
         } else if(type == 1) {
             rb_children.setChecked(true);
+            tv_tagTitle.setText("아동");
         } else {
             rb_old.setChecked(true);
+            tv_tagTitle.setText("노인");
         }
     }
 }
