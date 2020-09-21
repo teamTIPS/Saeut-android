@@ -64,8 +64,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
       </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"/>
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -148,6 +152,76 @@
         </LinearLayout>
 
       </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/round_edge"
+          android:layout_margin="5dp"
+          android:padding="3dp">
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ad_banner_img"/>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:text="정보게시판" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/round_edge">
+
+          <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="코로나(Covid-19) 정부지원금 안내"
+              android:textAlignment="textStart"/>
+          <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="세이웃 사랑 나누기 콘테스트"
+              android:textAlignment="textStart"/>
+          <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="세웃과 함께하는 세이웃 나눔활동 안내"
+              android:textAlignment="textStart"/>
+        </LinearLayout>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="20dp"
+          android:background="#D7E6E6">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(주)세웃 | Team TIPS"
+            android:textColor="#000000"
+            android:textSize="10sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(주)세웃은 통신판매중개라로서 통신판매의 당사자가 아니며,\n 이에 따른 상품 거래정보 및 거래 등에 대해 책임을 지지 않습니다."
+            android:textSize="10sp"/>
+      </LinearLayout>
+
     </LinearLayout>
 
   </ScrollView>
