@@ -29,8 +29,13 @@
         <activity android:name=".func.dashboard.EditPostActivity" />
         <activity android:name=".func.timetable.EditActivity" />
 
-        <activity android:name=".func.login.ui.generalLogin.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <activity
+            android:name=".func.login.ui.generalLogin.SplashActivity"
+            android:theme="@style/SplashActivityTheme">
+
+<!--                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"-->
+<!--            android:theme="@android:style/SplashActivityTheme">-->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +43,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".func.login.ui.generalLogin.LoginActivity" >
+        <activity
+            android:name=".func.login.ui.generalLogin.LoginActivity" >
 
         </activity>
 
