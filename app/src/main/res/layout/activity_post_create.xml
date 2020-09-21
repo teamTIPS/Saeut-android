@@ -73,28 +73,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_rect"
-                android:text="아동"/>
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_rect"
-                android:text="장애"/>
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_rect"
-                android:text="노인"/>
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -222,11 +200,11 @@
         <EditText
             android:id="@+id/et_contents"
             android:layout_width="match_parent"
-            android:layout_height="157dp"
+            android:layout_height="300dp"
             android:background="@drawable/round_edge"
             android:ems="15"
             android:hint="요청사항을 입력해주세요."
-            android:inputType="textLongMessage" />
+            android:inputType="textMultiLine" />
 
         <LinearLayout
             android:layout_width="match_parent"
