@@ -67,6 +67,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
+        inflater.inflate(R.menu.alarm, menu);
     }
 
     @Override
