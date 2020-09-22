@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
   <ScrollView
       android:layout_width="match_parent"
@@ -10,42 +12,155 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
         android:orientation="vertical" >
-
-      <TextView
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="200dip"
-          android:background="#2798AC"
+          android:layout_height="wrap_content"
           android:gravity="center"
-          android:text="viewpager" />
+          android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+          <de.hdodenhof.circleimageview.CircleImageView
+              android:layout_centerInParent="true"
+              android:layout_width="80dp"
+              android:layout_height="80dp"
+              android:src="@drawable/profile_img" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+          <TextView
+              android:id="@+id/tv_id"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="낮잠자기좋은날"
+              android:textSize="16sp"/>
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김선행"
+                android:textSize="10sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" / "
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="43"
+                android:textSize="10sp"/>
+          </LinearLayout>
 
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="25dip"
-          android:background="#59D559"
-          android:gravity="left"
-          android:text="자기소개" />
+          <TextView
+              android:id="@+id/tv_address"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="동대문구 전농1동"
+              android:textSize="10sp"/>
 
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="200dip"
-          android:background="#00ff00"
-          android:gravity="center"
-          android:text="#00ff00" />
+        </LinearLayout>
 
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="25dip"
-          android:background="#3158BC"
-          android:gravity="left"
-          android:text="요청사항" />
+      </LinearLayout>
 
-      <TextView
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="200dip"
-          android:background="#0000ff"
-          android:gravity="center"
-          android:text="#0000ff" />
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/one_line_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한줄 자기소개"
+            android:textSize="18sp" />
+        <EditText
+            android:id="@+id/et_one_line_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/round_edge"
+            android:ems="15"
+            android:enabled="false"
+            android:hint="Live your life, help others."
+            android:inputType="textMultiLine" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자기소개"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:background="@drawable/round_edge"
+            android:ems="15"
+            android:enabled="false"
+            android:hint="자기소개를 입력해주세요."
+            android:inputType="textMultiLine" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청사항"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_contents"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:background="@drawable/round_edge"
+            android:ems="15"
+            android:enabled="false"
+            android:hint="요청사항을 입력해주세요."
+            android:inputType="textMultiLine" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="지역변경"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이웃관리"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="계정관리"/>
+      </LinearLayout>
 
     </LinearLayout>
 

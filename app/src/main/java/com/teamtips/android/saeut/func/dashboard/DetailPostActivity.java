@@ -24,10 +24,6 @@ public class DetailPostActivity extends AppCompatActivity {
     private static TextView tv_title;
     private static TextView tv_id;
 
-    private static RadioButton rb_old;
-    private static RadioButton rb_children;
-    private static RadioButton rb_disable;
-
     private static TextView tv_tagTitle;
     private static TextView tv_startDate;
     private static TextView tv_dueDate;
@@ -102,10 +98,6 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_contents = (TextView) findViewById(R.id.tv_contents);
         tv_id = (TextView) findViewById(R.id.tv_id);
 
-        rb_children = (RadioButton) findViewById(R.id.rb_children);
-        rb_disable = (RadioButton) findViewById(R.id.rb_disable);
-        rb_old = (RadioButton) findViewById(R.id.rb_old);
-
         tv_startDate = (TextView) findViewById(R.id.tv_startDate);
         tv_dueDate = (TextView) findViewById(R.id.tv_dueDate);
         tv_applyCount = (TextView) findViewById(R.id.tv_applyCount);
@@ -130,14 +122,14 @@ public class DetailPostActivity extends AppCompatActivity {
         // tag radio button checking
         int type = post.getType();
         if(type == 0) {
-            rb_disable.setChecked(true);
             tv_tagTitle.setText("장애인");
+            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_handicap));
         } else if(type == 1) {
-            rb_children.setChecked(true);
             tv_tagTitle.setText("아동");
+            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_kid));
         } else {
-            rb_old.setChecked(true);
             tv_tagTitle.setText("노인");
+            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_elder));
         }
     }
 }
