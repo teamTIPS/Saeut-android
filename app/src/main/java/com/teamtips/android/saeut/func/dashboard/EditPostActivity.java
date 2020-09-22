@@ -33,7 +33,6 @@ public class EditPostActivity extends AppCompatActivity {
     private static EditText et_dueDate;
 
     private static Button btn_edit_submit;
-    private static Button btn_edit_cancel;
     private static Button btn_edit_startDate;
     private static Button btn_edit_dueDate;
 
@@ -79,13 +78,6 @@ public class EditPostActivity extends AppCompatActivity {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH) + 1;
         int date = cal.get(Calendar.DATE);
-
-        btn_edit_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         // CalendarView 구현
         btn_edit_startDate.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +125,6 @@ public class EditPostActivity extends AppCompatActivity {
         et_dueDate = findViewById(R.id.et_dueDate);
 
         btn_edit_submit = (Button) findViewById(R.id.btn_edit_submit);
-        btn_edit_cancel = (Button)findViewById(R.id.btn_edit_cancel);
         btn_edit_startDate = (Button) findViewById(R.id.btn_editStartDate);
         btn_edit_dueDate = (Button)findViewById(R.id.btn_editDueDate);
     }
