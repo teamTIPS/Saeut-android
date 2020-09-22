@@ -88,9 +88,6 @@ public class DashboardChildFragment extends Fragment {
         } else if (position == 1) {
             // 내가 작성한 게시물만 불러오는 URL -> 추후 수정 필요
             url = "http://49.50.173.180:8080/saeut/post/" + account_id;
-        } else {
-            // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
-            url = "http://49.50.173.180:8080/saeut/apply/" + account_id;
         }
         postNetworkTask = new PostNetworkTask(url, null, dashboardChildAdapter);
         postNetworkTask.execute();

@@ -40,7 +40,7 @@ public class PostNetworkService {
     // Add Post
     public void addPost(Post post) {
         Gson gson = new Gson();
-        String obj2 = gson.toJson(post);
+        String obj1 = gson.toJson(post);
         // Bring session id that Sign on this app
         mCallAddPost = postNetwork.addPost(post);
         mCallAddPost.enqueue(new Callback<String>() {
@@ -48,6 +48,7 @@ public class PostNetworkService {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "성공  : " + call.request().body());
+                    Log.d(TAG, "성공  : " + obj1.toString());
                 } else {
                     Log.d(TAG, "실패  : " + response.code());
                     Log.d(TAG, "실패  : " + post.toString());
@@ -70,10 +71,11 @@ public class PostNetworkService {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "성  : " + response.code());
+                    Log.d(TAG, "성공  : " + response.code());
+                    Log.d(TAG, "실패  : " + obj2.toString());
                 } else {
                     Log.d(TAG, "실패  : " + response.code());
-                    Log.d(TAG, "실패  : " + post.toString());
+                    Log.d(TAG, "실패  : " + obj2.toString());
                 }
             }
 

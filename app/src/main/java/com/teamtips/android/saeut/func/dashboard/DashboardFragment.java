@@ -94,7 +94,7 @@ public class DashboardFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Nullable
@@ -103,10 +103,8 @@ public class DashboardFragment extends Fragment {
 
             if (position == 0) {
                 return "전체 리스트";
-            } else if (position == 1) {
-                return "내가 작성한 게시물";
             } else {
-                return "내가 신청한 게시물";
+                return "내가 작성한 게시물";
             }
         }
     }

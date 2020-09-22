@@ -55,18 +55,19 @@ public class EditPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 돌봄 신청 페이지 뜨게끔 수정하기.
-                Post post = new Post(
-                        et_title.getText().toString(),
-                        et_contents.getText().toString(),
+                Post modPost = new Post(
+                        post.getPost_id(),
                         "test",
-                        getCheckedType(),
+                        et_title.getText().toString(),
+                        post.getPost_date(),
+                        et_contents.getText().toString(),
                         et_startDate.getText().toString(),
-                        et_dueDate.getText().toString()
+                        et_dueDate.getText().toString(),
+                        getCheckedType()
                 );
 
                 postNetworkService = new PostNetworkService();
-                postNetworkService.modPost(post);
-                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
+                postNetworkService.modPost(modPost);
                 Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
 
                 finish();
