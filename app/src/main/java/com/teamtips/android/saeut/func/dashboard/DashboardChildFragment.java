@@ -1,6 +1,7 @@
 package com.teamtips.android.saeut.func.dashboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,11 +33,8 @@ public class DashboardChildFragment extends Fragment {
     private static String url;
     private int position;        // taglayout 구별하기 위한 일종의 flag라고 이해함
 
-    // 현재 로그인한 유저정보 불러오기
-    // public static LoggedInUser getLoggedInUser(){
-    //        return userHolder.Instance;
-    //
-    private LoggedInUser loggedInUser;
+    // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
+    private static LoggedInUser sessionUser;
 
     public DashboardChildFragment(int position) {
         this.position = position;
@@ -47,6 +45,7 @@ public class DashboardChildFragment extends Fragment {
         args.putInt(ARGUMENT_POSITION, position);
         DashboardChildFragment fragment = new DashboardChildFragment(position);
         fragment.setArguments(args);
+        sessionUser = LoggedInUser.getLoggedInUser();   // 세션에 저장된 유저 정보 가져오기
         return fragment;
     }
 
@@ -74,22 +73,20 @@ public class DashboardChildFragment extends Fragment {
 
     private void setAdapter(View view) {
         postArrayList = new ArrayList<Post>();
-        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList);
+        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, position);
         listView = view.findViewById(R.id.lv_child);
         listView.setAdapter(dashboardChildAdapter);
     }
     private void getListByPosition(int position) {
         // fragment position에 따른 url 구현
         // 추후 현재 로그인 유저 정보 받아서 수정할 것.
-        String account_id = "test3";
+        String account_id = "test";
+        Log.d(TAG, "sessionUser : " + account_id);
         if (position == 0) {
             // 전체 리스트를 불러오는 URL
             url = "http://49.50.173.180:8080/saeut/post";
         } else if (position == 1) {
             // 내가 작성한 게시물만 불러오는 URL -> 추후 수정 필요
-            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
-        } else {
-            // 내가 신청한 게시물만 불러오는 URL -> 추후 수정 필요.
             url = "http://49.50.173.180:8080/saeut/post/" + account_id;
         }
         postNetworkTask = new PostNetworkTask(url, null, dashboardChildAdapter);

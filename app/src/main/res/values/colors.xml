@@ -6,5 +6,6 @@
     <color name="colorStatusBar">#1D5852</color>
     <color name="colorMain">#03DAC5</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
     <color name="ic_launcher_background">#48DCCD</color>
 </resources>

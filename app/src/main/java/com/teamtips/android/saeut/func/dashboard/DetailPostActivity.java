@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.dashboard.model.Apply;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
 import java.text.DateFormat;
 
@@ -32,12 +34,17 @@ public class DetailPostActivity extends AppCompatActivity {
     private static TextView tv_contents;
     private static Button btn_detail_submit;
 
+    private PostNetworkService postNetworkService;
+
     private Toolbar toolbar;
+    private static Post post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+
+        postNetworkService = new PostNetworkService();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,7 +55,7 @@ public class DetailPostActivity extends AppCompatActivity {
         AllFindViewDetail();
 
         // 서버에서 전달받은 Post 객체 저장
-        Post post = (Post) getIntent().getSerializableExtra("post");
+        post = (Post) getIntent().getSerializableExtra("post");
         AllStoreData(post);
 
         // OnClickListener
@@ -76,7 +83,14 @@ public class DetailPostActivity extends AppCompatActivity {
         btn_apply_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String introduce = et_introduce.getText().toString();
-                Toast.makeText(getApplicationContext(), introduce,Toast.LENGTH_LONG).show();
+
+                Apply apply = new Apply();
+                apply.setId("test3");
+                apply.setPost_id(post.getPost_id());
+                apply.setIntroduce(introduce);
+
+                postNetworkService.addApply(apply);
+                Toast.makeText(getApplicationContext(), "돌봄 신청이 완료되었습니다 !",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });

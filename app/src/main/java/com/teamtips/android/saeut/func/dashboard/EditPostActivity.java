@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
 import java.sql.Date;
 import java.text.DateFormat;
@@ -36,6 +37,7 @@ public class EditPostActivity extends AppCompatActivity {
     private static Button btn_edit_startDate;
     private static Button btn_edit_dueDate;
 
+    private PostNetworkService postNetworkService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,30 +55,28 @@ public class EditPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 돌봄 신청 페이지 뜨게끔 수정하기.
-                Post post = new Post(
-                        et_title.getText().toString(),
-                        et_contents.getText().toString(),
+                Post modPost = new Post(
+                        post.getPost_id(),
                         "test",
-                        getCheckedType(),
+                        et_title.getText().toString(),
+                        post.getPost_date(),
+                        et_contents.getText().toString(),
                         et_startDate.getText().toString(),
-                        et_dueDate.getText().toString()
+                        et_dueDate.getText().toString(),
+                        getCheckedType()
                 );
 
-                Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
-//                boolean result = sendPostNetworkService(post);
-//                if(result) {
-//                    Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getApplicationContext(), post.toString(), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "게시글 등록 실패 !!", Toast.LENGTH_SHORT).show();
-//                }
+                postNetworkService = new PostNetworkService();
+                postNetworkService.modPost(modPost);
+                Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
+
                 finish();
             }
         });
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1;
+        int month = cal.get(Calendar.MONTH);
         int date = cal.get(Calendar.DATE);
 
         // CalendarView 구현
@@ -86,7 +86,7 @@ public class EditPostActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditPostActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String chooseDate = year + "-" + month + "-" + dayOfMonth;
+                        String chooseDate = year + "-" + (month + 1) + "-" + dayOfMonth;
                         et_startDate.setText(chooseDate);
                     }
                 },year, month, date);
@@ -102,7 +102,7 @@ public class EditPostActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditPostActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String chooseDate = year + "-" + month + "-" + dayOfMonth;
+                        String chooseDate = year + "-" + (month + 1) + "-" + dayOfMonth;
                         et_dueDate.setText(chooseDate);
                     }
                 },year, month, date);
@@ -134,8 +134,8 @@ public class EditPostActivity extends AppCompatActivity {
         et_contents.setText(post.getContents());
 
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        et_startDate.setText(dateFormat.format(post.getStart_date()));
-        et_dueDate.setText(dateFormat.format(post.getDue_date()));
+        et_startDate.setText(post.getStart_date());
+        et_dueDate.setText(post.getDue_date());
 
         // tag radio button checking
         int type = post.getType();
