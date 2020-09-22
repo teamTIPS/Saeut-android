@@ -24,7 +24,6 @@ public class CreatePostActivity extends AppCompatActivity {
     private static final String TAG = "CreatePostActivity";
 
     private static Button btn_add_submit;
-    private static Button btn_add_cancel;
     private static Button btn_startDate;   // choose start date
     private static Button btn_dueDate;     // choose due date
 
@@ -110,13 +109,6 @@ public class CreatePostActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        btn_add_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     };
 
     private void sendPostNetworkService(Post post) {
@@ -126,7 +118,6 @@ public class CreatePostActivity extends AppCompatActivity {
 
     private void AllFindViewCreate() {
         btn_add_submit = findViewById(R.id.btn_add_submit);
-        btn_add_cancel = findViewById(R.id.btn_add_cancel);
 
         et_title = findViewById(R.id.et_title);
         et_contents = findViewById(R.id.et_contents);
