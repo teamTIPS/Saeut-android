@@ -13,13 +13,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <com.github.tlaabs.timetableview.TimetableView
                 android:id="@+id/timetable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_edge"
                 app:header_highlight_image_size="36dp"
                 app:header_highlight_type="image"/>
 
