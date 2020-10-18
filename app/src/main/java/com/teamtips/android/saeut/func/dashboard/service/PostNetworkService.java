@@ -22,7 +22,7 @@ public class PostNetworkService {
 
     private Call<String> mCallAddPost;
     private Call<String> mCallModPost;
-    private Call<Integer> mCallApplyCount;
+    public Call<Integer> mCallApplyCount;
     private Call<String> mCallDeletePost;
     private Call<String> mCallAddApply;
 
@@ -113,8 +113,7 @@ public class PostNetworkService {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()) {
-
-                    Log.d(TAG, "성공  : " + call.request().body());
+                    Log.d(TAG, "성공  : " + response.body());
                 } else {
                     Log.d(TAG, "실패  : " + response.code());
                     Log.d(TAG, "실패  : " + response.toString());
@@ -129,6 +128,8 @@ public class PostNetworkService {
     }
 
     public void addApply(Apply apply) {
+        Gson gson = new Gson();
+        String obj3 = gson.toJson(apply);
         mCallAddApply = postNetwork.addApply(apply);
         mCallAddApply.enqueue(new Callback<String>() {
             @Override
@@ -138,7 +139,7 @@ public class PostNetworkService {
                     Log.d(TAG, "성공  : " + call.request().body());
                 } else {
                     Log.d(TAG, "실패  : " + response.code());
-                    Log.d(TAG, "실패  : " + response.toString());
+                    Log.d(TAG, "실패  : " + obj3.toString());
                 }
             }
 

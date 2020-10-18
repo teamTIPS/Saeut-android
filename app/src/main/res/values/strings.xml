@@ -2,6 +2,8 @@
     <string name="app_name">세웃</string>
     <string name="title_home">홈</string>
     <string name="title_map">지도</string>
+    <string name="title_group">그룹</string>
+    <string name="title_community">커뮤니티</string>
     <string name="title_dashboard">게시판</string>
     <string name="title_chat">채팅</string>
     <string name="title_profile">마이세웃</string>
