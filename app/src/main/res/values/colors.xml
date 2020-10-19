@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00EEDA</color>
-    <color name="colorPrimaryDark">#009EB3</color>
-    <color name="colorAccent">#3F51B5</color>
-    <color name="colorStatusBar">#1D5852</color>
-    <color name="colorMain">#03DAC5</color>
+    <color name="colorPrimary">#4AE29E</color>
+    <color name="colorPrimaryDark">#25A283</color>
+    <color name="colorAccent">#178373</color>
+    <color name="colorStatusBar">#0E6C67</color>
+    <color name="colorMain">#4AE29E</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="ic_launcher_background">#48DCCD</color>
+    <color name="ic_launcher_background">#4AE29E</color>
 
 <!--컬러시스템-->
     <color name="color_primary_100">#DBFDE0</color>
