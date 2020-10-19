@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#7CE6E6E6"
     android:gravity="left"
     android:orientation="vertical"
     android:paddingLeft="10dp"
@@ -14,45 +16,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_tagTitle"
-            android:layout_width="50dp"
+            android:id="@+id/tv_type"
+            android:layout_width="77dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_rect"
+            android:background="@drawable/rounded_line_btn"
             android:gravity="center"
-            android:text="아동"
+            android:text="함께돌봄"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+        <Button
+            android:id="@+id/btn_status"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="title"
-            android:textIsSelectable="false"
-            android:textSize="18sp" />
+            android:background="@drawable/rounded_line_btn"
+            android:gravity="center|center_vertical"
+            android:text="모집 진행중" />
+
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="유치원 등하교 도우미 그룹을 모집합니다."
+        android:textIsSelectable="false"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="동대문구 전농1동"
-            android:textAlignment="viewEnd"
-            android:textSize="12sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="동대문구 전농1동"
+        android:textAlignment="viewEnd"
+        android:textSize="12sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,45 +68,112 @@
 
         <TextView
             android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="2020-08-05 ~ 2020-12-30"
+            android:text="2020-10-05 ~ 2020-12-30"
             android:textAlignment="viewEnd"
             android:textSize="12sp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/btn_status"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/round_edge"
-                android:gravity="center|center_vertical"
-                android:text="신청중" />
-
-            <ImageView
-                android:id="@+id/iv_apply"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center"
-                android:foregroundGravity="right"
-                app:srcCompat="@drawable/ic_user_count" />
+            android:gravity="left|end">
 
             <TextView
-                android:id="@+id/tv_apply"
+                android:id="@+id/tv_tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorStatusBar"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="아동"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_tag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorStatusBar"
                 android:gravity="center"
-                android:text="4"
-                android:textSize="18sp" />
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="유치원"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorStatusBar"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="등하원도우미"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_limitSupply"
+            android:layout_width="18dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="right"
+            app:srcCompat="@drawable/ic_user_count" />
+
+        <TextView
+            android:id="@+id/tv_limitSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:gravity="center"
+            android:text="0/2"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_limitDemand"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_user_count" />
+
+        <TextView
+            android:id="@+id/tv_limitDemand"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:gravity="center"
+            android:text="1/3"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
     <LinearLayout

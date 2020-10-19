@@ -137,11 +137,11 @@ public class DashboardChildAdapter extends BaseAdapter {
     private ViewHolder AllFindViewAdapter(View view, int tab_position) {
         ViewHolder holder = new ViewHolder();
 
-        holder.tagTitle = (TextView) view.findViewById(R.id.tv_tagTitle);
+        holder.tagTitle = (TextView) view.findViewById(R.id.tv_type);
         holder.title = (TextView) view.findViewById(R.id.tv_title);
         holder.date = (TextView) view.findViewById(R.id.tv_date);
         holder.color = (ImageView) view.findViewById(R.id.iv_color);
-        holder.applyCount = (TextView) view.findViewById(R.id.tv_apply);
+        holder.applyCount = (TextView) view.findViewById(R.id.tv_limitSupply);
         holder.status = (Button) view.findViewById(R.id.btn_status);
 
         // Private Layout
@@ -169,14 +169,11 @@ public class DashboardChildAdapter extends BaseAdapter {
         holder.applyCount.setText("1");
 
         if(type == 0) {
-            holder.tagTitle.setText("장애인");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_handicap));
+            holder.tagTitle.setText("함께돌봄");
         } else if(type == 1) {
-            holder.tagTitle.setText("아동");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_kid));
+            holder.tagTitle.setText("맞춤돌봄");
         } else {
-            holder.tagTitle.setText("노인");
-            holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_elder));
+            holder.tagTitle.setText("맞춤돌봄");
         }
 
         if(tab_position == 1) {
