@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,16 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.dashboard.model.Apply;
-import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.data.Apply;
+import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
 import java.io.IOException;
-import java.text.DateFormat;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DetailPostActivity extends AppCompatActivity {
 
@@ -134,26 +127,27 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_startDate.setText(post.getStart_date());
         tv_dueDate.setText(post.getDue_date());
 
+        tv_applyCount.setText("1");
         // 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언
-        postNetworkService.mCallApplyCount.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                if(response.isSuccessful()) {
-                    if(response.body() != 0) {
-                        tv_applyCount.setText(String.valueOf(response.body()));
-                    } else {
-                        tv_applyCount.setText("0");
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "돌봄 신청에 실패하였습니다 !",Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-
-            }
-        });
+//        postNetworkService.mCallApplyCount.enqueue(new Callback<Integer>() {
+//            @Override
+//            public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                if(response.isSuccessful()) {
+//                    if(response.body() != 0) {
+//                        tv_applyCount.setText(String.valueOf(response.body()));
+//                    } else {
+//                        tv_applyCount.setText("0");
+//                    }
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "돌봄 신청에 실패하였습니다 !",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Integer> call, Throwable t) {
+//
+//            }
+//        });
 
         // 추후 Additional 테이블과 연결해야 함.
         tv_address.setText("서울시 서대문구 북가좌동");

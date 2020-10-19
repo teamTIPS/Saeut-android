@@ -40,6 +40,9 @@ public class LoggedInUser {
     private String zipcode;
     private String add_latitude;
     private String add_longitude;
+    // 추가된 부분
+    private String introduce;       // 돌봄 제공자 어필용 자기소개
+    private int grade;              // 평점 관리 (리뷰)
 
     /////////
     //싱글톤 패턴으로 구현

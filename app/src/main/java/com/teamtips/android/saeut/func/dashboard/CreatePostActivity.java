@@ -13,10 +13,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 public class CreatePostActivity extends AppCompatActivity {

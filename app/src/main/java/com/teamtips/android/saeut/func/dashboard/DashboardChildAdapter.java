@@ -2,8 +2,6 @@ package com.teamtips.android.saeut.func.dashboard;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.dashboard.model.Post;
-import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
+import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 // 삭제가 되긴 하는데 리스트 업데이트 문제가 있어서 CursorAdapter로 변경 예정
 public class DashboardChildAdapter extends BaseAdapter {
@@ -170,6 +165,9 @@ public class DashboardChildAdapter extends BaseAdapter {
         holder.status.setText(postArrayList.get(position).getStatusForText(status));
 
         int type = postArrayList.get(position).getType();
+
+        holder.applyCount.setText("1");
+
         if(type == 0) {
             holder.tagTitle.setText("장애인");
             holder.tagTitle.setBackground(context.getResources().getDrawable(R.drawable.tag_handicap));

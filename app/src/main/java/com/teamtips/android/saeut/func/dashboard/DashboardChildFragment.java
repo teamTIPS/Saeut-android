@@ -3,8 +3,6 @@ package com.teamtips.android.saeut.func.dashboard;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -14,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.dashboard.model.Post;
+import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 

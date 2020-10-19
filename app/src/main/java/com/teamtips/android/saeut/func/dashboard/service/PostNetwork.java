@@ -1,8 +1,8 @@
 package com.teamtips.android.saeut.func.dashboard.service;
 
-import com.teamtips.android.saeut.func.dashboard.model.Apply;
-import com.teamtips.android.saeut.func.dashboard.model.Post;
-import okhttp3.ResponseBody;
+import com.teamtips.android.saeut.data.Apply;
+import com.teamtips.android.saeut.data.Post;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 

@@ -102,9 +102,9 @@ public class DashboardFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
 
             if (position == 0) {
-                return "전체 리스트";
+                return "전체";
             } else {
-                return "내가 작성한 게시물";
+                return "매칭";
             }
         }
     }
