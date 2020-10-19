@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.dashboard.model;
+package com.teamtips.android.saeut.data;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
