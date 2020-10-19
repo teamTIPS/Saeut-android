@@ -9,6 +9,9 @@
     <color name="colorBlack">#000000</color>
     <color name="ic_launcher_background">#4AE29E</color>
 
+    <color name="grey">#383838</color>
+
+
 <!--컬러시스템-->
     <color name="color_primary_100">#DBFDE0</color>
     <color name="color_primary_200">#B8FCC9</color>
