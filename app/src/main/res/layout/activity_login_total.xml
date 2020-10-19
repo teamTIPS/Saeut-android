@@ -26,9 +26,11 @@
                 android:id="@+id/opening_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_bold"
+                android:textColor="@color/color_primary_600"
                 android:gravity="left"
                 android:text="\n세상을 바꾸는\n이웃이 되어볼래요?\n"
-                android:textSize="30dp" />
+                android:textSize="35dp" />
 
             <EditText
                 android:id="@+id/email"
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="로그인"
-                android:textStyle="bold" />
+                android:fontFamily="@font/font_bold" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

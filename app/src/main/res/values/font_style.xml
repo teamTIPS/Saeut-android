@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NotoSansTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/font_regular</item>
+    </style>
+    <style name="NotoSansButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/notosanskr_bold</item>
+    </style>
+    <style name="NotoSansEditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/notosanskr_black</item>
+    </style>
+    <style name="NotoSansRadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/notosanskr_bold</item>
+    </style>
+    <style name="NotoSansCheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/notosanskr_regular</item>
+    </style>
+</resources>
