@@ -45,30 +45,118 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_weight="1"
+                android:gravity="left|end">
 
                 <TextView
                     android:id="@+id/tv_tagTitle"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/round_rect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/colorStatusBar"
                     android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="3dp"
                     android:text="아동"
-                    android:textSize="15sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_tag2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:textSize="20sp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/colorStatusBar"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="3dp"
+                    android:text="유치원"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_tag3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/colorStatusBar"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="3dp"
+                    android:text="등하원도우미"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="77dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_line_btn"
+                    android:gravity="center"
+                    android:text="함께돌봄"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btn_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/rounded_line_btn"
+                    android:gravity="center|center_vertical"
+                    android:text="모집 진행중"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="제목" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textSize="20sp" />
+
+
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="?android:attr/listDivider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,7 +177,56 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="주소" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:hint="00시 00동"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="*  돌봄요청자의 상세주소는 매칭이 완료되면 확인하실 수 있습니다."
+                android:textSize="12sp"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="63dp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/groupInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="그룹 모집 정보" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,7 +246,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="시작 날짜"
-                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
@@ -133,7 +269,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="종료 날짜"
-                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
@@ -146,56 +281,229 @@
                         android:text="TextView" />
 
                 </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/address"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/postSchedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="돌봄 시간"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+
+                    <TextView
+                        android:id="@+id/tv_postSchedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="주소"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_address"
+                    <TextView
+                        android:id="@+id/postAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="20dp"
+                        android:text="연령"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+
+                    <CheckBox
+                        android:id="@+id/cb_age1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="연령무관" />
+
+                    <CheckBox
+                        android:id="@+id/cb_age2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="연령제한" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:hint="00시 00동"
-                    android:inputType="textPersonName"
-                    android:textSize="18sp" />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/text_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="돌봄요청자의 상세주소는 매칭이 완료되면 확인하실 수 있습니다."
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="28dp"
-                tools:layout_editor_absoluteY="63dp" />
+                    <TextView
+                        android:id="@+id/postGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="성별"
+                        android:paddingRight="20dp"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+
+                    <CheckBox
+                        android:id="@+id/cb_gender1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="성별무관" />
+
+                    <CheckBox
+                        android:id="@+id/cb_gender2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="여자" />
+
+                    <CheckBox
+                        android:id="@+id/cb_gender3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="남자" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="요청사항"
-                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="225dp" />
 
             <TextView
                 android:id="@+id/tv_contents"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/round_edge"
                 android:padding="15dp"
                 android:text="TextView" />
+
+            <TextView
+                android:id="@+id/paymentInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="페이" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/round_edge"
+                android:gravity="right"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/hourlyWage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시급"
+                        tools:layout_editor_absoluteY="175dp"
+                        tools:layut_editor_absoluteX="27dp" />
+
+                    <EditText
+                        android:id="@+id/et_hourlyWage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:ems="6"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="8590" />
+
+                    <TextView
+                        android:id="@+id/tv_hourlyWage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="돌보미 페이"
+                        tools:layout_editor_absoluteY="175dp"
+                        tools:layut_editor_absoluteX="27dp" />
+
+                    <EditText
+                        android:id="@+id/et_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:ems="6"
+                        android:gravity="center"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/tv_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="요청자 금액"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+
+                    <EditText
+                        android:id="@+id/et_wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:ems="6"
+                        android:gravity="center"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/tv_wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원"
+                        tools:layout_editor_absoluteX="27dp"
+                        tools:layout_editor_absoluteY="175dp" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
