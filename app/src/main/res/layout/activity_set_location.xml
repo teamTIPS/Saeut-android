@@ -40,6 +40,7 @@
                 android:layout_height="30dp"
                 android:text="현위치로 검색하기"
                 android:layout_gravity="center"
+                android:textColor="@color/colorWhite"
                 android:background="@drawable/round_rect"/>
         </LinearLayout>
 
@@ -52,13 +53,14 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_saeut_logo" />
+                android:background="@drawable/ic_saeut_logo"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="현재 주변 위치를 받아오지 못했어요\n검색창에서
-주소를 찾아보세요"/>
+                android:textColor="@color/color_primary_900"
+                android:text="현재 위치를 받아오지 못했어요.\n검색창에서 주소를 찾아보세요."/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,6 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
             android:gravity="center"
             android:text="설정완료"/>
     </LinearLayout>
