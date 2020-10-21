@@ -7,7 +7,7 @@
     android:title="@string/title_home" />
 
   <item
-    android:id="@+id/navigation_map"
+    android:id="@+id/navigation_community"
     android:icon="@drawable/ic_chat"
     android:title="@string/title_community" />
 
@@ -17,7 +17,7 @@
     android:title="@string/title_dashboard" />
 
   <item
-      android:id="@+id/navigation_schedule"
+      android:id="@+id/navigation_group"
       android:icon="@drawable/ic_neighbor_manage"
       android:title="@string/title_group" />
 

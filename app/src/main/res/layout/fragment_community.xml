@@ -13,59 +13,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPager2"
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/banner_img"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_page_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:text="1"
-                    android:textColor="#fff"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintTop_toTopOf="@+id/textView" />
-
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="/5"
-                    android:textColor="#fff"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_see_all"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_see_all"
-                    app:layout_constraintTop_toTopOf="@+id/tv_see_all" />
-
-                <TextView
-                    android:id="@+id/tv_see_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:alpha="0.7"
-                    android:background="#ffffff"
-                    android:paddingStart="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="4dp"
-                    android:paddingBottom="4dp"
-                    android:text="모두 보기>"
-                    app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

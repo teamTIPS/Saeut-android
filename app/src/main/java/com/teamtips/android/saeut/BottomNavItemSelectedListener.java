@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.teamtips.android.saeut.func.community.CommunityFragment;
 import com.teamtips.android.saeut.func.dashboard.DashboardFragment;
+import com.teamtips.android.saeut.func.group.GroupFragment;
 import com.teamtips.android.saeut.func.home.HomeFragment;
 import com.teamtips.android.saeut.func.map.MapFragment;
 import com.teamtips.android.saeut.func.profile.ProfileFragment;
@@ -34,14 +36,14 @@ public class BottomNavItemSelectedListener
             case R.id.navigation_home:
                 transaction.replace(R.id.container_main, new HomeFragment()).commit();
                 return true;
-            case R.id.navigation_map:
-                transaction.replace(R.id.container_main, MapFragment.getInstance()).commit();
+            case R.id.navigation_community:
+                transaction.replace(R.id.container_main, new CommunityFragment()).commit();
                 return true;
             case R.id.navigation_dashboard:
                 transaction.replace(R.id.container_main, new DashboardFragment()).commit();
                 return true;
-            case R.id.navigation_schedule:
-                transaction.replace(R.id.container_main, new ScheduleFragment()).commit();
+            case R.id.navigation_group:
+                transaction.replace(R.id.container_main, new GroupFragment()).commit();
                 return true;
             case R.id.navigation_profile:
                 transaction.replace(R.id.container_main, new ProfileFragment()).commit();
