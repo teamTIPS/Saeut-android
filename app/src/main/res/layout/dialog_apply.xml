@@ -1,54 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:style="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_apply"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:gravity="left"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="돌보미 신청"
-        android:textSize="24sp" />
+        android:text="그룹 신청하기"
+        android:textSize="24sp"
+        style:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
 
-    <TextView
-        android:id="@+id/tv_introduce"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:layout_weight="2"
+        android:background="?android:attr/listDivider"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/checkBox_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="간단히 자기소개를 작성해주세요. (500자 이내)" />
+        android:padding="@dimen/nav_header_vertical_spacing"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintRight_toRightOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <CheckBox
+            android:id="@+id/cb_typeSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="돌봄제공자"
+            style:layout_constraintRight_toLeftOf="@+id/cb_typeDemend"
+            style:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <CheckBox
+            android:id="@+id/cb_typeDemend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="돌봄요청자"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/et_introduce"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:hint="간단히 자기소개를 작성해주세요. (500자 이내)"
         android:inputType="textMultiLine"
         android:lines="8"
         android:maxLines="10"
         android:minLines="6"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/checkBox_container" />
 
-    <LinearLayout
+    <CheckBox
+        android:id="@+id/checkApplyGroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        android:text="서약 내용"
+        style:layout_constraintTop_toBottomOf="@+id/et_introduce"
+        tools:layout_editor_absoluteX="16dp" />
 
-        <Button
-            android:id="@+id/btn_apply_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="신청" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/checkApplyGroup"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/btn_apply_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소" />
-    </LinearLayout>
+            android:text="취소"
+            style:layout_constraintRight_toLeftOf="@+id/btn_apply_submit"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_apply_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="신청"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
