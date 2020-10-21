@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:style="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_matching"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:ignore="MissingConstraints">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wage_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/hourlyWage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:text="돌보미 시급"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toLeftOf="@+id/et_hourlyWage"
+            style:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_hourlyWage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="8590"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toLeftOf="@+id/won"
+            style:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/won"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="원"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/schedule_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style:layout_constraintTop_toBottomOf="@+id/wage_container"
+        android:padding="@dimen/nav_header_vertical_spacing" >
+
+        <TextView
+            android:id="@+id/schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:text="시간"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toLeftOf="@+id/et_schedule"
+            style:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:ems="17"
+            android:hint="원하시는 시간을 입력해주세요."
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/location_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style:layout_constraintTop_toBottomOf="@+id/schedule_container"
+        android:padding="@dimen/nav_header_vertical_spacing" >
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:text="위치"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toLeftOf="@+id/et_location"
+            style:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:ems="17"
+            android:hint="원하시는 시/군/구/동을 입력해주세요."
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/type_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintRight_toRightOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/location_container"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <CheckBox
+            android:id="@+id/cb_typeAlone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="맞춤돌봄"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintLeft_toLeftOf="parent"
+            style:layout_constraintRight_toLeftOf="@+id/cb_typeDemend"
+            style:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <CheckBox
+            android:id="@+id/cb_typeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:text="함께돌봄"
+            style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_matching_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="매칭하기"
+        style:layout_constraintBottom_toTopOf="@+id/divider"
+        style:layout_constraintTop_toBottomOf="@+id/type_container"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:layout_weight="5"
+        android:background="?android:attr/listDivider"
+        style:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/btn_matching_submit" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        style:layout_constraintBottom_toBottomOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:layout_editor_absoluteX="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

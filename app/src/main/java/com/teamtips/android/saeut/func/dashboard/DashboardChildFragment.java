@@ -65,7 +65,7 @@ public class DashboardChildFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_dashboard_child, container, false);
+        View root = inflater.inflate(R.layout.fragment_dashboard_list, container, false);
         return root;
     }
 

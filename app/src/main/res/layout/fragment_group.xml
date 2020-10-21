@@ -6,7 +6,8 @@
     android:id="@+id/fragment_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin">
+    android:padding="@dimen/activity_vertical_margin"
+    tools:ignore="MissingConstraints" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/group_info"
@@ -16,8 +17,7 @@
         android:orientation="vertical"
         android:padding="@dimen/nav_header_vertical_spacing"
         style:layout_constraintLeft_toLeftOf="parent"
-        style:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        style:layout_constraintTop_toTopOf="parent" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/title_container"
@@ -149,20 +149,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/group_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style:layout_constraintTop_toBottomOf="@+id/group_info"
+        android:layout_marginTop="16dp"
         android:background="@color/colorWhite"
         android:padding="@dimen/nav_header_vertical_spacing"
+        style:layout_constraintStart_toStartOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/group_info"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="댓글"
             style:layout_constraintLeft_toLeftOf="parent"
-            style:layout_constraintTop_toTopOf="parent"/>
+            style:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/divider"
@@ -171,25 +175,30 @@
             android:layout_margin="10dp"
             android:layout_weight="2"
             android:background="?android:attr/listDivider"
-            style:layout_constraintTop_toBottomOf="@+id/comment"
-            style:layout_constraintLeft_toLeftOf="parent" />
+            style:layout_constraintLeft_toLeftOf="parent"
+            style:layout_constraintTop_toBottomOf="@+id/comment" />
 
         <ScrollView
             android:id="@+id/group_comment"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            style:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            style:layout_constraintEnd_toEndOf="parent"
+            style:layout_constraintStart_toStartOf="parent"
             style:layout_constraintTop_toBottomOf="@+id/divider">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_comment_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintTop_toBottomOf="@+id/group_comment">
@@ -198,11 +207,11 @@
                 android:id="@+id/et_addComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="225dp"
                 style:layout_constraintBottom_toBottomOf="parent"
                 style:layout_constraintLeft_toLeftOf="parent"
                 style:layout_constraintRight_toLeftOf="@+id/btn_addSubmit"
-                style:layout_constraintTop_toTopOf="parent">
+                style:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteY="225dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -216,11 +225,11 @@
                 android:id="@+id/btn_addSubmit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:text="댓글 추가"
-                tools:layout_editor_absoluteX="266dp"
                 style:layout_constraintBottom_toBottomOf="parent"
                 style:layout_constraintRight_toRightOf="parent"
-                style:layout_constraintTop_toTopOf="parent"/>
+                style:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
