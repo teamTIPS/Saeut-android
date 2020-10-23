@@ -10,13 +10,12 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentTop="true"
-            android:background="#ffffff"
+            android:background="@color/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <TextView
@@ -24,7 +23,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="돌봄신청하기"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_bold"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="돌봄 신청하기"
                  />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -34,14 +37,13 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/detail_submit"
         android:layout_below="@+id/app_bar"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="-2dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:paddingBottom="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -50,6 +52,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:fontFamily="@font/font_bold"
+                android:textColor="@color/color_primary_900"
+                android:textSize="20sp"
+                android:includeFontPadding="false"
+                android:paddingBottom="10dp"
                 android:text="제목"
                 tools:layout_editor_absoluteX="28dp"
                 tools:layout_editor_absoluteY="63dp" />
@@ -58,22 +65,33 @@
                 android:id="@+id/et_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
                 android:ems="13"
-                android:hint="제목을 입력해주세요."
+                android:layout_marginBottom="20dp"
+
+                android:hint="제목을 입력해 주세요."
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="54dp" />
 
             <TextView
+                android:paddingBottom="10dp"
+
                 android:id="@+id/tv_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:fontFamily="@font/font_bold"
+                android:textColor="@color/color_primary_900"
+                android:textSize="20sp"
+                android:includeFontPadding="false"
                 android:text="태그"
                 tools:layout_editor_absoluteX="28dp"
                 tools:layout_editor_absoluteY="63dp" />
@@ -82,11 +100,15 @@
                 android:id="@+id/et_tag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
+                android:layout_marginBottom="20dp"
                 android:ems="13"
-                android:hint="태그를 입력해주세요. (여러개 입력시 , 로 구분)"
+                android:hint="태그를 입력해 주세요.  , 로 구분합니다."
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,73 +119,110 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/font_bold"
+                android:textColor="@color/color_primary_900"
+                android:textSize="20sp"
+                android:includeFontPadding="false"
                 android:layout_marginEnd="10dp"
                 android:text="그룹 모집 정보" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/round_edge"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_edittext"
                 android:orientation="vertical"
+                android:layout_marginBottom="20dp"
                 android:padding="15dp">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/startDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="10dp"
-                        android:text="시작 날짜"
+                        android:fontFamily="@font/font_bold"
+                        android:textColor="@color/color_primary_900"
+                        android:includeFontPadding="false"
                         android:textSize="15sp"
+
+                        android:paddingEnd="10dp"
+                        android:text="시작 날짜"
+                        android:layout_marginEnd="20dp"
+
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
                     <EditText
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/startDate"
+                        app:layout_constraintRight_toLeftOf="@+id/btn_startDate"
                         android:id="@+id/et_startDate"
                         android:layout_width="0dp"
+                        android:layout_marginEnd="20dp"
+
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:gravity="center"
                         android:inputType="date"
                         android:textSize="15sp" />
 
                     <Button
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:includeFontPadding="false"
+
                         android:id="@+id/btn_startDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:background="@drawable/default_btn"
+                        android:textColor="@color/colorWhite"
+
                         android:text="날짜 선택"
                         android:textSize="13sp" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/dueDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="종료 날짜"
-                        android:paddingRight="10dp"
+                        android:paddingEnd="10dp"
+
+                        android:layout_marginEnd="20dp"
+
+                        android:fontFamily="@font/font_bold"
+                        android:textColor="@color/color_primary_900"
+                        android:includeFontPadding="false"
                         android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/et_dueDate"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/dueDate"
+                        app:layout_constraintRight_toLeftOf="@+id/btn_dueDate"
                         android:layout_width="0dp"
+                        android:layout_marginEnd="20dp"
+
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
                         android:enabled="false"
                         android:gravity="center"
                         android:inputType="date"
@@ -171,37 +230,51 @@
 
                     <Button
                         android:id="@+id/btn_dueDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/default_btn"
+                        android:textColor="@color/colorWhite"
                         android:text="날짜 선택"
                         android:textSize="13sp" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/postSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingEnd="10dp"
+
+                        android:fontFamily="@font/font_bold"
+                        android:textColor="@color/color_primary_900"
+                        android:includeFontPadding="false"
+                        android:textSize="15sp"
                         android:text="돌봄 시간"
-                        android:paddingRight="10dp"
-                        tools:layout_editor_absoluteX="27dp"
-                        tools:layout_editor_absoluteY="175dp" />
+                        />
 
                     <EditText
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/postSchedule"
                         android:id="@+id/et_postSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
                         android:hint="원하는 시간대를 입력해주세요."
                         android:inputType="textPersonName" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -212,6 +285,10 @@
                         android:id="@+id/postAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_bold"
+                        android:textColor="@color/color_primary_900"
+                        android:includeFontPadding="false"
+                        android:textSize="15sp"
                         android:paddingRight="20dp"
                         android:text="연령"
                         tools:layout_editor_absoluteX="27dp"
@@ -221,6 +298,8 @@
                         android:id="@+id/cb_age1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingEnd="20dp"
+
                         android:text="연령무관" />
 
                     <CheckBox
@@ -239,7 +318,11 @@
                         android:id="@+id/postGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingRight="20dp"
+                        android:fontFamily="@font/font_bold"
+                        android:textColor="@color/color_primary_900"
+                        android:includeFontPadding="false"
+                        android:textSize="15sp"
+                        android:paddingEnd="20dp"
                         android:text="성별"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
@@ -248,12 +331,14 @@
                         android:id="@+id/cb_gender1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingEnd="20dp"
                         android:text="성별무관" />
 
                     <CheckBox
                         android:id="@+id/cb_gender2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingEnd="20dp"
                         android:text="여자" />
 
                     <CheckBox
@@ -269,7 +354,13 @@
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+
                 android:text="요청사항"
+                android:fontFamily="@font/font_bold"
+                android:textColor="@color/color_primary_900"
+                android:textSize="20sp"
+                android:includeFontPadding="false"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="225dp" />
 
@@ -277,65 +368,80 @@
                 android:id="@+id/et_contents"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/round_edge"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_edittext"
                 android:ems="15"
-                android:hint="요청사항을 입력해주세요."
+                android:hint="요청사항을 입력해 주세요."
                 android:inputType="textMultiLine"
                 android:padding="15dp" />
 
-            <TextView
-                android:id="@+id/paymentInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="페이" />
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:background="@drawable/round_edge"
-                android:gravity="right"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <LinearLayout
+                android:layout_margin="10dp"
+                android:paddingBottom="30dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/paymentInfo"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_bold"
+                    android:textColor="@color/color_primary_900"
+                    android:textSize="20sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginEnd="10dp"
+                    android:text="페이" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/paymentInfo"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/et_hourlyWage"
                         android:id="@+id/hourlyWage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="시급"
-                        tools:layout_editor_absoluteY="175dp"
-                        tools:layut_editor_absoluteX="27dp" />
+                        android:fontFamily="@font/font_bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/color_success_800"
+                         />
 
                     <EditText
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tv_hourlyWage"
                         android:id="@+id/et_hourlyWage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:ems="6"
-                        android:gravity="center"
+                        android:hint="시급을 입력해 주세요."
                         android:inputType="number"
                         android:text="8590" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+
                         android:id="@+id/tv_hourlyWage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/color_success_800"
                         android:text="원"
-                        tools:layout_editor_absoluteX="27dp"
-                        tools:layout_editor_absoluteY="175dp" />
-                </LinearLayout>
-            </LinearLayout>
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -351,7 +457,11 @@
             android:id="@+id/btn_add_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/color_primary_500"
+            android:fontFamily="@font/font_bold"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:includeFontPadding="false"
             android:text="등록하기" />
 
     </LinearLayout>

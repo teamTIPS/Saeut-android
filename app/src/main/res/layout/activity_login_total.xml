@@ -149,27 +149,29 @@
                 android:text="간편로그인" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            app:layout_constraintTop_toBottomOf="@+id/bottom_container"
-            android:id="@+id/kakao_sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFE500"
-            android:fontFamily="@font/font_regular"
-            android:textColor="@color/colorBlack"
-            android:text="카카오 계정으로 시작" />
 
         <Button
-            app:layout_constraintTop_toBottomOf="@+id/kakao_sign_in_button"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_container"
             android:id="@+id/email_sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:fontFamily="@font/font_bold"
             android:textColor="@color/colorBlack"
             android:background="@color/colorPrimary"
             android:text="세웃 회원가입"
             />
+        <Button
+            app:layout_constraintTop_toBottomOf="@+id/email_sign_up_button"
+            android:id="@+id/kakao_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#FFE500"
+            android:fontFamily="@font/font_regular"
+            android:textColor="@color/colorBlack"
+            android:text="카카오 계정으로 시작" />
+
+
 
         <TextView
             app:layout_constraintTop_toBottomOf="@id/email_sign_up_button"
