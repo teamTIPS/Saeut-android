@@ -25,6 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="돌봄요청정보"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_bold"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 

@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/round_edge"
+                android:background="@drawable/rounded_edittext"
                 android:padding="5dp"
                 android:layout_margin="10dp"            >
                 <ImageView
@@ -53,6 +53,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+
                 android:background="@drawable/ic_saeut_logo"
                 />
             <TextView
@@ -60,12 +62,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/color_primary_900"
+                android:layout_marginBottom="10dp"
                 android:text="현재 위치를 받아오지 못했어요.\n검색창에서 주소를 찾아보세요."/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="다시 주소로 검색하기"
+                android:textSize="18sp"
                 android:textColor="@color/colorPrimary"/>
         </LinearLayout>
 
@@ -80,9 +84,11 @@
         android:layout_alignParentBottom="true">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@color/colorPrimary"
             android:textSize="20sp"
+            android:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:text="설정완료"/>
