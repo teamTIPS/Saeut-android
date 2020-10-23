@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape android:shape="rectangle" android:padding="30dp">
+            <solid android:color="@color/color_primary_400" />
+            <padding
+                android:bottom="7dp"
+                android:left="7dp"
+                android:right="7dp"
+                android:top="7dp" />
+
+            <corners
+                android:bottomRightRadius="45dp"
+                android:bottomLeftRadius="45dp"
+                android:topLeftRadius="45dp"
+                android:topRightRadius="45dp" />
+
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_iconmonstr_user_31" />
+
+</layer-list>
