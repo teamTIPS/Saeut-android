@@ -10,10 +10,14 @@
     <TextView
         android:id="@+id/dialog_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:gravity="center"
         android:text="그룹 신청하기"
         android:textSize="24sp"
+        android:fontFamily="@font/font_bold"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/default_btn"
+        android:includeFontPadding="false"
         style:layout_constraintLeft_toLeftOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="16dp" />
@@ -41,27 +45,38 @@
             android:id="@+id/cb_typeSupply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="돌봄제공자"
+            android:text="도와줄게요"
             style:layout_constraintRight_toLeftOf="@+id/cb_typeDemend"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/font_regular"
+            android:textColor="@color/color_primary_800"
+            android:includeFontPadding="false"
             style:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+             />
 
         <CheckBox
             android:id="@+id/cb_typeDemend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="돌봄요청자"
+            android:text="도와줄래요"
+            android:fontFamily="@font/font_regular"
+            android:textColor="@color/color_primary_800"
+            android:includeFontPadding="false"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
+        android:background="@drawable/rounded_edittext"
         android:id="@+id/et_introduce"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="간단히 자기소개를 작성해주세요. (500자 이내)"
+        android:padding="5dp"
+        android:hint="간단한 자기소개를 작성해주세요."
         android:inputType="textMultiLine"
         android:lines="8"
+        android:fontFamily="@font/font_regular"
+        android:includeFontPadding="false"
         android:maxLines="10"
         android:minLines="6"
         android:scrollbars="vertical"
@@ -73,7 +88,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/nav_header_vertical_spacing"
+        android:fontFamily="@font/font_regular"
+        android:textColor="@color/color_primary_800"
         android:text="서약 내용"
+        android:includeFontPadding="false"
         style:layout_constraintTop_toBottomOf="@+id/et_introduce"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -90,6 +108,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
+            android:background="@drawable/default_btn"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/font_bold"
+            android:textSize="20sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+
             style:layout_constraintRight_toLeftOf="@+id/btn_apply_submit"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
@@ -98,6 +123,11 @@
             android:id="@+id/btn_apply_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/default_btn"
+            android:fontFamily="@font/font_bold"
+            android:textSize="20sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
             android:text="신청"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />

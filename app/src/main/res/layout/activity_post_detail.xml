@@ -160,7 +160,7 @@
                 android:fontFamily="@font/font_regular"
                 android:includeFontPadding="false"
                 android:textColor="@color/colorBlack"
-                android:text="유치원 등하교모임 함께하실 분들 찾습니다."
+                android:text="유치원 등원 품앗이모임 함께하실 분들 찾습니다."
                 android:textSize="18sp" />
 
             <View
