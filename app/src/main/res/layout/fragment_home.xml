@@ -70,12 +70,103 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-      <TextView
-          android:id="@+id/tv_message"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:text="수정 중" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/icon_layer1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_typeGroup"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_conversation" />
+
+            <ImageView
+                android:id="@+id/iv_typeAlone"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_chat" />
+
+            <ImageView
+                android:id="@+id/iv_group"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_neighbor_manage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/text_layer1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/typeGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="함께돌봄" />
+
+            <TextView
+                android:id="@+id/typeAlone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="맞춤돌봄" />
+
+            <TextView
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 그룹 가기" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/icon_layer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_search_24" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_search_24" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_search_24" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/text_layer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
