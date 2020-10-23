@@ -6,7 +6,7 @@ public class Group {
     private int post_id;        // Post(post_id)
     private String captain;     // userEssential(id) - 그룹장
     private String id;          // userEssential(id) - 그룹원
-    private int type;
+    private int type;           // 돌봄제공자 or 돌봄요청자
 
     public Group() { }
 

@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Comment {
 
-    private int comment_id;
-    private int post_id;
-    private String id;
-    private String contents;        // 댓글 내용
-    private Date write_time;        // 작성 시간
+    private int comment_id;	 	// sequence
+    private int post_id;		// FK Post(post_id)
+    private String id;			// FK UserEssential(id)
+    private String contents; 	// 댓글 내용
+    private Date write_time; 	// 작성 시간
 
     public Comment() {
     }

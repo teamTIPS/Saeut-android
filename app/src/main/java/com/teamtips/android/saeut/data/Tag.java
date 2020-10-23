@@ -2,8 +2,8 @@ package com.teamtips.android.saeut.data;
 
 public class Tag {
 
-    private int post_id;
-    private String tag_name;
+    private int post_id;            // FK Post(post_id)
+    private String tag_name;        // 태그 명
 
     public Tag() {
     }
