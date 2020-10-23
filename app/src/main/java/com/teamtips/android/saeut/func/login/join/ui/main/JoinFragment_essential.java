@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.sql.Date;
 
 import retrofit2.http.Body;
 
@@ -49,6 +52,8 @@ public class JoinFragment_essential extends Fragment {
         EditText name_edit = root.findViewById(R.id.name_edit);
         EditText phone_edit = root.findViewById(R.id.phone_edit);
         EditText nickname_edit = root.findViewById(R.id.nickname_edit);
+        EditText birth_edit = root.findViewById(R.id.birth_edit);
+        RadioGroup gender_radio = root.findViewById(R.id.radioGender);
         Button email_sign_up_button = root.findViewById(R.id.email_sign_up_button);
         Button btn_check_id = root.findViewById(R.id.btn_check_id);
 
@@ -130,7 +135,10 @@ public class JoinFragment_essential extends Fragment {
                         password_edit.getText().toString(),
                         name_edit.getText().toString(),
                         phone_edit.getText().toString(),
-                        nickname_edit.getText().toString());
+                        0,
+                        Date.valueOf(birth_edit.getText().toString()),
+                        true
+                );
                 mViewModel.Join(joinin);
           //  }
 

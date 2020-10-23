@@ -9,10 +9,12 @@ public class Joinin {
     private String password;
     private String name;
     private String phonenum;
-    private String nickname;
+    private int gender;
+    private Date birth;
+    private boolean perm;
 
     //UserAdditional
-    private Date birth;
+    private String nickname;
     private String zipcode;
     private String address1;
     private String address2;
@@ -22,6 +24,16 @@ public class Joinin {
 
     //constructor
     Joinin() {}
+
+    public Joinin(String id, String password, String name, String phonenum, int gender, Date birth, boolean perm1) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.phonenum = phonenum;
+        this.gender = gender;
+        this.birth = birth;
+        this.perm = perm;
+    }
 
     Joinin(String name, String id, String password, String phonenum, String nickname) {
         this.id = id;
@@ -129,5 +141,29 @@ public class Joinin {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public boolean isPerm() {
+        return perm;
+    }
+
+    public void setPerm(boolean perm) {
+        this.perm = perm;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

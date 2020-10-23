@@ -36,6 +36,9 @@ public class JoinViewModel extends ViewModel {
             join_json.accumulate("password", joinin.getPassword());
             join_json.accumulate("name", joinin.getName());
             join_json.accumulate("phone", joinin.getPhonenum());
+            join_json.accumulate("birth", joinin.getBirth());
+            join_json.accumulate("gender", joinin.getGender());
+            join_json.accumulate("perm1", joinin.isPerm());
             Log.e(Tag,joinin.getId()+", "+joinin.getName());
         } catch (JSONException e) {
             e.printStackTrace();
