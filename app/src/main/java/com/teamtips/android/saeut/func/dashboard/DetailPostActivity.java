@@ -25,8 +25,8 @@ public class DetailPostActivity extends AppCompatActivity {
     private static TextView tv_id;
 
     private static TextView tv_tagTitle;
-    private static TextView tv_startDate;
-    private static TextView tv_dueDate;
+    private static EditText et_startDate;
+    private static EditText et_dueDate;
     private static TextView tv_applyCount;
     private static TextView tv_address;
     private static TextView tv_contents;
@@ -111,8 +111,8 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_contents = (TextView) findViewById(R.id.tv_contents);
         tv_id = (TextView) findViewById(R.id.tv_id);
 
-        tv_startDate = (TextView) findViewById(R.id.tv_startDate);
-        tv_dueDate = (TextView) findViewById(R.id.tv_dueDate);
+        et_startDate = (EditText) findViewById(R.id.et_startDate);
+        et_dueDate = (EditText) findViewById(R.id.et_dueDate);
         tv_applyCount = (TextView) findViewById(R.id.tv_applyCount);
         tv_address = (TextView) findViewById(R.id.tv_address);
 
@@ -124,8 +124,8 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_contents.setText(post.getContents());
         tv_id.setText(post.getId());
 
-        tv_startDate.setText(post.getStart_date());
-        tv_dueDate.setText(post.getDue_date());
+        et_startDate.setText(post.getStart_date());
+        et_dueDate.setText(post.getDue_date());
 
         tv_applyCount.setText("1");
         // 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언

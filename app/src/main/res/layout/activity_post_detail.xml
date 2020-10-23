@@ -320,32 +320,16 @@
                         tools:layout_editor_absoluteY="175dp" />
 
                     <EditText
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/startDate"
-                        app:layout_constraintRight_toLeftOf="@+id/btn_startDate"
                         android:id="@+id/et_startDate"
                         android:layout_width="0dp"
-                        android:layout_marginEnd="20dp"
-
                         android:layout_height="wrap_content"
+                        android:ems="10"
+
                         android:inputType="date"
-                        android:textSize="15sp" />
-
-                    <Button
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:includeFontPadding="false"
-
-                        android:id="@+id/btn_startDate"
-                        android:background="@drawable/default_btn"
-                        android:textColor="@color/colorWhite"
-
-                        android:text="날짜 선택"
-                        android:textSize="13sp" />
+                        app:layout_constraintLeft_toRightOf="@id/startDate"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -374,31 +358,17 @@
 
                     <EditText
                         android:id="@+id/et_dueDate"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/dueDate"
-                        app:layout_constraintRight_toLeftOf="@+id/btn_dueDate"
                         android:layout_width="0dp"
-                        android:layout_marginEnd="20dp"
-
                         android:layout_height="wrap_content"
+                        android:ems="10"
                         android:enabled="false"
+
                         android:gravity="center"
                         android:inputType="date"
-                        android:textSize="15sp" />
-
-                    <Button
-                        android:id="@+id/btn_dueDate"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:includeFontPadding="false"
-                        android:background="@drawable/default_btn"
-                        android:textColor="@color/colorWhite"
-                        android:text="날짜 선택"
-                        android:textSize="13sp" />
+                        app:layout_constraintLeft_toRightOf="@id/dueDate"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
