@@ -30,6 +30,8 @@ import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import retrofit2.http.Body;
 
@@ -127,18 +129,25 @@ public class JoinFragment_essential extends Fragment {
             }
         });
 
+
+
         //닉네임 중복확인 api 사용, 버튼 만들어주세요
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
-                Joinin joinin = new Joinin(
+                String birth = birth_edit.getText().toString();
+                birth = birth.substring(0, 4) + "-" + birth.substring(4, 6) + "-" + birth.substring(6);
+                Log.d(Tag, birth);
+                Joinin joinin = null;
+                joinin = new Joinin(
                         email_edit.getText().toString(),
                         password_edit.getText().toString(),
                         name_edit.getText().toString(),
                         phone_edit.getText().toString(),
                         0,
-                        Date.valueOf(birth_edit.getText().toString()),
+                        birth,
                         true
                 );
+                Log.d(Tag, joinin.toString());
                 mViewModel.Join(joinin);
           //  }
 

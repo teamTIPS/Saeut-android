@@ -10,7 +10,7 @@ public class Joinin {
     private String name;
     private String phonenum;
     private int gender;
-    private Date birth;
+    private String birth;
     private boolean perm;
 
     //UserAdditional
@@ -25,7 +25,7 @@ public class Joinin {
     //constructor
     Joinin() {}
 
-    public Joinin(String id, String password, String name, String phonenum, int gender, Date birth, boolean perm1) {
+    public Joinin(String id, String password, String name, String phonenum, int gender, String birth, boolean perm1) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -119,11 +119,11 @@ public class Joinin {
         this.picpath = picpath;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 
@@ -165,5 +165,25 @@ public class Joinin {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Joinin{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", phonenum='" + phonenum + '\'' +
+                ", gender=" + gender +
+                ", birth=" + birth +
+                ", perm=" + perm +
+                ", nickname='" + nickname + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", picpath='" + picpath + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

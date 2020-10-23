@@ -28,18 +28,18 @@ public class JoinViewModel extends ViewModel {
 //    public MutableLiveData<Post> postMutableLiveDate = new MutableLiveData<>();
 
     public void Join(Joinin joinin){
-        String url = "http://49.50.173.180:8080/saeut/account/add";
+        String url = "http://49.50.173.180:8080/saeut/user/essential";
         JSONObject join_json = new JSONObject();
 
         try {
-            join_json.accumulate("account_id", joinin.getId());
+            join_json.accumulate("id", joinin.getId());
             join_json.accumulate("password", joinin.getPassword());
             join_json.accumulate("name", joinin.getName());
             join_json.accumulate("phone", joinin.getPhonenum());
             join_json.accumulate("birth", joinin.getBirth());
             join_json.accumulate("gender", joinin.getGender());
             join_json.accumulate("perm1", joinin.isPerm());
-            Log.e(Tag,joinin.getId()+", "+joinin.getName());
+            Log.e(Tag,joinin.getId()+ ", " +joinin.getName());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class JoinViewModel extends ViewModel {
             RequestHttpURLConnection_POST requestHttpURLConnection = new RequestHttpURLConnection_POST();
             result = requestHttpURLConnection.request(url, json); // 해당 URL로 부터 결과물을 얻어온다.
             responseCode = requestHttpURLConnection.getResponseCode(); // HTTP 통신 결과의 ResponseCode를 할당
-
+            Log.e(Tag, String.valueOf(responseCode));
             return result;
         }
 
