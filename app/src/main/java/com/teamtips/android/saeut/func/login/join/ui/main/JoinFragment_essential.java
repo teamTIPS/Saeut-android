@@ -68,6 +68,8 @@ public class JoinFragment_essential extends Fragment {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
 
+    private int gender; // gender radio 클릭 결과 저장용
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -85,6 +87,7 @@ public class JoinFragment_essential extends Fragment {
         EditText birth_edit = root.findViewById(R.id.birth_edit);
         RadioGroup gender_radio = root.findViewById(R.id.radioGender);
         Button email_sign_up_button = root.findViewById(R.id.email_sign_up_button);
+        CheckBox marketing_cb = (CheckBox)root.findViewById(R.id.check_marketing);
         Button btn_check_id = root.findViewById(R.id.btn_check_id);
 
         email_edit.addTextChangedListener(new TextWatcher() {
@@ -191,6 +194,19 @@ public class JoinFragment_essential extends Fragment {
             }
         });
 
+        gender_radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rb_woman) {
+                    // 여성 클릭시
+                    gender = 0;
+                } else if (checkedId == R.id.rb_man) {
+                    // 남성 클릭
+                    gender = 1;
+                }
+            }
+        });
+
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
             // 아이디 중복확인 했니?
@@ -208,18 +224,17 @@ public class JoinFragment_essential extends Fragment {
                         .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
                         .show();
             } else {
-                Joinin joinin = null;
-                joinin = new Joinin(
+                Joinin joinin = new Joinin(
                         email_edit.getText().toString(),
                         password_edit.getText().toString(),
                         name_edit.getText().toString(),
                         phone_edit.getText().toString(),
-                        0,
+                        gender,
                         birth_edit.getText().toString(),
-                        true
+                        marketing_cb.isChecked()
                 );
                 Log.d(Tag, joinin.toString());
-                mViewModel.Join(joinin);
+//                mViewModel.Join(joinin);
             }
 
         });

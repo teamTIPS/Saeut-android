@@ -229,18 +229,22 @@
                 style:layout_constraintBottom_toBottomOf="parent"
                 style:layout_constraintRight_toRightOf="parent"
                 style:layout_constraintTop_toTopOf="parent">
+
                 <RadioButton
+                    android:id="@+id/rb_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="여자"
                     android:textColor="@color/color_primary_900"
                     android:textSize="15sp" />
+
                 <RadioButton
+                    android:id="@+id/rb_man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_primary_900"
 
                     android:text="남자"
+                    android:textColor="@color/color_primary_900"
                     android:textSize="15sp" />
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -277,14 +281,15 @@
             style:layout_constraintTop_toBottomOf="@id/check_agreement1" />
 
         <CheckBox
-            android:id="@+id/check_agreement3"
+            android:id="@+id/check_marketing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:fontFamily="@font/font_regular"
-            android:textSize="15sp"
 
             android:text="(선택) 마케팅 정보 수신 동의"
             android:textColor="@color/color_primary_900"
+            android:textSize="15sp"
             style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintTop_toBottomOf="@id/check_agreement2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
