@@ -1,5 +1,6 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
+import android.content.ContentValues;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetwork;
+import com.teamtips.android.saeut.network.RequestHttpURLConnection;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
 
 import org.json.JSONException;
@@ -33,6 +36,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import retrofit2.Call;
 import retrofit2.http.Body;
 
 public class JoinFragment_essential extends Fragment {
@@ -115,17 +119,17 @@ public class JoinFragment_essential extends Fragment {
         btn_check_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JSONObject checkID_json = new JSONObject();
+//                JSONObject checkID_json = new JSONObject();
                 Log.e(Tag,"btn_check_id.setOnClickListener");
 
-                try{
-                    checkID_json.accumulate("id", email_edit.getText().toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                String url = "http://49.50.173.180:8080/saeut/signon/checkid";
-                NetworkTask_CheckID networkTask_checkID = new NetworkTask_CheckID(url, checkID_json.toString());
-                networkTask_checkID.execute();
+//                try{
+//                    checkID_json.accumulate("id", email_edit.getText().toString());
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                String url = "http://49.50.173.180:8080/saeut/valid/id/" + email_edit.getText().toString();
+//                NetworkTask_CheckID networkTask_checkID = new NetworkTask_CheckID(url, checkID_json.toString());
+//                networkTask_checkID.execute();
             }
         });
 
@@ -134,9 +138,6 @@ public class JoinFragment_essential extends Fragment {
         //닉네임 중복확인 api 사용, 버튼 만들어주세요
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
-                String birth = birth_edit.getText().toString();
-                birth = birth.substring(0, 4) + "-" + birth.substring(4, 6) + "-" + birth.substring(6);
-                Log.d(Tag, birth);
                 Joinin joinin = null;
                 joinin = new Joinin(
                         email_edit.getText().toString(),
@@ -144,7 +145,7 @@ public class JoinFragment_essential extends Fragment {
                         name_edit.getText().toString(),
                         phone_edit.getText().toString(),
                         0,
-                        birth,
+                        birth_edit.getText().toString(),
                         true
                 );
                 Log.d(Tag, joinin.toString());
@@ -175,7 +176,7 @@ public class JoinFragment_essential extends Fragment {
             return !email.trim().isEmpty();
         }
     }
-    public static class NetworkTask_CheckID extends AsyncTask<Void, Void, Boolean> {
+    public static class NetworkTask_CheckID extends AsyncTask<String, Void, Boolean> {
 
         private String url;
         private String json;
@@ -189,10 +190,12 @@ public class JoinFragment_essential extends Fragment {
 
         //result - true: 사용가능 / false: 중복
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        protected Boolean doInBackground(String... strings) {
             boolean result;
-            RequestHttpURLConnection_POST requestHttpURLConnection = new RequestHttpURLConnection_POST();
-            String temp = requestHttpURLConnection.request(url, json);
+//            RequestHttpURLConnection_POST reqzuestHttpURLConnection = new RequestHttpURLConnection_POST();
+//            String temp = requestHttpURLConnection.request(url, json);
+            RequestHttpURLConnection requestHttpURLConnection = new RequestHttpURLConnection();
+            String temp = requestHttpURLConnection.request(url, contentValues);
             result = temp.contains("true");
             Log.e(Tag,"requestHttpURLConnection: "+temp);
 
@@ -202,7 +205,7 @@ public class JoinFragment_essential extends Fragment {
             return result;
         }
 
-        @Override
+        z@Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             Log.e(Tag,"onPostExecute");

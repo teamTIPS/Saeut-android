@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:background="@color/colorWhite"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".func.login.ui.generalLogin.LoginActivity">
+    tools:context=".func.login.join.ui.generalLogin.LoginActivity">
 
     <LinearLayout
         app:layout_constraintTop_toTopOf="parent"

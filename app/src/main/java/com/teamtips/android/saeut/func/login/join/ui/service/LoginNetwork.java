@@ -1,11 +1,11 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.service;
 
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.*;
 
-public interface RestApi {
+public interface LoginNetwork {
 
     //로그인 성공했을 때 at, rt를 result에 같이 넣어서 보내줄 수 있는지? >> OK
 //    //at, rt 가져오기 - 로그인에 추가
@@ -24,4 +24,7 @@ public interface RestApi {
     @GET("/signon/get_refresh_token ")
     Call<JsonObject> updateRt();
     //return RefreshToken (as json)
+
+    @GET("/valid/id/{id}")
+    Call<String> vaildEmail(@Path("id") int id);
 }
