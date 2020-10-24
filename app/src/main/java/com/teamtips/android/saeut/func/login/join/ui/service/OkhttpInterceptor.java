@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.service;
 
 
 import android.content.Context;
@@ -20,7 +20,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference.getRT;
+import static com.teamtips.android.saeut.func.login.join.ui.service.SaveSharedPreference.getRT;
 
 public class OkhttpInterceptor implements Interceptor{
     private static final String Tag = "OkhttpInterceptor";
@@ -44,7 +44,7 @@ public class OkhttpInterceptor implements Interceptor{
             .client(client)
             .build();
 
-    RestApi api = retrofit.create(RestApi.class);
+    LoginNetwork api = retrofit.create(LoginNetwork.class);
 
     @Override
     public Response intercept(Chain chain) throws IOException {

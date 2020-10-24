@@ -16,7 +16,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.teamtips.android.saeut.func.dashboard.CreatePostActivity;
 import com.teamtips.android.saeut.func.home.HomeFragment;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.SplashActivity;
 
 import java.security.MessageDigest;
 

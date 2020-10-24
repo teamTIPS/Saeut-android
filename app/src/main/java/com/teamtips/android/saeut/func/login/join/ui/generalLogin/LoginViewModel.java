@@ -1,18 +1,17 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.generalLogin;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 
-import com.auth0.android.jwt.JWT;
 import com.teamtips.android.saeut.GlobalApplication;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.ui.service.SaveSharedPreference;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
 import com.teamtips.android.saeut.func.login.data.LoginRepository;
 import com.teamtips.android.saeut.func.login.data.Result;
@@ -20,10 +19,6 @@ import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
-
-import retrofit2.Call;
 
 public class LoginViewModel extends ViewModel {
 

@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.generalLogin;
 
 /**
  * Class exposing authenticated user details to the UI.

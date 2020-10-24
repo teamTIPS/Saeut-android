@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,11 +8,9 @@ import androidx.preference.PreferenceManager;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class SaveSharedPreference {

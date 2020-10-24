@@ -1,24 +1,18 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.generalLogin;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginResult;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginViewModel;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginViewModelFactory;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.SaveSharedPreference;
+import com.teamtips.android.saeut.func.login.join.ui.service.SaveSharedPreference;
 
 public class SplashActivity extends AppCompatActivity {
 
