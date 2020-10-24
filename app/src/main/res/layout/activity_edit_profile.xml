@@ -76,10 +76,10 @@
         android:layout_alignParentBottom="true">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@color/colorPrimary"
             android:fontFamily="@font/font_bold"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:text="설정 완료"/>

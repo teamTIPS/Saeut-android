@@ -456,11 +456,11 @@
         <Button
             android:id="@+id/btn_add_submit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@color/color_primary_500"
             android:fontFamily="@font/font_bold"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:includeFontPadding="false"
             android:text="등록하기" />
 

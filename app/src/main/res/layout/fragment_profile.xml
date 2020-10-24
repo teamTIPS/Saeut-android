@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_regular"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
 
                     android:background="@drawable/default_btn"
                     android:text="계정 관리하기"
@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_regular"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/default_btn"
                     android:text="지역 변경하기"
@@ -207,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_regular"
                     android:layout_marginTop="20dp"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
 
                     android:background="@drawable/default_btn"
 
