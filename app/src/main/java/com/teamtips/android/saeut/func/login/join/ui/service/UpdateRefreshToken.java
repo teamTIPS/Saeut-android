@@ -1,11 +1,10 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.service;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.auth0.jwt.JWT;
 import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.GlobalApplication;
+import com.teamtips.android.saeut.func.login.join.ui.service.SaveSharedPreference;
 
 import javax.security.auth.callback.Callback;
 

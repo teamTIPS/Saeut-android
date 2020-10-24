@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.teamtips.android.saeut.func.location.setLocation;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginActivity;
+import com.teamtips.android.saeut.func.login.join.ui.generalLogin.LoginActivity;
 import com.teamtips.android.saeut.func.login.editProfile.editProfile;
 
 public class SideNavItemSelectedListener

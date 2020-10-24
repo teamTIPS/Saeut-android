@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.generalLogin;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;

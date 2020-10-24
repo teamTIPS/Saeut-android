@@ -1,4 +1,4 @@
-package com.teamtips.android.saeut.func.login.ui.generalLogin;
+package com.teamtips.android.saeut.func.login.join.ui.generalLogin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.gson.JsonObject;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.teamtips.android.saeut.MainActivity;
@@ -25,14 +24,6 @@ import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.SessionCallback;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 import com.teamtips.android.saeut.func.login.join.JoinActivity;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -37,7 +37,7 @@
         <activity android:name=".func.dashboard.EditPostActivity" />
         <activity android:name=".func.timetable.EditActivity" />
         <activity
-            android:name=".func.login.ui.generalLogin.SplashActivity"
+            android:name=".func.login.join.ui.generalLogin.SplashActivity"
             android:theme="@style/SplashActivityTheme">
 
             <!-- android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->
@@ -45,7 +45,7 @@
 
 
         </activity>
-        <activity android:name=".func.login.ui.generalLogin.LoginActivity" />
+        <activity android:name=".func.login.join.ui.generalLogin.LoginActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

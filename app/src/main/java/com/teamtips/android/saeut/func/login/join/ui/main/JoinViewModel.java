@@ -1,19 +1,12 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
-import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Patterns;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.data.Result;
-import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginViewModel;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
 
 

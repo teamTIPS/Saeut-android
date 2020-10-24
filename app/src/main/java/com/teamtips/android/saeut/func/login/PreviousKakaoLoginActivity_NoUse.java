@@ -1,23 +1,5 @@
 package com.teamtips.android.saeut.func.login;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.kakao.auth.AuthType;
-import com.kakao.auth.Session;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
-import com.teamtips.android.saeut.MainActivity;
-import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.func.login.join.JoinActivity;
-import com.teamtips.android.saeut.func.login.ui.generalLogin.LoginActivity;
-
 /*
 public class KakaoLoginActivity extends AppCompatActivity {
 
