@@ -1,6 +1,9 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,33 +19,54 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetwork;
+import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetworkService;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection_POST;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 
 public class JoinFragment_essential extends Fragment {
 
     private JoinViewModel mViewModel = new JoinViewModel();
     private final static String Tag = "JoinFragment_essential";
+    private LoginNetworkService loginNetworkService = new LoginNetworkService();
+
+    /* Retrofit */
+    private Gson gson = new GsonBuilder().setLenient().create();
+    private OkHttpClient.Builder builder = new OkHttpClient.Builder();
+    private OkHttpClient client = builder.build();
+    private final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://49.50.173.180:8080/saeut/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
 
     @Nullable
     @Override
@@ -74,8 +98,8 @@ public class JoinFragment_essential extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!isEmailValid(email_edit.getText().toString())){
-                    Log.e(Tag,"이메일 형식 아님");
+                if (!isEmailValid(email_edit.getText().toString())) {
+                    Log.e(Tag, "이메일 형식 아님");
 
                     //아이디 옆의 초록원 빨갛게 셋팅
                 }
@@ -93,8 +117,8 @@ public class JoinFragment_essential extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!password_confirm.getText().toString().matches(password_edit.getText().toString())){
-                    Log.e(Tag,"비밀번호 확인 틀렸음");
+                if (!password_confirm.getText().toString().matches(password_edit.getText().toString())) {
+                    Log.e(Tag, "비밀번호 확인 틀렸음");
                 }
             }
         });
@@ -110,34 +134,80 @@ public class JoinFragment_essential extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(isNotNumber(phone_edit.getText().toString())){
-                    Log.e(Tag,"번호 아님");
+                if (isNotNumber(phone_edit.getText().toString())) {
+                    Log.e(Tag, "번호 아님");
                 }
             }
         });
 
+        //닉네임 중복확인 api 사용, 버튼 만들어주세요
         btn_check_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                JSONObject checkID_json = new JSONObject();
-                Log.e(Tag,"btn_check_id.setOnClickListener");
+                retrofit.create(LoginNetwork.class).validEmail(email_edit.getText().toString()).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            String result = response.body();
+                            if (result.equals("true")) {
+                                AlertDialog.Builder emailCheckDialog = new AlertDialog.Builder(getContext());
 
-//                try{
-//                    checkID_json.accumulate("id", email_edit.getText().toString());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                String url = "http://49.50.173.180:8080/saeut/valid/id/" + email_edit.getText().toString();
-//                NetworkTask_CheckID networkTask_checkID = new NetworkTask_CheckID(url, checkID_json.toString());
-//                networkTask_checkID.execute();
+                                emailCheckDialog.setMessage("사용 가능한 Email 입니다.")
+                                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Log.i("Dialog", "확인");
+                                            }
+                                        })
+                                        .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
+                                        .show();
+
+                                // 중복 확인 끝났으니까
+                                btn_check_id.setClickable(false);
+                                btn_check_id.setText("확인완료");
+                            }
+                            Log.d(Tag, "성공  : " + response.body());
+                        } else {
+                            Log.d(Tag, "실패  : " + response.code());
+                            AlertDialog.Builder emailCheckDialog = new AlertDialog.Builder(getContext());
+
+                            emailCheckDialog.setMessage("중복된 Email 입니다. 다른 Email을 입력해주세요.")
+                                    .setPositiveButton("다시 입력하기", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Log.i("Dialog", "확인");
+                                        }
+                                    })
+                                    .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
+                                    .show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.d(Tag, "실패  : " + t.getMessage());
+                    }
+                });
             }
         });
 
-
-
-        //닉네임 중복확인 api 사용, 버튼 만들어주세요
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
+            // 아이디 중복확인 했니?
+            if (btn_check_id.isClickable()) {
+                // 안했으면 하렴
+                AlertDialog.Builder emailCheckDialog = new AlertDialog.Builder(getContext());
+
+                emailCheckDialog.setMessage("Email 중복을 확인해주세요.")
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Dialog", "확인");
+                            }
+                        })
+                        .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
+                        .show();
+            } else {
                 Joinin joinin = null;
                 joinin = new Joinin(
                         email_edit.getText().toString(),
@@ -150,18 +220,17 @@ public class JoinFragment_essential extends Fragment {
                 );
                 Log.d(Tag, joinin.toString());
                 mViewModel.Join(joinin);
-          //  }
+            }
 
         });
         return root;
     }
 
     private boolean isNotNumber(String toString) {
-        try{
+        try {
             Integer.parseInt(toString);
             return true;
-        }
-        catch (NumberFormatException  e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -175,64 +244,5 @@ public class JoinFragment_essential extends Fragment {
         } else {
             return !email.trim().isEmpty();
         }
-    }
-    public static class NetworkTask_CheckID extends AsyncTask<String, Void, Boolean> {
-
-        private String url;
-        private String json;
-        private int responseCode;
-
-        public NetworkTask_CheckID(String url, String json) {
-            this.url = url;
-            this.json = json;
-        }
-
-
-        //result - true: 사용가능 / false: 중복
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            boolean result;
-            RequestHttpURLConnection_POST requestHttpURLConnection = new RequestHttpURLConnection_POST();
-            String temp = requestHttpURLConnection.request(url, json);
-            result = temp.contains("true");
-            Log.e(Tag,"requestHttpURLConnection: "+temp);
-
-            responseCode = requestHttpURLConnection.getResponseCode(); // HTTP 통신 결과의 ResponseCode를 할당
-            Log.e(Tag,"result:"+result);
-
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            Log.e(Tag,"onPostExecute");
-            if(aBoolean){
-                Log.e(Tag,"아이디 사용 가능입니다.");
-            }
-            else{
-                Log.e(Tag,"아이디 중복입니다.");
-            }
-
-        }
-
-//        @Override
-//        protected void onPostExecute(boolean s) {
-//            super.onPostExecute(s);
-//
-//            if(s){
-//                try {
-//                    JSONObject result_json = new JSONObject(s);
-//                    boolean result = result_json.getBoolean("result");
-//                    Log.e(Tag,"result:"+ result);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            else{
-//                Log.e(Tag,"TextUtils.isEmpty(s)");
-//            }
-//            Log.e(Tag,s);
-//        }
     }
 }

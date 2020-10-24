@@ -25,6 +25,6 @@ public interface LoginNetwork {
     Call<JsonObject> updateRt();
     //return RefreshToken (as json)
 
-    @GET("/valid/id/{id}")
-    Call<String> vaildEmail(@Path("id") int id);
+    @GET("valid/id/{id}")
+    Call<String> validEmail(@Path("id") String email);
 }
