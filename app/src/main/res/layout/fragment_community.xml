@@ -1,113 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <Button
+                android:id="@+id/toback_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_baseline_arrow_back_24"
+                android:gravity="start">
+
+            </Button>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/community_app_bar_title"
+                android:text="동네 게시판"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:gravity="center"
+
+                >
+
+            </TextView>
+
+            <Button
+                android:id="@+id/refresh_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_baseline_refresh_24"
+                android:gravity="end">
+
+            </Button>
+
+            <Button
+                android:id="@+id/menu_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_baseline_more_vert_24"
+                android:gravity="end"
+                >
+
+            </Button>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <LinearLayout
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"/>
+                tools:listitem="@layout/community_recycler_item"
+                >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:text="공지사항" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
-                    android:background="@drawable/round_edge">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="코로나(Covid-19) 정부지원금 안내"
-                        android:textAlignment="textStart"/>
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="세이웃 사랑 나누기 콘테스트"
-                        android:textAlignment="textStart"/>
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="세웃과 함께하는 세이웃 나눔활동 안내"
-                        android:textAlignment="textStart"/>
-                </LinearLayout>
-            </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_edge"
-                android:layout_margin="5dp"
-                android:padding="3dp">
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="@drawable/ad_banner_img"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textStart"
-                    android:textSize="18sp"
-                    android:text="정보게시판" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
-                    android:background="@drawable/round_edge">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="코로나(Covid-19) 정부지원금 안내"
-                        android:textAlignment="textStart"/>
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="세이웃 사랑 나누기 콘테스트"
-                        android:textAlignment="textStart"/>
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="세웃과 함께하는 세이웃 나눔활동 안내"
-                        android:textAlignment="textStart"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

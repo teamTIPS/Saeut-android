@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/community_recycler_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/community_recycler_item"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/community_title_container"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/writer_nickname_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:padding="20dp"
+                android:text="낮잠자기좋은날"
+                android:textColor="@color/color_primary_800"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/community_location_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_tag"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:text="서울시 강서구"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/writer_nickname_tv"
+                app:layout_constraintRight_toLeftOf="@id/community_rank_tv"
+                app:layout_constraintTop_toTopOf="parent">
+            </TextView>
+
+            <TextView
+                android:id="@+id/community_rank_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_tag"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:text="옆집이웃"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/community_location_tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/community_text_container"
+            app:layout_constraintTop_toBottomOf="@+id/community_title_container"
+            >
+            <TextView
+
+                android:id="@+id/community_text_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/font_regular"
+                android:textColor="@color/colorBlack"
+                android:includeFontPadding="false"
+                android:textSize="16sp"
+                android:text="오늘 사랑고 졸업식날이네요!"
+                android:padding="20dp"
+                >
+
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/community_text_container"
+            android:paddingHorizontal="20dp"
+            >
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/community_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_favorite_24">
+
+            </ImageView>
+            <TextView
+
+                android:id="@+id/community_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="@font/font_regular"
+                android:textColor="@color/colorBlack"
+                android:includeFontPadding="false"
+                app:layout_constraintRight_toLeftOf="@id/community_msg_iv"
+                android:textSize="16sp"
+                android:layout_marginEnd="10dp"
+                android:text="0"
+                android:padding="5dp"
+                android:gravity="center"
+                >
+
+            </TextView>
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/community_message_tv"
+                android:id="@+id/community_msg_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_message_24">
+
+            </ImageView>
+            <TextView
+
+                android:id="@+id/community_message_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:fontFamily="@font/font_regular"
+                android:textColor="@color/colorBlack"
+                android:includeFontPadding="false"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:text="0"
+                >
+
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

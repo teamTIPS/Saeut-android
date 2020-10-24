@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_matching"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/activity_horizontal_margin"
-    tools:ignore="MissingConstraints">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wage_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/nav_header_vertical_spacing"
         style:layout_constraintLeft_toLeftOf="parent"
         style:layout_constraintTop_toTopOf="parent">
@@ -20,10 +19,14 @@
             android:id="@+id/hourlyWage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="35dp"
-            android:text="돌보미 시급"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/font_bold"
+            android:textSize="20sp"
+            android:textColor="@color/color_primary_900"
+            android:text="희망시급"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/et_hourlyWage"
+            style:layout_constraintLeft_toLeftOf="parent"
+
             style:layout_constraintTop_toTopOf="parent" />
 
         <EditText
@@ -32,17 +35,23 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="8590"
+            android:hint="10000"
+            android:layout_marginEnd="15dp"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/won"
+            style:layout_constraintRight_toLeftOf="@+id/won_textview"
             style:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/won"
+            android:id="@+id/won_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:text="원"
+            android:fontFamily="@font/font_bold"
+            android:textColor="@color/colorBlack"
+            android:includeFontPadding="false"
+
+            android:textSize="18sp"
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +61,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/schedule_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         style:layout_constraintTop_toBottomOf="@+id/wage_container"
         android:padding="@dimen/nav_header_vertical_spacing" >
 
@@ -60,17 +69,20 @@
             android:id="@+id/schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
+            android:layout_marginStart="10dp"
+            style:layout_constraintLeft_toLeftOf="parent"
             android:text="시간"
+            android:fontFamily="@font/font_bold"
+            android:textSize="20sp"
+            android:textColor="@color/color_primary_900"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/et_schedule"
             style:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/et_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="17"
             android:hint="원하시는 시간을 입력해주세요."
             android:inputType="textPersonName"
@@ -84,7 +96,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/location_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         style:layout_constraintTop_toBottomOf="@+id/schedule_container"
         android:padding="@dimen/nav_header_vertical_spacing" >
 
@@ -92,17 +104,20 @@
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
+            android:layout_marginStart="10dp"
             android:text="위치"
+            android:fontFamily="@font/font_bold"
+            style:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="20sp"
+            android:textColor="@color/color_primary_900"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/et_location"
             style:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/et_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="17"
             android:hint="원하시는 시/군/구/동을 입력해주세요."
             android:inputType="textPersonName"
@@ -127,11 +142,15 @@
             android:id="@+id/cb_typeAlone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:text="맞춤돌봄"
+            android:layout_marginStart="50dp"
+            android:text="맞춤돌봄에 지원할래요"
+            android:fontFamily="@font/font_regular"
+            android:includeFontPadding="false"
+            android:textSize="15sp"
+            style:layout_constraintRight_toLeftOf="@id/cb_typeGroup"
+
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintLeft_toLeftOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/cb_typeDemend"
             style:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -139,8 +158,14 @@
             android:id="@+id/cb_typeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:text="함께돌봄"
+            android:layout_marginEnd="50dp"
+            android:text="함께돌봄에 지원할래요"
+            style:layout_constraintLeft_toRightOf="@id/cb_typeAlone"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/font_regular"
+            android:includeFontPadding="false"
+            android:textSize="15sp"
+
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
@@ -151,13 +176,19 @@
         android:id="@+id/btn_matching_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorPrimary"
+        android:paddingLeft="50dp"
+        android:textSize="23sp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:includeFontPadding="false"
+        android:background="@drawable/default_btn"
+        android:paddingRight="50dp"
+        android:textColor="@color/colorWhite"
+        style:layout_constraintBottom_toBottomOf="parent"
+
         android:text="매칭하기"
-        style:layout_constraintBottom_toTopOf="@+id/divider"
-        style:layout_constraintTop_toBottomOf="@+id/type_container"
-        tools:layout_editor_absoluteX="16dp" />
+        android:fontFamily="@font/font_bold" />
 
     <View
         android:id="@+id/divider"
@@ -166,17 +197,17 @@
         android:layout_margin="10dp"
         android:layout_weight="5"
         android:background="?android:attr/listDivider"
-        style:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        style:layout_constraintBottom_toTopOf="@+id/matching_recyclerView"
         style:layout_constraintLeft_toLeftOf="parent"
-        style:layout_constraintTop_toBottomOf="@+id/btn_matching_submit" />
+        style:layout_constraintTop_toBottomOf="@+id/type_container" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/matching_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         style:layout_constraintBottom_toBottomOf="parent"
         style:layout_constraintTop_toBottomOf="@+id/divider"
-        tools:layout_editor_absoluteX="16dp" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
