@@ -192,10 +192,8 @@ public class JoinFragment_essential extends Fragment {
         @Override
         protected Boolean doInBackground(String... strings) {
             boolean result;
-//            RequestHttpURLConnection_POST reqzuestHttpURLConnection = new RequestHttpURLConnection_POST();
-//            String temp = requestHttpURLConnection.request(url, json);
-            RequestHttpURLConnection requestHttpURLConnection = new RequestHttpURLConnection();
-            String temp = requestHttpURLConnection.request(url, contentValues);
+            RequestHttpURLConnection_POST requestHttpURLConnection = new RequestHttpURLConnection_POST();
+            String temp = requestHttpURLConnection.request(url, json);
             result = temp.contains("true");
             Log.e(Tag,"requestHttpURLConnection: "+temp);
 
@@ -205,7 +203,7 @@ public class JoinFragment_essential extends Fragment {
             return result;
         }
 
-        z@Override
+        @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             Log.e(Tag,"onPostExecute");
