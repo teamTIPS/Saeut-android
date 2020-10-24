@@ -18,7 +18,7 @@ public class JoinFragment_additional extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_sign_up_additional, container, false);
+        View root = inflater.inflate(R.layout.fragment_sign_up_additional_1, container, false);
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
