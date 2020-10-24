@@ -47,7 +47,7 @@ public class PostNetworkService {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "성공  : " + call.request().body());
+                    Log.d(TAG, "성공  : " + response.body());
                     Log.d(TAG, "성공  : " + obj1.toString());
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
@@ -136,7 +136,7 @@ public class PostNetworkService {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
 
-                    Log.d(TAG, "성공  : " + call.request().body());
+                    Log.d(TAG, "성공  : " + response.body());
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
                     Log.d(TAG, "응답 실패  : " + obj3.toString());

@@ -26,10 +26,6 @@ public class CreatePostActivity extends AppCompatActivity {
     private static Button btn_startDate;   // choose start date
     private static Button btn_dueDate;     // choose due date
 
-    private static RadioButton rb_old;
-    private static RadioButton rb_children;
-    private static RadioButton rb_disable;
-
     private static EditText et_title; //게시물 제목
     private static EditText et_contents; // 게시글 내용
     private static EditText et_startDate; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
@@ -92,7 +88,7 @@ public class CreatePostActivity extends AppCompatActivity {
                         et_title.getText().toString(),
                         et_contents.getText().toString(),
                         "test",
-                        getCheckedType(),
+                        0,
                         et_startDate.getText().toString(),
                         et_dueDate.getText().toString()
                 );
@@ -123,25 +119,7 @@ public class CreatePostActivity extends AppCompatActivity {
         et_dueDate = findViewById(R.id.et_dueDate);
         et_startDate = findViewById(R.id.et_startDate);
 
-        rb_children = findViewById(R.id.rb_children);
-        rb_disable = findViewById(R.id.rb_disable);
-        rb_old = findViewById(R.id.rb_old);
-
         btn_dueDate = findViewById(R.id.btn_dueDate);
         btn_startDate = findViewById(R.id.btn_startDate);
     }
-
-    private int getCheckedType() {
-        // 근데 이거 만약에 사용자가 값을 선택하지 않았을땐 어카지? 흐음,,,
-        // 일단 2로 들어가기야 하겠지만 별도의 처리가 필요할듯.
-        if(rb_disable.isChecked()) {
-            return 0;
-        } else if(rb_children.isChecked()) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-
 }
