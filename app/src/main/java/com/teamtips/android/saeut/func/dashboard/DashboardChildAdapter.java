@@ -173,6 +173,8 @@ public class DashboardChildAdapter extends BaseAdapter {
                 + "~" + postArrayList.get(position).getDue_date();
         holder.tv_date.setText(date);
 
+        int type = postArrayList.get(position).getType();
+        holder.tv_type.setText(postArrayList.get(position).getTypeForText(type));
         int status = postArrayList.get(position).getStatus();
         holder.btn_status.setText(postArrayList.get(position).getStatusForText(status));
 

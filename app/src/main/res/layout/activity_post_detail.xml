@@ -325,6 +325,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
 
+                        android:enabled="false"
+                        android:gravity="center"
                         android:inputType="date"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"

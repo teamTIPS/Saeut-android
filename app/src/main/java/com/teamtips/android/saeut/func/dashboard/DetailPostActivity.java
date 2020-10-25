@@ -2,10 +2,14 @@ package com.teamtips.android.saeut.func.dashboard;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,8 @@ import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import java.io.IOException;
 
 public class DetailPostActivity extends AppCompatActivity {
+
+    public static final String TAG = "DetailPostActivity";
 
     private TextView tv_tag1;
     private TextView tv_tag2;
@@ -84,23 +90,34 @@ public class DetailPostActivity extends AppCompatActivity {
 
     // 돌보미 신청 페이지로 연결되는 다이얼로그 함수 (수정 필요)
     public void applyDialogShow() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_apply, null);
         builder.setView(view);
 
         final EditText et_introduce = (EditText) view.findViewById(R.id.et_introduce);
+        final RadioGroup radio_type = (RadioGroup) view.findViewById(R.id.radio_type);
+        final RadioButton checked_type;
         final Button btn_apply_submit = (Button) view.findViewById(R.id.btn_apply_submit);
         final Button btn_apply_cancel = (Button) view.findViewById(R.id.btn_apply_cancel);
-
         final AlertDialog dialog = builder.create();
+
         btn_apply_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String introduce = et_introduce.getText().toString();
 
-                Apply apply = new Apply(post.getPost_id(), "test", introduce);
+                int type;
+                if(radio_type.getCheckedRadioButtonId() == R.id.rb_typeDemend) {
+                    type = 1;
+                } else {
+                    type = 0;
+                }
 
-                postNetworkService.addApply(apply);
+                Apply apply = new Apply(post.getPost_id(), "test", introduce, type);
+                Log.d(TAG, apply.toString());
+                // API 연결은 다른거 수정하고 시도
+//                postNetworkService.addApply(apply);
                 Toast.makeText(getApplicationContext(), "돌봄 신청이 완료되었습니다 !",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
