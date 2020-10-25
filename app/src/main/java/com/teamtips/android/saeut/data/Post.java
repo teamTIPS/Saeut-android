@@ -230,6 +230,14 @@ public class Post implements Serializable {
         }
     }
 
+    public String getTypeForText(int type) {
+        if(type == 0) {
+            return "맞춤돌봄";
+        } else {
+            return "함께돌봄";
+        }
+    }
+
     @Override
     public String toString() {
         return "Post{" +

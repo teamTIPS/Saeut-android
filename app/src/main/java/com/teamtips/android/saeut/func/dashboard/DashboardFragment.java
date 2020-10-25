@@ -23,8 +23,8 @@ import com.teamtips.android.saeut.R;
 public class DashboardFragment extends Fragment {
 
     private static final String ARG_NAME = "arg_name";
-
     public static final String ARG_OBJECT = "object";
+
     public static ViewPager viewPager;
     private static TabLayout tabLayout;
 

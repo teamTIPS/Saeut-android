@@ -75,6 +75,7 @@ public class DashboardChildFragment extends Fragment {
         listView = view.findViewById(R.id.lv_child);
         listView.setAdapter(dashboardChildAdapter);
     }
+
     private void getListByPosition(int position) {
         // fragment position에 따른 url 구현
         // 추후 현재 로그인 유저 정보 받아서 수정할 것.
@@ -84,7 +85,7 @@ public class DashboardChildFragment extends Fragment {
             // 전체 리스트를 불러오는 URL
             url = "http://49.50.173.180:8080/saeut/post";
         } else if (position == 1) {
-            // 내가 작성한 게시물만 불러오는 URL -> 추후 수정 필요
+            // 이제 여길 매칭 레이아웃으로 바꿔야되는데 코드 수정할부분 꽤 있을듯.
             url = "http://49.50.173.180:8080/saeut/post/" + account_id;
         }
         postNetworkTask = new PostNetworkTask(url, null, dashboardChildAdapter);

@@ -21,20 +21,32 @@ import java.io.IOException;
 
 public class DetailPostActivity extends AppCompatActivity {
 
-    private static TextView tv_title;
-    private static TextView tv_id;
+    private TextView tv_tag1;
+    private TextView tv_tag2;
+    private TextView tv_tag3;
 
-    private static TextView tv_tagTitle;
-    private static EditText et_startDate;
-    private static EditText et_dueDate;
-    private static TextView tv_applyCount;
-    private static TextView tv_address;
-    private static TextView tv_contents;
-    private static Button btn_detail_submit;
+    private TextView tv_type;
+    private TextView tv_status;
+
+    private TextView tv_title;
+    private TextView tv_id;
+    private TextView tv_writer_address;
+
+    private EditText et_startDate;
+    private EditText et_dueDate;
+    private TextView tv_contents;
+
+    private EditText et_wage;
+    private EditText et_payment;
+    private EditText et_postSchedule;
+
+    private TextView tv_applyCount;
+    private Button btn_detail_submit;
 
     private PostNetworkService postNetworkService;
 
     private Toolbar toolbar;
+
     private static Post post;
 
     @Override
@@ -70,7 +82,7 @@ public class DetailPostActivity extends AppCompatActivity {
         });
     }
 
-    // 돌보미 신청 페이지로 연결되는 다이얼로그 함수
+    // 돌보미 신청 페이지로 연결되는 다이얼로그 함수 (수정 필요)
     public void applyDialogShow() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -106,7 +118,6 @@ public class DetailPostActivity extends AppCompatActivity {
     }
 
     private void AllFindViewDetail() {
-        tv_tagTitle = (TextView)findViewById(R.id.tv_tagTitle);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_contents = (TextView) findViewById(R.id.tv_contents);
         tv_id = (TextView) findViewById(R.id.tv_id);
@@ -114,21 +125,48 @@ public class DetailPostActivity extends AppCompatActivity {
         et_startDate = (EditText) findViewById(R.id.et_startDate);
         et_dueDate = (EditText) findViewById(R.id.et_dueDate);
         tv_applyCount = (TextView) findViewById(R.id.tv_applyCount);
-        tv_address = (TextView) findViewById(R.id.tv_address);
+        tv_writer_address = (TextView) findViewById(R.id.tv_writer_address);
+
+        et_wage = (EditText) findViewById(R.id.et_wage);
+        et_payment = (EditText) findViewById(R.id.et_payment);
+        et_postSchedule = (EditText) findViewById(R.id.et_postSchedule);
+
+        tv_type = (TextView) findViewById(R.id.tv_type);
+        tv_status = (TextView) findViewById(R.id.tv_status);
+
+        tv_tag1 = (TextView) findViewById(R.id.tv_tagTitle);
+        tv_tag2 = (TextView) findViewById(R.id.tv_tag2);
+        tv_tag3 = (TextView) findViewById(R.id.tv_tag3);
 
         btn_detail_submit = (Button) findViewById(R.id.btn_detail_submit);
     }
 
     private void AllStoreData(Post post) throws IOException {
+
+        // 추가로 태그 연결 메소드 필요
+        tv_type.setText(post.getTypeForText(post.getType()));
+        tv_status.setText(post.getStatusForText(post.getStatus()));
+
         tv_title.setText(post.getTitle());
         tv_contents.setText(post.getContents());
         tv_id.setText(post.getId());
 
+        // 추후 Additional 테이블과 연결해야 함.
+        tv_writer_address.setText("서울시 서대문구 북가좌동");
         et_startDate.setText(post.getStart_date());
         et_dueDate.setText(post.getDue_date());
 
+        et_postSchedule.setText(post.getPost_schedule());
+        et_payment.setText(String.valueOf(post.getPayment()));
+        et_wage.setText(String.valueOf(post.getWage()));
+
+        // callback 함수 구현 필요 (api 연결)
         tv_applyCount.setText("1");
-        // 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언
+    }
+}
+
+// applyCount api 연결 구현 주
+// 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언
 //        postNetworkService.mCallApplyCount.enqueue(new Callback<Integer>() {
 //            @Override
 //            public void onResponse(Call<Integer> call, Response<Integer> response) {
@@ -148,21 +186,3 @@ public class DetailPostActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-        // 추후 Additional 테이블과 연결해야 함.
-        tv_address.setText("서울시 서대문구 북가좌동");
-
-        // tag radio button checking
-        int type = post.getType();
-        if(type == 0) {
-            tv_tagTitle.setText("장애인");
-            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_handicap));
-        } else if(type == 1) {
-            tv_tagTitle.setText("아동");
-            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_kid));
-        } else {
-            tv_tagTitle.setText("노인");
-            tv_tagTitle.setBackground(getResources().getDrawable(R.drawable.tag_elder));
-        }
-    }
-}

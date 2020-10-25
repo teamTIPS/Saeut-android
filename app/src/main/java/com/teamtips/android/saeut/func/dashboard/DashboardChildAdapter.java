@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
@@ -19,7 +21,7 @@ import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-// 삭제가 되긴 하는데 리스트 업데이트 문제가 있어서 CursorAdapter로 변경 예정
+// 하 이거 RecyclerView로 바꿔야되는데 엉
 public class DashboardChildAdapter extends BaseAdapter {
 
     public static final String TAG = "DashboardChildAdapter";
@@ -121,15 +123,19 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView tagTitle;
-        TextView title;
-        TextView date;
+        TextView tv_type;
+        Button btn_status;
+        TextView tv_title;
+        TextView tv_date;
+        TextView tv_address;
+
         TextView applyCount;
-        Button status;
-        ImageView color;
+        TextView tv_tag1;
+        TextView tv_tag2;
+        TextView tv_tag3;
 
         //Private Layout
-        LinearLayout private_layout;
+        ConstraintLayout private_layout;
         Button private_update;
         Button private_delete;
     }
@@ -137,15 +143,21 @@ public class DashboardChildAdapter extends BaseAdapter {
     private ViewHolder AllFindViewAdapter(View view, int tab_position) {
         ViewHolder holder = new ViewHolder();
 
-        holder.tagTitle = (TextView) view.findViewById(R.id.tv_type);
-        holder.title = (TextView) view.findViewById(R.id.tv_title);
-        holder.date = (TextView) view.findViewById(R.id.tv_date);
-        holder.color = (ImageView) view.findViewById(R.id.iv_color);
+        holder.tv_type = (TextView) view.findViewById(R.id.tv_type);
+        holder.btn_status = (Button) view.findViewById(R.id.btn_status);
+        holder.tv_title = (TextView) view.findViewById(R.id.tv_title);
+        holder.tv_date = (TextView) view.findViewById(R.id.tv_date);
+        holder.tv_address = (TextView) view.findViewById(R.id.tv_address);
+
+        holder.tv_tag1 = (TextView) view.findViewById(R.id.tv_tag1);
+        holder.tv_tag2 = (TextView) view.findViewById(R.id.tv_tag2);
+        holder.tv_tag3 = (TextView) view.findViewById(R.id.tv_tag3);
+
         holder.applyCount = (TextView) view.findViewById(R.id.tv_limitSupply);
-        holder.status = (Button) view.findViewById(R.id.btn_status);
+
 
         // Private Layout
-        holder.private_layout = (LinearLayout) view.findViewById(R.id.private_layout);
+        holder.private_layout = (ConstraintLayout) view.findViewById(R.id.private_layout);
         holder.private_update = (Button) view.findViewById(R.id.btn_private_update);
         holder.private_delete = (Button) view.findViewById(R.id.btn_private_delete);
 
@@ -153,28 +165,19 @@ public class DashboardChildAdapter extends BaseAdapter {
     }
 
     private void setDataInHolder(ViewHolder holder, int position) {
-        holder.title.setText(
+        holder.tv_title.setText(
                 postArrayList.get(position).getTitle());
 
         // Date 연결
         String date = postArrayList.get(position).getStart_date()
                 + "~" + postArrayList.get(position).getDue_date();
-        holder.date.setText(date);
+        holder.tv_date.setText(date);
 
         int status = postArrayList.get(position).getStatus();
-        holder.status.setText(postArrayList.get(position).getStatusForText(status));
+        holder.btn_status.setText(postArrayList.get(position).getStatusForText(status));
 
-        int type = postArrayList.get(position).getType();
-
+        // 추후에 API 연결
         holder.applyCount.setText("1");
-
-        if(type == 0) {
-            holder.tagTitle.setText("함께돌봄");
-        } else if(type == 1) {
-            holder.tagTitle.setText("맞춤돌봄");
-        } else {
-            holder.tagTitle.setText("맞춤돌봄");
-        }
 
         if(tab_position == 1) {
             holder.private_layout.setVisibility(View.VISIBLE);
