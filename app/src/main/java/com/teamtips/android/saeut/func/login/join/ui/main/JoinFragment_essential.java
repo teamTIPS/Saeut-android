@@ -3,6 +3,7 @@ package com.teamtips.android.saeut.func.login.join.ui.main;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -25,6 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +58,10 @@ import retrofit2.http.Body;
 public class JoinFragment_essential extends Fragment {
 
     private JoinViewModel mViewModel = new JoinViewModel();
+
+    private JoinFragment_additional joinFragmentAdditional;
+    private FragmentManager fragmentManager;
+
     private final static String Tag = "JoinFragment_essential";
     private LoginNetworkService loginNetworkService = new LoginNetworkService();
 
@@ -69,6 +76,10 @@ public class JoinFragment_essential extends Fragment {
             .build();
 
     private int gender; // gender radio 클릭 결과 저장용
+
+    public JoinFragment_essential(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
+    }
 
     @Nullable
     @Override
@@ -235,6 +246,7 @@ public class JoinFragment_essential extends Fragment {
                 );
                 Log.d(Tag, joinin.toString());
 //                mViewModel.Join(joinin);
+                this.onDestroyView();
             }
 
         });
@@ -259,5 +271,10 @@ public class JoinFragment_essential extends Fragment {
         } else {
             return !email.trim().isEmpty();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

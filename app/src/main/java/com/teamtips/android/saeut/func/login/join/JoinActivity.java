@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.ui.main.JoinFragment_additional;
 import com.teamtips.android.saeut.func.login.join.ui.main.JoinFragment_essential;
 
 public class JoinActivity extends FragmentActivity {
@@ -18,10 +19,12 @@ public class JoinActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        joinFragmentEssential = new JoinFragment_essential();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        joinFragmentEssential = new JoinFragment_essential(fragmentManager);
         transaction.add(R.id.container_join, joinFragmentEssential);
         transaction.commit();
+
     }
 }
