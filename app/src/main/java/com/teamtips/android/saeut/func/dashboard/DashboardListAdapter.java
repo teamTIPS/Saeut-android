@@ -22,7 +22,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 // 하 이거 RecyclerView로 바꿔야되는데 엉
-public class DashboardChildAdapter extends BaseAdapter {
+public class DashboardListAdapter extends BaseAdapter {
 
     public static final String TAG = "DashboardChildAdapter";
 
@@ -33,9 +33,9 @@ public class DashboardChildAdapter extends BaseAdapter {
     private static PostNetworkService postNetworkService = new PostNetworkService();
     private int tab_position;
 
-    public DashboardChildAdapter() { }
+    public DashboardListAdapter() { }
 
-    public DashboardChildAdapter(Context context, int layout, ArrayList<Post> postArrayList, int tab_position) {
+    public DashboardListAdapter(Context context, int layout, ArrayList<Post> postArrayList, int tab_position) {
         this.context = context;
         this.layout = layout;
         this.postArrayList = postArrayList;

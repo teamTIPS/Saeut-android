@@ -2,12 +2,11 @@ package com.teamtips.android.saeut.func.dashboard.service;
 
 import android.content.ContentValues;
 import android.os.AsyncTask;
-import com.teamtips.android.saeut.func.dashboard.DashboardChildAdapter;
+import com.teamtips.android.saeut.func.dashboard.DashboardListAdapter;
 import com.teamtips.android.saeut.network.RequestHttpURLConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /*
  * Android - Server 연결 하는 Controller Class
@@ -16,13 +15,13 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
 
     private String url;
     private ContentValues values;
-    private DashboardChildAdapter dashboardChildAdapter;
+    private DashboardListAdapter dashboardListAdapter;
 
-    public PostNetworkTask(String url, ContentValues values, DashboardChildAdapter dashboardChildAdapter) {
+    public PostNetworkTask(String url, ContentValues values, DashboardListAdapter dashboardListAdapter) {
 
         this.url = url;
         this.values = values;
-        this.dashboardChildAdapter = dashboardChildAdapter;
+        this.dashboardListAdapter = dashboardListAdapter;
     }
 
     @Override
@@ -53,8 +52,8 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
                 String due_date = json.getString("due_date");
                 int type = Integer.parseInt(json.getString("type"));
 
-                dashboardChildAdapter.addItem(post_id, id, title, post_date, contents, start_date, due_date, type);
-                dashboardChildAdapter.notifyDataSetChanged();
+                dashboardListAdapter.addItem(post_id, id, title, post_date, contents, start_date, due_date, type);
+                dashboardListAdapter.notifyDataSetChanged();
             }
 
         } catch (Exception e) {

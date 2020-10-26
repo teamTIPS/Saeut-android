@@ -18,13 +18,13 @@ import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.util.ArrayList;
 
-public class DashboardChildFragment extends Fragment {
+public class DashboardListFragment extends Fragment {
 
     private static final String ARGUMENT_POSITION = "argument_position";
     private static final String ARGUMENT_NAME = "argument_name";
-    public static final String TAG = "DashboardChildFragment";
+    public static final String TAG = "DashboardListFragment";
 
-    private DashboardChildAdapter dashboardChildAdapter;
+    private DashboardListAdapter dashboardListAdapter;
     private ListView listView;
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
@@ -34,14 +34,14 @@ public class DashboardChildFragment extends Fragment {
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
 
-    public DashboardChildFragment(int position) {
+    public DashboardListFragment(int position) {
         this.position = position;
     }
 
-    public static DashboardChildFragment newInstance(int position) {
+    public static DashboardListFragment newInstance(int position) {
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_POSITION, position);
-        DashboardChildFragment fragment = new DashboardChildFragment(position);
+        DashboardListFragment fragment = new DashboardListFragment(position);
         fragment.setArguments(args);
         sessionUser = LoggedInUser.getLoggedInUser();   // 세션에 저장된 유저 정보 가져오기
         return fragment;
@@ -71,9 +71,9 @@ public class DashboardChildFragment extends Fragment {
 
     private void setAdapter(View view) {
         postArrayList = new ArrayList<Post>();
-        dashboardChildAdapter = new DashboardChildAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, position);
+        dashboardListAdapter = new DashboardListAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, position);
         listView = view.findViewById(R.id.lv_child);
-        listView.setAdapter(dashboardChildAdapter);
+        listView.setAdapter(dashboardListAdapter);
     }
 
     private void getListByPosition(int position) {
@@ -88,7 +88,7 @@ public class DashboardChildFragment extends Fragment {
             // 이제 여길 매칭 레이아웃으로 바꿔야되는데 코드 수정할부분 꽤 있을듯.
             url = "http://49.50.173.180:8080/saeut/post/" + account_id;
         }
-        postNetworkTask = new PostNetworkTask(url, null, dashboardChildAdapter);
+        postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();
     }
 
@@ -97,7 +97,7 @@ public class DashboardChildFragment extends Fragment {
         super.onResume();
         // 만약 추가된 데이터가 있다면,
         setAdapter(getView());
-        dashboardChildAdapter.notifyDataSetChanged();
+        dashboardListAdapter.notifyDataSetChanged();
         getListByPosition(position);
     }
 }

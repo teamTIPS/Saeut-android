@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.teamtips.android.saeut.R;
 
@@ -89,7 +88,11 @@ public class DashboardFragment extends Fragment {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return DashboardChildFragment.newInstance(position);
+            if(position == 0) {
+                return DashboardListFragment.newInstance(position);
+            } else {
+                return DashboardMatchingFragment.newInstance(position);
+            }
         }
 
         @Override
