@@ -99,15 +99,18 @@
                 android:text="제한 인원"
                 android:textColor="@color/color_primary_900"
                 android:textSize="20sp"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="175dp" />
 
             <LinearLayout
+                android:id="@+id/group_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/limit_demand"
