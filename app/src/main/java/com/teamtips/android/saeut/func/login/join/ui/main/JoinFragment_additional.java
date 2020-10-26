@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.ui.generalLogin.LoginActivity;
 
 public class JoinFragment_additional extends Fragment {
 
@@ -27,6 +28,7 @@ public class JoinFragment_additional extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sign_up_additional, container, false);
+
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

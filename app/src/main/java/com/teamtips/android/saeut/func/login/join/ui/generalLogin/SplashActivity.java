@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         String Rt = SaveSharedPreference.getRT(this);
         if(Rt != null && !Rt.equals("")){
             //Rt로 로그인하기
-            loginViewModel.login(Rt);
+//            loginViewModel.login(Rt);
         }
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {

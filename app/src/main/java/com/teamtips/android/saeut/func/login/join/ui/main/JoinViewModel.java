@@ -1,9 +1,12 @@
 package com.teamtips.android.saeut.func.login.join.ui.main;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Patterns;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
@@ -18,7 +21,19 @@ import java.net.HttpURLConnection;
 public class JoinViewModel extends ViewModel {
 
     private final static String Tag = "JoinViewModel";
-//    public MutableLiveData<Post> postMutableLiveDate = new MutableLiveData<>();
+
+    public JoinViewModel() {
+        joinMutableLiveData.setValue(0);
+    }
+    public MutableLiveData<Integer> joinMutableLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<Integer> getJoinMutableLiveData() {
+        return joinMutableLiveData;
+    }
+
+    public void setJoinMutableLiveData(){
+        joinMutableLiveData.setValue(2);
+    }
 
     public void Join(Joinin joinin){
         String url = "http://49.50.173.180:8080/saeut/user/essential";
@@ -37,7 +52,7 @@ public class JoinViewModel extends ViewModel {
             e.printStackTrace();
         }
 
-        NetworkTask_JOIN networkTask_JOIN = new NetworkTask_JOIN(url, join_json.toString());
+        NetworkTask_JOIN networkTask_JOIN = new NetworkTask_JOIN(url, join_json.toString(), joinMutableLiveData);
         networkTask_JOIN.execute();
     }
 
@@ -60,11 +75,13 @@ public class JoinViewModel extends ViewModel {
 
         private String url;
         private String json;
+        private MutableLiveData<Integer> mutableLiveData;
         private int responseCode;
 
-        public NetworkTask_JOIN(String url, String json) {
+        public NetworkTask_JOIN(String url, String json, MutableLiveData<Integer> joinMutableLiveData) {
             this.url = url;
             this.json = json;
+            this.mutableLiveData = joinMutableLiveData;
         }
 
         @Override
@@ -83,6 +100,7 @@ public class JoinViewModel extends ViewModel {
             // 회원가입 API의 결과의 ResponseCode로 결과 판단
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 Log.e(Tag,"회원가입 성공");
+                mutableLiveData.setValue(2);
             }
             else {
                 Log.e(Tag,"회원가입 실패");
