@@ -36,4 +36,12 @@
         <item >Thu</item>
         <item >Fri</item>
     </string-array>
+
+    <string-array name="numbers">
+        <item >1명</item>
+        <item >2명</item>
+        <item >3명</item>
+        <item >4명</item>
+        <item >5명</item>
+    </string-array>
 </resources>
