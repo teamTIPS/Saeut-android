@@ -2,7 +2,9 @@ package com.teamtips.android.saeut.func.login.join.ui.main;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,8 +26,11 @@ import androidx.lifecycle.Observer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.func.login.join.ui.generalLogin.LoginActivity;
 import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetwork;
 import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetworkService;
+
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -70,7 +75,6 @@ public class JoinFragment_essential extends Fragment {
             public void onChanged(Integer integer) {
                 if(integer == 2){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
                     builder.setMessage("회원가입이 완료되었습니다.")
                             .setTitle("알림");
                     AlertDialog dialog = builder.create();

@@ -36,7 +36,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        view = inflater.inflate(R.layout.fragment_group, parent, false);
+        view = inflater.inflate(R.layout.community_recycler_item, parent, false);
         return new CommunityItem(view);
     }
 
@@ -47,9 +47,9 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ((CommunityItem) holder).community_location_tv.setText(bindedCommunity.getAddess());
         ((CommunityItem) holder).community_rank_tv.setText(bindedCommunity.getRank());
         ((CommunityItem) holder).community_text_tv.setText(bindedCommunity.getContents());
-        ((CommunityItem) holder).community_like_tv.setText(bindedCommunity.getCnt_like());
-        ((CommunityItem) holder).community_message_tv.setText(bindedCommunity.getCnt_reply());
-        ((CommunityItem) holder).community_post_date.setText(bindedCommunity.getPost_date().toString());
+        ((CommunityItem) holder).community_like_tv.setText(String.valueOf(bindedCommunity.getCnt_like()));
+        ((CommunityItem) holder).community_message_tv.setText(String.valueOf(bindedCommunity.getCnt_reply()));
+        ((CommunityItem) holder).community_post_date.setText(bindedCommunity.getDateByString());
     }
 
     @Override

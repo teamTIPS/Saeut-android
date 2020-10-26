@@ -1,5 +1,6 @@
 package com.teamtips.android.saeut.data;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Community {
@@ -85,6 +86,11 @@ public class Community {
 
     public String getRank() {
         return rank;
+    }
+
+    public String getDateByString(){
+        SimpleDateFormat transFormat = new SimpleDateFormat("MM/dd HH:mm");
+        return transFormat.format(post_date);
     }
 
     public void setRank(String rank) {

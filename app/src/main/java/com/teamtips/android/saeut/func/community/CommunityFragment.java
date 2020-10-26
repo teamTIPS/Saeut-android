@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teamtips.android.saeut.R;
@@ -29,8 +31,6 @@ public class CommunityFragment extends Fragment {
     private RecyclerView community_recyclerview;
 
     public static CommunityFragment newInstance() {
-
-
         return new CommunityFragment();
     }
 
@@ -67,6 +67,9 @@ public class CommunityFragment extends Fragment {
         communityAdapter = new CommunityAdapter(communityArrayList, mContext, communityNetworkService);
         community_recyclerview = view.findViewById(R.id.community_recycler_item);
         community_recyclerview.setAdapter(communityAdapter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
+        community_recyclerview.setLayoutManager(layoutManager);
+
     }
 
     private void InitCommunity() {

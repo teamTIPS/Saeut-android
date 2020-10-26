@@ -58,8 +58,7 @@ public class DashboardMatchingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_dashboard_matching, container, false);
-        return root;
+        return inflater.inflate(R.layout.fragment_dashboard_matching, container, false);
     }
 
     @Override

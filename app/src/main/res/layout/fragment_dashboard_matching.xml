@@ -5,7 +5,7 @@
     android:id="@+id/fragment_matching"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wage_container"
@@ -31,14 +31,20 @@
 
         <EditText
             android:id="@+id/et_hourlyWage"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:background="@drawable/rounded_edittext"
             android:inputType="number"
-            android:hint="10000"
-            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/font_regular"
+            android:includeFontPadding="false"
+            android:textSize="17sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="30dp"
+            android:hint="10,000"
+            android:paddingHorizontal="10dp"
+            style:layout_constraintLeft_toLeftOf="parent"
+            style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toLeftOf="@+id/won_textview"
             style:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -53,7 +59,8 @@
 
             android:textSize="18sp"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintLeft_toRightOf="@id/et_hourlyWage"
+            android:layout_marginStart="20dp"
             style:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -76,19 +83,27 @@
             android:textSize="20sp"
             android:textColor="@color/color_primary_900"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintTop_toTopOf="parent" />
+            style:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/et_schedule"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:ems="17"
+            android:background="@drawable/rounded_edittext"
+
+
+            android:fontFamily="@font/font_regular"
+            android:includeFontPadding="false"
+            android:textSize="17sp"
+            android:textColor="@color/colorBlack"
             android:hint="원하시는 시간을 입력해주세요."
             android:inputType="textPersonName"
-            android:textSize="14sp"
-            style:layout_constraintBottom_toBottomOf="parent"
+            android:paddingHorizontal="10dp"
+
+            style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,14 +130,22 @@
 
         <EditText
             android:id="@+id/et_location"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:ems="17"
+            android:background="@drawable/rounded_edittext"
+
             android:hint="원하시는 시/군/구/동을 입력해주세요."
+            android:fontFamily="@font/font_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorBlack"
+            android:paddingHorizontal="10dp"
+
             android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:textSize="17sp"
+            android:layout_marginStart="40dp"
+            style:layout_constraintLeft_toRightOf="@+id/location"
             style:layout_constraintBottom_toBottomOf="parent"
+            style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -199,14 +222,5 @@
         android:background="?android:attr/listDivider"
         style:layout_constraintLeft_toLeftOf="parent"
         style:layout_constraintTop_toBottomOf="@+id/type_container" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/matching_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        style:layout_constraintBottom_toTopOf="@id/btn_matching_submit"
-        style:layout_constraintTop_toBottomOf="@+id/divider"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
