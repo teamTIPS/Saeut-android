@@ -25,7 +25,10 @@ public class GroupFragment extends Fragment {
             @NonNull LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_group, container, false);
+        //if(group == null)
+        return inflater.inflate(R.layout.none_comment, container, false);
+//      else
+//      return inflater.inflate(R.layout.fragment_group, container, false);
     }
 
     @Override

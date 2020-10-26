@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--  <item-->
+<!--      android:id="@+id/community_refresh_item"-->
+<!--      android:icon="@drawable/ic_baseline_refresh_24"-->
+<!--      android:title="@string/title_community" />-->
+
   <item
-    android:id="@+id/menu_message"
-    android:icon="@drawable/ic_baseline_message_24"
-    android:title="@string/message"
-    android:orderInCategory="1"
-    app:showAsAction="ifRoom" />
+      android:id="@+id/community_menu_item"
+      android:icon="@drawable/ic_baseline_more_vert_24"
+      android:title="@string/title_dashboard" />
 
 </menu>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:background="@drawable/reply_underline_view"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                app:layout_constraintBottom_toBottomOf="@id/reply_mine_nickname"
+                app:layout_constraintRight_toLeftOf="@id/reply_mine_nickname"
+                android:id="@+id/reply_mine_time"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:text="16:48"
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:includeFontPadding="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/reply_mine_nickname"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingHorizontal="8dp"
+                android:background="@drawable/reply_nickname_view"
+                android:padding="4dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:text="닉네임"
+                android:includeFontPadding="true"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:id="@+id/reply_mine_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/reply_mine_nickname"
+                android:text="저녁은 어떠세요?"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/font_regular"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                >
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
