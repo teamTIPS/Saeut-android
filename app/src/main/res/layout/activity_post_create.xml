@@ -121,7 +121,7 @@
                     android:includeFontPadding="false"
                     android:paddingEnd="10dp"
 
-                    android:text="도와줄래요"
+                    android:text="도와주세요"
                     android:textColor="@color/color_primary_900"
                     android:textSize="15sp" />
 

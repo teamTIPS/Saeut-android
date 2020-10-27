@@ -20,8 +20,10 @@ import android.widget.Toast;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
+import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.util.Calendar;
+import java.util.logging.Logger;
 
 public class CreatePostActivity extends AppCompatActivity {
 
@@ -51,6 +53,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
     int limit_supply = 1;   // 돌봄요청자 인원 설정값 저장
     int limit_demand = 1;   // 돌봄제공자 인원 설정값 저장 (둘 다 초기값 1)
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +124,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                limit_supply = 0;
+                limit_supply = 1;
                 Log.d(TAG, "맞춤돌봄일 때 limit_supply : " + limit_demand);
             }
         });
@@ -135,7 +138,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                limit_demand = 0;
+                limit_demand = 1;
                 Log.d(TAG, "맞춤돌봄일 때 limit_supply : " + limit_demand);
             }
         });
@@ -151,8 +154,10 @@ public class CreatePostActivity extends AppCompatActivity {
                 //                int wage, int limit_supply, int limit_demend)
                 RadioButton rb_age = findViewById(rg_age.getCheckedRadioButtonId());
                 RadioButton rb_gender = findViewById(rg_gender.getCheckedRadioButtonId());
+                LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
+                Log.d(TAG, "loggedInUser : " + loggedInUser.getId());
                 Post post = new Post(
-                        "test",
+                        loggedInUser.getId(),
                         et_title.getText().toString(),
                         rb_age.getText().toString(),
                         et_postSchedule.getText().toString(),
