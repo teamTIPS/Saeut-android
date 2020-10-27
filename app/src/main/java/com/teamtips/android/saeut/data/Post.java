@@ -5,19 +5,6 @@ import java.io.Serializable;
 /*
  * Post Domain Class
  * */
-
-/* before
-    private int post_id; // sequence
-    private String id; // (FK) account 클래스의 id
-    private String title; //게시물 제목
-    private String post_date; //게시글 추가한 날짜
-    private String contents; // 게시글 내용
-    private String start_date; // 돌봄 요청 시작 날짜 -> 모바일 캘린더
-    private String due_date; // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
-    private int status; // 현재 돌봄 진행상태 (모집 중(0)/모집 마감(1)/완료(2))
-    private int type; // 장애인(0) & 아동(1) & 노인(2)
- */
-
 public class Post implements Serializable {
 
     // after
@@ -31,12 +18,12 @@ public class Post implements Serializable {
     private String contents;        // 게시글 내용
     private String start_date;      // 돌봄 요청 시작 날짜 -> 모바일 캘린더
     private String due_date;        // 돌봄 요청 마지막 날짜  -> 모바일 캘린더
-    private int status;             // 현재 돌봄 진행상태 (모집 중(0)/모집 마감(1)/완료(2))
+    private int recruit_status;             // 현재 돌봄 진행상태 (모집 중(0)/모집 마감(1)/완료(2))
     private int type;               // 장애인(0) & 아동(1) & 노인(2)
     private int payment;            // 돌봄요청자 한 명이 돌봄 서비스에 지불하는 시급
     private int wage;               // 돌봄제공자가 받는 시급, 자동 계산
     private int limit_supply;       // 최대 돌봄제공자 수
-    private int limit_demend;       // 최대 돌봄요청자 수
+    private int limit_demand;       // 최대 돌봄요청자 수
 
     // Constructor
     public Post() {
@@ -45,7 +32,7 @@ public class Post implements Serializable {
     // new version constructor
     public Post(String id, String title, String post_age, String post_schedule, String post_gender,
                 String contents, String start_date, String due_date,
-                int status, int type, int wage, int limit_supply, int limit_demend) {
+                int recruit_status, int type, int wage, int limit_supply, int limit_demand) {
         this.id = id;
         this.title = title;
         this.post_age = post_age;
@@ -54,39 +41,33 @@ public class Post implements Serializable {
         this.contents = contents;
         this.start_date = start_date;
         this.due_date = due_date;
-        this.status = status;
+        this.recruit_status = recruit_status;
         this.type = type;
-        this.payment = getPayment();
         this.wage = wage;
         this.limit_supply = limit_supply;
-        this.limit_demend = limit_demend;
+        this.limit_demand = limit_demand;
+        this.payment = getPayment();
     }
 
-    // old version constructor
-    public Post(String title, String contents, String id, int type, String start_date, String due_date) {
-        this();
-        this.title = title;
-        this.contents = contents;
-        this.id = id;
-        this.type = type;
-        this.start_date = start_date;
-        this.due_date = due_date;
-        this.status = 0;
-        this.post_id = 0;
-        this.post_date = null;
-    }
-
-    // old version constructor
-    public Post(int post_id, String id, String title, String post_date, String contents, String start_date, String due_date, int type) {
+    public Post(int post_id, String post_date, String id, String title, String post_age,
+                String post_schedule, String post_gender, String contents, String start_date, String due_date,
+                int recruit_status, int type, int wage, int limit_supply, int limit_demand, int payment) {
         this.post_id = post_id;
+        this.post_date = post_date;
         this.id = id;
         this.title = title;
+        this.post_age = post_age;
+        this.post_schedule = post_schedule;
+        this.post_gender = post_gender;
+        this.contents = contents;
         this.start_date = start_date;
         this.due_date = due_date;
+        this.recruit_status = recruit_status;
         this.type = type;
-        this.status = 0;            // status init 0
-        this.post_date = post_date;
-        this.contents = contents;// status init 0
+        this.payment = payment;
+        this.wage = wage;
+        this.limit_supply = limit_supply;
+        this.limit_demand = limit_demand;
     }
 
     // Setter & Getter
@@ -118,12 +99,12 @@ public class Post implements Serializable {
         return contents;
     }
 
-    public int getStatus() {
-        return status;
+    public int getRecruit_status() {
+        return recruit_status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setRecruit_status(int recruit_status) {
+        this.recruit_status = recruit_status;
     }
 
     public int getType() {
@@ -187,7 +168,11 @@ public class Post implements Serializable {
     }
 
     public int getPayment() {
-        return (wage * limit_supply) / limit_demend;
+        if(limit_demand == 1 || limit_supply == 1) {
+            return wage;
+        } else {
+            return (wage * limit_supply) / limit_demand;
+        }
     }
 
     public void setPayment(int payment) {
@@ -210,12 +195,12 @@ public class Post implements Serializable {
         this.limit_supply = limit_supply;
     }
 
-    public int getLimit_demend() {
-        return limit_demend;
+    public int getLimit_demand() {
+        return limit_demand;
     }
 
-    public void setLimit_demend(int limit_demend) {
-        this.limit_demend = limit_demend;
+    public void setLimit_demand(int limit_demand) {
+        this.limit_demand = limit_demand;
     }
 
     public String getStatusForText(int status) {
@@ -249,12 +234,12 @@ public class Post implements Serializable {
                 ", contents='" + contents + '\'' +
                 ", start_date='" + start_date + '\'' +
                 ", due_date='" + due_date + '\'' +
-                ", status=" + status +
+                ", recruit_status=" + recruit_status +
                 ", type=" + type +
                 ", payment=" + payment +
                 ", wage=" + wage +
                 ", limit_supply=" + limit_supply +
-                ", limit_dement=" + limit_demend +
+                ", limit_demand=" + limit_demand +
                 '}';
     }
 }

@@ -51,7 +51,7 @@ public class PostNetworkService {
                     Log.d(TAG, "성공  : " + obj1.toString());
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
-                    Log.d(TAG, "응답 실패  : " + post.toString());
+                    Log.d(TAG, "응답 실패  : " + obj1);
                 }
             }
 

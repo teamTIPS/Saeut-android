@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -160,9 +159,10 @@ public class DetailPostActivity extends AppCompatActivity {
 
     private void AllStoreData(Post post) throws IOException {
 
+        Log.d(TAG, post.toString());
         // 추가로 태그 연결 메소드 필요
         tv_type.setText(post.getTypeForText(post.getType()));
-        tv_status.setText(post.getStatusForText(post.getStatus()));
+        tv_status.setText(post.getStatusForText(post.getRecruit_status()));
 
         tv_title.setText(post.getTitle());
         tv_contents.setText(post.getContents());

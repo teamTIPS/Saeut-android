@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -48,6 +49,9 @@ public class CreatePostActivity extends AppCompatActivity {
     private Spinner spinner_demand;
     private Spinner spinner_supply;
 
+    int limit_supply = 1;   // 돌봄요청자 인원 설정값 저장
+    int limit_demand = 1;   // 돌봄제공자 인원 설정값 저장 (둘 다 초기값 1)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +83,18 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
+        // 함께돌봄 & 맞춤돌봄 지정
+        rg_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.rb_typeGroup) {
+                    tv_group.setVisibility(View.VISIBLE);
+                    group_layout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        // 종료날짜 지정
         btn_dueDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +108,35 @@ public class CreatePostActivity extends AppCompatActivity {
 
                 datePickerDialog.setMessage("메시지");
                 datePickerDialog.show();
+            }
+        });
+
+        // 함께돌봄일 때 인원 설정하는 메소드들
+        spinner_supply.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                limit_supply = position + 1;
+                Log.d(TAG, "함께돌봄일 때 limit_supply : " + limit_supply);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                limit_supply = 0;
+                Log.d(TAG, "맞춤돌봄일 때 limit_supply : " + limit_demand);
+            }
+        });
+
+        spinner_demand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                limit_demand = position + 1;
+                Log.d(TAG, "함께돌봄일 때 limit_supply : " + limit_demand);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                limit_demand = 0;
+                Log.d(TAG, "맞춤돌봄일 때 limit_supply : " + limit_demand);
             }
         });
 
@@ -118,11 +163,12 @@ public class CreatePostActivity extends AppCompatActivity {
                         0,
                         getCheckedType(rg_type.getCheckedRadioButtonId()),
                         Integer.parseInt(et_hourlyWage.getText().toString()),
-                        0,
-                        0
+                        limit_supply,
+                        limit_demand
                 );
 
                 Log.d(TAG, post.toString());
+
                 try {
                     sendPostNetworkService(post);
                     Toast.makeText(getApplicationContext(), "돌봄 게시글이 등록되었습니다 !!", Toast.LENGTH_SHORT).show();
@@ -141,8 +187,6 @@ public class CreatePostActivity extends AppCompatActivity {
             return 0;
         } else {
             // 함께돌봄
-            tv_group.setVisibility(View.VISIBLE);
-            group_layout.setVisibility(View.VISIBLE);
             return 1;
         }
     }
@@ -163,7 +207,7 @@ public class CreatePostActivity extends AppCompatActivity {
         et_hourlyWage = findViewById(R.id.et_hourlyWage);
 
         rg_age = findViewById(R.id.rg_age);
-        rg_gender = findViewById(R.id.rg_age);
+        rg_gender = findViewById(R.id.rg_gender);
         rg_type = findViewById(R.id.rg_type);
 
         // 함께돌봄일 때 동작하는 레이아웃

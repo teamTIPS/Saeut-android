@@ -281,6 +281,7 @@
                         android:id="@+id/et_startDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:gravity="center"
                         android:hint="시작 날짜를 선택해주세요."
                         android:inputType="date"

@@ -50,9 +50,19 @@ public class PostNetworkTask extends AsyncTask<Void, Void, String> {
                 String contents = json.getString("contents");
                 String start_date = json.getString("start_date");
                 String due_date = json.getString("due_date");
-                int type = Integer.parseInt(json.getString("type"));
+                String post_schedule = json.getString("post_schedule");
+                String post_gender = json.getString("post_gender");
+                String post_age = json.getString("post_age");
+                int recruit_status = json.getInt("recruit_status");
+                int payment = json.getInt("payment");
+                int wage = json.getInt("wage");
+                int type = json.getInt("type");
+                int limit_supply = json.getInt("limit_supply");
+                int limit_demand = json.getInt("limit_demand");
 
-                dashboardListAdapter.addItem(post_id, id, title, post_date, contents, start_date, due_date, type);
+
+                dashboardListAdapter.addItem(post_id, post_date, id, title, post_age, post_schedule,
+                        post_gender, contents, start_date, due_date, recruit_status, type, wage, limit_supply, limit_demand, payment);
                 dashboardListAdapter.notifyDataSetChanged();
             }
 

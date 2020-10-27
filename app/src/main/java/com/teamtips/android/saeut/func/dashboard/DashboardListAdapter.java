@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -117,8 +115,11 @@ public class DashboardListAdapter extends BaseAdapter {
     }
 
     // 새로운 게시글을 추가하는 메서드
-    public void addItem(int post_id, String id, String title, String post_date, String contents, String start_date, String due_date, int type){
-        Post post = new Post(post_id, id, title, post_date, contents, start_date, due_date, type);
+    public void addItem(int post_id, String post_date, String id, String title, String post_age,
+                        String post_schedule, String post_gender, String contents, String start_date, String due_date,
+                        int status, int type, int wage, int limit_supply, int limit_demand, int payment){
+        Post post = new Post(post_id, post_date, id, title, post_age, post_schedule,
+                             post_gender, contents, start_date, due_date, status, type, wage, limit_supply, limit_demand, payment);
         postArrayList.add(post);
     }
 
@@ -175,7 +176,7 @@ public class DashboardListAdapter extends BaseAdapter {
 
         int type = postArrayList.get(position).getType();
         holder.tv_type.setText(postArrayList.get(position).getTypeForText(type));
-        int status = postArrayList.get(position).getStatus();
+        int status = postArrayList.get(position).getRecruit_status();
         holder.btn_status.setText(postArrayList.get(position).getStatusForText(status));
 
         // 추후에 API 연결
