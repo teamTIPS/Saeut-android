@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button"
             android:layout_width="wrap_content"
@@ -37,6 +38,5 @@
             app:layout_behavior="com.teamtips.android.saeut.BottomNavigationFABBehavior"
             app:srcCompat="@drawable/ic_pencil"
             app:useCompatPadding="true" />
-
     </FrameLayout>
 </LinearLayout>

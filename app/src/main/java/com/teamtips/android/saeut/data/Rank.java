@@ -3,13 +3,13 @@ package com.teamtips.android.saeut.data;
 public class Rank {
 
     // 등급 순서 : 내림차순
-    private static String[] rankArray = {   "먼 우주로 가버린 이웃",
-                                            "해외로 떠난 이웃",
-                                            "도시 이웃",
-                                            "동네 이웃",
-                                            "가까운 이웃",
-                                            "옆집 이웃",
-                                            "마스터 이웃"
+    private static String[] rankArray = {   "먼우주이웃",
+                                            "해외이웃",
+                                            "도시이웃",
+                                            "동네이웃",
+                                            "가까운이웃",
+                                            "옆집이웃",
+                                            "마스터이웃"
                                         };
 
     private String id;          // userEssential(id)

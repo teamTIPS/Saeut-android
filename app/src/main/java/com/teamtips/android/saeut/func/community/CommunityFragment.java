@@ -2,6 +2,7 @@ package com.teamtips.android.saeut.func.community;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,24 +12,43 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Community;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CommunityFragment extends Fragment {
 
     public static final String TAG = "CommunityFragment";
+    private final String url = "http://49.50.173.180:8080/saeut/";
+
     private CommunityAdapter communityAdapter;
     private ArrayList<Community> communityArrayList;
-    private CommunityNetworkService communityNetworkService;
     private Context mContext;
     private RecyclerView community_recyclerview;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    CommunityNetworkService communityNetworkService = retrofit.create(CommunityNetworkService.class);
 
     public static CommunityFragment newInstance() {
         return new CommunityFragment();
@@ -36,8 +56,17 @@ public class CommunityFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.e(TAG,"!!!!!!!!!!!!!!!!!!!");
+
         super.onViewCreated(view, savedInstanceState);
-        setCommunityAdapter(view);
+        communityNetworkService.getAllboardlist().enqueue(getboardlist);
+        community_recyclerview = view.findViewById(R.id.community_recycler_item);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
+        community_recyclerview.setLayoutManager(layoutManager);
+        communityAdapter = new CommunityAdapter(communityArrayList, mContext, communityNetworkService);
+        InitCommunity();
+        community_recyclerview.setAdapter(communityAdapter);
+
     }
 
     @Nullable
@@ -47,6 +76,8 @@ public class CommunityFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
 
+        Log.e(TAG,"onCreateView");
+
         return inflater.inflate(R.layout.fragment_community, container, false);
     }
 
@@ -54,6 +85,7 @@ public class CommunityFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+
         setHasOptionsMenu(true);
     }
 
@@ -62,50 +94,69 @@ public class CommunityFragment extends Fragment {
         inflater.inflate(R.menu.message, menu);
     }
 
-    public void setCommunityAdapter(View view) {
-        InitCommunity();
-        communityAdapter = new CommunityAdapter(communityArrayList, mContext, communityNetworkService);
-        community_recyclerview = view.findViewById(R.id.community_recycler_item);
-        community_recyclerview.setAdapter(communityAdapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
-        community_recyclerview.setLayoutManager(layoutManager);
-
-    }
-
     private void InitCommunity() {
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
+        long date = System.currentTimeMillis();
         communityArrayList = new ArrayList<>();
         communityArrayList.add(new Community(
                 1,
-                2,
+                "test1",
                 "마곡동 맛집 어딘가요?",
                 date,
                 0,
                 2,
                 "낮잠자기좋은날",
                 "서울시 강서구 발산동",
-                "옆집이웃"));
+                3));
 
         communityArrayList.add(new Community(
                 4,
-                5,
+                "test2",
                 "고양이미용실 여기 파마 잘하네요~",
                 date,
                 2,
                 5,
                 "인공눈물",
                 "서울시 강서구 화곡동",
-                "옆방이웃"));
+                4));
         communityArrayList.add(new Community(
                 6,
-                7,
+                "test8",
                 "와이셔츠 세탁 빠르게 되는 곳 아시는 분 계신가요?",
                 date,
                 0,
                 1,
                 "시계조아",
                 "서울시 강서구 마곡동",
-                "도시이웃"));
+                5));
     }
+
+    Callback<JsonArray> getboardlist = new Callback<JsonArray>() {
+
+        ArrayList<Community> temparray = new ArrayList<>();
+
+        @Override
+        public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            Log.e(TAG,"서버통신 성공");
+            if(response.body() != null){
+                Gson gson = new GsonBuilder().create();
+                Log.e(TAG,response.body().toString());
+                JsonArray rootobj = response.body().getAsJsonArray();
+                TypeToken<List<Community>> typeToken = new TypeToken<List<Community>>(){};
+                Type type = typeToken.getType();
+                temparray = gson.fromJson(rootobj, type);
+                if(temparray != null){
+                    Log.e(TAG,"리스트 있음");
+                }
+                else Log.e(TAG, "리스트가 없어요");
+                communityAdapter.updateArrayList(temparray);
+            }
+            else Log.e(TAG,response.toString());
+        }
+
+        @Override
+        public void onFailure(Call<JsonArray> call, Throwable t) {
+            Log.e(TAG,call.toString()+"\n"+t.toString());
+            Log.e(TAG,"onFailure");
+        }
+    };
 }

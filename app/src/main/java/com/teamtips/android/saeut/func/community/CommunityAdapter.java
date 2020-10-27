@@ -10,9 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.data.Comment;
 import com.teamtips.android.saeut.data.Community;
-import com.teamtips.android.saeut.func.group.GroupNetworkService;
 
 import java.util.List;
 
@@ -26,6 +24,11 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.communities = communities;
         this.mContext = mContext;
         this.api = api;
+    }
+
+    public void updateArrayList(List<Community> communityList){
+        this.communities = communityList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,9 +46,10 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final Community bindedCommunity = communities.get(position);
+
         ((CommunityItem) holder).writer_nickname_tv.setText(bindedCommunity.getNickname());
-        ((CommunityItem) holder).community_location_tv.setText(bindedCommunity.getAddess());
-        ((CommunityItem) holder).community_rank_tv.setText(bindedCommunity.getRank());
+        ((CommunityItem) holder).community_location_tv.setText(bindedCommunity.getAddress1());
+        ((CommunityItem) holder).community_rank_tv.setText(bindedCommunity.getRankString());
         ((CommunityItem) holder).community_text_tv.setText(bindedCommunity.getContents());
         ((CommunityItem) holder).community_like_tv.setText(String.valueOf(bindedCommunity.getCnt_like()));
         ((CommunityItem) holder).community_message_tv.setText(String.valueOf(bindedCommunity.getCnt_reply()));
@@ -54,6 +58,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
+        if(communities == null) return 0;
         return communities.size();
     }
 

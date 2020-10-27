@@ -1,23 +1,36 @@
 package com.teamtips.android.saeut.data;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Community {
 
+    private static String[] rankArray = {   "먼우주이웃",
+            "해외이웃",
+            "도시이웃",
+            "동네이웃",
+            "가까운이웃",
+            "옆집이웃",
+            "마스터이웃"
+    };
+
     private int post_id;
-
-
-    private int id;
+    private String id;
     private String contents;
-    private Date post_date;
+    private long post_date;
     private int cnt_like;
     private int cnt_reply;
     private String nickname;
-    private String addess;
-    private String rank;
+    private String address1;
+    private int rank;
 
     public Community() {
+    }
+
+    public String getRankString() {
+        return rankArray[rank];
     }
 
     public int getPost_id() {
@@ -28,11 +41,11 @@ public class Community {
         this.post_id = post_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,11 +57,11 @@ public class Community {
         this.contents = contents;
     }
 
-    public Date getPost_date() {
+    public long getPost_date() {
         return post_date;
     }
 
-    public void setPost_date(Date post_date) {
+    public void setPost_date(long post_date) {
         this.post_date = post_date;
     }
 
@@ -76,16 +89,23 @@ public class Community {
         this.nickname = nickname;
     }
 
-    public String getAddess() {
-        return addess;
+    public String getAddress1() {
+        String[] temp = address1.split(" ");
+        String t = temp[0]+" "+temp[1]+" "+temp[2];
+        Log.e("Community_getAddress 변환",t);
+        return t;
     }
 
-    public void setAddess(String addess) {
-        this.addess = addess;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
     }
 
-    public String getRank() {
+    public int getRank() {
         return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public String getDateByString(){
@@ -93,11 +113,7 @@ public class Community {
         return transFormat.format(post_date);
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    public Community(int post_id, int id, String contents, Date post_date, int cnt_like, int cnt_reply, String nickname, String addess, String rank) {
+    public Community(int post_id, String id, String contents, long post_date, int cnt_like, int cnt_reply, String nickname, String address1, int rank) {
         this.post_id = post_id;
         this.id = id;
         this.contents = contents;
@@ -105,7 +121,7 @@ public class Community {
         this.cnt_like = cnt_like;
         this.cnt_reply = cnt_reply;
         this.nickname = nickname;
-        this.addess = addess;
+        this.address1 = address1;
         this.rank = rank;
     }
 }
