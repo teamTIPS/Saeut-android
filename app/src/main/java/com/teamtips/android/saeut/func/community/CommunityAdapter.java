@@ -10,24 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.data.Community;
+import com.teamtips.android.saeut.data.Board;
 
 import java.util.List;
 
 public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String Tag = "CommunityAdapter";
-    private List<Community> communities;
+    private List<Board> communities;
     private Context mContext;
     private CommunityNetworkService api;
 
-    public CommunityAdapter(List<Community> communities, Context mContext, CommunityNetworkService api) {
+    public CommunityAdapter(List<Board> communities, Context mContext, CommunityNetworkService api) {
         this.communities = communities;
         this.mContext = mContext;
         this.api = api;
     }
 
-    public void updateArrayList(List<Community> communityList){
-        this.communities = communityList;
+    public void updateArrayList(List<Board> boardList){
+        this.communities = boardList;
         notifyDataSetChanged();
     }
 
@@ -45,15 +45,15 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        final Community bindedCommunity = communities.get(position);
+        final Board bindedBoard = communities.get(position);
 
-        ((CommunityItem) holder).writer_nickname_tv.setText(bindedCommunity.getNickname());
-        ((CommunityItem) holder).community_location_tv.setText(bindedCommunity.getAddress1());
-        ((CommunityItem) holder).community_rank_tv.setText(bindedCommunity.getRankString());
-        ((CommunityItem) holder).community_text_tv.setText(bindedCommunity.getContents());
-        ((CommunityItem) holder).community_like_tv.setText(String.valueOf(bindedCommunity.getCnt_like()));
-        ((CommunityItem) holder).community_message_tv.setText(String.valueOf(bindedCommunity.getCnt_reply()));
-        ((CommunityItem) holder).community_post_date.setText(bindedCommunity.getDateByString());
+        ((CommunityItem) holder).writer_nickname_tv.setText(bindedBoard.getNickname());
+        ((CommunityItem) holder).community_location_tv.setText(bindedBoard.getAddress1());
+        ((CommunityItem) holder).community_rank_tv.setText(bindedBoard.getRankString());
+        ((CommunityItem) holder).community_text_tv.setText(bindedBoard.getContents());
+        ((CommunityItem) holder).community_like_tv.setText(String.valueOf(bindedBoard.getCnt_like()));
+        ((CommunityItem) holder).community_message_tv.setText(String.valueOf(bindedBoard.getCnt_reply()));
+        ((CommunityItem) holder).community_post_date.setText(bindedBoard.getDateByString());
     }
 
     @Override

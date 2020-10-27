@@ -1,11 +1,13 @@
 package com.teamtips.android.saeut.func.community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,11 +22,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.teamtips.android.saeut.R;
-import com.teamtips.android.saeut.data.Community;
+import com.teamtips.android.saeut.data.Board;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,7 +40,7 @@ public class CommunityFragment extends Fragment {
     private final String url = "http://49.50.173.180:8080/saeut/";
 
     private CommunityAdapter communityAdapter;
-    private ArrayList<Community> communityArrayList;
+    private ArrayList<Board> boardArrayList;
     private Context mContext;
     private RecyclerView community_recyclerview;
 
@@ -63,7 +64,7 @@ public class CommunityFragment extends Fragment {
         community_recyclerview = view.findViewById(R.id.community_recycler_item);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         community_recyclerview.setLayoutManager(layoutManager);
-        communityAdapter = new CommunityAdapter(communityArrayList, mContext, communityNetworkService);
+        communityAdapter = new CommunityAdapter(boardArrayList, mContext, communityNetworkService);
         InitCommunity();
         community_recyclerview.setAdapter(communityAdapter);
 
@@ -94,10 +95,16 @@ public class CommunityFragment extends Fragment {
         inflater.inflate(R.menu.message, menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        startActivity(new Intent(getActivity(), CommunityCreateActivity.class));
+        return super.onOptionsItemSelected(item);
+    }
+
     private void InitCommunity() {
         long date = System.currentTimeMillis();
-        communityArrayList = new ArrayList<>();
-        communityArrayList.add(new Community(
+        boardArrayList = new ArrayList<>();
+        boardArrayList.add(new Board(
                 1,
                 "test1",
                 "마곡동 맛집 어딘가요?",
@@ -108,7 +115,7 @@ public class CommunityFragment extends Fragment {
                 "서울시 강서구 발산동",
                 3));
 
-        communityArrayList.add(new Community(
+        boardArrayList.add(new Board(
                 4,
                 "test2",
                 "고양이미용실 여기 파마 잘하네요~",
@@ -118,7 +125,7 @@ public class CommunityFragment extends Fragment {
                 "인공눈물",
                 "서울시 강서구 화곡동",
                 4));
-        communityArrayList.add(new Community(
+        boardArrayList.add(new Board(
                 6,
                 "test8",
                 "와이셔츠 세탁 빠르게 되는 곳 아시는 분 계신가요?",
@@ -132,7 +139,7 @@ public class CommunityFragment extends Fragment {
 
     Callback<JsonArray> getboardlist = new Callback<JsonArray>() {
 
-        ArrayList<Community> temparray = new ArrayList<>();
+        ArrayList<Board> temparray = new ArrayList<>();
 
         @Override
         public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
@@ -141,7 +148,7 @@ public class CommunityFragment extends Fragment {
                 Gson gson = new GsonBuilder().create();
                 Log.e(TAG,response.body().toString());
                 JsonArray rootobj = response.body().getAsJsonArray();
-                TypeToken<List<Community>> typeToken = new TypeToken<List<Community>>(){};
+                TypeToken<List<Board>> typeToken = new TypeToken<List<Board>>(){};
                 Type type = typeToken.getType();
                 temparray = gson.fromJson(rootobj, type);
                 if(temparray != null){

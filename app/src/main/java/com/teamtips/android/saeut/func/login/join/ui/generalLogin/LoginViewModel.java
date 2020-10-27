@@ -100,6 +100,7 @@ public class LoginViewModel extends ViewModel {
 
     // POST 방식으로 HTTP 통신 호출시 실행되는 클래스
     public class NetworkTask_POST extends AsyncTask<Void, Void, String> {
+        LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
 
         private String url;
         private String json;
@@ -131,9 +132,14 @@ public class LoginViewModel extends ViewModel {
                 try {
                     // 결과값으로 넘어온 JWT 토큰 JSON값 파싱
                     JSONObject result_json = new JSONObject(s);
+                    Log.e(Tag,result_json.toString());
                     JSONObject jwt_json = result_json.getJSONObject("jwt");
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
+                    JSONObject userEssential_json = result_json.getJSONObject("userEssential");
+
+                    loggedInUser.setId(userEssential_json.getString("id"));
+
                     Log.e(Tag,refreshToken);
 
                     //서버에서 유저정보 데이터 받아오기
