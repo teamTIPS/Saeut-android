@@ -36,20 +36,18 @@ public class Post implements Serializable {
     private int payment;            // 돌봄요청자 한 명이 돌봄 서비스에 지불하는 시급
     private int wage;               // 돌봄제공자가 받는 시급, 자동 계산
     private int limit_supply;       // 최대 돌봄제공자 수
-    private int limit_dement;       // 최대 돌봄요청자 수
+    private int limit_demend;       // 최대 돌봄요청자 수
 
     // Constructor
     public Post() {
     }
 
     // new version constructor
-    public Post(int post_id, String id, String title, String post_date, String post_age, String post_schedule,
-                String post_gender, String contents, String start_date, String due_date, int status, int type,
-                int payment, int wage, int limit_supply, int limit_dement) {
-        this.post_id = post_id;
+    public Post(String id, String title, String post_age, String post_schedule, String post_gender,
+                String contents, String start_date, String due_date,
+                int status, int type, int wage, int limit_supply, int limit_demend) {
         this.id = id;
         this.title = title;
-        this.post_date = post_date;
         this.post_age = post_age;
         this.post_schedule = post_schedule;
         this.post_gender = post_gender;
@@ -58,10 +56,10 @@ public class Post implements Serializable {
         this.due_date = due_date;
         this.status = status;
         this.type = type;
-        this.payment = payment;
+        this.payment = getPayment();
         this.wage = wage;
         this.limit_supply = limit_supply;
-        this.limit_dement = limit_dement;
+        this.limit_demend = limit_demend;
     }
 
     // old version constructor
@@ -189,7 +187,7 @@ public class Post implements Serializable {
     }
 
     public int getPayment() {
-        return payment;
+        return (wage * limit_supply) / limit_demend;
     }
 
     public void setPayment(int payment) {
@@ -212,12 +210,12 @@ public class Post implements Serializable {
         this.limit_supply = limit_supply;
     }
 
-    public int getLimit_dement() {
-        return limit_dement;
+    public int getLimit_demend() {
+        return limit_demend;
     }
 
-    public void setLimit_dement(int limit_dement) {
-        this.limit_dement = limit_dement;
+    public void setLimit_demend(int limit_demend) {
+        this.limit_demend = limit_demend;
     }
 
     public String getStatusForText(int status) {
@@ -256,7 +254,7 @@ public class Post implements Serializable {
                 ", payment=" + payment +
                 ", wage=" + wage +
                 ", limit_supply=" + limit_supply +
-                ", limit_dement=" + limit_dement +
+                ", limit_dement=" + limit_demend +
                 '}';
     }
 }
