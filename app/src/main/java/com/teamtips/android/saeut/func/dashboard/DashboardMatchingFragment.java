@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.data.Matching;
 import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
@@ -73,13 +74,23 @@ public class DashboardMatchingFragment extends Fragment {
         btn_matching_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int type = cb_typeAlone.isChecked()? 0 : 1; // type 값 저장
                 AlertDialog.Builder check_matching_ad = new AlertDialog.Builder(getContext());
 
                 check_matching_ad.setMessage("매칭을 하시겠습니까?")
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("Dialog", "확인");
+                                //String post_schedule, int wage, String location, int type
+
+                                Matching matching = new Matching(
+                                        et_schedule.getText().toString(),
+                                        Integer.parseInt(et_hourlyWage.getText().toString()),
+                                        et_location.getText().toString(),
+                                        type
+                                );
+                                Log.d("Dialog", "확인");
+                                Log.d("Dialog", matching.toString());
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -90,6 +101,8 @@ public class DashboardMatchingFragment extends Fragment {
                         })
                         .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
                         .show();
+                // 리스트 새로고침
+                setListChanged(type);
             }
         });
     }
@@ -132,5 +145,13 @@ public class DashboardMatchingFragment extends Fragment {
 
         postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();
+    }
+
+    private void setListChanged(int type) {
+        LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
+        url = "http://49.50.173.180:8080/saeut/post/" + loggedInUser.getId();
+        postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
+        postNetworkTask.execute();
+        dashboardListAdapter.notifyDataSetChanged();
     }
 }

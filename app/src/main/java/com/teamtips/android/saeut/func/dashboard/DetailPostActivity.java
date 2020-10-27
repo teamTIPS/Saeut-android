@@ -217,9 +217,9 @@ public class DetailPostActivity extends AppCompatActivity {
         et_payment.setText(String.valueOf(post.getPayment()));
         et_wage.setText(String.valueOf(post.getWage()));
 
-        // 진짜 이게 최선일까....? ㅋ
-        String age = post.getPost_age();
-        String gender = post.getPost_gender();
+        // 진짜 이게 최선일까....? ㅋ replace는 예시 디비에 공백이 있어서,,,어쩔수없이 추가함ㅋㅋ
+        String age = post.getPost_age().replace(" ", "");
+        String gender = post.getPost_gender().replace(" ", "");
         if(rb_age1.getText().equals(age)){
             rb_age1.setChecked(true);
         } else {
