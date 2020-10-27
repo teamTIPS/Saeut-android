@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
+import com.teamtips.android.saeut.data.Tag;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
@@ -175,7 +177,8 @@ public class CreatePostActivity extends AppCompatActivity {
                 Log.d(TAG, post.toString());
 
                 try {
-                    sendPostNetworkService(post);
+                    // Tag & Post DB 저장
+                    sendPostNetworkService(post, et_tag.getText().toString());
                     Toast.makeText(getApplicationContext(), "돌봄 게시글이 등록되었습니다 !!", Toast.LENGTH_SHORT).show();
                 } catch(Exception e) {
                     Toast.makeText(getApplicationContext(), "게시글 등록 실패 !! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
@@ -196,9 +199,20 @@ public class CreatePostActivity extends AppCompatActivity {
         }
     }
 
-    private void sendPostNetworkService(Post post) {
+    private void sendPostNetworkService(Post post, String tag) {
         PostNetworkService postNetworkService = new PostNetworkService();
+        // POST ADD
         postNetworkService.addPost(post);
+
+        // 혹시 모를 공백 제거 및 "," 로 태그 구분해서 배열에 저장
+        String[] tagArray = tag.replace(" ", "").split(",");
+
+        // TAG ADD
+        for(String t : tagArray) {
+            Tag newTag = new Tag(post.getPost_id(), t);
+            postNetworkService.addTag(newTag);
+            Log.d(TAG, "Tag add : " + newTag.toString());
+        }
     }
 
     private void AllFindViewCreate() {

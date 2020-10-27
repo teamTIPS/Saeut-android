@@ -24,9 +24,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="돌봄 요청정보"
-                android:includeFontPadding="false"
                 android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:text="돌봄 요청정보"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
@@ -44,8 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingBottom="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -126,41 +126,41 @@
                     android:id="@+id/tv_status"
                     android:layout_width="90dp"
                     android:layout_height="40dp"
-                    android:padding="5dp"
                     android:layout_marginStart="10dp"
-                    android:textSize="15sp"
                     android:background="@drawable/rounded_line_btn"
                     android:gravity="center"
+                    android:padding="5dp"
                     android:text="모집 진행중"
-                    android:textColor="@color/color_primary_900" />
+                    android:textColor="@color/color_primary_900"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_bold"
-                android:textColor="@color/color_primary_900"
-                android:textSize="25sp"
-                android:includeFontPadding="false"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
-                android:text="제목" />
+                android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:text="제목"
+                android:textColor="@color/color_primary_900"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:paddingEnd="10dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/font_regular"
                 android:includeFontPadding="false"
-                android:textColor="@color/colorBlack"
+                android:paddingEnd="10dp"
                 android:text="유치원 등원 품앗이모임 함께하실 분들 찾습니다."
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
             <View
@@ -174,41 +174,41 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     android:id="@+id/writer_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/font_bold"
-                    android:textColor="@color/color_primary_900"
-                    android:textSize="20sp"
-                    android:includeFontPadding="false"
-
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:text="작성자" />
+                    android:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="작성자"
+                    android:textColor="@color/color_primary_900"
+                    android:textSize="20sp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintLeft_toRightOf="@id/writer_name_text"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:id="@+id/tv_id"
-                    android:fontFamily="@font/font_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:paddingStart="10dp"
+                    android:fontFamily="@font/font_regular"
                     android:includeFontPadding="false"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
-                    android:textSize="15sp"
+                    android:text="낮잠자기좋은날"
                     android:textColor="@color/colorBlack"
-                    android:text="낮잠자기좋은날" />
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/writer_name_text"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -218,50 +218,49 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:id="@+id/writer_address_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/font_bold"
-                    android:textColor="@color/color_primary_900"
-                    android:textSize="20sp"
-                    android:includeFontPadding="false"
-
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:text="주소" />
+                    android:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="주소"
+                    android:textColor="@color/color_primary_900"
+                    android:textSize="20sp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintLeft_toRightOf="@id/writer_address_title"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:id="@+id/tv_writer_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:paddingStart="10dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/colorBlack"
                     android:includeFontPadding="false"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
+                    android:text="서울시 강서구 마곡동"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/writer_address_title"
 
-                    android:text="서울시 강서구 마곡동" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/text_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_light"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/colorBlack"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/font_light"
                 android:text="*돌봄 요청자의 상세 주소는 매칭이 완료되면 확인하실 수 있습니다."
-                android:textSize="12sp"
-                />
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp" />
 
             <View
                 android:id="@+id/divider2"
@@ -275,23 +274,23 @@
                 android:id="@+id/groupInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_bold"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/color_primary_900"
-                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/font_bold"
                 android:includeFontPadding="false"
 
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="그룹 모집 정보" />
+                android:text="그룹 모집 정보"
+                android:textColor="@color/color_primary_900"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_edittext"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp"
                 android:padding="15dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -301,20 +300,20 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/startDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
                         android:fontFamily="@font/font_bold"
-                        android:textColor="@color/color_primary_900"
                         android:includeFontPadding="false"
-                        android:textSize="15sp"
-
                         android:paddingEnd="10dp"
                         android:text="시작 날짜"
-                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/color_primary_900"
+                        android:textSize="15sp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
 
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
@@ -342,21 +341,21 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/dueDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="종료 날짜"
-                        android:paddingEnd="10dp"
-
                         android:layout_marginEnd="20dp"
-
                         android:fontFamily="@font/font_bold"
-                        android:textColor="@color/color_primary_900"
                         android:includeFontPadding="false"
-                        android:textSize="15sp" />
+                        android:paddingEnd="10dp"
+                        android:text="종료 날짜"
+
+                        android:textColor="@color/color_primary_900"
+
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
                         android:id="@+id/et_dueDate"
@@ -380,30 +379,29 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/postSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="10dp"
-
                         android:fontFamily="@font/font_bold"
-                        android:textColor="@color/color_primary_900"
                         android:includeFontPadding="false"
-                        android:textSize="15sp"
+                        android:paddingEnd="10dp"
                         android:text="돌봄 시간"
-                        />
+
+                        android:textColor="@color/color_primary_900"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/postSchedule"
                         android:id="@+id/et_postSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="원하는 시간대를 입력해주세요."
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/postSchedule"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -417,27 +415,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textColor="@color/color_primary_900"
                         android:includeFontPadding="false"
-                        android:textSize="15sp"
                         android:paddingRight="20dp"
                         android:text="연령"
+                        android:textColor="@color/color_primary_900"
+                        android:textSize="15sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
-                    <CheckBox
-                        android:id="@+id/cb_age1"
+                    <RadioGroup
+                        android:id="@+id/rg_age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="20dp"
+                        android:orientation="horizontal">
 
-                        android:text="연령무관" />
+                        <RadioButton
+                            android:id="@+id/rb_age1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="20dp"
 
-                    <CheckBox
-                        android:id="@+id/cb_age2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="연령제한" />
+                            android:text="연령무관" />
+
+                        <RadioButton
+                            android:id="@+id/rb_age2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="연령제한" />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -450,33 +455,40 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textColor="@color/color_primary_900"
                         android:includeFontPadding="false"
-                        android:textSize="15sp"
                         android:paddingEnd="20dp"
                         android:text="성별"
+                        android:textColor="@color/color_primary_900"
+                        android:textSize="15sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
-                    <CheckBox
-                        android:id="@+id/cb_gender1"
+                    <RadioGroup
+                        android:id="@+id/rg_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="20dp"
-                        android:text="성별무관" />
+                        android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/cb_gender2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="20dp"
-                        android:text="여자" />
+                        <RadioButton
+                            android:id="@+id/rb_gender1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="20dp"
+                            android:text="성별무관" />
 
-                    <CheckBox
-                        android:id="@+id/cb_gender3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="남자" />
+                        <RadioButton
+                            android:id="@+id/rb_gender2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="20dp"
+                            android:text="여자" />
+
+                        <RadioButton
+                            android:id="@+id/rb_gender3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="남자" />
+                    </RadioGroup>
                 </LinearLayout>
 
             </LinearLayout>
@@ -485,14 +497,14 @@
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="요청사항"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:text="요청사항"
                 android:textColor="@color/color_primary_900"
                 android:textSize="20sp"
-                android:includeFontPadding="false"
 
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="225dp" />
@@ -508,19 +520,19 @@
                 android:text="TextView" />
 
             <TextView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/paymentInfo"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_bold"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:text="페이"
                 android:textColor="@color/color_primary_900"
                 android:textSize="20sp"
-                android:includeFontPadding="false"
-                android:layout_marginEnd="10dp"
-                android:text="페이" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -543,9 +555,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="시급"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteY="175dp"
                         tools:layut_editor_absoluteX="27dp" />
 
@@ -566,9 +578,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="원"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
                 </LinearLayout>
@@ -583,9 +595,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="돌보미 페이"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteY="175dp"
                         tools:layut_editor_absoluteX="27dp" />
 
@@ -605,9 +617,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="원"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
@@ -623,9 +635,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="요청자 금액"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
 
@@ -645,9 +657,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/color_success_800"
                         android:text="원"
+                        android:textColor="@color/color_success_800"
+                        android:textSize="18sp"
                         tools:layout_editor_absoluteX="27dp"
                         tools:layout_editor_absoluteY="175dp" />
                 </LinearLayout>
@@ -677,48 +689,48 @@
 
                 <TextView
                     android:id="@+id/guide_currentperson_text"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/tv_applyCount"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/colorBlack"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     android:fontFamily="@font/font_regular"
                     android:includeFontPadding="false"
                     android:paddingEnd="10dp"
+                    android:text="현재 신청자 수:"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/tv_applyCount"
 
-                    android:text="현재 신청자 수:" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/guide_currentperson_text"
-                    app:layout_constraintRight_toLeftOf="@id/count_text"
                     android:id="@+id/tv_applyCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_bold"
-                    android:textColor="@color/color_success_900"
                     android:includeFontPadding="false"
                     android:text="2"
-                    android:textSize="20sp" />
+                    android:textColor="@color/color_success_900"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/guide_currentperson_text"
+                    app:layout_constraintRight_toLeftOf="@id/count_text"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/tv_applyCount"
                     android:id="@+id/count_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:includeFontPadding="false"
                     android:fontFamily="@font/font_regular"
+                    android:includeFontPadding="false"
                     android:paddingStart="3dp"
-                    android:textSize="15sp"
+                    android:text="명"
                     android:textColor="@color/colorBlack"
-                    android:text="명" />
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/tv_applyCount"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
@@ -727,12 +739,12 @@
             android:id="@+id/btn_detail_submit"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:fontFamily="@font/font_bold"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp"
-            android:includeFontPadding="false"
             android:layout_weight="1.5"
             android:background="@color/colorPrimary"
-            android:text="신청하기" />
+            android:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
+            android:text="신청하기"
+            android:textColor="@color/colorWhite"
+            android:textSize="26sp" />
     </LinearLayout>
 </RelativeLayout>

@@ -15,12 +15,26 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Apply;
 import com.teamtips.android.saeut.data.Post;
+import com.teamtips.android.saeut.data.Tag;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
+import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetwork;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailPostActivity extends AppCompatActivity {
 
@@ -45,6 +59,14 @@ public class DetailPostActivity extends AppCompatActivity {
     private EditText et_payment;
     private EditText et_postSchedule;
 
+    private RadioButton rb_age1;
+    private RadioButton rb_age2;
+
+    private RadioButton rb_gender1;
+    private RadioButton rb_gender2;
+    private RadioButton rb_gender3;
+
+
     private TextView tv_applyCount;
     private Button btn_detail_submit;
 
@@ -53,6 +75,16 @@ public class DetailPostActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private static Post post;
+
+    /* Retrofit */
+    private Gson gson = new GsonBuilder().setLenient().create();
+    private OkHttpClient.Builder builder = new OkHttpClient.Builder();
+    private OkHttpClient client = builder.build();
+    private final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://49.50.173.180:8080/saeut/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +186,13 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_tag2 = (TextView) findViewById(R.id.tv_tag2);
         tv_tag3 = (TextView) findViewById(R.id.tv_tag3);
 
+        rb_age1 = (RadioButton) findViewById(R.id.rb_age1);
+        rb_age2 = (RadioButton) findViewById(R.id.rb_age2);
+
+        rb_gender1 = (RadioButton) findViewById(R.id.rb_gender1);
+        rb_gender2 = (RadioButton) findViewById(R.id.rb_gender2);
+        rb_gender3 = (RadioButton) findViewById(R.id.rb_gender3);
+
         btn_detail_submit = (Button) findViewById(R.id.btn_detail_submit);
     }
 
@@ -161,6 +200,7 @@ public class DetailPostActivity extends AppCompatActivity {
 
         Log.d(TAG, post.toString());
         // 추가로 태그 연결 메소드 필요
+        getTagByPostId(post.getPost_id());
         tv_type.setText(post.getTypeForText(post.getType()));
         tv_status.setText(post.getStatusForText(post.getRecruit_status()));
 
@@ -177,8 +217,49 @@ public class DetailPostActivity extends AppCompatActivity {
         et_payment.setText(String.valueOf(post.getPayment()));
         et_wage.setText(String.valueOf(post.getWage()));
 
+        // 진짜 이게 최선일까....? ㅋ
+        String age = post.getPost_age();
+        String gender = post.getPost_gender();
+        if(rb_age1.getText().equals(age)){
+            rb_age1.setChecked(true);
+        } else {
+            rb_age2.setChecked(true);
+        }
+
+        if(rb_gender1.getText().equals(gender)) {
+            rb_gender1.setChecked(true);
+        } else if(rb_gender2.getText().equals(gender)) {
+            rb_gender2.setChecked(true);
+        } else {
+            rb_gender3.setChecked(true);
+        }
+
         // callback 함수 구현 필요 (api 연결)
         tv_applyCount.setText("1");
+    }
+
+    private void getTagByPostId(int post_id) {
+        retrofit.create(PostNetwork.class).getTagList(post_id).enqueue(new Callback<List<Tag>>() {
+            @Override
+            public void onResponse(Call<List<Tag>> call, Response<List<Tag>> response) {
+                if(response.isSuccessful()) {
+                    List<Tag> tagList = response.body();
+                    // 임의로,,,3개만ㅠㅠ 구현만 되면 되쥬,,,^^;;;;
+                    if (tagList != null && !(tagList.isEmpty())) {
+                        tv_tag1.setText(tagList.get(0).getTag_name());
+                        tv_tag2.setText(tagList.get(1).getTag_name());
+                        tv_tag3.setText(tagList.get(2).getTag_name());
+                    }
+                } else {
+                    Log.d(TAG, "실패  : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tag>> call, Throwable t) {
+                Log.d(TAG, "연결 실패  : " + t.getMessage());
+            }
+        });
     }
 }
 

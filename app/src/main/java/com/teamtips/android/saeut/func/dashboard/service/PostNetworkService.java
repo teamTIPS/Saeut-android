@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.teamtips.android.saeut.data.Apply;
 import com.teamtips.android.saeut.data.Post;
+import com.teamtips.android.saeut.data.Tag;
+
 import java.io.IOException;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -25,6 +27,7 @@ public class PostNetworkService {
     public Call<Integer> mCallApplyCount;
     private Call<String> mCallDeletePost;
     private Call<String> mCallAddApply;
+    private Call<String> mCallAddTag;
 
     Gson gson = new GsonBuilder().setLenient().create();
     OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -140,6 +143,30 @@ public class PostNetworkService {
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
                     Log.d(TAG, "응답 실패  : " + obj3.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "실패 : " + t.getMessage());
+            }
+        });
+    }
+
+    public void addTag (Tag tag) {
+        Gson gson = new Gson();
+        String obj1 = gson.toJson(tag);
+        // Bring session id that Sign on this app
+        mCallAddTag = postNetwork.addTag(tag);
+        mCallAddTag.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "성공  : " + response.body());
+                    Log.d(TAG, "성공  : " + obj1.toString());
+                } else {
+                    Log.d(TAG, "응답 실패  : " + response.code());
+                    Log.d(TAG, "응답 실패  : " + obj1);
                 }
             }
 
