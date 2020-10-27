@@ -84,9 +84,6 @@ public class DashboardListFragment extends Fragment {
         if (position == 0) {
             // 전체 리스트를 불러오는 URL
             url = "http://49.50.173.180:8080/saeut/post";
-        } else if (position == 1) {
-            // 이제 여길 매칭 레이아웃으로 바꿔야되는데 코드 수정할부분 꽤 있을듯.
-            url = "http://49.50.173.180:8080/saeut/post/" + account_id;
         }
         postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();

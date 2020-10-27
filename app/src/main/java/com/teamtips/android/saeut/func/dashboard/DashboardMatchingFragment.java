@@ -36,6 +36,11 @@ public class DashboardMatchingFragment extends Fragment {
 
     private int position;        // taglayout 구별하기 위한 일종의 flag라고 이해함
 
+    private DashboardListAdapter dashboardListAdapter;
+    private ListView listView;
+    private ArrayList<Post> postArrayList;
+    private PostNetworkTask postNetworkTask;
+    private static String url;
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
 
@@ -63,15 +68,8 @@ public class DashboardMatchingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        et_hourlyWage = (EditText) view.findViewById(R.id.et_hourlyWage);
-        et_schedule = (EditText) view.findViewById(R.id.et_schedule);
-        et_location = (EditText) view.findViewById(R.id.et_location);
-
-        cb_typeAlone = (CheckBox) view.findViewById(R.id.cb_typeAlone);
-        cb_typeGroup = (CheckBox) view.findViewById(R.id.cb_typeGroup);
-
-        btn_matching_submit = (Button) view.findViewById(R.id.btn_matching_submit);
-
+        setAdapter(view);
+        getListByPosition(position);
         btn_matching_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,11 +99,38 @@ public class DashboardMatchingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dashboard_matching, container, false);
+        et_hourlyWage = (EditText) root.findViewById(R.id.et_hourlyWage);
+        et_schedule = (EditText) root.findViewById(R.id.et_schedule);
+        et_location = (EditText) root.findViewById(R.id.et_location);
+
+        cb_typeAlone = (CheckBox) root.findViewById(R.id.cb_typeAlone);
+        cb_typeGroup = (CheckBox) root.findViewById(R.id.cb_typeGroup);
+
+        btn_matching_submit = (Button) root.findViewById(R.id.btn_matching_submit);
         return root;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    private void setAdapter(View view) {
+        postArrayList = new ArrayList<Post>();
+        dashboardListAdapter = new DashboardListAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, position);
+        listView = view.findViewById(R.id.lv_matchingList);
+        listView.setAdapter(dashboardListAdapter);
+    }
+
+    private void getListByPosition(int position) {
+        // matching api 연결
+        if (position == 1) {
+            // 이제 여길 매칭 레이아웃으로 바꿔야되는데 코드 수정할부분 꽤 있을듯.
+            LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
+            url = "http://49.50.173.180:8080/saeut/post/" + loggedInUser.getId();
+        }
+
+        postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
+        postNetworkTask.execute();
     }
 }

@@ -148,7 +148,7 @@ public class DetailPostActivity extends AppCompatActivity {
                 Apply apply = new Apply(post.getPost_id(), "test", introduce, type);
                 Log.d(TAG, apply.toString());
                 // API 연결은 다른거 수정하고 시도
-//                postNetworkService.addApply(apply);
+                postNetworkService.addApply(apply);
                 Toast.makeText(getApplicationContext(), "돌봄 신청이 완료되었습니다 !",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
@@ -263,7 +263,7 @@ public class DetailPostActivity extends AppCompatActivity {
     }
 }
 
-// applyCount api 연결 구현 주
+// applyCount api 연결 구현 중
 // 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언
 //        postNetworkService.mCallApplyCount.enqueue(new Callback<Integer>() {
 //            @Override

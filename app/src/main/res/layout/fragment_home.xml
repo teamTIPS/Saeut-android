@@ -116,18 +116,15 @@
                             android:id="@+id/pet_title"
                             android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toLeftOf="@id/pet_icon"
-                            app:layout_constraintTop_toBottomOf="@id/pet_icon"
-                            app:layout_constraintRight_toRightOf="@id/pet_icon"
-                            android:text="반려동물\n봐주세요"
-                            android:textSize="12sp"
-                            android:gravity="center_horizontal"
                             android:fontFamily="@font/font_bold"
-                            android:textColor="@color/color_success_800"
+                            android:gravity="center_horizontal"
                             android:includeFontPadding="false"
-                            android:layout_marginBottom="10dp"
-                            >
-                        </TextView>
+                            android:text="반려동물\n봐주세요"
+                            android:textColor="@color/color_success_800"
+                            android:textSize="12sp"
+                            app:layout_constraintLeft_toLeftOf="@id/pet_icon"
+                            app:layout_constraintRight_toRightOf="@id/pet_icon"
+                            app:layout_constraintTop_toBottomOf="@id/pet_icon"></TextView>
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             app:layout_constraintLeft_toRightOf="@id/pet_icon"
@@ -146,16 +143,16 @@
 
                             android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toLeftOf="@id/car_icon"
-                            app:layout_constraintTop_toBottomOf="@id/car_icon"
-                            app:layout_constraintRight_toRightOf="@id/car_icon"
-                            android:text="이웃과\n함께타요"
-                            android:textSize="12sp"
-                            android:gravity="center_horizontal"
                             android:fontFamily="@font/font_bold"
+                            android:gravity="center_horizontal"
                             android:includeFontPadding="false"
-                            android:textColor="@color/color_success_800">
-                        </TextView>
+                            android:text="이웃과\n함께타요"
+                            android:textColor="@color/color_success_800"
+                            android:textSize="12sp"
+                            app:layout_constraintHorizontal_bias="0.478"
+                            app:layout_constraintLeft_toLeftOf="@id/car_icon"
+                            app:layout_constraintRight_toRightOf="@id/car_icon"
+                            app:layout_constraintTop_toBottomOf="@id/car_icon"></TextView>
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             app:layout_constraintLeft_toRightOf="@id/car_icon"

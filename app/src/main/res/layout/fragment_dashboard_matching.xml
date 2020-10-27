@@ -195,6 +195,30 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:layout_weight="5"
+        android:background="?android:attr/listDivider"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/type_container" />
+
+    <ListView
+        android:id="@+id/lv_matchingList"
+        android:layout_width="370dp"
+        android:layout_height="270dp"
+        android:layout_margin="10dp"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        android:scrollbars="vertical"
+        style:layout_constraintBottom_toTopOf="@+id/btn_matching_submit"
+        style:layout_constraintLeft_toLeftOf="parent"
+        style:layout_constraintRight_toRightOf="parent"
+        style:layout_constraintTop_toBottomOf="@+id/divider" />
+
     <Button
         android:id="@+id/btn_matching_submit"
         android:layout_width="match_parent"
@@ -209,18 +233,7 @@
         android:paddingRight="50dp"
         android:textColor="@color/colorWhite"
         style:layout_constraintBottom_toBottomOf="parent"
-
         android:text="매칭하기"
         android:fontFamily="@font/font_bold" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:layout_weight="5"
-        android:background="?android:attr/listDivider"
-        style:layout_constraintLeft_toLeftOf="parent"
-        style:layout_constraintTop_toBottomOf="@+id/type_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
