@@ -1,5 +1,6 @@
 package com.teamtips.android.saeut.data;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Comment {
@@ -55,6 +56,11 @@ public class Comment {
 
     public Date getWrite_time() {
         return write_time;
+    }
+
+    public String getDateByString() {
+        SimpleDateFormat transFormat = new SimpleDateFormat("MM/dd HH:mm");
+        return transFormat.format(write_time);
     }
 
     public void setWrite_time(Date write_time) {

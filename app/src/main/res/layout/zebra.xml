@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/ic_saeut_logo" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/group_title_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"

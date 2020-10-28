@@ -34,6 +34,12 @@ public class ProfileFragment extends Fragment {
             @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        TextView profile_tv_id = root.findViewById(R.id.profile_tv_id);
+        TextView profile_tv_address = root.findViewById(R.id.profile_tv_address);
+
+        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getnickname());
+        profile_tv_address.setText(LoggedInUser.getLoggedInUser().getAddress1());
+
         Button manage_account_btn = root.findViewById(R.id.manage_account_btn);
         Button revise_legion_btn = root.findViewById(R.id.revise_legion_btn);
         Button manage_post_btn = root.findViewById(R.id.manage_post_btn);
@@ -56,11 +62,11 @@ public class ProfileFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        TextView tv_id = getView().findViewById(R.id.tv_id);
-        TextView tv_address = getView().findViewById(R.id.tv_address);
+        TextView profile_tv_id = getView().findViewById(R.id.profile_tv_id);
+        TextView profile_tv_address = getView().findViewById(R.id.profile_tv_address);
 
-        tv_id.setText(LoggedInUser.getLoggedInUser().getnickname());
-        tv_address.setText(LoggedInUser.getLoggedInUser().getAddress1());
+        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getnickname());
+        profile_tv_address.setText(LoggedInUser.getLoggedInUser().getAddress1());
     }
 
     @Override

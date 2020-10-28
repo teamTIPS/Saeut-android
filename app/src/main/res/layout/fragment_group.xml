@@ -37,11 +37,11 @@
                 android:text="제목"
                 style:layout_constraintBottom_toBottomOf="parent"
                 style:layout_constraintLeft_toLeftOf="parent"
-                style:layout_constraintRight_toLeftOf="@+id/tv_title"
+                style:layout_constraintRight_toLeftOf="@+id/group_title_tv"
                 style:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/group_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/font_regular"
@@ -145,6 +145,7 @@
             android:layout_marginBottom="20dp">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comment_list_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </ScrollView>

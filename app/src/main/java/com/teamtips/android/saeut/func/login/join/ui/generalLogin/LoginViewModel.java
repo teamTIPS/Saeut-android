@@ -137,8 +137,13 @@ public class LoginViewModel extends ViewModel {
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
                     JSONObject userEssential_json = result_json.getJSONObject("userEssential");
+                    JSONObject userAdditional_json = result_json.getJSONObject("userAdditional");
+                    Log.e(Tag,"essential: "+ userEssential_json.toString());
+                    Log.e(Tag,"additional: "+ userAdditional_json.toString());
 
                     loggedInUser.setId(userEssential_json.getString("id"));
+                    loggedInUser.setAddress1(userAdditional_json.getString("address1"));
+                    loggedInUser.setNickname(userAdditional_json.getString("nickname"));
 
                     Log.e(Tag,refreshToken);
 
