@@ -97,7 +97,6 @@ public class CommunityFragment extends Fragment {
             }
         });
 
-
         Log.e(TAG,"onCreateView");
         communityNetworkService.getAllboardlist().enqueue(getboardlist);
 

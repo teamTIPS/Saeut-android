@@ -65,15 +65,13 @@ public class CommunityCreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String address = "서울시 강서구 마곡동";
                 int rank = 5;
                 create_community_et.getText().toString();
                 String contents = create_community_et.getText().toString();
                 if(contents.equals("")){
                     return;
                 }
-
-                api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getnickname(),  address, rank)).enqueue(createNewPost);
+                api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getnickname(),  loggedInUser.getAddress1(), rank)).enqueue(createNewPost);
 
                 finish();
             }

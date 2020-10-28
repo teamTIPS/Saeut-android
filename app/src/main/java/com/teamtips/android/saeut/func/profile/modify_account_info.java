@@ -117,6 +117,7 @@ public class modify_account_info extends AppCompatActivity {
         additional_btn.setOnClickListener(view -> {
             LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
             loggedInUser.setNickname(nickname_edit.getText().toString());
+            Log.e(Tag,"@@@@@@@@@id: "+nickname_edit.getText().toString());
             loggedInUser.setAddress1(address1_edit.getText().toString());
 
             Gson gson = new GsonBuilder().setLenient().create();
@@ -139,14 +140,13 @@ public class modify_account_info extends AppCompatActivity {
                     .build();
             ProfileNetworkService profileNetworkService = retrofit.create(ProfileNetworkService.class);
             profileNetworkService.putuserAdditional(object).enqueue(responseback);
-
             finish();
         });
     }
     Callback<String> responseback = new Callback<String>() {
         @Override
         public void onResponse(Call<String> call, Response<String> response) {
-            Log.e(Tag,"서버통신 성공");
+            Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공");
             if(response.isSuccessful()){
                 Log.d(Tag, "성공  : " + response.code());
             }
