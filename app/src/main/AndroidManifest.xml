@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing">
-        <activity android:name=".func.profile.ReviseLocationActivity"></activity>
+        <activity android:name=".func.profile.RatingActivity"></activity>
+        <activity android:name=".func.profile.ReviseLocationActivity" />
         <activity android:name=".func.profile.modify_account_info" />
         <activity
             android:name=".func.community.CommunityCreateActivity"

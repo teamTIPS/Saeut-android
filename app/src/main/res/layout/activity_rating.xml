@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="프로필 설정"
+                android:text="리뷰하기"
                 android:fontFamily="@font/font_bold"
                 android:layout_gravity="center"
                 android:id="@+id/toolbar_title"
@@ -32,14 +32,20 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nickname_container"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/review_app_bar"
+        app:layout_constraintBottom_toTopOf="@id/ratingbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_confirm"
-        android:layout_below="@+id/review_app_bar">
+        >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerInParent="true">
@@ -53,28 +59,52 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_bold"
                 android:textColor="@color/color_primary_900"
-                android:text="닉네임"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_edittext"
-                android:textSize="15dp"
-                android:layout_marginTop="6dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:hint="닉네임을 설정해 주세요."/>
+                android:layout_gravity="center_horizontal"
+                android:text="메론아빠"/>
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RatingBar
+        android:id="@+id/ratingbar"
+        app:layout_constraintTop_toBottomOf="@id/nickname_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </RatingBar>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/ratingbar"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_margin="10dp"
+        android:padding="16dp"
+        android:gravity="top"
+        android:hint="이웃의 도움은 어떠셨나요? 따뜻한 리뷰를 남겨주세요."
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintBottom_toTopOf="@id/edit_confirm"
+        android:layout_marginBottom="40dp"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlack"
+        android:includeFontPadding="false"
 
 
+        >
 
-    </RelativeLayout>
+    </EditText>
 
     <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/edit_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
         <Button
+            android:id="@+id/review_finish_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/colorPrimary"
@@ -82,7 +112,7 @@
             android:textSize="26sp"
             android:textColor="@color/colorWhite"
             android:gravity="center"
-            android:text="설정 완료"/>
+            android:text="리뷰 완료"/>
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,7 +73,7 @@ public class JoinFragment_essential extends Fragment {
         mViewModel.getJoinMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if(integer == 2){
+                if (integer == 2) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage("회원가입이 완료되었습니다.")
                             .setTitle("알림");
@@ -94,7 +94,7 @@ public class JoinFragment_essential extends Fragment {
         EditText birth_edit = root.findViewById(R.id.birth_edit);
         RadioGroup gender_radio = root.findViewById(R.id.radioGender);
         Button email_sign_up_button = root.findViewById(R.id.email_sign_up_button);
-        CheckBox marketing_cb = (CheckBox)root.findViewById(R.id.check_marketing);
+        CheckBox marketing_cb = (CheckBox) root.findViewById(R.id.check_marketing);
         Button btn_check_id = root.findViewById(R.id.btn_check_id);
 
         email_edit.addTextChangedListener(new TextWatcher() {

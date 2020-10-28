@@ -159,7 +159,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_regular"
                     android:textSize="20sp"
-
                     android:background="@drawable/default_btn"
                     android:text="개인정보 수정하기"
                     android:textColor="@color/colorWhite" />
@@ -184,10 +183,8 @@
                     android:fontFamily="@font/font_regular"
                     android:layout_marginTop="20dp"
                     android:textSize="20sp"
-
                     android:background="@drawable/default_btn"
-
-                    android:text="이웃 관리하기"
+                    android:text="리뷰 모아보기"
                     android:textColor="@color/colorWhite" />
 
                 <Button
