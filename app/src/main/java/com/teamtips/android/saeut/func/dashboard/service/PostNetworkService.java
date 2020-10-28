@@ -10,6 +10,8 @@ import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.data.Tag;
 
 import java.io.IOException;
+import java.util.List;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;

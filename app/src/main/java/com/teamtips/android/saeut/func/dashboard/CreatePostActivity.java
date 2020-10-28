@@ -26,7 +26,9 @@ import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class CreatePostActivity extends AppCompatActivity {
@@ -166,6 +168,13 @@ public class CreatePostActivity extends AppCompatActivity {
                 RadioButton rb_gender = findViewById(rg_gender.getCheckedRadioButtonId());
                 LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
                 Log.d(TAG, "loggedInUser : " + loggedInUser.getId());
+
+                // 혹시 모를 공백 제거 및 "," 로 태그 구분해서 배열에 저장
+                String[] tagArray = et_tag.getText().toString().replace(" ", "").split(",");
+                List<String> tagList = Arrays.asList(tagArray);
+                // TAG ADD
+                Log.d(TAG, "Tag add : " + tagList.toString());
+
                 Post post = new Post(
                         loggedInUser.getId(),
                         et_title.getText().toString(),
@@ -179,14 +188,15 @@ public class CreatePostActivity extends AppCompatActivity {
                         getCheckedType(rg_type.getCheckedRadioButtonId()),
                         Integer.parseInt(et_hourlyWage.getText().toString()),
                         limit_supply,
-                        limit_demand
+                        limit_demand,
+                        tagList
                 );
 
                 Log.d(TAG, post.toString());
 
                 try {
                     // Tag & Post DB 저장
-                    sendPostNetworkService(post, et_tag.getText().toString());
+                    sendPostNetworkService(post);
                     Toast.makeText(getApplicationContext(), "돌봄 게시글이 등록되었습니다 !!", Toast.LENGTH_SHORT).show();
                 } catch(Exception e) {
                     Toast.makeText(getApplicationContext(), "게시글 등록 실패 !! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
@@ -219,20 +229,10 @@ public class CreatePostActivity extends AppCompatActivity {
         }
     }
 
-    private void sendPostNetworkService(Post post, String tag) {
+    private void sendPostNetworkService(Post post) {
         PostNetworkService postNetworkService = new PostNetworkService();
         // POST ADD
         postNetworkService.addPost(post);
-
-        // 혹시 모를 공백 제거 및 "," 로 태그 구분해서 배열에 저장
-        String[] tagArray = tag.replace(" ", "").split(",");
-
-        // TAG ADD
-        for(String t : tagArray) {
-            Tag newTag = new Tag(post.getPost_id(), t);
-            postNetworkService.addTag(newTag);
-            Log.d(TAG, "Tag add : " + newTag.toString());
-        }
     }
 
     private void AllFindViewCreate() {

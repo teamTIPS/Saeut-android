@@ -1,6 +1,7 @@
 package com.teamtips.android.saeut.data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /*
  * Post Domain Class
@@ -24,6 +25,7 @@ public class Post implements Serializable {
     private int wage;               // 돌봄제공자가 받는 시급, 자동 계산
     private int limit_supply;       // 최대 돌봄제공자 수
     private int limit_demand;       // 최대 돌봄요청자 수
+    private List<String> tagList;
 
     // Constructor
     public Post() {
@@ -32,7 +34,7 @@ public class Post implements Serializable {
     // new version constructor
     public Post(String id, String title, String post_age, String post_schedule, String post_gender,
                 String contents, String start_date, String due_date,
-                int recruit_status, int type, int wage, int limit_supply, int limit_demand) {
+                int recruit_status, int type, int wage, int limit_supply, int limit_demand, List<String> tagList) {
         this.id = id;
         this.title = title;
         this.post_age = post_age;
@@ -47,6 +49,7 @@ public class Post implements Serializable {
         this.limit_supply = limit_supply;
         this.limit_demand = limit_demand;
         this.payment = getPayment();
+        this.tagList = tagList;
     }
 
     public Post(int post_id, String post_date, String id, String title, String post_age,
