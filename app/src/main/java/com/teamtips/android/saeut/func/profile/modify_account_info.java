@@ -118,15 +118,7 @@ public class modify_account_info extends AppCompatActivity {
             Log.e(Tag,"@@@@@@@@@id: "+nickname_edit.getText().toString());
             loggedInUser.setAddress1(address1_edit.getText().toString());
 
-            JSONObject object = new JSONObject();
-            try {
-                object.put("id", loggedInUser.getId());
-                object.put("nickname", loggedInUser.getNickname());
-                object.put("address1", loggedInUser.getAddress1());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
+            UserAdditional userAdditional = new UserAdditional(loggedInUser.getId(), loggedInUser.getAddress1(), loggedInUser.getNickname());
             String url = "http://49.50.173.180:8080/saeut/";
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(url)
@@ -134,7 +126,7 @@ public class modify_account_info extends AppCompatActivity {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
             ProfileNetworkService profileNetworkService = retrofit.create(ProfileNetworkService.class);
-            profileNetworkService.putuserAdditional(object).enqueue(responseback);
+            profileNetworkService.putuserAdditional(userAdditional).enqueue(responseback);
             finish();
         });
     }

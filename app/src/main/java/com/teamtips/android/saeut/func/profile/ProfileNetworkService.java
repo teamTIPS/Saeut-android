@@ -14,5 +14,5 @@ public interface ProfileNetworkService {
     Call<String> validNickname(@Path("nickname") String nickname);
 
     @PUT("user/additional")
-    Call<String> putuserAdditional(@Body JSONObject json);
+    Call<String> putuserAdditional(@Body UserAdditional userAdditional);
 }
