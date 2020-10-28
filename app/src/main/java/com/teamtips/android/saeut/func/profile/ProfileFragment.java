@@ -2,7 +2,6 @@ package com.teamtips.android.saeut.func.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,15 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
+import com.teamtips.android.saeut.MainActivity;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
@@ -42,6 +36,7 @@ public class ProfileFragment extends Fragment {
 
         Button manage_account_btn = root.findViewById(R.id.manage_account_btn);
         Button revise_legion_btn = root.findViewById(R.id.revise_legion_btn);
+        Button manage_post_btn = root.findViewById(R.id.manage_post_btn);
         manage_account_btn.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), modify_account_info.class));
         });
@@ -49,6 +44,11 @@ public class ProfileFragment extends Fragment {
         revise_legion_btn.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), ReviseLocationActivity.class));
         });
+
+        manage_post_btn.setOnClickListener(view -> {
+            ((MainActivity)getActivity()).replaceFragment(MyPostFragment.newInstance());
+        });
+
         return root;
     }
 
