@@ -9,6 +9,8 @@ public class UserAdditional {
     private String add_latitude = null;
     private String add_longitude = null;
     private double grade = 0;
+    private String address1;
+    private String nickname;
 
 
     public UserAdditional(String id, String address1, String nickname) {
@@ -41,6 +43,5 @@ public class UserAdditional {
         this.nickname = nickname;
     }
 
-    private String address1;
-    private String nickname;
+
 }

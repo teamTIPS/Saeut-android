@@ -133,7 +133,8 @@ public class modify_account_info extends AppCompatActivity {
     Callback<String> responseback = new Callback<String>() {
         @Override
         public void onResponse(Call<String> call, Response<String> response) {
-            Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공");
+
+            Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공: "+ call.request().toString());
             if(response.isSuccessful()){
                 Log.d(Tag, "성공  : " + response.toString());
             }
