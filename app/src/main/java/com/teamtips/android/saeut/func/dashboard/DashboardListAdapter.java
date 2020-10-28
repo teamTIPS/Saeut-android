@@ -148,24 +148,6 @@ public class DashboardListAdapter extends BaseAdapter {
         postArrayList.add(post);
     }
 
-    static class ViewHolder {
-        TextView tv_type;
-        Button btn_status;
-        TextView tv_title;
-        TextView tv_date;
-        TextView tv_address;
-
-        TextView applyCount;
-        TextView tv_tag1;
-        TextView tv_tag2;
-        TextView tv_tag3;
-
-        //Private Layout
-        ConstraintLayout private_layout;
-        Button private_update;
-        Button private_delete;
-    }
-
     private ViewHolder AllFindViewAdapter(View view, int tab_position) {
         ViewHolder holder = new ViewHolder();
 
@@ -238,5 +220,23 @@ public class DashboardListAdapter extends BaseAdapter {
                 Log.d(TAG, "연결 실패  : " + t.getMessage());
             }
         });
+    }
+
+    static class ViewHolder {
+        TextView tv_type;
+        Button btn_status;
+        TextView tv_title;
+        TextView tv_date;
+        TextView tv_address;
+
+        TextView applyCount;
+        TextView tv_tag1;
+        TextView tv_tag2;
+        TextView tv_tag3;
+
+        //Private Layout
+        ConstraintLayout private_layout;
+        Button private_update;
+        Button private_delete;
     }
 }

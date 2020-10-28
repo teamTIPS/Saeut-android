@@ -242,9 +242,6 @@ public class JoinFragment_essential extends Fragment {
                 );
                 Log.d(Tag, joinin.toString());
                 mViewModel.Join(joinin);
-
-
-
             }
 
         });

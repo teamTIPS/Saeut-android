@@ -27,9 +27,8 @@ public class DashboardFragment extends Fragment {
     public static ViewPager viewPager;
     private static TabLayout tabLayout;
 
-    public static DashboardFragment newInstance(String name) {
+    public static DashboardFragment newInstance() {
         Bundle bundle = new Bundle();
-        bundle.putString(ARG_NAME, name);
         DashboardFragment dashboardFragment = new DashboardFragment();
         dashboardFragment.setArguments(bundle);
         return dashboardFragment;

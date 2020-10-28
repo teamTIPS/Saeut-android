@@ -10,7 +10,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private Toolbar toolbar;
-
+    private FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.container_main, new HomeFragment()).commit();
 
         navigation = findViewById(R.id.navigation);
@@ -45,8 +47,20 @@ public class MainActivity extends AppCompatActivity {
         initTitle();
     }
 
+    public void replaceFragment(Fragment fragment) {
+        fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container_main, fragment).commit();
+        // Fragment로 사용할 MainActivity내의 layout공간을 선택.
+    }
+
     private void initTitle() {
         toolbar.post(() -> toolbar.setTitle(navigation.getMenu().getItem(0).getTitle()));
+    }
+
+    public void initTitle(String title) {
+        toolbar.post(() -> toolbar.setTitle(title));
     }
 
     private void bindNavigationDrawer() {

@@ -45,6 +45,12 @@ public class DashboardMatchingFragment extends Fragment {
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
 
+    public static DashboardMatchingFragment newInstance() {
+        return new DashboardMatchingFragment();
+    }
+
+    public DashboardMatchingFragment() { }
+
     public DashboardMatchingFragment(int position) {
         this.position = position;
     }

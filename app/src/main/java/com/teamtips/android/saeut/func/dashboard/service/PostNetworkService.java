@@ -140,11 +140,11 @@ public class PostNetworkService {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-
                     Log.d(TAG, "성공  : " + response.body());
+                    Log.d(TAG, "성공  : " + obj3.toString());
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
-                    Log.d(TAG, "응답 실패  : " + obj3);
+                    Log.d(TAG, "응답 실패  : " + obj3.toString());
                 }
             }
 

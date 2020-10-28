@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkTask;
+import com.teamtips.android.saeut.func.home.HomeFragment;
 import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.util.ArrayList;
@@ -33,6 +34,12 @@ public class DashboardListFragment extends Fragment {
 
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
+
+    public static DashboardListFragment newInstance() {
+        return new DashboardListFragment();
+    }
+
+    public DashboardListFragment() { }
 
     public DashboardListFragment(int position) {
         this.position = position;
