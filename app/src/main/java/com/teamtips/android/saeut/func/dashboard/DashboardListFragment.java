@@ -84,14 +84,16 @@ public class DashboardListFragment extends Fragment {
     }
 
     private void getListByPosition(int position) {
-        // fragment position에 따른 url 구현
-        // 추후 현재 로그인 유저 정보 받아서 수정할 것.
-        String account_id = "test";
-        Log.d(TAG, "sessionUser : " + account_id);
-        if (position == 0) {
-            // 전체 리스트를 불러오는 URL
+        // 전체 리스트를 불러오는 URL
+        if(position == 4) {
+            String keyword = "아동";
+            url = "http://49.50.173.180:8080/saeut/post/title/" + keyword;
+        } else if(position == 5) {
+            url = "http://49.50.173.180:8080/saeut/post/type/1";
+        } else {
             url = "http://49.50.173.180:8080/saeut/post";
         }
+
         postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();
     }

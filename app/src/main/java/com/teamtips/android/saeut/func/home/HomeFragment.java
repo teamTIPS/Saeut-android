@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // getActivity()로 MainActivity의 replaceFragment를 불러옵니다.
-                ((MainActivity)getActivity()).replaceFragment(new DashboardFragment());
+                ((MainActivity)getActivity()).replaceFragment(new DashboardListFragment(4));
                 ((MainActivity)getActivity()).initTitle("아이돌봄");
                 // 새로 불러올 Fragment의 Instance를 Main으로 전달
             }
@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // getActivity()로 MainActivity의 replaceFragment를 불러옵니다.
-                ((MainActivity)getActivity()).replaceFragment(new DashboardFragment());
+                ((MainActivity)getActivity()).replaceFragment(new DashboardListFragment(5));
                 ((MainActivity)getActivity()).initTitle("함께돌봄");
                 // 새로 불러올 Fragment의 Instance를 Main으로 전달
             }
