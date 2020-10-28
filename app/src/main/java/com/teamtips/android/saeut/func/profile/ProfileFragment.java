@@ -52,6 +52,7 @@ public class ProfileFragment extends Fragment {
         });
 
         manage_post_btn.setOnClickListener(view -> {
+            ((MainActivity)getActivity()).initTitle("내가 쓴 게시물");
             ((MainActivity)getActivity()).replaceFragment(MyPostFragment.newInstance());
         });
 

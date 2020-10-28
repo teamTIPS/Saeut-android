@@ -5,10 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,8 +24,6 @@ public class MyPostFragment extends Fragment {
     private ListView listView;
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
-
-    private LinearLayout private_layout;
 
     private static String url;
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.

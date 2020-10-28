@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.teamtips.android.saeut.R;
 
@@ -78,7 +79,6 @@ public class DashboardFragment extends Fragment {
 
     // PageAdapter 설정
     private static class FragmentPageAdapter extends FragmentPagerAdapter {
-
 
         public FragmentPageAdapter(FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
