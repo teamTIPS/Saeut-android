@@ -158,6 +158,20 @@ public class Board {
                 .put("rank", rank);
 
         return root;
+    }
 
+    @Override
+    public String toString() {
+        return "Board{" +
+                "post_id=" + post_id +
+                ", id='" + id + '\'' +
+                ", contents='" + contents + '\'' +
+                ", post_date=" + post_date +
+                ", cnt_like=" + cnt_like +
+                ", cnt_reply=" + cnt_reply +
+                ", nickname='" + nickname + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", rank=" + rank +
+                '}';
     }
 }

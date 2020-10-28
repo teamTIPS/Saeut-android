@@ -71,7 +71,17 @@ public class CommunityCreateActivity extends AppCompatActivity {
                 if(contents.equals("")){
                     return;
                 }
-                api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getNickname(),  loggedInUser.getAddress1(), rank)).enqueue(createNewPost);
+                Board newBoard = new Board(loggedInUser.getId(),
+                        contents,
+                        System.currentTimeMillis(),
+                        0,
+                        0,
+                        "백현동토박이",
+                        "성남시 분당구 백현동",
+                        rank
+                );
+                Log.e(Tag, "newBoard : " + newBoard.toString());
+                api.addNewBoard(newBoard).enqueue(createNewPost);
 
                 finish();
             }
