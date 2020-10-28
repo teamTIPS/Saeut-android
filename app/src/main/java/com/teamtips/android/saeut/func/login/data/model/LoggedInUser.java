@@ -110,9 +110,6 @@ public class LoggedInUser {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-    public String getnickname() {
-        return nickname;
-    }
 
     public void setAccessToken(String s) {
         this.accesstoken = s;

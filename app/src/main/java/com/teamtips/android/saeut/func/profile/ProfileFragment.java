@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
         TextView profile_tv_id = root.findViewById(R.id.profile_tv_id);
         TextView profile_tv_address = root.findViewById(R.id.profile_tv_address);
 
-        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getnickname());
+        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getNickname());
         profile_tv_address.setText(LoggedInUser.getLoggedInUser().getAddress1());
 
         Button manage_account_btn = root.findViewById(R.id.manage_account_btn);
@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
         TextView profile_tv_id = getView().findViewById(R.id.profile_tv_id);
         TextView profile_tv_address = getView().findViewById(R.id.profile_tv_address);
 
-        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getnickname());
+        profile_tv_id.setText(LoggedInUser.getLoggedInUser().getNickname());
         profile_tv_address.setText(LoggedInUser.getLoggedInUser().getAddress1());
     }
 

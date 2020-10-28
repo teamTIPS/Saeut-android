@@ -56,8 +56,6 @@ public class modify_account_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_sign_up_additional);
         context = this;
-
-
         Button btn_check_nickname = findViewById(R.id.btn_check_nickname);
         EditText address1_edit = findViewById(R.id.address1_edit);
         EditText nickname_edit = findViewById(R.id.nickname_edit);
@@ -120,13 +118,10 @@ public class modify_account_info extends AppCompatActivity {
             Log.e(Tag,"@@@@@@@@@id: "+nickname_edit.getText().toString());
             loggedInUser.setAddress1(address1_edit.getText().toString());
 
-            Gson gson = new GsonBuilder().setLenient().create();
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            OkHttpClient client = builder.build();
             JSONObject object = new JSONObject();
             try {
                 object.put("id", loggedInUser.getId());
-                object.put("nickname", loggedInUser.getnickname());
+                object.put("nickname", loggedInUser.getNickname());
                 object.put("address1", loggedInUser.getAddress1());
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -148,7 +143,7 @@ public class modify_account_info extends AppCompatActivity {
         public void onResponse(Call<String> call, Response<String> response) {
             Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공");
             if(response.isSuccessful()){
-                Log.d(Tag, "성공  : " + response.code());
+                Log.d(Tag, "성공  : " + response.toString());
             }
             else {
                 Log.d(Tag, "응답 실패  : " + response.code());

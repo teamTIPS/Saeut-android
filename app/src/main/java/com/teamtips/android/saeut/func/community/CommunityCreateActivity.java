@@ -71,7 +71,7 @@ public class CommunityCreateActivity extends AppCompatActivity {
                 if(contents.equals("")){
                     return;
                 }
-                api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getnickname(),  loggedInUser.getAddress1(), rank)).enqueue(createNewPost);
+                api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getNickname(),  loggedInUser.getAddress1(), rank)).enqueue(createNewPost);
 
                 finish();
             }

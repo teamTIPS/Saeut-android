@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                     showpopup();
                     emailEditText.setText("");
                     passwordEditText.setText("");
-                    Log.e(Tag,"로그인 실패");
+                    Log.e(Tag,"로그인 실패: "+loginResult.getError());
                     //로그인 결과 초기화
                     loginResult.setOrigin();
                 }
@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUiWithUser() {
         LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
-        String welcome = getString(R.string.welcome) + loggedInUser.getnickname();
+        String welcome = getString(R.string.welcome) + loggedInUser.getNickname();
         // TODO : initiate successful logged in experience
         Log.e(Tag,welcome);
     }

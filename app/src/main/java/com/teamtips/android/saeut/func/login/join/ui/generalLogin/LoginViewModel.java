@@ -42,7 +42,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
 
-        String url = "http://49.50.173.180:8080/saeut/signon";
+        String url = "http://49.50.173.180:8080/saeut/signon/";
         JSONObject user_json = new JSONObject();
 
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
@@ -137,13 +137,17 @@ public class LoginViewModel extends ViewModel {
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
                     JSONObject userEssential_json = result_json.getJSONObject("userEssential");
-                    JSONObject userAdditional_json = result_json.getJSONObject("userAdditional");
                     Log.e(Tag,"essential: "+ userEssential_json.toString());
-                    Log.e(Tag,"additional: "+ userAdditional_json.toString());
+                    if(!result_json.isNull("userAdditional")){
+                        JSONObject userAdditional_json = result_json.getJSONObject("userAdditional");
+                        Log.e(Tag,"additional: "+ userAdditional_json.toString());
+
+                        loggedInUser.setAddress1(userAdditional_json.getString("address1"));
+                        loggedInUser.setNickname(userAdditional_json.getString("nickname"));
+                    }
 
                     loggedInUser.setId(userEssential_json.getString("id"));
-                    loggedInUser.setAddress1(userAdditional_json.getString("address1"));
-                    loggedInUser.setNickname(userAdditional_json.getString("nickname"));
+
 
                     Log.e(Tag,refreshToken);
 
@@ -153,7 +157,7 @@ public class LoginViewModel extends ViewModel {
                     //date.getnickname 아직 null값
                     result = loginRepository.login("임시유저네임", "임시비밀번호");
                     LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-                    loginResult.setValue(new LoginResult(new LoggedInUserView(data.getnickname())));
+                    loginResult.setValue(new LoginResult(new LoggedInUserView(data.getNickname())));
                     LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
 
                     loggedInUser.setAccessToken(accessToken);
@@ -165,6 +169,7 @@ public class LoginViewModel extends ViewModel {
             }
             //로그인 실패
             else {
+                Log.e(Tag,"?????");
                 loginResult.setValue(new LoginResult(1));
             }
         }
