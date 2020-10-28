@@ -63,10 +63,10 @@
         android:id="@+id/profile_tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="동대문구 전농1동"
         android:fontFamily="@font/font_regular"
-        android:textColor="@color/colorBlack"
+        android:text="성남시 분당구 백현동"
         android:textAlignment="viewEnd"
+        android:textColor="@color/colorBlack"
         android:textSize="15sp" />
 
     <LinearLayout

@@ -185,6 +185,7 @@ public class DashboardListAdapter extends BaseAdapter {
         holder.tv_type.setText(postArrayList.get(position).getTypeForText(type));
         int status = postArrayList.get(position).getRecruit_status();
         holder.btn_status.setText(postArrayList.get(position).getStatusForText(status));
+        holder.tv_address.setText("성남시 분당구 백현동");
 
         // Tag 저장
         getTagByPostId(holder, postArrayList.get(position).getPost_id());

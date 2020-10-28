@@ -220,7 +220,7 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_id.setText(post.getId());
 
         // 추후 Additional 테이블과 연결해야 함.
-        tv_writer_address.setText("서울시 서대문구 북가좌동");
+        tv_writer_address.setText("성남시 분당구 백현동");
         et_startDate.setText(post.getStart_date());
         et_dueDate.setText(post.getDue_date());
 
