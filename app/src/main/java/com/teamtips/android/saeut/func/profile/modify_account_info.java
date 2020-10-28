@@ -39,7 +39,6 @@ public class modify_account_info extends AppCompatActivity {
 
     private final String Tag = "modify_account_info";
 
-
     private Gson gson = new GsonBuilder().setLenient().create();
     private OkHttpClient.Builder builder = new OkHttpClient.Builder();
     private OkHttpClient client = builder.build();
@@ -142,7 +141,6 @@ public class modify_account_info extends AppCompatActivity {
             else {
                 Log.d(Tag, "응답 실패  : " + response.code());
             }
-
         }
 
         @Override

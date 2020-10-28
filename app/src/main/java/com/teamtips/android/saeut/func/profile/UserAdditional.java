@@ -11,6 +11,7 @@ public class UserAdditional {
     private double grade = 0;
     private String address1;
     private String nickname;
+    private String introduce;
 
     public UserAdditional() {
     }
@@ -37,6 +38,7 @@ public class UserAdditional {
         this.grade = 0;
         this.address1 = address1;
         this.nickname = nickname;
+        this.introduce = "";
     }
 
     public String getId() {
