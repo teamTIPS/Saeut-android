@@ -34,7 +34,7 @@ public class Board {
     private int cnt_reply;
     private String nickname;
     private String address1;
-    private int rank;
+    private int rank = 5;
 
     public Board() {
     }

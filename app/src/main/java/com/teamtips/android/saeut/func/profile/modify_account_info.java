@@ -118,6 +118,7 @@ public class modify_account_info extends AppCompatActivity {
             Log.e(Tag,"@@@@@@@@@id: "+nickname_edit.getText().toString());
             loggedInUser.setAddress1(address1_edit.getText().toString());
 
+
             UserAdditional userAdditional = new UserAdditional(loggedInUser.getId(), loggedInUser.getAddress1(), loggedInUser.getNickname());
             String url = "http://49.50.173.180:8080/saeut/";
             Retrofit retrofit = new Retrofit.Builder()
@@ -134,7 +135,7 @@ public class modify_account_info extends AppCompatActivity {
         @Override
         public void onResponse(Call<String> call, Response<String> response) {
 
-            Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공: "+ call.request().toString());
+            Log.e(Tag,"@@@@@@@@@@@@@@@@@@@@@@@@서버통신 성공: "+LoggedInUser.getLoggedInUser().getId());
             if(response.isSuccessful()){
                 Log.d(Tag, "성공  : " + response.toString());
             }

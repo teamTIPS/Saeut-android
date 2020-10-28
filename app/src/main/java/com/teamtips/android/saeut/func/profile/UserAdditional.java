@@ -12,9 +12,29 @@ public class UserAdditional {
     private String address1;
     private String nickname;
 
+    public UserAdditional() {
+    }
+
+    public UserAdditional(String id, String pic, String description, String address2, String add_latitude, String add_longitude, double grade, String address1, String nickname) {
+        this.id = id;
+        this.pic = pic;
+        this.description = description;
+        this.address2 = address2;
+        this.add_latitude = add_latitude;
+        this.add_longitude = add_longitude;
+        this.grade = grade;
+        this.address1 = address1;
+        this.nickname = nickname;
+    }
 
     public UserAdditional(String id, String address1, String nickname) {
         this.id = id;
+        this.pic = "";
+        this.description = "";
+        this.address2 = "";
+        this.add_latitude = "";
+        this.add_longitude = "";
+        this.grade = 0;
         this.address1 = address1;
         this.nickname = nickname;
     }
