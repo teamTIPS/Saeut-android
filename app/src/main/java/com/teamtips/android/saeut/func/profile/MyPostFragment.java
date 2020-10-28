@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,9 @@ public class MyPostFragment extends Fragment {
     private ListView listView;
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
+
+    private LinearLayout private_layout;
+
     private static String url;
     // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
@@ -63,14 +67,14 @@ public class MyPostFragment extends Fragment {
 
     private void setAdapter(View view) {
         postArrayList = new ArrayList<Post>();
-        dashboardListAdapter = new DashboardListAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, 0);
+        dashboardListAdapter = new DashboardListAdapter(view.getContext(), R.layout.adapter_dashboard, postArrayList, 3);
         listView = view.findViewById(R.id.lv_child);
         listView.setAdapter(dashboardListAdapter);
     }
 
     private void getListByPosition() {
         Log.d(TAG, "sessionUser : " + sessionUser.getId());
-        url = "http://49.50.173.180:8080/saeut/post" + sessionUser.getId();
+        url = "http://49.50.173.180:8080/saeut/post/" + sessionUser.getId();
         postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();
     }

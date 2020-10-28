@@ -100,7 +100,7 @@ public class PostNetworkService {
                     Log.d(TAG, response.body());
                     Toast.makeText(context, "돌봄 게시물이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.d(TAG, response.body());
+                    Log.d(TAG, String.valueOf(response.code()));
                     Toast.makeText(context, "삭제 실패 !! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }

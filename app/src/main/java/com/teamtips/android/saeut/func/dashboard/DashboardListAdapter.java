@@ -189,11 +189,11 @@ public class DashboardListAdapter extends BaseAdapter {
         // Tag 저장
         getTagByPostId(holder, postArrayList.get(position).getPost_id());
 
-//        if(loggedInUser.getId().equals(postArrayList.get(0).getPost_id() )) {
-//            holder.private_layout.setVisibility(View.VISIBLE);
-//        } else {
-//            holder.private_layout.setVisibility(View.GONE);
-//        }
+        if(tab_position == 3) {
+            holder.private_layout.setVisibility(View.VISIBLE);
+        } else {
+            holder.private_layout.setVisibility(View.GONE);
+        }
     }
 
     private void getTagByPostId(ViewHolder holder, int post_id) {
