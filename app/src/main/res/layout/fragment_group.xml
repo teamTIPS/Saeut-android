@@ -85,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                style:layout_constraintBottom_toBottomOf="parent"
                 android:text="그룹장ID"
                 android:fontFamily="@font/font_regular"
                 android:textColor="@color/colorBlack"
@@ -95,82 +96,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/currentGroup_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style:layout_constraintTop_toBottomOf="@+id/groupCaptain_container">
-
-            <TextView
-                android:id="@+id/currentGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="현재 인원"
-                android:fontFamily="@font/font_bold"
-                android:textColor="@color/color_primary_900"
-                android:textSize="20sp"
-                android:includeFontPadding="false"
-                android:paddingEnd="10dp"
-
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintLeft_toLeftOf="parent"
-                style:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_limitSupply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:foregroundGravity="right"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintRight_toLeftOf="@+id/tv_limitSupply"
-                style:layout_constraintTop_toTopOf="parent"
-                style:srcCompat="@drawable/ic_user_count" />
-
-            <TextView
-                android:id="@+id/tv_limitSupply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="0/2"
-                android:textSize="18sp"
-                android:fontFamily="@font/font_light"
-                android:textColor="@color/colorBlack"
-                android:includeFontPadding="false"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintRight_toLeftOf="@+id/iv_limitDemand"
-                style:layout_constraintRight_toRightOf="parent"
-                style:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_limitDemand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintRight_toLeftOf="@+id/tv_limitDemand"
-                style:layout_constraintRight_toRightOf="parent"
-                style:layout_constraintTop_toTopOf="parent"
-                style:srcCompat="@drawable/ic_user_count" />
-
-            <TextView
-                android:id="@+id/tv_limitDemand"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="1/3"
-                android:textSize="18sp"
-                android:layout_marginRight="40dp"
-                android:fontFamily="@font/font_light"
-                android:textColor="@color/colorBlack"
-                android:includeFontPadding="false"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintRight_toRightOf="parent"
-                style:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -179,7 +104,7 @@
         android:layout_marginTop="30dp"
         android:id="@+id/group_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/listview"
         android:padding="16dp"
         style:layout_constraintTop_toBottomOf="@+id/group_info"
@@ -211,20 +136,20 @@
         <ScrollView
             android:id="@+id/group_comment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="16dp"
 
-            style:layout_constraintEnd_toEndOf="parent"
-            style:layout_constraintStart_toStartOf="parent"
-            style:layout_constraintTop_toBottomOf="@+id/divider">
+            style:layout_constraintTop_toBottomOf="@+id/divider"
+            style:layout_constraintBottom_toTopOf="@+id/add_comment_container"
+            android:layout_marginBottom="20dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
             android:id="@+id/add_comment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -233,36 +158,43 @@
 
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintLeft_toLeftOf="parent"
-            style:layout_constraintTop_toBottomOf="@+id/group_comment">
+            >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_addComment"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:background="@drawable/rounded_edittext"
-                android:layout_marginEnd="10dp"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintLeft_toLeftOf="parent"
-                style:layout_constraintRight_toLeftOf="@+id/btn_addSubmit"
-                style:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_addComment"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_marginEnd="10dp"
+                    style:layout_constraintBottom_toBottomOf="parent"
+                    style:layout_constraintLeft_toLeftOf="parent"
+                    style:layout_constraintRight_toLeftOf="@+id/btn_addSubmit"
+                    style:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/btn_addSubmit"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:background="@drawable/default_btn"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:includeFontPadding="false"
-                android:text="댓글 추가"
-                style:layout_constraintLeft_toRightOf="@id/et_addComment"
-                style:layout_constraintBottom_toBottomOf="parent"
-                style:layout_constraintRight_toRightOf="parent"
-                style:layout_constraintTop_toTopOf="parent" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/btn_addSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:background="@drawable/default_btn"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:includeFontPadding="false"
+                    android:text="댓글 추가"
+                    style:layout_constraintLeft_toRightOf="@id/et_addComment"
+                    style:layout_constraintBottom_toBottomOf="parent"
+                    style:layout_constraintRight_toRightOf="parent"
+                    style:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

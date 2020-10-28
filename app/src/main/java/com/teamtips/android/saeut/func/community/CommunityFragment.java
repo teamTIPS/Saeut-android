@@ -67,7 +67,6 @@ public class CommunityFragment extends Fragment {
         communityAdapter = new CommunityAdapter(boardArrayList, mContext, communityNetworkService);
         InitCommunity();
         community_recyclerview.setAdapter(communityAdapter);
-
     }
 
     @Nullable

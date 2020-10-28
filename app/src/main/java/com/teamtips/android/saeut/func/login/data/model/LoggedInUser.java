@@ -35,6 +35,15 @@ public class LoggedInUser {
     private int rank;
     private String score;
     private String description;
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
     private String address1;
     private String address2;
     private String zipcode;

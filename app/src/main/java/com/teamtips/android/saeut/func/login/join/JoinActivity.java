@@ -11,6 +11,8 @@ import com.teamtips.android.saeut.func.login.join.ui.main.JoinFragment_essential
 
 public class JoinActivity extends FragmentActivity {
 
+
+
     JoinFragment_essential joinFragmentEssential;
 
     @Override

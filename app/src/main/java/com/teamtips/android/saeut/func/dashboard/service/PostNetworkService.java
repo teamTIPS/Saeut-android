@@ -144,7 +144,7 @@ public class PostNetworkService {
                     Log.d(TAG, "성공  : " + response.body());
                 } else {
                     Log.d(TAG, "응답 실패  : " + response.code());
-                    Log.d(TAG, "응답 실패  : " + obj3.toString());
+                    Log.d(TAG, "응답 실패  : " + obj3);
                 }
             }
 

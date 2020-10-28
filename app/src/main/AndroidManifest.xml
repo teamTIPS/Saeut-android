@@ -18,21 +18,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing">
+        <activity android:name=".func.profile.ReviseLocationActivity"></activity>
+        <activity android:name=".func.profile.modify_account_info" />
         <activity
             android:name=".func.community.CommunityCreateActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
-        <activity android:name=".func.location.setLocation"></activity>
-        <activity android:name=".func.login.editProfile.editProfile" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".func.location.setLocation" />
+        <activity android:name=".func.profile.editProfile" />
         <activity android:name=".func.login.join.JoinActivity" />
         <activity android:name=".func.dashboard.CreatePostActivity" /> <!-- android:theme="@style/AppTheme"> -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustNothing">
-
-        </activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".func.dashboard.DetailPostActivity" />
         <activity android:name=".func.dashboard.EditPostActivity" />
         <activity android:name=".func.timetable.EditActivity" />

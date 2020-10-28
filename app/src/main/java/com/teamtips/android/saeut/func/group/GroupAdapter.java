@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teamtips.android.saeut.R;
+import com.teamtips.android.saeut.data.Board;
 import com.teamtips.android.saeut.data.Comment;
 import com.teamtips.android.saeut.data.Group;
 
@@ -28,6 +29,11 @@ public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.mContext = mContext;
         this.comments = comments;
         this.api = api;
+    }
+
+    public void updateArrayList(List<Comment> comments){
+        this.comments = comments;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -60,6 +66,7 @@ public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
+        if(comments == null) return 0;
         return comments.size();
     }
 

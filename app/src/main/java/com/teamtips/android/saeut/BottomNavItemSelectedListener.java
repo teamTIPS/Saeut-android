@@ -27,6 +27,10 @@ public class BottomNavItemSelectedListener
         this.fragmentManager = fragmentManager;
     }
 
+    public FragmentManager getFragmentManager() {
+        return fragmentManager;
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         toolbar.setTitle(item.getTitle());

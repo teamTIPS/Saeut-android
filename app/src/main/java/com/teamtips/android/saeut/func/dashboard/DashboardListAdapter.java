@@ -179,7 +179,7 @@ public class DashboardListAdapter extends BaseAdapter {
         holder.tv_tag2 = (TextView) view.findViewById(R.id.tv_tag2);
         holder.tv_tag3 = (TextView) view.findViewById(R.id.tv_tag3);
 
-        holder.applyCount = (TextView) view.findViewById(R.id.tv_limitSupply);
+        //holder.applyCount = (TextView) view.findViewById(R.id.tv_limitSupply);
 
 
         // Private Layout

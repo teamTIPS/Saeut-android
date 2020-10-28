@@ -54,4 +54,6 @@
 
     <!-- Dashboard Strings -->
     <string name="base_url">https://49.50.173.180:8080/saeut/</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
