@@ -13,6 +13,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.teamtips.android.saeut.func.location.setLocation;
 import com.teamtips.android.saeut.func.login.join.ui.generalLogin.LoginActivity;
+import com.teamtips.android.saeut.func.login.join.ui.generalLogin.LoginViewModel;
+import com.teamtips.android.saeut.func.login.join.ui.service.SaveSharedPreference;
 import com.teamtips.android.saeut.func.profile.editProfile;
 
 public class SideNavItemSelectedListener
@@ -77,6 +79,7 @@ public class SideNavItemSelectedListener
 
   private void showLoginPage() {
     Intent intent = new Intent(context, LoginActivity.class);
+    SaveSharedPreference.clearUser(context);
     context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
   }
 }

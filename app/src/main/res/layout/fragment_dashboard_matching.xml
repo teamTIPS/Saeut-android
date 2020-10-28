@@ -231,7 +231,6 @@
         android:paddingRight="50dp"
         android:textColor="@color/colorWhite"
         style:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="50dp"
         android:text="매칭하기"
         android:fontFamily="@font/font_bold" />
 
