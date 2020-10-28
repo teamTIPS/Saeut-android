@@ -29,6 +29,8 @@ public class CommunityCreateActivity extends AppCompatActivity {
     private final static String Tag = "CommunityCreateActivity";
     private final String url = "http://49.50.173.180:8080/saeut/";
 
+    CommunityFragment communityFragment;
+
     LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
     Context context;
 
@@ -83,10 +85,13 @@ public class CommunityCreateActivity extends AppCompatActivity {
         public void onResponse(Call<String> call, Response<String> response) {
             Log.e(Tag, "서버통신 성공");
             if(response.errorBody() != null) Log.e(Tag,response.errorBody().toString());
-            if(response.body() != null) Log.e(Tag,response.body().toString());
+            if(response.body() != null) Log.e(Tag,response.body());
             if(response.code() != 200){
                 Log.e(Tag, "글 추가 실패");
                 Log.e(Tag,response.toString());
+            }
+            else{
+                CommunityFragment.mutableLiveData.setValue(2);
             }
         }
 
