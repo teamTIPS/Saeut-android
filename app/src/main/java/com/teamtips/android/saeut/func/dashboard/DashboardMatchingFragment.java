@@ -70,7 +70,6 @@ public class DashboardMatchingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setAdapter(view);
-        getListByPosition(position);
         btn_matching_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +90,9 @@ public class DashboardMatchingFragment extends Fragment {
                                 );
                                 Log.d("Dialog", "확인");
                                 Log.d("Dialog", matching.toString());
+
+                                // 리스트 새로고침
+                                setListChanged(view, type);
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -101,8 +103,7 @@ public class DashboardMatchingFragment extends Fragment {
                         })
                         .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
                         .show();
-                // 리스트 새로고침
-                setListChanged(type);
+
             }
         });
     }
@@ -126,6 +127,7 @@ public class DashboardMatchingFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        dashboardListAdapter.notifyDataSetChanged();
     }
 
     private void setAdapter(View view) {
@@ -135,23 +137,10 @@ public class DashboardMatchingFragment extends Fragment {
         listView.setAdapter(dashboardListAdapter);
     }
 
-    private void getListByPosition(int position) {
-        // matching api 연결
-        if (position == 1) {
-            // 이제 여길 매칭 레이아웃으로 바꿔야되는데 코드 수정할부분 꽤 있을듯.
-            LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
-            url = "http://49.50.173.180:8080/saeut/post/" + loggedInUser.getId();
-        }
-
+    private void setListChanged(View view, int type) {
+        setAdapter(view);
+        url = "http://49.50.173.180:8080/saeut/post/type/" + type;
         postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
         postNetworkTask.execute();
-    }
-
-    private void setListChanged(int type) {
-        LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
-        url = "http://49.50.173.180:8080/saeut/post/" + loggedInUser.getId();
-        postNetworkTask = new PostNetworkTask(url, null, dashboardListAdapter);
-        postNetworkTask.execute();
-        dashboardListAdapter.notifyDataSetChanged();
     }
 }
