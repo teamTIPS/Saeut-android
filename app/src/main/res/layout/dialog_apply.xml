@@ -88,11 +88,11 @@
         android:id="@+id/checkApplyGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_header_vertical_spacing"
         android:fontFamily="@font/font_regular"
-        android:textColor="@color/color_primary_800"
-        android:text="서약 내용"
         android:includeFontPadding="false"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        android:text="저는 이 돌봄에 성실히 참여할것을 약속합니다."
+        android:textColor="@color/color_primary_800"
         style:layout_constraintTop_toBottomOf="@+id/et_introduce"
         tools:layout_editor_absoluteX="16dp" />
 
