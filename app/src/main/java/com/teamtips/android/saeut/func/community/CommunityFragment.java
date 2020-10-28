@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +45,16 @@ public class CommunityFragment extends Fragment {
     private ArrayList<Board> boardArrayList;
     private Context mContext;
     private RecyclerView community_recyclerview;
+
+    public MutableLiveData<Integer> getMutableLiveData() {
+        return mutableLiveData;
+    }
+
+    public void setMutableLiveData(MutableLiveData<Integer> mutableLiveData) {
+        CommunityFragment.mutableLiveData = mutableLiveData;
+    }
+
+    static MutableLiveData<Integer> mutableLiveData = new MutableLiveData<>(0);
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
@@ -75,6 +87,16 @@ public class CommunityFragment extends Fragment {
             @NonNull LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
+        mutableLiveData.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if(integer == 2){
+                    communityNetworkService.getAllboardlist().enqueue(getboardlist);
+                    integer = 0;
+                }
+            }
+        });
+
 
         Log.e(TAG,"onCreateView");
         communityNetworkService.getAllboardlist().enqueue(getboardlist);
@@ -138,7 +160,6 @@ public class CommunityFragment extends Fragment {
     }
 
     Callback<JsonArray> getboardlist = new Callback<JsonArray>() {
-
         ArrayList<Board> temparray = new ArrayList<>();
 
         @Override
@@ -166,4 +187,5 @@ public class CommunityFragment extends Fragment {
             Log.e(TAG,"onFailure");
         }
     };
+
 }
