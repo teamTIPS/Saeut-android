@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -117,6 +118,18 @@ public class DetailPostActivity extends AppCompatActivity {
                 applyDialogShow();
             }
         });
+    }
+
+    // Toolbar Back Button 활성화
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // 돌보미 신청 페이지로 연결되는 다이얼로그 함수 (수정 필요)
@@ -246,9 +259,11 @@ public class DetailPostActivity extends AppCompatActivity {
                     List<Tag> tagList = response.body();
                     // 임의로,,,3개만ㅠㅠ 구현만 되면 되쥬,,,^^;;;;
                     if (tagList != null && !(tagList.isEmpty())) {
-                        tv_tag1.setText(tagList.get(0).getTag_name());
-                        tv_tag2.setText(tagList.get(1).getTag_name());
-                        tv_tag3.setText(tagList.get(2).getTag_name());
+                        if(tagList.size() >= 3) {
+                            tv_tag1.setText(tagList.get(0).getTag_name());
+                            tv_tag2.setText(tagList.get(1).getTag_name());
+                            tv_tag3.setText(tagList.get(2).getTag_name());
+                        }
                     }
                 } else {
                     Log.d(TAG, "실패  : " + response.code());

@@ -12,12 +12,25 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
+import com.teamtips.android.saeut.data.Tag;
+import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
+import com.teamtips.android.saeut.func.login.data.model.LoggedInUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 // 하 이거 RecyclerView로 바꿔야되는데 엉
 public class DashboardListAdapter extends BaseAdapter {
@@ -30,6 +43,18 @@ public class DashboardListAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;      // inflater 객체
     private static PostNetworkService postNetworkService = new PostNetworkService();
     private int tab_position;
+
+    /* Retrofit */
+    private Gson gson = new GsonBuilder().setLenient().create();
+    private OkHttpClient.Builder builder = new OkHttpClient.Builder();
+    private OkHttpClient client = builder.build();
+    private final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://49.50.173.180:8080/saeut/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
+
+    LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();
 
     public DashboardListAdapter() { }
 
@@ -179,13 +204,39 @@ public class DashboardListAdapter extends BaseAdapter {
         int status = postArrayList.get(position).getRecruit_status();
         holder.btn_status.setText(postArrayList.get(position).getStatusForText(status));
 
-        // 추후에 API 연결
-        holder.applyCount.setText("1");
+        // Tag 저장
+        getTagByPostId(holder, postArrayList.get(position).getPost_id());
 
-        if(tab_position == 1) {
-            holder.private_layout.setVisibility(View.VISIBLE);
-        } else {
-            holder.private_layout.setVisibility(View.GONE);
-        }
+//        if(loggedInUser.getId().equals(postArrayList.get(0).getPost_id() )) {
+//            holder.private_layout.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.private_layout.setVisibility(View.GONE);
+//        }
+    }
+
+    private void getTagByPostId(ViewHolder holder, int post_id) {
+        retrofit.create(PostNetwork.class).getTagList(post_id).enqueue(new Callback<List<Tag>>() {
+            @Override
+            public void onResponse(Call<List<Tag>> call, Response<List<Tag>> response) {
+                if(response.isSuccessful()) {
+                    List<Tag> tagList = response.body();
+                    // 임의로,,,3개만ㅠㅠ 구현만 되면 되쥬,,,^^;;;;
+                    if (tagList != null && !(tagList.isEmpty())) {
+                        if(tagList.size() >= 3) {
+                            holder.tv_tag1.setText(tagList.get(0).getTag_name());
+                            holder.tv_tag2.setText(tagList.get(1).getTag_name());
+                            holder.tv_tag3.setText(tagList.get(2).getTag_name());
+                        }
+                    }
+                } else {
+                    Log.d(TAG, "실패  : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tag>> call, Throwable t) {
+                Log.d(TAG, "연결 실패  : " + t.getMessage());
+            }
+        });
     }
 }

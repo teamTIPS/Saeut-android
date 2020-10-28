@@ -2,6 +2,7 @@ package com.teamtips.android.saeut.func.dashboard;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -10,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.teamtips.android.saeut.R;
 import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
@@ -28,6 +31,8 @@ public class EditPostActivity extends AppCompatActivity {
     private static Button btn_edit_startDate;
     private static Button btn_edit_dueDate;
 
+    private Toolbar toolbar;
+
     private PostNetworkService postNetworkService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,11 @@ public class EditPostActivity extends AppCompatActivity {
         // 서버에서 전달받은 Post 객체 저장
         Post post = (Post) getIntent().getSerializableExtra("post");
         AllStoreData(post);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // OnClickListener
         btn_edit_submit.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +117,18 @@ public class EditPostActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+    }
+
+    // Toolbar Back Button 활성화
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void AllFindViewDetail() {

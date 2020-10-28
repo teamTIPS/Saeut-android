@@ -162,41 +162,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/iv_limitSupply"
-            android:layout_width="18dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center"
-            android:foregroundGravity="right"
-            app:srcCompat="@drawable/ic_user_count" />
-
-        <TextView
-            android:id="@+id/tv_limitSupply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:gravity="center"
-            android:text="0/2"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/iv_limitDemand"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_user_count" />
-
-        <TextView
-            android:id="@+id/tv_limitDemand"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:gravity="center"
-            android:text="1/3"
-            android:textSize="18sp" />
-
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,42 +170,41 @@
         android:layout_height="match_parent"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <Button
             android:id="@+id/btn_private_update"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:background="@drawable/rounded_line_btn"
-            app:layout_constraintRight_toLeftOf="@id/btn_private_delete"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_line_btn"
             android:fontFamily="@font/font_bold"
             android:includeFontPadding="false"
             android:text="수정하기"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-
             app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toLeftOf="@id/btn_private_delete"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.666" />
 
         <Button
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/btn_private_update"
-            android:layout_width="0dp"
-
             android:id="@+id/btn_private_delete"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="@drawable/delete_red_btn"
             android:fontFamily="@font/font_bold"
-            android:textSize="16sp"
-            android:includeFontPadding="false"
 
-            android:textColor="@color/colorWhite"
+            android:includeFontPadding="false"
             android:text="삭제하기"
-            />
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/btn_private_update"
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

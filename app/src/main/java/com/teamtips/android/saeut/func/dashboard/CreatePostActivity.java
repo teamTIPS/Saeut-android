@@ -1,10 +1,12 @@
 package com.teamtips.android.saeut.func.dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -56,11 +58,17 @@ public class CreatePostActivity extends AppCompatActivity {
     int limit_supply = 1;   // 돌봄요청자 인원 설정값 저장
     int limit_demand = 1;   // 돌봄제공자 인원 설정값 저장 (둘 다 초기값 1)
 
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_create);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // findViewById
         AllFindViewCreate();
@@ -188,6 +196,18 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
     };
+
+    // Toolbar Back Button 활성화
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private int getCheckedType(int checkedId) {
         if(checkedId == R.id.rb_typeAlone) {
