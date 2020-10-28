@@ -43,6 +43,8 @@ public class ProfileFragment extends Fragment {
         Button manage_account_btn = root.findViewById(R.id.manage_account_btn);
         Button revise_legion_btn = root.findViewById(R.id.revise_legion_btn);
         Button manage_post_btn = root.findViewById(R.id.manage_post_btn);
+        Button manage_neighbors_btn = root.findViewById(R.id.manage_neighbors_btn);
+
         manage_account_btn.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), modify_account_info.class));
         });
@@ -53,6 +55,10 @@ public class ProfileFragment extends Fragment {
 
         manage_post_btn.setOnClickListener(view -> {
             ((MainActivity)getActivity()).replaceFragment(MyPostFragment.newInstance());
+        });
+
+        manage_neighbors_btn.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), RatingActivity.class));
         });
 
         return root;
