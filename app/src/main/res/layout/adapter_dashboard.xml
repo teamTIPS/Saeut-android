@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/group_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -60,7 +60,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tv_address"
+        android:id="@+id/profile_tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="동대문구 전농1동"

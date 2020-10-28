@@ -43,7 +43,7 @@ public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        view = inflater.inflate(R.layout.fragment_group, parent, false);
+        view = inflater.inflate(R.layout.reply_others_recyclerview_item, parent, false);
 
         return new othersViewholder(view);
     }
@@ -55,12 +55,12 @@ public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if(holder instanceof myViewholder){
             ((myViewholder) holder).reply_mine_nickname.setText(bindedComment.getId());
             ((myViewholder) holder).reply_mine_content.setText(bindedComment.getContents());
-            ((myViewholder) holder).reply_mine_time.setText(bindedComment.getWrite_time().toString());
+            ((myViewholder) holder).reply_mine_time.setText(bindedComment.getDateByString());
         }
         else{
             ((othersViewholder) holder).reply_others_nickname.setText(bindedComment.getId());
             ((othersViewholder) holder).reply_others_content.setText(bindedComment.getContents());
-            ((othersViewholder) holder).reply_others_time.setText(bindedComment.getWrite_time().toString());
+            ((othersViewholder) holder).reply_others_time.setText(bindedComment.getDateByString());
         }
     }
 

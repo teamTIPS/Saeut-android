@@ -11,6 +11,6 @@ import retrofit2.http.Path;
 
 public interface GroupNetworkService {
 
-    @GET("/usergroup/{id}")
+    @GET("usergroup/{id}")
     Call<List<Group>> getGroup(@Path("id") String id);
 }

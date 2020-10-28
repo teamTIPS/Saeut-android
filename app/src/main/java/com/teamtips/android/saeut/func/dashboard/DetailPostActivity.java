@@ -24,10 +24,8 @@ import com.teamtips.android.saeut.data.Post;
 import com.teamtips.android.saeut.data.Tag;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetwork;
 import com.teamtips.android.saeut.func.dashboard.service.PostNetworkService;
-import com.teamtips.android.saeut.func.login.join.ui.service.LoginNetwork;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -179,9 +177,9 @@ public class DetailPostActivity extends AppCompatActivity {
     }
 
     private void AllFindViewDetail() {
-        tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_title = (TextView) findViewById(R.id.group_title_tv);
         tv_contents = (TextView) findViewById(R.id.tv_contents);
-        tv_id = (TextView) findViewById(R.id.tv_id);
+        tv_id = (TextView) findViewById(R.id.profile_tv_id);
 
         et_startDate = (EditText) findViewById(R.id.et_startDate);
         et_dueDate = (EditText) findViewById(R.id.et_dueDate);

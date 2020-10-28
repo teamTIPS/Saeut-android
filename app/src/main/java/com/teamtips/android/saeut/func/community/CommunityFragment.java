@@ -77,6 +77,7 @@ public class CommunityFragment extends Fragment {
             @Nullable Bundle savedInstanceState) {
 
         Log.e(TAG,"onCreateView");
+        communityNetworkService.getAllboardlist().enqueue(getboardlist);
 
         return inflater.inflate(R.layout.fragment_community, container, false);
     }

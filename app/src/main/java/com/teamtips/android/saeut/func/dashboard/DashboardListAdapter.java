@@ -171,9 +171,9 @@ public class DashboardListAdapter extends BaseAdapter {
 
         holder.tv_type = (TextView) view.findViewById(R.id.tv_type);
         holder.btn_status = (Button) view.findViewById(R.id.btn_status);
-        holder.tv_title = (TextView) view.findViewById(R.id.tv_title);
+        holder.tv_title = (TextView) view.findViewById(R.id.group_title_tv);
         holder.tv_date = (TextView) view.findViewById(R.id.tv_date);
-        holder.tv_address = (TextView) view.findViewById(R.id.tv_address);
+        holder.tv_address = (TextView) view.findViewById(R.id.profile_tv_address);
 
         holder.tv_tag1 = (TextView) view.findViewById(R.id.tv_tag1);
         holder.tv_tag2 = (TextView) view.findViewById(R.id.tv_tag2);

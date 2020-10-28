@@ -72,6 +72,7 @@ public class CommunityCreateActivity extends AppCompatActivity {
                 }
 
                 api.addNewBoard(new Board(loggedInUser.getId(), contents, System.currentTimeMillis(), 0, 0, loggedInUser.getnickname(),  address, rank)).enqueue(createNewPost);
+
                 finish();
             }
         });
