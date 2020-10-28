@@ -42,8 +42,8 @@
             android:layout_marginStart="30dp"
             android:hint="10,000"
             android:paddingHorizontal="10dp"
-            style:layout_constraintLeft_toLeftOf="parent"
-            style:layout_constraintRight_toRightOf="parent"
+            style:layout_constraintLeft_toRightOf="@id/hourlyWage"
+            style:layout_constraintRight_toLeftOf="@id/won_textview"
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:text="원"
+            style:layout_constraintRight_toRightOf="parent"
             android:fontFamily="@font/font_bold"
             android:textColor="@color/colorBlack"
             android:includeFontPadding="false"
@@ -88,7 +89,7 @@
 
         <EditText
             android:id="@+id/et_schedule"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
 
@@ -97,11 +98,11 @@
             android:includeFontPadding="false"
             android:textSize="17sp"
             android:textColor="@color/colorBlack"
-            android:hint="원하시는 시간을 입력해주세요."
+            android:hint="가능한 시간대를 입력해주세요."
             android:inputType="textPersonName"
             android:paddingHorizontal="10dp"
+            style:layout_constraintLeft_toRightOf="@id/schedule"
 
-            style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintBottom_toBottomOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
@@ -134,18 +135,15 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
 
-            android:hint="원하시는 시/군/구/동을 입력해주세요."
+            android:hint="가능한 위치를 입력해주세요."
             android:fontFamily="@font/font_regular"
             android:includeFontPadding="false"
             android:textColor="@color/colorBlack"
             android:paddingHorizontal="10dp"
-
             android:inputType="textPersonName"
             android:textSize="17sp"
-            android:layout_marginStart="40dp"
             style:layout_constraintLeft_toRightOf="@+id/location"
             style:layout_constraintBottom_toBottomOf="parent"
-            style:layout_constraintLeft_toLeftOf="parent"
             style:layout_constraintRight_toRightOf="parent"
             style:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -233,6 +231,7 @@
         android:paddingRight="50dp"
         android:textColor="@color/colorWhite"
         style:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="50dp"
         android:text="매칭하기"
         android:fontFamily="@font/font_bold" />
 

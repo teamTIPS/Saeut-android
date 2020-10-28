@@ -48,10 +48,32 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewPager = view.findViewById(R.id.container_dashboard);
+        FloatingActionButton floating_action_button = view.findViewById(R.id.floating_action_button);
         FragmentPageAdapter adapter = new FragmentPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 0){
+                    floating_action_button.setVisibility(View.VISIBLE);
+                }
+                else{
+                    floating_action_button.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         tabLayout = view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
