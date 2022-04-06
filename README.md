@@ -44,6 +44,7 @@
 - ApplyRequest
 - GPS(permission)
 - GPS(on/off)
+- SearchLocation
 - MapAPI
 - OpenSchedule
 - EditProfile
