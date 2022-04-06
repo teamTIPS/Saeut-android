@@ -42,5 +42,8 @@
 - ShowList
 - CreateRequest
 - ApplyRequest
-- MapAPI(GPS Function)
+- GPS(permission)
+- GPS(on/off)
+- MapAPI
 - OpenSchedule
+- EditProfile
