@@ -67,7 +67,6 @@ public class LoggedInUser {
     private String nickname;
     private String pic;
 
-    //enum class 필요할 듯
     private int rank;
     private String score;
     private String description;

@@ -45,7 +45,6 @@ public class ScheduleFragment extends Fragment {
         Button bt_clear = root.findViewById(R.id.clear_btn);
 
         timetable.setOnStickerSelectEventListener((idx, schedules) -> {
-            Log.e(Tag,"hi");
             Intent i = new Intent(getContext(), EditActivity.class);
             i.putExtra("mode",REQUEST_EDIT);
             i.putExtra("idx", idx);
@@ -55,8 +54,6 @@ public class ScheduleFragment extends Fragment {
 
         scheduleViewModel.getSD().observe(getViewLifecycleOwner(), schedules -> {
             timetable.add(schedules);
-            //schedules를 timetable에 반영함
-            Log.e(Tag,"onChanged");
         });
 
         bt_add.setOnClickListener(view -> {

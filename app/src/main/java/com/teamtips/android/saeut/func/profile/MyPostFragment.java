@@ -76,7 +76,6 @@ public class MyPostFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // 만약 추가된 데이터가 있다면,
         setAdapter(getView());
         dashboardListAdapter.notifyDataSetChanged();
         getListByPosition();

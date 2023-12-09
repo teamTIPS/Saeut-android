@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        SaveSharedPreference.clearUser(this);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_total);
@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.email_sign_in_button);
-//        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
         final Button kakao_sign_in_button = findViewById(R.id.kakao_sign_in_button);
         final Button email_sign_up_button = findViewById(R.id.email_sign_up_button);
 
@@ -76,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(Tag,"loginResult == null");
                     return;
                 }
-//                loadingProgressBar.setVisibility(View.GONE);
 
                 //로그인 실패
                 if (loginResult.getError() != null) {
@@ -95,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                     setResult(Activity.RESULT_OK);
                     finish();
                 }
-                //Complete and destroy login activity once successful
             }
         });
 
@@ -118,22 +115,11 @@ public class LoginActivity extends AppCompatActivity {
         };
         emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
-//        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                    loginViewModel.login(emailEditText.getText().toString(),
-//                            passwordEditText.getText().toString());
-//                }
-//                return false;
-//            }
-//        });
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }

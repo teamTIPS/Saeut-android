@@ -113,7 +113,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
         mapView.setShowCurrentLocationMarker(false);
     }
 
@@ -122,7 +121,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         Log.e(Tag,"onCurrentLocationUpdate");
     }
 
-    // 이게 방향바꾸는거같은데;;
     @Override
     public void onCurrentLocationDeviceHeadingUpdate(MapView mapView, float v) {
 
@@ -162,7 +160,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
             }
 
             if (check_result) {
-                Log.d("@@@", "start");
                 //위치 값을 가져올 수 있음
                 mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeading);
             } else {

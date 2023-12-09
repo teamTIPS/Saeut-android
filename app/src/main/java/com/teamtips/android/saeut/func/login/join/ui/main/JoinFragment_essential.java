@@ -110,8 +110,6 @@ public class JoinFragment_essential extends Fragment {
             public void afterTextChanged(Editable editable) {
                 if (!isEmailValid(email_edit.getText().toString())) {
                     Log.e(Tag, "이메일 형식 아님");
-
-                    //아이디 옆의 초록원 빨갛게 셋팅
                 }
             }
         });
@@ -172,7 +170,7 @@ public class JoinFragment_essential extends Fragment {
                                         .setCancelable(true) // 백버튼으로 팝업창이 닫히지 않도록 한다.
                                         .show();
 
-                                // 중복 확인 끝났으니까
+                                // 중복 확인
                                 btn_check_id.setClickable(false);
                                 btn_check_id.setText("확인완료");
                             }
@@ -216,9 +214,7 @@ public class JoinFragment_essential extends Fragment {
 
         email_sign_up_button.setOnClickListener(view -> {
             //if(/*초록원&&비밀번호확인 맞음&&폰번호인증완료*/){
-            // 아이디 중복확인 했니?
             if (btn_check_id.isClickable()) {
-                // 안했으면 하렴
                 AlertDialog.Builder emailCheckDialog = new AlertDialog.Builder(getContext());
 
                 emailCheckDialog.setMessage("Email 중복을 확인해주세요.")

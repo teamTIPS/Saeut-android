@@ -37,85 +37,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /*
 현재좌표 >> 주소 변환을 요청하여 저장하는 클래스
-Protocol: REST API, Data type: json\
-REST API Key: a980cc15274214f283c3a720c92e85ad
 */
 final class RequestLocationInfo {
     private static final String Tag = "RequestLocationInfo";
     String APPKEY = "KakaoAK a980cc15274214f283c3a720c92e85ad";
 
-
-//    OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(chain -> {
-//        String Header = Base64.encodeToString("Authorization : KakaoAK".getBytes(), Base64.NO_WRAP);
-//        Request newRequest = chain.request().newBuilder().addHeader(Header, "a980cc15274214f283c3a720c92e85ad").build();
-//        return chain.proceed(newRequest);
-//    });
-
-    //    OkHttpClient client = new OkHttpClient.Builder().build();
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://dapi.kakao.com/")
             .addConverterFactory(GsonConverterFactory.create())
-//            .client(client)
             .build();
     RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-//    KaKaoLocationAPI resultLocation = null;
 }
-
-//    public KaKaoLocationAPI requestLocation(double longitude, double latitude) throws IOException {
-//        HashMap<String, Double> paramMap = new HashMap<>();
-//        paramMap.put("x", longitude);
-//        paramMap.put("y", latitude);
-//
-////        JsonObject result = retrofitInterface.getLocationInfo(paramMap).execute().body();
-////        ResponseBody error = retrofitInterface.getLocationInfo(paramMap).execute().errorBody();
-//        Response<JsonObject> call = retrofitInterface.getLocationInfo("json", longitude, latitude).execute();
-//
-//        if(call.isSuccessful()){
-//            Log.e(Tag,"hi");
-//            Log.e(Tag,"there: "+call.toString());
-//        }
-////        Log.e(Tag,"here?:"+call.errorBody().string());
-//
-////        if(result != null){
-////            Log.e(Tag,"return: "+result.get("errorType").toString());
-////
-////            Log.e(Tag,"test");
-////            Log.e(Tag,"kakaoLocation not null, "+resultLocation.toString());
-////        }
-//
-////        call.enqueue(new Callback<KaKaoLocationAPI>() {
-////            @Override
-////            public void onResponse(Call<KaKaoLocationAPI> call, retrofit2.Response<KaKaoLocationAPI> response) {
-////                assert response.body() != null;
-////            }
-////            @Override
-////            public void onFailure(Call<KaKaoLocationAPI> call, Throwable t) {
-////                Log.e(Tag,"onFailure");
-////            }
-////        });
-////        if(!call.){
-////            Log.e(Tag,"test");
-////            Log.e(Tag,result);
-////
-////            Gson gson = new Gson();
-////            JsonReader reader = new JsonReader(new StringReader(result));
-////            reader.setLenient(true);
-//////            JsonParser parser = new JsonParser();
-//////            JsonElement rootObj = parser.parse(result).getAsJsonObject();
-////
-////            KaKaoLocationAPI kaKaoLocation = gson.fromJson(reader, KaKaoLocationAPI.class);
-////            if(kaKaoLocation != null){
-////                resultLocation.setKaKaoLocationAPI(kaKaoLocation);
-////                Log.e(Tag,"kakaoLocation not null, "+kaKaoLocation.documentsArrayList.get(0).address_name);
-////            }
-////            else{
-////                Log.e(Tag,"kaKaoLocation null");
-////            }
-////        }
-////        else{
-////            Log.e(Tag,"result:"+result);
-////        }
-//        KaKaoLocationAPI kaKaoLocationAPI =null;
-//        return kaKaoLocationAPI;
-//    }
-//}
