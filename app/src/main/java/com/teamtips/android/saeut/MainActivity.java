@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Intent intent = new Intent(this, SplashActivity.class);
-//        startActivity(intent);
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -90,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-//                Log.e("Hash key", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (Exception e) {
             Log.e("name not found", e.toString());

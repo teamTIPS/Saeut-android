@@ -30,9 +30,8 @@ public class DashboardListFragment extends Fragment {
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
     private static String url;
-    private int position;        // taglayout 구별하기 위한 일종의 flag라고 이해함
+    private int position;        // taglayout 구별하기 위한 일종의 flag
 
-    // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
     private static LoggedInUser sessionUser;
 
     public static DashboardListFragment newInstance() {
@@ -101,7 +100,6 @@ public class DashboardListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // 만약 추가된 데이터가 있다면,
         setAdapter(getView());
         dashboardListAdapter.notifyDataSetChanged();
         getListByPosition(position);

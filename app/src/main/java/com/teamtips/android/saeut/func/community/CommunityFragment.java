@@ -69,8 +69,6 @@ public class CommunityFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG,"!!!!!!!!!!!!!!!!!!!");
-
         super.onViewCreated(view, savedInstanceState);
         communityNetworkService.getAllboardlist().enqueue(getboardlist);
         community_recyclerview = view.findViewById(R.id.community_recycler_item);

@@ -35,14 +35,14 @@ public class DashboardMatchingFragment extends Fragment {
 
     private Button btn_matching_submit;
 
-    private int position;        // taglayout 구별하기 위한 일종의 flag라고 이해함
+    private int position;        // taglayout 구별하기 위한 일종의 flag
 
     private DashboardListAdapter dashboardListAdapter;
     private ListView listView;
     private ArrayList<Post> postArrayList;
     private PostNetworkTask postNetworkTask;
     private static String url;
-    // 세션에 저장된 유저 객체 저장하는 변수 -> 구현 덜 됨.
+
     private static LoggedInUser sessionUser;
 
     public static DashboardMatchingFragment newInstance() {
@@ -86,8 +86,6 @@ public class DashboardMatchingFragment extends Fragment {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //String post_schedule, int wage, String location, int type
-
                                 Matching matching = new Matching(
                                         et_schedule.getText().toString(),
                                         Integer.parseInt(et_hourlyWage.getText().toString()),

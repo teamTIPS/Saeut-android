@@ -39,7 +39,7 @@ public class EditPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_edit);
 
-        // Detail Post findViewById
+
         AllFindViewDetail();
 
         // 서버에서 전달받은 Post 객체 저장
@@ -51,31 +51,10 @@ public class EditPostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // OnClickListener
         btn_edit_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 돌봄 신청 페이지 뜨게끔 수정하기.
-//                Post post = new Post(
-//                        "test",
-//                        et_title.getText().toString(),
-//                        rb_age.getText().toString(),
-//                        et_postSchedule.getText().toString(),
-//                        rb_gender.getText().toString(),
-//                        et_contents.getText().toString(),
-//                        et_startDate.getText().toString(),
-//                        et_dueDate.getText().toString(),
-//                        0,
-//                        getCheckedType(rg_type.getCheckedRadioButtonId()),
-//                        Integer.parseInt(et_hourlyWage.getText().toString()),
-//                        limit_supply,
-//                        limit_demand
-//                );
-
-//                postNetworkService = new PostNetworkService();
-//                postNetworkService.modPost(modPost);
                 Toast.makeText(getApplicationContext(), "돌봄 게시글이 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
-
                 finish();
             }
         });

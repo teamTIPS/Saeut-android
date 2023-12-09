@@ -32,7 +32,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-// 하 이거 RecyclerView로 바꿔야되는데 엉
 public class DashboardListAdapter extends BaseAdapter {
 
     public static final String TAG = "DashboardChildAdapter";
@@ -135,7 +134,6 @@ public class DashboardListAdapter extends BaseAdapter {
             }
         });
 
-        // 나머지는 추후 다시 정의해야 함.
         return view;
     }
 
@@ -160,9 +158,6 @@ public class DashboardListAdapter extends BaseAdapter {
         holder.tv_tag1 = (TextView) view.findViewById(R.id.tv_tag1);
         holder.tv_tag2 = (TextView) view.findViewById(R.id.tv_tag2);
         holder.tv_tag3 = (TextView) view.findViewById(R.id.tv_tag3);
-
-        //holder.applyCount = (TextView) view.findViewById(R.id.tv_limitSupply);
-
 
         // Private Layout
         holder.private_layout = (ConstraintLayout) view.findViewById(R.id.private_layout);
@@ -203,7 +198,6 @@ public class DashboardListAdapter extends BaseAdapter {
             public void onResponse(Call<List<Tag>> call, Response<List<Tag>> response) {
                 if(response.isSuccessful()) {
                     List<Tag> tagList = response.body();
-                    // 임의로,,,3개만ㅠㅠ 구현만 되면 되쥬,,,^^;;;;
                     if (tagList != null && !(tagList.isEmpty())) {
                         if(tagList.size() >= 3) {
                             holder.tv_tag1.setText(tagList.get(0).getTag_name());

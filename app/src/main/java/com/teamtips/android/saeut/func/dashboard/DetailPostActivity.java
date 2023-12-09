@@ -108,11 +108,9 @@ public class DetailPostActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // OnClickListener
         btn_detail_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 돌봄 신청 페이지 뜨게끔 수정하기.
                 applyDialogShow();
             }
         });
@@ -158,7 +156,6 @@ public class DetailPostActivity extends AppCompatActivity {
 
                 Apply apply = new Apply(post.getPost_id(), "test", introduce, type);
                 Log.d(TAG, apply.toString());
-                // API 연결은 다른거 수정하고 시도
                 postNetworkService.addApply(apply);
                 Toast.makeText(getApplicationContext(), "돌봄 신청이 완료되었습니다 !",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
@@ -210,7 +207,6 @@ public class DetailPostActivity extends AppCompatActivity {
     private void AllStoreData(Post post) throws IOException {
 
         Log.d(TAG, post.toString());
-        // 추가로 태그 연결 메소드 필요
         getTagByPostId(post.getPost_id());
         tv_type.setText(post.getTypeForText(post.getType()));
         tv_status.setText(post.getStatusForText(post.getRecruit_status()));
@@ -219,7 +215,6 @@ public class DetailPostActivity extends AppCompatActivity {
         tv_contents.setText(post.getContents());
         tv_id.setText(post.getId());
 
-        // 추후 Additional 테이블과 연결해야 함.
         tv_writer_address.setText("성남시 분당구 백현동");
         et_startDate.setText(post.getStart_date());
         et_dueDate.setText(post.getDue_date());
@@ -228,7 +223,6 @@ public class DetailPostActivity extends AppCompatActivity {
         et_payment.setText(String.valueOf(post.getPayment()));
         et_wage.setText(String.valueOf(post.getWage()));
 
-        // 진짜 이게 최선일까....? ㅋ replace는 예시 디비에 공백이 있어서,,,어쩔수없이 추가함ㅋㅋ
         String age = post.getPost_age().replace(" ", "");
         String gender = post.getPost_gender().replace(" ", "");
         if(rb_age1.getText().equals(age)){
@@ -255,7 +249,6 @@ public class DetailPostActivity extends AppCompatActivity {
             public void onResponse(Call<List<Tag>> call, Response<List<Tag>> response) {
                 if(response.isSuccessful()) {
                     List<Tag> tagList = response.body();
-                    // 임의로,,,3개만ㅠㅠ 구현만 되면 되쥬,,,^^;;;;
                     if (tagList != null && !(tagList.isEmpty())) {
                         if(tagList.size() >= 3) {
                             tv_tag1.setText(tagList.get(0).getTag_name());
@@ -275,25 +268,3 @@ public class DetailPostActivity extends AppCompatActivity {
         });
     }
 }
-
-// applyCount api 연결 구현 중
-// 부득이하게 결과값 받기 위해 얘만 Callback 함수 여기서 선언
-//        postNetworkService.mCallApplyCount.enqueue(new Callback<Integer>() {
-//            @Override
-//            public void onResponse(Call<Integer> call, Response<Integer> response) {
-//                if(response.isSuccessful()) {
-//                    if(response.body() != 0) {
-//                        tv_applyCount.setText(String.valueOf(response.body()));
-//                    } else {
-//                        tv_applyCount.setText("0");
-//                    }
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "돌봄 신청에 실패하였습니다 !",Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Integer> call, Throwable t) {
-//
-//            }
-//        });
